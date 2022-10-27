@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('Addresses', () {
-    final client = Client(ClientConfiguration("EZTK7a6b77c30c83480fa28f2cfbdece5799Pcv05nTURlVd9e79XlmZEA"));
+    final client = Client(ClientConfiguration("YOUR_API_KEY"));
 
     setUp(() {
       // Additional setup goes here.
