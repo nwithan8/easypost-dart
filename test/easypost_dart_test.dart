@@ -1,6 +1,4 @@
 import 'package:easypost/easypost.dart';
-import 'package:easypost/src/common/client_configuration.dart';
-import 'package:easypost/src/common/models/smart_rate_accuracy.dart';
 import 'package:test/test.dart';
 
 void main() {
