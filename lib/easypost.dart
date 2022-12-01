@@ -1,3 +1,3 @@
-export 'package:easypost/src/common.dart';
+export 'package:easypost/src/client.dart';
 
-// TODO: Export any libraries intended for clients of this package.
+// TODO: Export any libraries intended for users of this package.
