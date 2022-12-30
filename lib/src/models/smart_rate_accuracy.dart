@@ -1,6 +1,6 @@
 
 
-import 'package:easypost/src/models/time_in_transit.dart';
+
 
 enum SmartRateAccuracy {
   percentile50,
