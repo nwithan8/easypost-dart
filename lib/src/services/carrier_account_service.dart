@@ -2,17 +2,17 @@ import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/http/api_version.dart';
 import 'package:easypost/src/http/http_method.dart';
-import 'package:easypost/src/http/parameters.dart';
-import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
+import 'package:easypost/src/parameters/carrier_accounts.dart';
 
 class CarrierAccountService extends Service {
   CarrierAccountService(Client client) : super(client);
 
-  Future<CarrierAccount> create(Map<String, dynamic> data) async {
+  Future<CarrierAccount> create(CarrierAccountsCreate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'carrier_accounts', ApiVersion.v2,
-        parameters: data.wrap(['carrier_account']));
+        parameters: parameterMap);
     return CarrierAccount.fromJson(json);
   }
 
@@ -22,19 +22,22 @@ class CarrierAccountService extends Service {
     return CarrierAccount.fromJson(json);
   }
 
-  Future<List<CarrierAccount>> list({Map<String, dynamic>? filters}) async {
+  Future<List<CarrierAccount>> list({CarrierAccountsAll? parameters}) async {
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
     final json = await client.requestJson(
-        HttpMethod.get, 'carrier_accounts', ApiVersion.v2, parameters: filters);
+        HttpMethod.get, 'carrier_accounts', ApiVersion.v2,
+        parameters: parameterMap);
     return json
         .map<CarrierAccount>((json) => CarrierAccount.fromJson(json))
         .toList();
   }
 
   Future<CarrierAccount> update(
-      CarrierAccount carrierAccount, Map<String, dynamic> data) async {
+      CarrierAccount carrierAccount, CarrierAccountsUpdate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(HttpMethod.patch,
         'carrier_accounts/${carrierAccount.id}', ApiVersion.v2,
-        parameters: data.wrap(['carrier_account']));
+        parameters: parameterMap);
     return CarrierAccount.fromJson(json);
   }
 

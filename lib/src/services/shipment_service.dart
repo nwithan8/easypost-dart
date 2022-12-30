@@ -1,27 +1,24 @@
 import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/calculations/rates.dart';
 import 'package:easypost/src/http/api_version.dart';
 import 'package:easypost/src/http/http_method.dart';
-import 'package:easypost/src/models/shipment.dart';
-import 'package:easypost/src/http/parameters.dart';
-import 'package:easypost/src/models/smart_rate.dart';
 import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/shipment.dart';
+import 'package:easypost/src/models/smart_rate.dart';
 import 'package:easypost/src/models/smart_rate_accuracy.dart';
-import 'package:easypost/src/calculations/rates.dart';
+import 'package:easypost/src/parameters/shipments.dart';
 
 /// The [ShipmentService] handles shipments with the EasyPost API.
 class ShipmentService extends Service {
   ShipmentService(Client client) : super(client);
 
   /// Creates a shipment.
-  Future<Shipment> create(Map<String, dynamic> data,
-      {bool withCarbonOffset = false}) async {
-    data = data.wrap(['shipment']);
-    data['carbon_offset'] = withCarbonOffset;
-
+  Future<Shipment> create(ShipmentsCreate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments', ApiVersion.v2,
-        parameters: data);
+        parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
@@ -33,10 +30,11 @@ class ShipmentService extends Service {
   }
 
   /// Lists all shipments.
-  Future<ShipmentCollection> list({Map<String, dynamic>? filters}) async {
+  Future<ShipmentCollection> list({ShipmentsAll? parameters}) async {
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments', ApiVersion.v2,
-        parameters: filters);
+        parameters: parameterMap);
     return ShipmentCollection.fromJson(json);
   }
 
@@ -47,37 +45,29 @@ class ShipmentService extends Service {
     return json.map<SmartRate>((e) => SmartRate.fromJson(e)).toList();
   }
 
-  Future<Shipment> buy(Shipment shipment, Rate rate,
-      {double? insuranceValue,
-      bool? withCarbonOffset = false,
-      String? endShipperId}) async {
-    Map<String, dynamic> parameters = {
-      'rate': {'id': rate.id},
-      'insurance': insuranceValue ?? "",
-      'carbon_offset': withCarbonOffset
-    };
-
-    if (endShipperId != null) {
-      parameters['end_shipper_id'] = endShipperId;
-    }
+  Future<Shipment> buy(Shipment shipment, ShipmentsBuy parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
 
     final json = await client.requestJson(
         HttpMethod.post, 'shipments/${shipment.id}/buy', ApiVersion.v2,
-        parameters: parameters);
+        parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
-  Future<Shipment> generateLabel(Shipment shipment, String fileFormat) async {
+  Future<Shipment> generateLabel(
+      Shipment shipment, ShipmentsCreateDocument parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/label', ApiVersion.v2,
-        parameters: {'file_format': fileFormat});
+        parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
-  Future<Shipment> insure(Shipment shipment, double amount) async {
+  Future<Shipment> insure(Shipment shipment, ShipmentsInsure parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments/${shipment.id}/insure', ApiVersion.v2,
-        parameters: {'amount': amount});
+        parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
@@ -88,14 +78,11 @@ class ShipmentService extends Service {
   }
 
   Future<Shipment> refreshRates(Shipment shipment,
-      {Map<String, dynamic>? parameters, bool withCarbonOffset = false}) async {
-    parameters = parameters ?? {};
-
-    parameters['carbon_offset'] = withCarbonOffset;
-
+      {ShipmentsGenerateRates? parameters}) async {
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/rates', ApiVersion.v2,
-        parameters: parameters);
+        parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 

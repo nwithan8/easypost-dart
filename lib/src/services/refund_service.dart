@@ -1,22 +1,20 @@
 import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/http/api_version.dart';
-import 'package:easypost/src/http/parameters.dart';
-import 'package:easypost/src/models/refund.dart';
-import 'package:easypost/src/models/pickup_rate.dart';
-import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/http/http_method.dart';
-import 'package:easypost/src/calculations/rates.dart';
+import 'package:easypost/src/models/refund.dart';
+import 'package:easypost/src/parameters/refunds.dart';
 
 class RefundService extends Service {
   RefundService(Client client) : super(client);
 
-  Future<Refund> create(Map<String, dynamic> parameters) async {
+  Future<Refund> create(RefundsCreate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     return await client.requestJson(
       HttpMethod.post,
       'refunds',
       ApiVersion.v2,
-      parameters: parameters.wrap(['refund']),
+      parameters: parameterMap,
     );
   }
 
@@ -28,10 +26,11 @@ class RefundService extends Service {
     );
   }
 
-  Future<RefundCollection> list({Map<String, dynamic>? filters}) async {
+  Future<RefundCollection> list({RefundsAll? parameters}) async {
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
     final json = await client.requestJson(
         HttpMethod.get, 'refunds', ApiVersion.v2,
-        parameters: filters);
+        parameters: parameterMap);
     return RefundCollection.fromJson(json);
   }
 }

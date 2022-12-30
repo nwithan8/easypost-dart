@@ -1,22 +1,20 @@
 import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/http/api_version.dart';
-import 'package:easypost/src/http/parameters.dart';
-import 'package:easypost/src/models/user.dart';
-import 'package:easypost/src/models/pickup_rate.dart';
-import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/http/http_method.dart';
-import 'package:easypost/src/calculations/rates.dart';
+import 'package:easypost/src/models/user.dart';
+import 'package:easypost/src/parameters/users.dart';
 
 class UserService extends Service {
   UserService(Client client) : super(client);
 
-  Future<User> createChild(Map<String, dynamic> parameters) async {
+  Future<User> createChild(UsersCreate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     return await client.requestJson(
       HttpMethod.post,
       'users',
       ApiVersion.v2,
-      parameters: parameters.wrap(['user']),
+      parameters: parameterMap,
     );
   }
 
@@ -36,21 +34,23 @@ class UserService extends Service {
     );
   }
 
-  Future<User> update(User user, Map<String, dynamic> parameters) async {
+  Future<User> update(User user, UsersUpdate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     return await client.requestJson(
       HttpMethod.put,
       'users/${user.id}',
       ApiVersion.v2,
-      parameters: parameters,
+      parameters: parameterMap,
     );
   }
 
-  Future<User> updateBrand(User user, Map<String, dynamic> parameters) async {
+  Future<User> updateBrand(User user, UsersUpdateBrand parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     return await client.requestJson(
       HttpMethod.put,
       'users/${user.id}/brand',
       ApiVersion.v2,
-      parameters: parameters.wrap(["brand"]),
+      parameters: parameterMap,
     );
   }
 

@@ -3,17 +3,18 @@ import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/calculations/rates.dart';
 import 'package:easypost/src/http/api_version.dart';
 import 'package:easypost/src/http/http_method.dart';
-import 'package:easypost/src/http/parameters.dart';
 import 'package:easypost/src/models/order.dart';
 import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/parameters/orders.dart';
 
 class OrderService extends Service {
   OrderService(Client client) : super(client);
 
-  Future<Order> create(Map<String, dynamic> data) async {
+  Future<Order> create(OrdersCreate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'orders', ApiVersion.v2,
-        parameters: data.wrap(['order']));
+        parameters: parameterMap);
     return Order.fromJson(json);
   }
 
@@ -23,10 +24,11 @@ class OrderService extends Service {
     return Order.fromJson(json);
   }
 
-  Future<Order> buy(Order order, Rate rate) async {
+  Future<Order> buy(Order order, OrdersBuy parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'orders/${order.id}/buy', ApiVersion.v2,
-        parameters: {'carrier': rate.carrier, 'service': rate.service});
+        parameters: parameterMap);
     return Order.fromJson(json);
   }
 

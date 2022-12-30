@@ -1,28 +1,20 @@
 import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/http/api_version.dart';
-import 'package:easypost/src/http/parameters.dart';
-import 'package:easypost/src/models/scan_form.dart';
-import 'package:easypost/src/models/shipment.dart';
-import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/http/http_method.dart';
-import 'package:easypost/src/calculations/rates.dart';
+import 'package:easypost/src/models/scan_form.dart';
+import 'package:easypost/src/parameters/scan_forms.dart';
 
 class ScanFormService extends Service {
   ScanFormService(Client client) : super(client);
 
-  Future<ScanForm> create(List<Shipment> shipments) async {
-    List<Map<String, dynamic>> shipmentIds = [];
-
-    for (Shipment shipment in shipments) {
-      shipmentIds.add({'id': shipment.id});
-    }
-
+  Future<ScanForm> create(ScanFormsCreate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     return await client.requestJson(
       HttpMethod.post,
       'scan_forms',
       ApiVersion.v2,
-      parameters: {'shipments': shipmentIds},
+      parameters: parameterMap,
     );
   }
 
@@ -34,10 +26,11 @@ class ScanFormService extends Service {
     );
   }
 
-  Future<ScanFormCollection> list({Map<String, dynamic>? filters}) async {
+  Future<ScanFormCollection> list({ScanFormsAll? parameters}) async {
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
     final json = await client.requestJson(
         HttpMethod.get, 'scan_forms', ApiVersion.v2,
-        parameters: filters);
+        parameters: parameterMap);
     return ScanFormCollection.fromJson(json);
   }
 }

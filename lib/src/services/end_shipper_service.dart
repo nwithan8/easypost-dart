@@ -2,16 +2,17 @@ import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/http/api_version.dart';
 import 'package:easypost/src/http/http_method.dart';
-import 'package:easypost/src/http/parameters.dart';
 import 'package:easypost/src/models/end_shipper.dart';
+import 'package:easypost/src/parameters/end_shippers.dart';
 
 class EndShipperService extends Service {
   EndShipperService(Client client) : super(client);
 
-  Future<EndShipper> create(Map<String, dynamic> data) async {
+  Future<EndShipper> create(EndShippersCreate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'end_shippers', ApiVersion.v2,
-        parameters: data.wrap(['address']));
+        parameters: parameterMap);
     return EndShipper.fromJson(json);
   }
 
@@ -21,17 +22,20 @@ class EndShipperService extends Service {
     return EndShipper.fromJson(json);
   }
 
-  Future<EndShipperCollection> list({Map<String, dynamic>? filters}) async {
-    final json =
-        await client.requestJson(HttpMethod.get, 'end_shippers', ApiVersion.v2, parameters: filters);
+  Future<EndShipperCollection> list({EndShippersAll? parameters}) async {
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    final json = await client.requestJson(
+        HttpMethod.get, 'end_shippers', ApiVersion.v2,
+        parameters: parameterMap);
     return EndShipperCollection.fromJson(json);
   }
 
   Future<EndShipper> update(
-      EndShipper endShipper, Map<String, dynamic> data) async {
+      EndShipper endShipper, EndShippersUpdate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.put, 'end_shippers/${endShipper.id}', ApiVersion.v2,
-        parameters: data.wrap(['address']));
+        parameters: parameterMap);
     return EndShipper.fromJson(json);
   }
 }

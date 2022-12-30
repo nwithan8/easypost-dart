@@ -1,20 +1,20 @@
 import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/http/api_version.dart';
-import 'package:easypost/src/http/parameters.dart';
-import 'package:easypost/src/models/batch.dart';
-import 'package:easypost/src/models/shipment.dart';
 import 'package:easypost/src/http/http_method.dart';
+import 'package:easypost/src/models/batch.dart';
+import 'package:easypost/src/parameters/batches.dart';
 
 /// The [BatchService] handles Batches with the EasyPost API.
 class BatchService extends Service {
   BatchService(Client client) : super(client);
 
   /// Creates an Batch.
-  Future<Batch> create(Map<String, dynamic> data) async {
+  Future<Batch> create(BatchesCreate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'batches', ApiVersion.v2,
-        parameters: data.wrap(['batch']));
+        parameters: parameterMap);
     return Batch.fromJson(json);
   }
 
@@ -26,37 +26,32 @@ class BatchService extends Service {
   }
 
   /// Lists all Batches.
-  Future<BatchCollection> list({Map<String, dynamic>? filters}) async {
-    final json =
-        await client.requestJson(HttpMethod.get, 'batches', ApiVersion.v2, parameters: filters);
+  Future<BatchCollection> list({BatchesAll? parameters}) async {
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    final json = await client.requestJson(
+        HttpMethod.get, 'batches', ApiVersion.v2,
+        parameters: parameterMap);
     return BatchCollection.fromJson(json);
   }
 
   /// Add shipments to a Batch.
-  Future<Batch> addShipments(Batch batch, List<Shipment> shipments) async {
-    List<Map<String, dynamic>> shipmentIds = [];
-
-    for (Shipment shipment in shipments) {
-      shipmentIds.add({'id': shipment.id});
-    }
-
+  Future<Batch> addShipments(
+      Batch batch, BatchesUpdateShipments parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'batches/${batch.id}/add_shipments', ApiVersion.v2,
-        parameters: {'shipments': shipmentIds});
+        parameters: parameterMap);
     return Batch.fromJson(json);
   }
 
   /// Remove shipments from a Batch.
-  Future<Batch> removeShipments(Batch batch, List<Shipment> shipments) async {
-    List<Map<String, dynamic>> shipmentIds = [];
-
-    for (Shipment shipment in shipments) {
-      shipmentIds.add({'id': shipment.id});
-    }
+  Future<Batch> removeShipments(
+      Batch batch, BatchesUpdateShipments parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
 
     final json = await client.requestJson(
         HttpMethod.post, 'batches/${batch.id}/remove_shipments', ApiVersion.v2,
-        parameters: {'shipments': shipmentIds});
+        parameters: parameterMap);
     return Batch.fromJson(json);
   }
 
@@ -68,18 +63,22 @@ class BatchService extends Service {
   }
 
   /// Generate a Batch's label.
-  Future<Batch> generateLabel(Batch batch, String fileFormat) async {
+  Future<Batch> generateLabel(
+      Batch batch, BatchesCreateDocument parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'batches/${batch.id}/label', ApiVersion.v2,
-        parameters: {'file_format': fileFormat});
+        parameters: parameterMap);
     return Batch.fromJson(json);
   }
 
   /// Generate a Batch's scan form.
-  Future<Batch> generateScanForm(Batch batch, String fileFormat) async {
+  Future<Batch> generateScanForm(
+      Batch batch, BatchesCreateDocument parameters) async {
+    Map<String, dynamic>? parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'batches/${batch.id}/scan_form', ApiVersion.v2,
-        parameters: {'file_format': fileFormat});
+        parameters: parameterMap);
     return Batch.fromJson(json);
   }
 }

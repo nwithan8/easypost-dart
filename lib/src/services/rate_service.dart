@@ -1,10 +1,8 @@
 import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/http/api_version.dart';
-import 'package:easypost/src/http/parameters.dart';
-import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/http/http_method.dart';
-import 'package:easypost/src/calculations/rates.dart';
+import 'package:easypost/src/models/rate.dart';
 
 class RateService extends Service {
   RateService(Client client) : super(client);

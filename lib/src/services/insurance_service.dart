@@ -2,16 +2,17 @@ import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/http/api_version.dart';
 import 'package:easypost/src/http/http_method.dart';
-import 'package:easypost/src/http/parameters.dart';
 import 'package:easypost/src/models/insurance.dart';
+import 'package:easypost/src/parameters/insurance.dart';
 
 class InsuranceService extends Service {
   InsuranceService(Client client) : super(client);
 
-  Future<Insurance> create(Map<String, dynamic> data) async {
+  Future<Insurance> create(InsuranceCreate parameters) async {
+    Map<String, dynamic> parameterMap = parameters.toMap(client);
     final json = await client.requestJson(
         HttpMethod.post, 'insurances', ApiVersion.v2,
-        parameters: data.wrap(['insurance']));
+        parameters: parameterMap);
     return Insurance.fromJson(json);
   }
 
@@ -21,10 +22,11 @@ class InsuranceService extends Service {
     return Insurance.fromJson(json);
   }
 
-  Future<InsuranceCollection> list({Map<String, dynamic>? filters}) async {
+  Future<InsuranceCollection> list({InsuranceAll? parameters}) async {
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
     final json = await client.requestJson(
         HttpMethod.get, 'insurances', ApiVersion.v2,
-        parameters: filters);
+        parameters: parameterMap);
     return InsuranceCollection.fromJson(json);
   }
 }
