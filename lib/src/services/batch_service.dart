@@ -11,7 +11,7 @@ class BatchService extends Service {
 
   /// Creates an Batch.
   Future<Batch> create(BatchesCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'batches', ApiVersion.v2,
         parameters: parameterMap);
@@ -27,7 +27,7 @@ class BatchService extends Service {
 
   /// Lists all Batches.
   Future<BatchCollection> list({BatchesAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'batches', ApiVersion.v2,
         parameters: parameterMap);
@@ -37,7 +37,7 @@ class BatchService extends Service {
   /// Add shipments to a Batch.
   Future<Batch> addShipments(
       Batch batch, BatchesUpdateShipments parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'batches/${batch.id}/add_shipments', ApiVersion.v2,
         parameters: parameterMap);
@@ -47,7 +47,7 @@ class BatchService extends Service {
   /// Remove shipments from a Batch.
   Future<Batch> removeShipments(
       Batch batch, BatchesUpdateShipments parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
 
     final json = await client.requestJson(
         HttpMethod.post, 'batches/${batch.id}/remove_shipments', ApiVersion.v2,
@@ -65,7 +65,7 @@ class BatchService extends Service {
   /// Generate a Batch's label.
   Future<Batch> generateLabel(
       Batch batch, BatchesCreateDocument parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'batches/${batch.id}/label', ApiVersion.v2,
         parameters: parameterMap);
@@ -75,7 +75,7 @@ class BatchService extends Service {
   /// Generate a Batch's scan form.
   Future<Batch> generateScanForm(
       Batch batch, BatchesCreateDocument parameters) async {
-    Map<String, dynamic>? parameterMap = parameters.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'batches/${batch.id}/scan_form', ApiVersion.v2,
         parameters: parameterMap);

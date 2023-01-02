@@ -2,6 +2,7 @@ import 'package:easypost/src/parameters/_generic.dart';
 import 'package:easypost/src/utilities/request_parameter_annotation.dart';
 
 import '../../easypost.dart';
+import '../http/api_version.dart';
 import '../models.dart';
 
 class TrackersCreate extends Create {
@@ -37,7 +38,7 @@ class TrackersCreateList extends Create {
   // TODO: This custom overload does not check for API compatibility.
   // TODO: Please, fix this hack in the API?
   @override
-  Map<String, dynamic> toMap(Client client) {
+  Map<String, dynamic> toMap({Client? client, ApiVersion? apiVersion}) {
     Map<String, dynamic> trackersMap = <String, dynamic>{};
     if (trackers == null) {
       return {};

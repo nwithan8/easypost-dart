@@ -14,7 +14,7 @@ class CustomsInfo extends Model {
   final String? contentsType;
 
   @JsonKey(name: 'customs_certify')
-  final String? customsCertify;
+  final bool? customsCertify;
 
   @JsonKey(name: 'customs_items')
   final List<CustomsItem>? customsItems;

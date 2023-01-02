@@ -25,7 +25,7 @@ class CustomsItem extends Model {
   final int? quantity;
 
   @JsonKey(name: 'value')
-  final double? value;
+  final String? value;
 
   @JsonKey(name: 'weight')
   final double? weight;

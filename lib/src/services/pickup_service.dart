@@ -12,7 +12,7 @@ class PickupService extends Service {
   PickupService(Client client) : super(client);
 
   Future<Pickup> create(PickupsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'pickups',

@@ -33,6 +33,9 @@ class Client {
   /// Service for carrier account-related methods of the EasyPost API.
   CarrierAccountService get carrierAccounts => CarrierAccountService(this);
 
+  /// Service for carrier type-related methods of the EasyPost API.
+  CarrierTypeService get carrierTypes => CarrierTypeService(this);
+
   /// Service for customs info-related methods of the EasyPost API.
   CustomsInfoService get customsInfos => CustomsInfoService(this);
 
@@ -145,16 +148,29 @@ class Client {
   http.Request _prepareRequest(
       HttpMethod method, String endpoint, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters}) {
-    final url = '${config.fullBaseUrl}/$endpoint';
+    // Prepare the URL
+    Uri uri = Uri.parse('${config.fullBaseUrl}/$endpoint');
 
-    final http.Request request =
-        http.Request(method.value, Uri.parse(url.toString()));
+    if (parameters != null &&
+        (method == HttpMethod.get || method == HttpMethod.delete)) {
+      // Add query parameters to a GET/DELETE request URL
+      // Each value in the parameters needs to be a String
+      uri = uri.replace(queryParameters: parameters.map((key, value) => MapEntry(key, value.toString())));
+    }
 
+    // Create the request
+    final http.Request request = http.Request(method.value, uri);
+
+    // Add the headers
     request.headers['Accept'] = 'application/json';
     request.headers['Content-Type'] = 'application/json';
     request.headers['Authorization'] = 'Bearer ${config.apiKey}';
 
-    if (parameters != null) {
+    // Add body to a POST/PUT/PATCH request
+    if (parameters != null &&
+        (method == HttpMethod.post ||
+            method == HttpMethod.put ||
+            method == HttpMethod.patch)) {
       request.body = jsonEncode(parameters);
     }
 

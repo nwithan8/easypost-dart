@@ -9,7 +9,7 @@ class InsuranceService extends Service {
   InsuranceService(Client client) : super(client);
 
   Future<Insurance> create(InsuranceCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'insurances', ApiVersion.v2,
         parameters: parameterMap);
@@ -23,7 +23,7 @@ class InsuranceService extends Service {
   }
 
   Future<InsuranceCollection> list({InsuranceAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'insurances', ApiVersion.v2,
         parameters: parameterMap);

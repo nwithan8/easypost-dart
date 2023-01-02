@@ -15,7 +15,7 @@ class EventService extends Service {
   }
 
   Future<EventCollection> list({EventsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'events', ApiVersion.v2,
         parameters: parameterMap);

@@ -1,0 +1,47 @@
+[
+  {
+    "duration": 352,
+    "recorded_at": "2023-01-01T23:21:02.443573",
+    "request": {
+      "body": "{\"name\":\"Jack Sparrow\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"}",
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Authorization": "<REDACTED>"
+      },
+      "method": "POST",
+      "uri": "https://api.easypost.com/v2/addresses?"
+    },
+    "response": {
+      "body": "{\"id\":\"adr_a185cbed8a6511eda16cac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2023-01-02T06:21:02+00:00\",\"updated_at\":\"2023-01-02T06:21:02+00:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+      "headers": {
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 29913d444b,extlb1nuq 29913d444b",
+        "x-version-label": "easypost-202212272323-634b4f24c5-master",
+        "cache-control": "private, no-cache, no-store",
+        "transfer-encoding": "chunked",
+        "content-encoding": "gzip",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-ep-request-uuid": "1f74a67963b277cef3c7566a00005e09",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-permitted-cross-domain-policies": "none",
+        "pragma": "no-cache",
+        "content-type": "application/json; charset=utf-8",
+        "x-xss-protection": "1; mode=block",
+        "location": "/api/v2/addresses/adr_a185cbed8a6511eda16cac1f6bc72124",
+        "x-download-options": "noopen",
+        "x-runtime": "0.034928",
+        "etag": "W/\"e411595e988443aea4c491e8efd93c64\"",
+        "x-frame-options": "SAMEORIGIN",
+        "x-content-type-options": "nosniff",
+        "x-node": "bigweb8nuq",
+        "expires": "0",
+        "X-Via-DartVCR-Recording": "true"
+      },
+      "status": {
+        "code": 201,
+        "message": "Created"
+      }
+    }
+  }
+]

@@ -11,7 +11,7 @@ class OrderService extends Service {
   OrderService(Client client) : super(client);
 
   Future<Order> create(OrdersCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'orders', ApiVersion.v2,
         parameters: parameterMap);
@@ -25,7 +25,7 @@ class OrderService extends Service {
   }
 
   Future<Order> buy(Order order, OrdersBuy parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'orders/${order.id}/buy', ApiVersion.v2,
         parameters: parameterMap);

@@ -9,7 +9,7 @@ class CarrierTypeService extends Service {
   CarrierTypeService(Client client) : super(client);
 
   Future<List<CarrierType>> list({All? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'carrier_types', ApiVersion.v2,
         parameters: parameterMap);

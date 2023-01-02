@@ -9,7 +9,7 @@ class RefundService extends Service {
   RefundService(Client client) : super(client);
 
   Future<Refund> create(RefundsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'refunds',
@@ -27,7 +27,7 @@ class RefundService extends Service {
   }
 
   Future<RefundCollection> list({RefundsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'refunds', ApiVersion.v2,
         parameters: parameterMap);

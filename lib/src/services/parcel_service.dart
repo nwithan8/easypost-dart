@@ -9,7 +9,7 @@ class ParcelService extends Service {
   ParcelService(Client client) : super(client);
 
   Future<Parcel> create(ParcelsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'parcels',

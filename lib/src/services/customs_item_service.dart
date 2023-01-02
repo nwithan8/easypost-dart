@@ -9,7 +9,7 @@ class CustomsItemService extends Service {
   CustomsItemService(Client client) : super(client);
 
   Future<CustomsItem> create(CustomsItemsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'customs_items', ApiVersion.v2,
         parameters: parameterMap);

@@ -9,7 +9,7 @@ class TrackerService extends Service {
   TrackerService(Client client) : super(client);
 
   Future<Tracker> create(TrackersCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'trackers',
@@ -27,7 +27,7 @@ class TrackerService extends Service {
   }
 
   Future<TrackerCollection> list({TrackersAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'trackers', ApiVersion.v2,
         parameters: parameterMap);

@@ -9,7 +9,7 @@ class UserService extends Service {
   UserService(Client client) : super(client);
 
   Future<User> createChild(UsersCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'users',
@@ -35,7 +35,7 @@ class UserService extends Service {
   }
 
   Future<User> update(User user, UsersUpdate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     return await client.requestJson(
       HttpMethod.put,
       'users/${user.id}',
@@ -45,7 +45,7 @@ class UserService extends Service {
   }
 
   Future<User> updateBrand(User user, UsersUpdateBrand parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     return await client.requestJson(
       HttpMethod.put,
       'users/${user.id}/brand',

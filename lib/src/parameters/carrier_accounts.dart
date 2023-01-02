@@ -22,7 +22,8 @@ class CarrierAccountsCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
-class CarrierAccountsCreateFedEx extends Create {
+class CarrierAccountsCreateFedEx extends CarrierAccountsCreate {
+  @override
   @RequestParameter(Necessity.required, ['carrier_account', "type"])
   String? type = "FedexAccount";
 
@@ -74,12 +75,6 @@ class CarrierAccountsCreateFedEx extends Create {
       ['carrier_account', "registration_data", "corporate_phone_number"])
   String? corporatePhoneNumber;
 
-  @RequestParameter(Necessity.optional, ['carrier_account', "description"])
-  String? description;
-
-  @RequestParameter(Necessity.optional, ['carrier_account', "reference"])
-  String? reference;
-
   @RequestParameter(Necessity.required,
       ['carrier_account', "registration_data", "shipping_city"])
   String? shippingAddressCity;
@@ -104,7 +99,8 @@ class CarrierAccountsCreateFedEx extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
-class CarrierAccountsCreateUps extends Create {
+class CarrierAccountsCreateUps extends CarrierAccountsCreate {
+  @override
   @RequestParameter(Necessity.required, ['carrier_account', "type"])
   String? type = "UpsAccount";
 
@@ -123,9 +119,6 @@ class CarrierAccountsCreateUps extends Create {
   @RequestParameter(
       Necessity.required, ['carrier_account', "registration_data", "country"])
   String? country;
-
-  @RequestParameter(Necessity.optional, ['carrier_account', "description"])
-  String? description;
 
   @RequestParameter(
       Necessity.required, ['carrier_account', "registration_data", "email"])
@@ -158,9 +151,6 @@ class CarrierAccountsCreateUps extends Create {
   @RequestParameter(Necessity.required,
       ['carrier_account', "registration_data", "postal_code"])
   String? postalCode;
-
-  @RequestParameter(Necessity.optional, ['carrier_account', "reference"])
-  String? reference;
 
   @RequestParameter(
       Necessity.required, ['carrier_account', "registration_data", "title"])

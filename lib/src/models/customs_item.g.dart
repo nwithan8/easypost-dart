@@ -18,7 +18,7 @@ CustomsItem _$CustomsItemFromJson(Map<String, dynamic> json) => CustomsItem(
       json['hs_tariff_number'] as String?,
       json['origin_country'] as String?,
       json['quantity'] as int?,
-      (json['value'] as num?)?.toDouble(),
+      json['value'] as String?,
       (json['weight'] as num?)?.toDouble(),
     );
 

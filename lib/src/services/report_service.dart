@@ -9,7 +9,7 @@ class ReportService extends Service {
   ReportService(Client client) : super(client);
 
   Future<Report> create(String type, ReportsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'reports/$type',
@@ -28,7 +28,7 @@ class ReportService extends Service {
 
   Future<ReportCollection> list(String type,
       {ReportsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'reports/$type', ApiVersion.v2,
         parameters: parameterMap);

@@ -10,7 +10,7 @@ class WebhookService extends Service {
   WebhookService(Client client) : super(client);
 
   Future<Webhook> create(WebhooksCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'webhooks',
@@ -28,7 +28,7 @@ class WebhookService extends Service {
   }
 
   Future<List<Webhook>> list({WebhooksAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'webhooks', ApiVersion.v2,
         parameters: parameterMap, rootElement: 'webhooks');
@@ -41,7 +41,7 @@ class WebhookService extends Service {
   }
 
   Future<Webhook> update(Webhook webhook, WebhooksUpdate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.patch, 'webhooks/${webhook.id}', ApiVersion.v2,
         parameters: parameterMap);

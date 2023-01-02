@@ -2,6 +2,7 @@ export 'package:easypost/src/services/address_service.dart';
 export 'package:easypost/src/services/api_key_service.dart';
 export 'package:easypost/src/services/batch_service.dart';
 export 'package:easypost/src/services/carrier_account_service.dart';
+export 'package:easypost/src/services/carrier_type_service.dart';
 export 'package:easypost/src/services/customs_info_service.dart';
 export 'package:easypost/src/services/customs_item_service.dart';
 export 'package:easypost/src/services/end_shipper_service.dart';

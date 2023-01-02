@@ -9,7 +9,7 @@ class CarrierAccountService extends Service {
   CarrierAccountService(Client client) : super(client);
 
   Future<CarrierAccount> create(CarrierAccountsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'carrier_accounts', ApiVersion.v2,
         parameters: parameterMap);
@@ -23,7 +23,7 @@ class CarrierAccountService extends Service {
   }
 
   Future<List<CarrierAccount>> list({CarrierAccountsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'carrier_accounts', ApiVersion.v2,
         parameters: parameterMap);
@@ -34,7 +34,7 @@ class CarrierAccountService extends Service {
 
   Future<CarrierAccount> update(
       CarrierAccount carrierAccount, CarrierAccountsUpdate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(HttpMethod.patch,
         'carrier_accounts/${carrierAccount.id}', ApiVersion.v2,
         parameters: parameterMap);

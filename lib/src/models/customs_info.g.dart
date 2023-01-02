@@ -14,7 +14,7 @@ CustomsInfo _$CustomsInfoFromJson(Map<String, dynamic> json) => CustomsInfo(
       json['mode'],
       json['contents_explanation'] as String?,
       json['contents_type'] as String?,
-      json['customs_certify'] as String?,
+      json['customs_certify'] as bool?,
       (json['customs_items'] as List<dynamic>?)
           ?.map((e) => CustomsItem.fromJson(e as Map<String, dynamic>))
           .toList(),

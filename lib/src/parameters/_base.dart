@@ -13,8 +13,8 @@ class RequestParameters {
     _parameterMap = overrideParameters ?? {};
   }
 
-  Map<String, dynamic> toMap(Client client) {
-    ApiVersion apiVersion = client.config.apiVersion;
+  Map<String, dynamic> toMap({Client? client, ApiVersion? apiVersion}) {
+    apiVersion = apiVersion ?? client!.config.apiVersion;
 
     // Construct the dictionary of all parameters for this API version
     _registerParameters(apiVersion);
@@ -98,6 +98,16 @@ class RequestParameters {
         if (value == null && parameterAttribute.necessity == Necessity.optional) {
           // Ignore any optional parameters that are null
           continue;
+        }
+        if (value is RequestParameters) {
+          // If the value is a RequestParameters object, recursively add its parameters
+          value = value.toMap(apiVersion: apiVersion);
+        } else if (value is List<RequestParameters>) {
+          List<Map<String, dynamic>> valueList = [];
+          for (var item in value) {
+            valueList.add(item.toMap(apiVersion: apiVersion));
+          }
+          value = valueList;
         }
         _add(parameterAttribute, value);
       } catch (e) {

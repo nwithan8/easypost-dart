@@ -15,7 +15,7 @@ class ShipmentService extends Service {
 
   /// Creates a shipment.
   Future<Shipment> create(ShipmentsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments', ApiVersion.v2,
         parameters: parameterMap);
@@ -31,7 +31,7 @@ class ShipmentService extends Service {
 
   /// Lists all shipments.
   Future<ShipmentCollection> list({ShipmentsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments', ApiVersion.v2,
         parameters: parameterMap);
@@ -46,7 +46,7 @@ class ShipmentService extends Service {
   }
 
   Future<Shipment> buy(Shipment shipment, ShipmentsBuy parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
 
     final json = await client.requestJson(
         HttpMethod.post, 'shipments/${shipment.id}/buy', ApiVersion.v2,
@@ -56,7 +56,7 @@ class ShipmentService extends Service {
 
   Future<Shipment> generateLabel(
       Shipment shipment, ShipmentsCreateDocument parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/label', ApiVersion.v2,
         parameters: parameterMap);
@@ -64,7 +64,7 @@ class ShipmentService extends Service {
   }
 
   Future<Shipment> insure(Shipment shipment, ShipmentsInsure parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments/${shipment.id}/insure', ApiVersion.v2,
         parameters: parameterMap);
@@ -79,7 +79,7 @@ class ShipmentService extends Service {
 
   Future<Shipment> refreshRates(Shipment shipment,
       {ShipmentsGenerateRates? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/rates', ApiVersion.v2,
         parameters: parameterMap);

@@ -9,7 +9,7 @@ class CustomsInfoService extends Service {
   CustomsInfoService(Client client) : super(client);
 
   Future<CustomsInfo> create(CustomsInfoCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'customs_infos', ApiVersion.v2,
         parameters: parameterMap);

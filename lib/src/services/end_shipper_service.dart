@@ -9,7 +9,7 @@ class EndShipperService extends Service {
   EndShipperService(Client client) : super(client);
 
   Future<EndShipper> create(EndShippersCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'end_shippers', ApiVersion.v2,
         parameters: parameterMap);
@@ -23,7 +23,7 @@ class EndShipperService extends Service {
   }
 
   Future<EndShipperCollection> list({EndShippersAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'end_shippers', ApiVersion.v2,
         parameters: parameterMap);
@@ -32,7 +32,7 @@ class EndShipperService extends Service {
 
   Future<EndShipper> update(
       EndShipper endShipper, EndShippersUpdate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.put, 'end_shippers/${endShipper.id}', ApiVersion.v2,
         parameters: parameterMap);

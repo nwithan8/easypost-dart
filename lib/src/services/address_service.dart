@@ -11,7 +11,7 @@ class AddressService extends Service {
 
   /// Creates an address.
   Future<Address> create(AddressCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client);
+    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'addresses', ApiVersion.v2,
         parameters: parameterMap);
@@ -27,7 +27,7 @@ class AddressService extends Service {
 
   /// Lists all addresses.
   Future<AddressCollection> list({AddressAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client);
+    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'addresses', ApiVersion.v2,
         parameters: parameterMap);
