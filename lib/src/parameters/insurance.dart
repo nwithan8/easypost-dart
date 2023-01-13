@@ -1,25 +1,25 @@
 import 'package:easypost/src/parameters/_generic.dart';
-import 'package:easypost/src/utilities/request_parameter_annotation.dart';
+import 'package:easypost/src/utilities/parameter_annotation.dart';
 
 import '../models.dart';
 
 class InsuranceCreate extends Create {
-  @RequestParameter(Necessity.optional, ['insurance', 'amount'])
+  @JsonParameter(Necessity.optional, ['insurance', 'amount'])
   double? amount;
 
-  @RequestParameter(Necessity.optional, ['insurance', 'carrier'])
+  @JsonParameter(Necessity.optional, ['insurance', 'carrier'])
   String? carrier;
 
-  @RequestParameter(Necessity.optional, ['insurance', 'from_address'])
+  @JsonParameter(Necessity.optional, ['insurance', 'from_address'])
   Address? fromAddress;
 
-  @RequestParameter(Necessity.optional, ['insurance', 'to_address'])
+  @JsonParameter(Necessity.optional, ['insurance', 'to_address'])
   Address? toAddress;
 
-  @RequestParameter(Necessity.optional, ['insurance', 'reference'])
+  @JsonParameter(Necessity.optional, ['insurance', 'reference'])
   String? reference;
 
-  @RequestParameter(Necessity.optional, ['insurance', 'tracking_code'])
+  @JsonParameter(Necessity.optional, ['insurance', 'tracking_code'])
   String? trackingCode;
 
   InsuranceCreate({Map<String, dynamic>? overrideParameters})

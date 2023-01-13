@@ -5,11 +5,13 @@ import 'package:easypost/src/http/http_method.dart';
 import 'package:easypost/src/models/tracker.dart';
 import 'package:easypost/src/parameters/trackers.dart';
 
+/// The [TrackerService] handles trackers with the EasyPost API.
 class TrackerService extends Service {
   TrackerService(Client client) : super(client);
 
+  /// Creates a [Tracker].
   Future<Tracker> create(TrackersCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
+    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'trackers',
@@ -18,6 +20,7 @@ class TrackerService extends Service {
     );
   }
 
+  /// Retrieves a [Tracker].
   Future<Tracker> retrieve(String id) async {
     return await client.requestJson(
       HttpMethod.get,
@@ -26,8 +29,9 @@ class TrackerService extends Service {
     );
   }
 
+  /// Lists all [Tracker]s.
   Future<TrackerCollection> list({TrackersAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
+    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'trackers', ApiVersion.v2,
         parameters: parameterMap);

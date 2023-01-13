@@ -57,7 +57,7 @@ class Client {
   /// Service for parcel-related methods of the EasyPost API.
   ParcelService get parcels => ParcelService(this);
 
-  /// Service for partner-related methods of the EasyPost API.
+  /// Service for white-label partner-related methods of the EasyPost API.
   PartnerService get partners => PartnerService(this);
 
   /// Service for pickup-related methods of the EasyPost API.
@@ -65,6 +65,9 @@ class Client {
 
   /// Service for rate-related methods of the EasyPost API.
   RateService get rates => RateService(this);
+
+  /// Service for referral customer-related methods of the EasyPost API.
+  ReferralCustomerService get referrals => ReferralCustomerService(this);
 
   /// Service for refund-related methods of the EasyPost API.
   RefundService get refunds => RefundService(this);

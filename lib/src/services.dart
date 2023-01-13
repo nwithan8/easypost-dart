@@ -13,6 +13,7 @@ export 'package:easypost/src/services/parcel_service.dart';
 export 'package:easypost/src/services/partner_service.dart';
 export 'package:easypost/src/services/pickup_service.dart';
 export 'package:easypost/src/services/rate_service.dart';
+export 'package:easypost/src/services/referral_customer_service.dart';
 export 'package:easypost/src/services/refund_service.dart';
 export 'package:easypost/src/services/report_service.dart';
 export 'package:easypost/src/services/scan_form_service.dart';

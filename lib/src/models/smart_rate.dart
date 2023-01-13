@@ -1,6 +1,6 @@
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/time_in_transit.dart';
-import 'package:easypost/src/utilities.dart';
+import 'package:easypost/src/utilities/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'smart_rate.g.dart';

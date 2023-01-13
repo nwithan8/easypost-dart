@@ -5,11 +5,13 @@ import 'package:easypost/src/http/http_method.dart';
 import 'package:easypost/src/models/carrier_type.dart';
 import 'package:easypost/src/parameters/_generic.dart';
 
+/// The [CarrierTypeService] handles carrier types with the EasyPost API.
 class CarrierTypeService extends Service {
   CarrierTypeService(Client client) : super(client);
 
+  /// List all [CarrierType]s.
   Future<List<CarrierType>> list({All? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
+    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'carrier_types', ApiVersion.v2,
         parameters: parameterMap);

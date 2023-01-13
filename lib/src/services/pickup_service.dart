@@ -8,11 +8,13 @@ import 'package:easypost/src/models/pickup_rate.dart';
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/parameters/pickups.dart';
 
+/// The [PickupService] handles pickups with the EasyPost API.
 class PickupService extends Service {
   PickupService(Client client) : super(client);
 
+  /// Creates a [Pickup].
   Future<Pickup> create(PickupsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
+    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'pickups',
@@ -21,6 +23,7 @@ class PickupService extends Service {
     );
   }
 
+  /// Retrieves a [Pickup].
   Future<Pickup> retrieve(String id) async {
     return await client.requestJson(
       HttpMethod.get,
@@ -29,6 +32,7 @@ class PickupService extends Service {
     );
   }
 
+  /// Purchases a [Pickup].
   Future<Pickup> buy(Pickup pickup, Rate rate) async {
     final json = await client.requestJson(
         HttpMethod.post, 'pickups/${pickup.id}/buy', ApiVersion.v2,
@@ -36,12 +40,14 @@ class PickupService extends Service {
     return Pickup.fromJson(json);
   }
 
+  /// Cancels a [Pickup].
   Future<Pickup> cancel(Pickup pickup) async {
     final json = await client.requestJson(
         HttpMethod.post, 'pickups/${pickup.id}/cancel', ApiVersion.v2);
     return Pickup.fromJson(json);
   }
 
+  /// Calculates the lowest [Rate] for a [Pickup].
   PickupRate getLowestRateFor(
     Pickup pickup, {
     List<String>? includeCarriers,

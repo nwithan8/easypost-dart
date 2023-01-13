@@ -1,34 +1,34 @@
 import 'package:easypost/src/parameters/_generic.dart';
-import 'package:easypost/src/utilities/request_parameter_annotation.dart';
+import 'package:easypost/src/utilities/parameter_annotation.dart';
 
 import '../models.dart';
 
 class PickupsCreate extends Create {
-  @RequestParameter(Necessity.optional, ['pickup', 'address'])
+  @JsonParameter(Necessity.optional, ['pickup', 'address'])
   Address? address;
 
-  @RequestParameter(Necessity.optional, ['pickup', 'batch'])
+  @JsonParameter(Necessity.optional, ['pickup', 'batch'])
   Batch? batch;
 
-  @RequestParameter(Necessity.optional, ['pickup', 'carrier_accounts'])
+  @JsonParameter(Necessity.optional, ['pickup', 'carrier_accounts'])
   List<CarrierAccount>? carrierAccounts;
 
-  @RequestParameter(Necessity.optional, ['pickup', 'instructions'])
+  @JsonParameter(Necessity.optional, ['pickup', 'instructions'])
   String? instructions;
 
-  @RequestParameter(Necessity.optional, ['pickup', 'is_account_address'])
+  @JsonParameter(Necessity.optional, ['pickup', 'is_account_address'])
   bool? isAccountAddress;
 
-  @RequestParameter(Necessity.optional, ['pickup', 'max_datetime'])
+  @JsonParameter(Necessity.optional, ['pickup', 'max_datetime'])
   DateTime? maxDatetime;
 
-  @RequestParameter(Necessity.optional, ['pickup', 'min_datetime'])
+  @JsonParameter(Necessity.optional, ['pickup', 'min_datetime'])
   DateTime? minDatetime;
 
-  @RequestParameter(Necessity.optional, ['pickup', 'reference'])
+  @JsonParameter(Necessity.optional, ['pickup', 'reference'])
   String? reference;
 
-  @RequestParameter(Necessity.optional, ['pickup', 'shipment'])
+  @JsonParameter(Necessity.optional, ['pickup', 'shipment'])
   Shipment? shipment;
 
   PickupsCreate({Map<String, dynamic>? overrideParameters})
@@ -36,10 +36,10 @@ class PickupsCreate extends Create {
 }
 
 class PickupsBuy extends All {
-  @RequestParameter(Necessity.required, ['carrier'])
+  @JsonParameter(Necessity.required, ['carrier'])
   String? carrier;
 
-  @RequestParameter(Necessity.required, ['service'])
+  @JsonParameter(Necessity.required, ['service'])
   String? service;
 
   PickupsBuy({Map<String, dynamic>? overrideParameters})

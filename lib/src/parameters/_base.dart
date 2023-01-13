@@ -2,33 +2,20 @@ import 'dart:mirrors';
 
 import 'package:easypost/src/http/api_version.dart';
 import 'package:easypost/src/utilities/custom_annotation.dart';
-import 'package:easypost/src/utilities/request_parameter_annotation.dart';
+import 'package:easypost/src/utilities/parameter_annotation.dart';
 
 import '../../easypost.dart';
 
-class RequestParameters {
+class Parameters {
   late Map<String, dynamic> _parameterMap;
 
-  RequestParameters({Map<String, dynamic>? overrideParameters}) {
+  Parameters({Map<String, dynamic>? overrideParameters}) {
     _parameterMap = overrideParameters ?? {};
   }
 
-  Map<String, dynamic> toMap({Client? client, ApiVersion? apiVersion}) {
-    apiVersion = apiVersion ?? client!.config.apiVersion;
-
-    // Construct the dictionary of all parameters for this API version
-    _registerParameters(apiVersion);
-
-    // Verify that all required parameters are set in the dictionary
-    _validateParameters();
-
-    // Return the dictionary, removing any null values now that we've verified all required parameters are set
-    // Anything still null at this point is an optional parameter that was not set that can be stripped from the request
-
-    return _parameterMap;
-  }
-
-  void _validateParameters() {
+  /// Validate all [Parameter]s to ensure that all required parameters are set
+  /// Use this method to validate parameters during a function call
+  void validate() {
     InstanceMirror im = reflect(this);
     ClassMirror classMirror = im.type;
 
@@ -36,12 +23,14 @@ class RequestParameters {
     for (var property in classMirror.declarations.values) {
       // Get the parameter attribute for this property
       var parameterAttribute =
-          CustomAnnotation.getAnnotationOfType<RequestParameter>(
-              RequestParameter, property);
+      CustomAnnotation.getAnnotationOfType<Parameter>(
+          Parameter, property);
       // If the property is not a parameter, ignore it
       if (parameterAttribute == null) {
         continue;
       }
+
+      // TODO: Handle overridden parameters during validation
 
       // If the parameter is required and not set, throw an exception
       if (parameterAttribute.necessity == Necessity.required) {
@@ -61,11 +50,15 @@ class RequestParameters {
     }
   }
 
-  void _add(RequestParameter annotation, dynamic value) {
-    _parameterMap = _updateMap(_parameterMap, annotation.jsonPath, value);
-  }
+  /// Convert all [JsonParameter]s to a [Map].
+  /// Use specifically when sending a JSON request to the API.
+  Map<String, dynamic> constructJson({Client? client, ApiVersion? apiVersion}) {
+    apiVersion = apiVersion ?? client!.config.apiVersion;
 
-  void _registerParameters(ApiVersion apiVersion) {
+    // Verify that all required parameters are set in the dictionary
+    validate();
+
+    // Construct the dictionary of all parameters for this API version
     InstanceMirror im = reflect(this);
     ClassMirror classMirror = im.type;
 
@@ -79,13 +72,16 @@ class RequestParameters {
       superclass = superclass.superclass;
     }
 
+    // Initialize parameter map, using the override parameters if they exist
+    Map<String, dynamic> parameterMap = _parameterMap;
+
     // Iterate over all properties
     for (var property in properties) {
       var parameterAttribute =
-          CustomAnnotation.getAnnotationOfType<RequestParameter>(
-              RequestParameter, property);
+      CustomAnnotation.getAnnotationOfType<JsonParameter>(
+          JsonParameter, property);
       if (parameterAttribute == null) {
-        // Ignore any properties that are not annotated with a parameter attribute
+        // Ignore any properties that are not annotated with a JsonParameter attribute
         continue;
       }
 
@@ -99,24 +95,30 @@ class RequestParameters {
           // Ignore any optional parameters that are null
           continue;
         }
-        if (value is RequestParameters) {
+        if (value is Parameters) {
           // If the value is a RequestParameters object, recursively add its parameters
-          value = value.toMap(apiVersion: apiVersion);
-        } else if (value is List<RequestParameters>) {
+          value = value.constructJson(apiVersion: apiVersion);
+        } else if (value is List<Parameters>) {
           List<Map<String, dynamic>> valueList = [];
           for (var item in value) {
-            valueList.add(item.toMap(apiVersion: apiVersion));
+            valueList.add(item.constructJson(apiVersion: apiVersion));
           }
           value = valueList;
         }
-        _add(parameterAttribute, value);
+        parameterMap = _updateMap(parameterMap, parameterAttribute.jsonPath, value);
       } catch (e) {
         // If the property is not set, ignore it
         continue;
       }
     }
+
+    // Return the dictionary, removing any null values now that we've verified all required parameters are set
+    // Anything still null at this point is an optional parameter that was not set that can be stripped from the request
+
+    return parameterMap;
   }
 
+  /// Update a [Map] with a value at a given path.
   static Map<String, dynamic> _updateMap(
       Map<String, dynamic>? map, List<String> keys, dynamic value) {
     map ??= {};

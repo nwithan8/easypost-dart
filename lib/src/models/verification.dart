@@ -1,7 +1,7 @@
 import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/models/error.dart';
 import 'package:easypost/src/models/verification_details.dart';
-import 'package:easypost/src/utilities.dart';
+import 'package:easypost/src/utilities/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'verification.g.dart';

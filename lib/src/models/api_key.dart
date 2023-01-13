@@ -1,6 +1,5 @@
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
-import 'package:easypost/src/utilities.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'api_key.g.dart';

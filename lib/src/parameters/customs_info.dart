@@ -1,31 +1,31 @@
 import 'package:easypost/src/parameters/_generic.dart';
-import 'package:easypost/src/utilities/request_parameter_annotation.dart';
+import 'package:easypost/src/utilities/parameter_annotation.dart';
 
 import '../models/customs_item.dart';
 
 class CustomsInfoCreate extends Create {
-  @RequestParameter(Necessity.required, ['customs_info', 'contents_explanation'])
+  @JsonParameter(Necessity.required, ['customs_info', 'contents_explanation'])
   String? contentsExplanation;
 
-  @RequestParameter(Necessity.required, ['customs_info', 'contents_type'])
+  @JsonParameter(Necessity.required, ['customs_info', 'contents_type'])
   String? contentsType;
 
-  @RequestParameter(Necessity.required, ['customs_info', 'customs_certify'])
+  @JsonParameter(Necessity.required, ['customs_info', 'customs_certify'])
   bool? customsCertify;
 
-  @RequestParameter(Necessity.required, ['customs_info', 'customs_items'])
+  @JsonParameter(Necessity.required, ['customs_info', 'customs_items'])
   List<CustomsItem>? customsItems;
 
-  @RequestParameter(Necessity.required, ['customs_info', 'customs_signer'])
+  @JsonParameter(Necessity.required, ['customs_info', 'customs_signer'])
   String? customsSigner;
 
-  @RequestParameter(Necessity.required, ['customs_info', 'eel_pfc'])
+  @JsonParameter(Necessity.required, ['customs_info', 'eel_pfc'])
   String? eelPfc;
 
-  @RequestParameter(Necessity.required, ['customs_info', 'non_delivery_option'])
+  @JsonParameter(Necessity.required, ['customs_info', 'non_delivery_option'])
   String? nonDeliveryOption;
 
-  @RequestParameter(Necessity.required, ['customs_info', 'restriction_type'])
+  @JsonParameter(Necessity.required, ['customs_info', 'restriction_type'])
   String? restrictionType;
 
   CustomsInfoCreate({Map<String, dynamic>? overrideParameters})

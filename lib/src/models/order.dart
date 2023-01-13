@@ -5,7 +5,7 @@ import 'package:easypost/src/models/customs_info.dart';
 import 'package:easypost/src/models/message.dart';
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/shipment.dart';
-import 'package:easypost/src/utilities.dart';
+import 'package:easypost/src/utilities/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'order.g.dart';

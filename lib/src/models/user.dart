@@ -1,6 +1,6 @@
 import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/models/api_key.dart';
-import 'package:easypost/src/utilities.dart';
+import 'package:easypost/src/utilities/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';

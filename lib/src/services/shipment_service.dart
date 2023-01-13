@@ -13,31 +13,32 @@ import 'package:easypost/src/parameters/shipments.dart';
 class ShipmentService extends Service {
   ShipmentService(Client client) : super(client);
 
-  /// Creates a shipment.
+  /// Creates a [Shipment].
   Future<Shipment> create(ShipmentsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
+    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments', ApiVersion.v2,
         parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
-  /// Retrieves a shipment.
+  /// Retrieves a [Shipment].
   Future<Shipment> retrieve(String id) async {
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/$id', ApiVersion.v2);
     return Shipment.fromJson(json);
   }
 
-  /// Lists all shipments.
+  /// Lists all [Shipment]s.
   Future<ShipmentCollection> list({ShipmentsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
+    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments', ApiVersion.v2,
         parameters: parameterMap);
     return ShipmentCollection.fromJson(json);
   }
 
+  /// Retrieves all [SmartRate]s for a [Shipment].
   Future<List<SmartRate>> getSmartRates(Shipment shipment) async {
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/smartrate', ApiVersion.v2,
@@ -45,8 +46,9 @@ class ShipmentService extends Service {
     return json.map<SmartRate>((e) => SmartRate.fromJson(e)).toList();
   }
 
+  /// Purchases a [Shipment].
   Future<Shipment> buy(Shipment shipment, ShipmentsBuy parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
+    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
 
     final json = await client.requestJson(
         HttpMethod.post, 'shipments/${shipment.id}/buy', ApiVersion.v2,
@@ -54,38 +56,43 @@ class ShipmentService extends Service {
     return Shipment.fromJson(json);
   }
 
+  /// Generates a [Shipment] label.
   Future<Shipment> generateLabel(
       Shipment shipment, ShipmentsCreateDocument parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
+    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/label', ApiVersion.v2,
         parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
+  /// Insures a [Shipment].
   Future<Shipment> insure(Shipment shipment, ShipmentsInsure parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
+    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments/${shipment.id}/insure', ApiVersion.v2,
         parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
+  /// Refunds a [Shipment].
   Future<Shipment> refund(Shipment shipment) async {
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/refund', ApiVersion.v2);
     return Shipment.fromJson(json);
   }
 
+  /// Refreshes the [Rate]s for a [Shipment].
   Future<Shipment> refreshRates(Shipment shipment,
       {ShipmentsGenerateRates? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
+    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/rates', ApiVersion.v2,
         parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
+  /// Calculates the lowest [Rate] for a [Shipment].
   Rate getLowestRateFor(
     Shipment shipment, {
     List<String>? includeCarriers,
@@ -103,6 +110,7 @@ class ShipmentService extends Service {
         excludeServices: excludeServices);
   }
 
+  /// Calculates the lowest [SmartRate] for a [Shipment].
   Future<SmartRate> getLowestSmartRateFor(Shipment shipment, int deliveryDays,
       SmartRateAccuracy deliveryAccuracy) async {
     List<SmartRate> smartRates = await getSmartRates(shipment);

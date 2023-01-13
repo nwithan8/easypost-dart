@@ -1,11 +1,11 @@
 import 'package:easypost/src/parameters/_generic.dart';
-import 'package:easypost/src/utilities/request_parameter_annotation.dart';
+import 'package:easypost/src/utilities/parameter_annotation.dart';
 
 class RefundsCreate extends Create {
-  @RequestParameter(Necessity.required, ['refund', 'carrier'])
+  @JsonParameter(Necessity.required, ['refund', 'carrier'])
   String? carrier;
 
-  @RequestParameter(Necessity.required, ['refund', 'tracking_codes'])  // yes, the param name is plural when it's really just one code
+  @JsonParameter(Necessity.required, ['refund', 'tracking_codes'])  // yes, the param name is plural when it's really just one code
   String? trackingCode;
 
   RefundsCreate({Map<String, dynamic>? overrideParameters})

@@ -1,53 +1,53 @@
 import 'package:easypost/src/models.dart';
 import 'package:easypost/src/parameters/_base.dart';
 import 'package:easypost/src/parameters/_generic.dart';
-import 'package:easypost/src/utilities/request_parameter_annotation.dart';
+import 'package:easypost/src/utilities/parameter_annotation.dart';
 
 class ShipmentsCreate extends Create {
-  @RequestParameter(Necessity.optional, ['carbon_offset'])
+  @JsonParameter(Necessity.optional, ['carbon_offset'])
   bool? carbonOffset;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'carrier'])
+  @JsonParameter(Necessity.optional, ['shipment', 'carrier'])
   String? carrier;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'carrier_accounts'])
+  @JsonParameter(Necessity.optional, ['shipment', 'carrier_accounts'])
   List<CarrierAccount>? carrierAccounts;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'customs_info'])
+  @JsonParameter(Necessity.optional, ['shipment', 'customs_info'])
   CustomsInfo? customsInfo;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'from_address'])
+  @JsonParameter(Necessity.optional, ['shipment', 'from_address'])
   Address? fromAddress;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'insurance'])
+  @JsonParameter(Necessity.optional, ['shipment', 'insurance'])
   double? insurance;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'is_return'])
+  @JsonParameter(Necessity.optional, ['shipment', 'is_return'])
   bool? isReturn;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'options'])
+  @JsonParameter(Necessity.optional, ['shipment', 'options'])
   Options? options;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'parcel'])
+  @JsonParameter(Necessity.optional, ['shipment', 'parcel'])
   Parcel? parcel;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'reference'])
+  @JsonParameter(Necessity.optional, ['shipment', 'reference'])
   String? reference;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'service'])
+  @JsonParameter(Necessity.optional, ['shipment', 'service'])
   String? service;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'tax_identifiers'])
+  @JsonParameter(Necessity.optional, ['shipment', 'tax_identifiers'])
   List<TaxIdentifier>? taxIdentifiers;
 
-  @RequestParameter(Necessity.optional, ['shipment', 'to_address'])
+  @JsonParameter(Necessity.optional, ['shipment', 'to_address'])
   Address? toAddress;
 
   ShipmentsCreate({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
 
-class ShipmentsGenerateRates extends RequestParameters {
+class ShipmentsGenerateRates extends Parameters {
 
   // TODO: What are these parameters?
 
@@ -55,36 +55,36 @@ class ShipmentsGenerateRates extends RequestParameters {
       : super(overrideParameters: overrideParameters);
 }
 
-class ShipmentsCreateDocument extends RequestParameters {
+class ShipmentsCreateDocument extends Parameters {
 
-  @RequestParameter(Necessity.required, ['file_format'])
+  @JsonParameter(Necessity.required, ['file_format'])
   String? fileFormat;
 
   ShipmentsCreateDocument({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
 
-class ShipmentsInsure extends RequestParameters {
+class ShipmentsInsure extends Parameters {
 
-  @RequestParameter(Necessity.required, ['amount'])
+  @JsonParameter(Necessity.required, ['amount'])
   double? amount;
 
   ShipmentsInsure({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
 
-class ShipmentsBuy extends RequestParameters {
+class ShipmentsBuy extends Parameters {
 
-  @RequestParameter(Necessity.optional, ['end_shipper'])
+  @JsonParameter(Necessity.optional, ['end_shipper'])
   EndShipper? endShipper;
 
-  @RequestParameter(Necessity.optional, ['insurance'])
+  @JsonParameter(Necessity.optional, ['insurance'])
   String? insurance;
 
-  @RequestParameter(Necessity.required, ['rate'])
+  @JsonParameter(Necessity.required, ['rate'])
   Rate? rate;
 
-  @RequestParameter(Necessity.optional, ['carbon_offset'])
+  @JsonParameter(Necessity.optional, ['carbon_offset'])
   bool? carbonOffset;
 
   ShipmentsBuy({Map<String, dynamic>? overrideParameters})

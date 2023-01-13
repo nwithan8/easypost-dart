@@ -4,7 +4,7 @@ import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/models/message.dart';
 import 'package:easypost/src/models/pickup_rate.dart';
 import 'package:easypost/src/models/rate.dart';
-import 'package:easypost/src/utilities.dart';
+import 'package:easypost/src/utilities/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'pickup.g.dart';

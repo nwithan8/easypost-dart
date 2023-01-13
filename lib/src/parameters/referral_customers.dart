@@ -1,14 +1,15 @@
+import 'package:easypost/src/parameters/_base.dart';
 import 'package:easypost/src/parameters/_generic.dart';
-import 'package:easypost/src/utilities/request_parameter_annotation.dart';
+import 'package:easypost/src/utilities/parameter_annotation.dart';
 
 class ReferralCustomersCreate extends Create {
-  @RequestParameter(Necessity.optional, ['user', 'email'])
+  @JsonParameter(Necessity.optional, ['user', 'email'])
   String? email;
 
-  @RequestParameter(Necessity.optional, ['user', 'name'])
+  @JsonParameter(Necessity.optional, ['user', 'name'])
   String? name;
 
-  @RequestParameter(Necessity.optional, ['user', 'phone'])
+  @JsonParameter(Necessity.optional, ['user', 'phone'])
   String? phoneNumber;
 
   ReferralCustomersCreate({Map<String, dynamic>? overrideParameters})
@@ -18,4 +19,29 @@ class ReferralCustomersCreate extends Create {
 class ReferralCustomersAll extends All {
   ReferralCustomersAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
+}
+
+class ReferralCustomersAddCreditCard extends Parameters {
+  @Parameter(Necessity.required)
+  int? creditCardNumber;
+
+  @Parameter(Necessity.required)
+  int? creditCardExpirationMonth;
+
+  @Parameter(Necessity.required)
+  int? creditCardExpirationYear;
+
+  @Parameter(Necessity.required)
+  int? creditCardCvv;
+
+  ReferralCustomersAddCreditCard()
+      : super();
+}
+
+class ReferralCustomersUpdateEmail extends Parameters {
+  @Parameter(Necessity.required)
+  String? email;
+
+  ReferralCustomersUpdateEmail()
+      : super();
 }

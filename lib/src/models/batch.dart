@@ -2,7 +2,7 @@ import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/models/batch_shipment.dart';
 import 'package:easypost/src/models/scan_form.dart';
-import 'package:easypost/src/utilities.dart';
+import 'package:easypost/src/utilities/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'batch.g.dart';

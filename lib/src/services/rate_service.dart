@@ -4,9 +4,11 @@ import 'package:easypost/src/http/api_version.dart';
 import 'package:easypost/src/http/http_method.dart';
 import 'package:easypost/src/models/rate.dart';
 
+/// The [RateService] handles rates with the EasyPost API.
 class RateService extends Service {
   RateService(Client client) : super(client);
 
+  /// Retrieves a [Rate].
   Future<Rate> retrieve(String id) async {
     return await client.requestJson(
       HttpMethod.get,
@@ -15,6 +17,7 @@ class RateService extends Service {
     );
   }
 
+  /// Calculates the lowest [Rate].
   Rate getLowestRate(
     List<Rate> rates, {
     List<String>? includeCarriers,

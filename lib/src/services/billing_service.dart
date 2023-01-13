@@ -9,7 +9,7 @@ import 'package:easypost/src/parameters/billing.dart';
 class BillingService extends Service {
   BillingService(Client client) : super(client);
 
-  /// Retrieves all payment methods
+  /// Retrieves all payment methods via a [PaymentMethodsSummary].
   Future<PaymentMethodsSummary> retrievePaymentMethods() async {
     final json = await client.requestJson(
         HttpMethod.get, 'payment_methods', ApiVersion.v2);
@@ -17,7 +17,7 @@ class BillingService extends Service {
     return PaymentMethodsSummary.fromJson(json);
   }
 
-  /// Retrieves a payment method by priority
+  /// Retrieves a [PaymentMethod] by priority
   Future<PaymentMethod?> retrievePaymentMethod(
       PaymentMethodPriority priority) async {
     PaymentMethodsSummary paymentMethods = await retrievePaymentMethods();
@@ -29,7 +29,7 @@ class BillingService extends Service {
     }
   }
 
-  /// Fund your account with an established payment method.
+  /// Funds your account with an established [PaymentMethod].
   Future<bool> fundWallet(BillingFund parameters,
       {PaymentMethodPriority priority = PaymentMethodPriority.primary}) async {
     PaymentMethod? paymentMethod = await retrievePaymentMethod(priority);
@@ -37,14 +37,14 @@ class BillingService extends Service {
       throw Exception('No payment method found.');
     }
 
-    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
+    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
 
     return await client.request(HttpMethod.post,
         '${paymentMethod.type!.endpoint}/${paymentMethod.id}/charges', ApiVersion.v2,
         parameters: parameterMap);
   }
 
-  /// Delete a payment method
+  /// Deletes a [PaymentMethod].
   Future<bool> deletePaymentMethod(PaymentMethodPriority priority) async {
     PaymentMethod? paymentMethod = await retrievePaymentMethod(priority);
     if (paymentMethod == null) {
@@ -55,7 +55,7 @@ class BillingService extends Service {
         HttpMethod.delete, '${paymentMethod.type!.endpoint}/${paymentMethod.id}', ApiVersion.v2);
   }
 
-  /// Delete all payment methods
+  /// Deletes all [PaymentMethod]s.
   Future<bool> deleteAllPaymentMethods() async {
     PaymentMethodsSummary paymentMethods = await retrievePaymentMethods();
     if (paymentMethods.primaryPaymentMethod != null) {

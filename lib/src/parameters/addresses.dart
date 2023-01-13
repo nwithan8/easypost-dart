@@ -1,53 +1,53 @@
 import 'package:easypost/src/parameters/_generic.dart';
-import 'package:easypost/src/utilities/request_parameter_annotation.dart';
+import 'package:easypost/src/utilities/parameter_annotation.dart';
 
 class AddressCreate extends Create {
-  @RequestParameter(Necessity.optional, ['address', "carrier_facility"])
+  @JsonParameter(Necessity.optional, ['address', "carrier_facility"])
   String? carrierFacility;
 
-  @RequestParameter(Necessity.optional, ['address', "city"])
+  @JsonParameter(Necessity.optional, ['address', "city"])
   String? city;
 
-  @RequestParameter(Necessity.optional, ['address', "company"])
+  @JsonParameter(Necessity.optional, ['address', "company"])
   String? company;
 
-  @RequestParameter(Necessity.optional, ['address', "country"])
+  @JsonParameter(Necessity.optional, ['address', "country"])
   String? country;
 
-  @RequestParameter(Necessity.optional, ['address', "email"])
+  @JsonParameter(Necessity.optional, ['address', "email"])
   String? email;
 
-  @RequestParameter(Necessity.optional, ['address', "federal_tax_id"])
+  @JsonParameter(Necessity.optional, ['address', "federal_tax_id"])
   String? federalTaxId;
 
-  @RequestParameter(Necessity.optional, ['address', "name"])
+  @JsonParameter(Necessity.optional, ['address', "name"])
   String? name;
 
-  @RequestParameter(Necessity.optional, ['address', "phone"])
+  @JsonParameter(Necessity.optional, ['address', "phone"])
   String? phone;
 
-  @RequestParameter(Necessity.optional, ['address', "residential"])
+  @JsonParameter(Necessity.optional, ['address', "residential"])
   bool? residential;
 
-  @RequestParameter(Necessity.optional, ['address', "state"])
+  @JsonParameter(Necessity.optional, ['address', "state"])
   String? state;
 
-  @RequestParameter(Necessity.optional, ['address', "state_tax_id"])
+  @JsonParameter(Necessity.optional, ['address', "state_tax_id"])
   String? stateTaxId;
 
-  @RequestParameter(Necessity.optional, ['address', "street1"])
+  @JsonParameter(Necessity.optional, ['address', "street1"])
   String? street1;
 
-  @RequestParameter(Necessity.optional, ['address', "street2"])
+  @JsonParameter(Necessity.optional, ['address', "street2"])
   String? street2;
 
-  @RequestParameter(Necessity.optional, ['verify'])
+  @JsonParameter(Necessity.optional, ['verify'])
   bool? verify;
 
-  @RequestParameter(Necessity.optional, ["verify_strict"])
+  @JsonParameter(Necessity.optional, ["verify_strict"])
   bool? strictlyVerify;
 
-  @RequestParameter(Necessity.optional, ['address', "zip"])
+  @JsonParameter(Necessity.optional, ['address', "zip"])
   String? zip;
 
   AddressCreate({Map<String, dynamic>? overrideParameters})

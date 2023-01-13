@@ -5,11 +5,13 @@ import 'package:easypost/src/http/http_method.dart';
 import 'package:easypost/src/models/report.dart';
 import 'package:easypost/src/parameters/reports.dart';
 
+/// The [ReportService] handles reports with the EasyPost API.
 class ReportService extends Service {
   ReportService(Client client) : super(client);
 
+  /// Creates a [Report].
   Future<Report> create(String type, ReportsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.toMap(client: client);
+    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'reports/$type',
@@ -18,6 +20,7 @@ class ReportService extends Service {
     );
   }
 
+  /// Retrieves a [Report].
   Future<Report> retrieve(String id) async {
     return await client.requestJson(
       HttpMethod.get,
@@ -26,9 +29,10 @@ class ReportService extends Service {
     );
   }
 
+  /// Lists all [Report]s.
   Future<ReportCollection> list(String type,
       {ReportsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.toMap(client: client);
+    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'reports/$type', ApiVersion.v2,
         parameters: parameterMap);

@@ -1,6 +1,6 @@
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/models.dart';
-import 'package:easypost/src/utilities.dart';
+import 'package:easypost/src/utilities/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'end_shipper.g.dart';
