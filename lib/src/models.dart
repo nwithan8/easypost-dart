@@ -23,6 +23,7 @@ export 'package:easypost/src/models/payment_method.dart';
 export 'package:easypost/src/models/payment_method_priority.dart';
 export 'package:easypost/src/models/payment_method_type.dart';
 export 'package:easypost/src/models/payment_methods_summary.dart';
+export 'package:easypost/src/models/payment_refund.dart';
 export 'package:easypost/src/models/pickup.dart';
 export 'package:easypost/src/models/pickup_rate.dart';
 export 'package:easypost/src/models/postage_label.dart';
