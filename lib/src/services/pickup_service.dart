@@ -32,6 +32,15 @@ class PickupService extends Service {
     );
   }
 
+  /// Lists all [Pickup]s.
+  Future<PickupCollection> list({PickupsAll? parameters}) async {
+    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
+    final json = await client.requestJson(
+        HttpMethod.get, 'pickups', ApiVersion.v2,
+        parameters: parameterMap);
+    return PickupCollection.fromJson(json);
+  }
+
   /// Purchases a [Pickup].
   Future<Pickup> buy(Pickup pickup, Rate rate) async {
     final json = await client.requestJson(

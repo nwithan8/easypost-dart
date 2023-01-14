@@ -45,3 +45,8 @@ class PickupsBuy extends All {
   PickupsBuy({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
+
+class PickupsAll extends All {
+  PickupsAll({Map<String, dynamic>? overrideParameters})
+      : super(overrideParameters: overrideParameters);
+}

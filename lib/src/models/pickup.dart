@@ -1,4 +1,6 @@
+import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/models.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/models/message.dart';
@@ -76,4 +78,19 @@ class Pickup extends Model {
       _$PickupFromJson(input);
 
   Map<String, dynamic> toJson() => _$PickupToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class PickupCollection extends Collection {
+  @JsonKey(name: 'pickups')
+  final List<Pickup>? pickups;
+
+  PickupCollection(
+      id, createdAt, updatedAt, objectType, mode, hasMore, this.pickups)
+      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+
+  factory PickupCollection.fromJson(Map<String, dynamic> input) =>
+      _$PickupCollectionFromJson(input);
+
+  Map<String, dynamic> toJson() => _$PickupCollectionToJson(this);
 }
