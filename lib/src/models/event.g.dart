@@ -22,6 +22,7 @@ Event _$EventFromJson(Map<String, dynamic> json) => Event(
       json['previous_attributes'] as Map<String, dynamic>?,
       json['result'] as Map<String, dynamic>?,
       json['status'] as String?,
+      json['user_id'] as String?,
     );
 
 Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
@@ -36,6 +37,7 @@ Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
       'previous_attributes': instance.previousAttributes,
       'result': instance.result,
       'status': instance.status,
+      'user_id': instance.userId,
     };
 
 EventCollection _$EventCollectionFromJson(Map<String, dynamic> json) =>

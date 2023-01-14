@@ -19,6 +19,7 @@ export 'package:easypost/src/models/message.dart';
 export 'package:easypost/src/models/options.dart';
 export 'package:easypost/src/models/order.dart';
 export 'package:easypost/src/models/parcel.dart';
+export 'package:easypost/src/models/payload.dart';
 export 'package:easypost/src/models/payment_method.dart';
 export 'package:easypost/src/models/payment_method_priority.dart';
 export 'package:easypost/src/models/payment_method_type.dart';

@@ -25,6 +25,9 @@ class Event extends Model {
   @JsonKey(name: 'status')
   final String? status;
 
+  @JsonKey(name: 'user_id')
+  final String? userId;
+
   Event(
     id,
     createdAt,
@@ -37,6 +40,7 @@ class Event extends Model {
     this.previousAttributes,
     this.result,
     this.status,
+    this.userId,
   ) : super(id, createdAt, updatedAt, objectType, mode);
 
   factory Event.fromJson(Map<String, dynamic> input) => _$EventFromJson(input);
