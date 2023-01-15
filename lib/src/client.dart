@@ -3,9 +3,9 @@ import 'dart:convert';
 
 import 'package:easypost/src/client_configuration.dart';
 import 'package:easypost/src/http/api_version.dart';
+import 'package:easypost/src/http/easypost_request.dart';
 import 'package:easypost/src/http/http_method.dart';
 import 'package:easypost/src/services.dart';
-import 'package:http/http.dart' as http;
 
 ///  The Main EasyPost Client
 ///
@@ -90,43 +90,10 @@ class Client {
   /// Service for webhook-related methods of the EasyPost API.
   WebhookService get webhooks => WebhookService(this);
 
-  Future<http.Response> _executeRequest(
-      HttpMethod method, String url, ApiVersion apiVersion,
-      {Map<String, dynamic>? parameters}) async {
-    final request =
-        _prepareRequest(method, url, apiVersion, parameters: parameters);
-
-    final streamedResponse = await config.client?.send(request);
-
-    if (streamedResponse == null) {
-      throw Exception("No Response");
-    }
-
-    switch (streamedResponse.statusCode) {
-      // TODO: Process status codes, parse Error JSON
-      case 400:
-        throw Exception('Bad Request');
-      case 401:
-        throw Exception('Unauthorized');
-      case 403:
-        throw Exception('Forbidden');
-      case 404:
-        throw Exception('Requested Resource was Not Found');
-      case 422:
-        throw Exception('Unprocessable Entity');
-      case 500:
-      case 502:
-      case 504:
-        throw Exception('Server Error');
-    }
-
-    return await http.Response.fromStream(streamedResponse);
-  }
-
   Future<bool> request(HttpMethod method, String url, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters, String? rootElement}) async {
     try {
-      await _executeRequest(method, url, apiVersion, parameters: parameters);
+      await EasyPostRequest.executeRequest(config, method, url, apiVersion, parameters: parameters);
       return true;
     } catch (e) {
       return false;
@@ -137,7 +104,7 @@ class Client {
       HttpMethod method, String url, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters, String? rootElement}) async {
     final response =
-        await _executeRequest(method, url, apiVersion, parameters: parameters);
+        await EasyPostRequest.executeRequest(config, method, url, apiVersion, parameters: parameters);
 
     dynamic json = jsonDecode(response.body);
 
@@ -146,37 +113,5 @@ class Client {
     }
 
     return json;
-  }
-
-  http.Request _prepareRequest(
-      HttpMethod method, String endpoint, ApiVersion apiVersion,
-      {Map<String, dynamic>? parameters}) {
-    // Prepare the URL
-    Uri uri = Uri.parse('${config.fullBaseUrl}/$endpoint');
-
-    if (parameters != null &&
-        (method == HttpMethod.get || method == HttpMethod.delete)) {
-      // Add query parameters to a GET/DELETE request URL
-      // Each value in the parameters needs to be a String
-      uri = uri.replace(queryParameters: parameters.map((key, value) => MapEntry(key, value.toString())));
-    }
-
-    // Create the request
-    final http.Request request = http.Request(method.value, uri);
-
-    // Add the headers
-    request.headers['Accept'] = 'application/json';
-    request.headers['Content-Type'] = 'application/json';
-    request.headers['Authorization'] = 'Bearer ${config.apiKey}';
-
-    // Add body to a POST/PUT/PATCH request
-    if (parameters != null &&
-        (method == HttpMethod.post ||
-            method == HttpMethod.put ||
-            method == HttpMethod.patch)) {
-      request.body = jsonEncode(parameters);
-    }
-
-    return request;
   }
 }
