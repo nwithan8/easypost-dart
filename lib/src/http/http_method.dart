@@ -1,3 +1,4 @@
+/// The available HTTP methods.
 enum HttpMethod {
   get,
   post,
@@ -7,6 +8,7 @@ enum HttpMethod {
 }
 
 extension HttpMethodExtension on HttpMethod {
+  /// The HTTP method as a string.
   String get value {
     switch (this) {
       case HttpMethod.get:
@@ -22,5 +24,6 @@ extension HttpMethodExtension on HttpMethod {
     }
   }
 
+  /// The HTTP method as a string.
   String asString() => value;
 }

@@ -8,17 +8,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class EasyPostRequest {
+  /// Executes a request to the EasyPost API.
   static Future<http.Response> executeRequest(ClientConfiguration config,
       HttpMethod method, String url, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters}) async {
     final request =
     _prepareRequest(config, method, url, apiVersion, parameters: parameters);
 
-    final streamedResponse = await config.client?.send(request);
-
-    if (streamedResponse == null) {
-      throw HttpException("HTTP call did not return anything.", 0);
-    }
+    final streamedResponse = await config.client.send(request);
 
     if (streamedResponse.isError) {
       // request returned an error, throw the appropriate exception
@@ -28,6 +25,7 @@ class EasyPostRequest {
     return await http.Response.fromStream(streamedResponse);
   }
 
+  /// Prepares a request to be sent to the EasyPost API.
   static http.Request _prepareRequest(ClientConfiguration config, HttpMethod method,
       String endpoint, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters}) {

@@ -26,6 +26,7 @@ abstract class ApiException extends HttpException {
   const ApiException(super.message, super.statusCode, this.reason,
       {this.errors});
 
+  /// Creates an instance of [ApiException] based on the [response].
   static Future<ApiException> fromStreamedResponse(http.StreamedResponse response) async {
     if (!response.isError) {
       throw HttpException("Response is not an error.", response.statusCode);
@@ -85,7 +86,7 @@ abstract class ApiException extends HttpException {
         return ApiRateLimitException(
             errorMessage, statusCode, errorType, errors: errors);
       case 500:
-        return ApiIntenalServerException(
+        return ApiInternalServerException(
             errorMessage, statusCode, errorType, errors: errors);
       case 503:
         return ApiServiceUnavailableException(

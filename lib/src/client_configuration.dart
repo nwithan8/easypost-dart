@@ -12,10 +12,10 @@ class ClientConfiguration {
   final ApiVersion apiVersion;
 
   /// HTTP Client
-  http.Client? client;
+  http.Client client;
 
   /// The User-Agent header to use for all requests.
-  String? get userAgent => 'EasyPost/$apiVersion DartClient';
+  String get userAgent => 'EasyPost/$apiVersion DartClient';
 
   /// Creates a new [ClientConfiguration] instance.
   ///
