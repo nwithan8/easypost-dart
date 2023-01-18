@@ -1,8 +1,8 @@
 import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/models/error.dart';
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../utilities/conversions.dart';
 
 part 'payment_refund.g.dart';
 

@@ -1,4 +1,4 @@
-import 'package:easypost/src/utilities/conversions.dart';
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 /// Superclass for all models.

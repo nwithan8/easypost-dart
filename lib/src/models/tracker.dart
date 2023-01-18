@@ -2,7 +2,7 @@ import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/models/carrier_detail.dart';
 import 'package:easypost/src/models/tracking_detail.dart';
-import 'package:easypost/src/utilities/conversions.dart';
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'tracker.g.dart';

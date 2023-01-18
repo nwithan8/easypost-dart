@@ -13,7 +13,7 @@ import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/scan_form.dart';
 import 'package:easypost/src/models/tax_identifier.dart';
 import 'package:easypost/src/models/tracker.dart';
-import 'package:easypost/src/utilities/conversions.dart';
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'shipment.g.dart';

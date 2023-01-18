@@ -8,7 +8,7 @@ import 'package:easypost/src/exceptions/api/rate_limit_exception.dart';
 import 'package:easypost/src/exceptions/api/service_unavailable_exception.dart';
 import 'package:easypost/src/exceptions/api/timeout_exception.dart';
 import 'package:easypost/src/exceptions/api/unauthorized_exception.dart';
-import 'package:easypost/src/http/streamed_response.dart';
+import 'package:easypost/src/api/http/streamed_response.dart';
 import 'package:easypost/src/models/error.dart';
 import 'package:easypost/src/constants.dart';
 

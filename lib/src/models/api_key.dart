@@ -1,7 +1,7 @@
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:easypost/src/utilities/conversions.dart';
+import 'package:easypost/src/internal/conversions.dart';
 
 part 'api_key.g.dart';
 
