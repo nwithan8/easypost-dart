@@ -35,7 +35,7 @@ Map<String, dynamic> _$CustomsInfoToJson(CustomsInfo instance) =>
       'mode': instance.mode,
       'contents_explanation': instance.contentsExplanation,
       'contents_type': instance.contentsType,
-      'customs_certify': instance.customsCertify,
+      'customs_certify': instance.customsShouldCertify,
       'customs_items': instance.customsItems?.map((e) => e.toJson()).toList(),
       'customs_signer': instance.customsSigner,
       'declaration': instance.declaration,

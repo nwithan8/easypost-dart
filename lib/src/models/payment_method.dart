@@ -1,6 +1,6 @@
 import 'package:easypost/src/base/model.dart';
-import 'package:easypost/src/models/payment_method_type.dart';
 import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/models/payment_method_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_method.g.dart';
@@ -33,7 +33,7 @@ class PaymentMethod extends Model {
   final String? name;
 
   @JsonKey(name: 'verified')
-  final bool? verified;
+  final bool? isVerified;
 
   PaymentMethodType? get type {
     if (id == null) {
@@ -63,7 +63,7 @@ class PaymentMethod extends Model {
     this.expYear,
     this.last4,
     this.name,
-    this.verified,
+    this.isVerified,
   ) : super(id, createdAt, updatedAt, objectType, mode);
 
   factory PaymentMethod.fromJson(Map<String, dynamic> input) =>

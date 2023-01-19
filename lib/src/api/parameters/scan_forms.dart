@@ -1,6 +1,6 @@
-import 'package:easypost/src/models/shipment.dart';
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
+import 'package:easypost/src/models/shipment.dart';
 
 class ScanFormsCreate extends Create {
   @JsonParameter(Necessity.required, ['shipments'])

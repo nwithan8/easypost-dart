@@ -1,11 +1,5 @@
 /// The available HTTP methods.
-enum HttpMethod {
-  get,
-  post,
-  put,
-  patch,
-  delete
-}
+enum HttpMethod { get, post, put, patch, delete }
 
 extension HttpMethodExtension on HttpMethod {
   /// The HTTP method as a string.

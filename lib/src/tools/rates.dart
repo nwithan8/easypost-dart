@@ -1,3 +1,4 @@
+import 'package:easypost/src/exceptions/filtering_exception.dart';
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/smart_rate.dart';
 import 'package:easypost/src/models/smart_rate_accuracy.dart';
@@ -27,7 +28,7 @@ Rate getLowestRate(List<Rate> rates,
     if (lowestRate != null && lowestRate.rate == null) {
       // somehow a rate with null got selected in the last iteration, throw an error
       // the guard clause above should have prevented this, so this should never happen
-      throw Exception(
+      throw FilteringException(
           'A rate with null price was selected in the last iteration');
     }
 
@@ -75,7 +76,7 @@ Rate getLowestRate(List<Rate> rates,
   }
 
   if (lowestRate == null) {
-    throw Exception('No rates were found');
+    throw FilteringException('No rates were found');
   }
 
   return lowestRate;
@@ -93,7 +94,7 @@ SmartRate getLowestSmartRate(List<SmartRate> smartRates, int deliveryDays,
     if (lowestRate != null && lowestRate.rate == null) {
       // somehow a rate with null got selected in the last iteration, throw an error
       // the guard clause above should have prevented this, so this should never happen
-      throw Exception(
+      throw FilteringException(
           'A smart rate with null price was selected in the last iteration');
     }
 
@@ -126,7 +127,7 @@ SmartRate getLowestSmartRate(List<SmartRate> smartRates, int deliveryDays,
   }
 
   if (lowestRate == null) {
-    throw Exception('No rates were found');
+    throw FilteringException('No rates were found');
   }
 
   return lowestRate;

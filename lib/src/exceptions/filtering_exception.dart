@@ -1,4 +1,4 @@
-import '../base/exception.dart';
+import 'package:easypost/src/base/exception.dart';
 
 /// An exception that is thrown when filtering a list fails.
 class FilteringException extends EasyPostException {

@@ -1,7 +1,6 @@
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
-
-import '../../models/address.dart';
+import 'package:easypost/src/models/address.dart';
 
 class InsuranceCreate extends Create {
   @JsonParameter(Necessity.optional, ['insurance', 'amount'])

@@ -1,12 +1,14 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/models/payment_methods_summary.dart';
+import 'package:easypost/src/api/parameters/billing.dart';
+import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/exceptions/payment_methods_not_initialized_exception.dart';
+import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
 import 'package:easypost/src/models/payment_method.dart';
 import 'package:easypost/src/models/payment_method_priority.dart';
 import 'package:easypost/src/models/payment_method_type.dart';
-import 'package:easypost/src/api/parameters/billing.dart';
+import 'package:easypost/src/models/payment_methods_summary.dart';
 
 /// The [BillingService] handles billing with the EasyPost API.
 class BillingService extends Service {
@@ -16,7 +18,11 @@ class BillingService extends Service {
   Future<PaymentMethodsSummary> retrievePaymentMethods() async {
     final json = await client.requestJson(
         HttpMethod.get, 'payment_methods', ApiVersion.v2);
-    // TODO: Handle missing ID meaning payment methods are not set up.
+    final Map<String, dynamic> data = json as Map<String, dynamic>;
+    if (data['id'] == null) {
+      throw PaymentMethodsNotInitializedException(
+          "Payment methods have not been set up yet.");
+    }
     return PaymentMethodsSummary.fromJson(json);
   }
 
@@ -37,13 +43,16 @@ class BillingService extends Service {
       {PaymentMethodPriority priority = PaymentMethodPriority.primary}) async {
     PaymentMethod? paymentMethod = await retrievePaymentMethod(priority);
     if (paymentMethod == null) {
-      throw Exception('No payment method found.');
+      throw ResourceNotFoundException('No payment method found.');
     }
 
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
 
-    return await client.request(HttpMethod.post,
-        '${paymentMethod.type!.endpoint}/${paymentMethod.id}/charges', ApiVersion.v2,
+    return await client.request(
+        HttpMethod.post,
+        '${paymentMethod.type!.endpoint}/${paymentMethod.id}/charges',
+        ApiVersion.v2,
         parameters: parameterMap);
   }
 
@@ -51,11 +60,11 @@ class BillingService extends Service {
   Future<bool> deletePaymentMethod(PaymentMethodPriority priority) async {
     PaymentMethod? paymentMethod = await retrievePaymentMethod(priority);
     if (paymentMethod == null) {
-      throw Exception('No payment method found.');
+      throw ResourceNotFoundException('No payment method found.');
     }
 
-    return await client.request(
-        HttpMethod.delete, '${paymentMethod.type!.endpoint}/${paymentMethod.id}', ApiVersion.v2);
+    return await client.request(HttpMethod.delete,
+        '${paymentMethod.type!.endpoint}/${paymentMethod.id}', ApiVersion.v2);
   }
 
   /// Deletes all [PaymentMethod]s.

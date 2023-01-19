@@ -1,10 +1,8 @@
-
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
-
-import '../../models/carrier_account.dart';
-import '../../models/address.dart';
-import '../../models/shipment.dart';
+import 'package:easypost/src/models/address.dart';
+import 'package:easypost/src/models/carrier_account.dart';
+import 'package:easypost/src/models/shipment.dart';
 
 class OrdersCreate extends Create {
   @JsonParameter(Necessity.optional, ['order', 'carrier_accounts'])

@@ -48,7 +48,7 @@ Map<String, dynamic> _$EndShipperToJson(EndShipper instance) =>
       'message': instance.message,
       'name': instance.name,
       'phone': instance.phone,
-      'residential': instance.residential,
+      'residential': instance.isResidential,
       'state': instance.state,
       'state_tax_id': instance.stateTaxId,
       'street1': instance.street1,

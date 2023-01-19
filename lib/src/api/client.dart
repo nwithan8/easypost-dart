@@ -119,7 +119,8 @@ class Client {
   Future<bool> request(HttpMethod method, String url, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters, String? rootElement}) async {
     try {
-      await EasyPostRequest.executeRequest(config, method, url, apiVersion, parameters: parameters);
+      await EasyPostRequest.executeRequest(config, method, url, apiVersion,
+          parameters: parameters);
       return true;
     } catch (e) {
       return false;
@@ -129,8 +130,9 @@ class Client {
   Future<dynamic> requestJson(
       HttpMethod method, String url, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters, String? rootElement}) async {
-    final response =
-        await EasyPostRequest.executeRequest(config, method, url, apiVersion, parameters: parameters);
+    final response = await EasyPostRequest.executeRequest(
+        config, method, url, apiVersion,
+        parameters: parameters);
 
     dynamic json = jsonDecode(response.body);
 

@@ -1,5 +1,5 @@
-import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/models/rate.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'pickup_rate.g.dart';
@@ -21,7 +21,7 @@ class PickupRate extends Rate {
     carrierAccountId,
     currency,
     deliveryDate,
-    deliveryDateGuaranteed,
+    deliveryDateIsGuaranteed,
     deliveryDays,
     estDeliveryDays,
     listCurrency,
@@ -44,7 +44,7 @@ class PickupRate extends Rate {
           carrierAccountId,
           currency,
           deliveryDate,
-          deliveryDateGuaranteed,
+          deliveryDateIsGuaranteed,
           deliveryDays,
           estDeliveryDays,
           listCurrency,

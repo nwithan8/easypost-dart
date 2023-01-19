@@ -1,11 +1,12 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/tools/rates.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
+import 'package:easypost/src/api/parameters/orders.dart';
+import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/models/order.dart';
 import 'package:easypost/src/models/rate.dart';
-import 'package:easypost/src/api/parameters/orders.dart';
+import 'package:easypost/src/tools/rates.dart';
 
 /// The [OrderService] handles orders with the EasyPost API.
 class OrderService extends Service {
@@ -13,7 +14,8 @@ class OrderService extends Service {
 
   /// Creates an [Order].
   Future<Order> create(OrdersCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'orders', ApiVersion.v2,
         parameters: parameterMap);
@@ -29,7 +31,8 @@ class OrderService extends Service {
 
   /// Purchases an [Order].
   Future<Order> buy(Order order, OrdersBuy parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'orders/${order.id}/buy', ApiVersion.v2,
         parameters: parameterMap);
@@ -52,7 +55,7 @@ class OrderService extends Service {
     List<String>? excludeServices,
   }) {
     if (order.rates == null) {
-      throw Exception('Order has no rates');
+      throw MissingPropertyException('Order has no rates');
     }
     return getLowestRate(order.rates!,
         includeCarriers: includeCarriers,

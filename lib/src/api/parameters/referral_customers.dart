@@ -34,14 +34,12 @@ class ReferralCustomersAddCreditCard extends Parameters {
   @Parameter(Necessity.required)
   int? creditCardCvv;
 
-  ReferralCustomersAddCreditCard()
-      : super();
+  ReferralCustomersAddCreditCard() : super();
 }
 
 class ReferralCustomersUpdateEmail extends Parameters {
   @Parameter(Necessity.required)
   String? email;
 
-  ReferralCustomersUpdateEmail()
-      : super();
+  ReferralCustomersUpdateEmail() : super();
 }

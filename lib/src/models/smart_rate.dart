@@ -1,6 +1,6 @@
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/time_in_transit.dart';
-import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'smart_rate.g.dart';
@@ -22,7 +22,7 @@ class SmartRate extends Rate {
     carrierAccountId,
     currency,
     deliveryDate,
-    deliveryDateGuaranteed,
+    deliveryDateIsGuaranteed,
     deliveryDays,
     estDeliveryDays,
     listCurrency,
@@ -45,7 +45,7 @@ class SmartRate extends Rate {
           carrierAccountId,
           currency,
           deliveryDate,
-          deliveryDateGuaranteed,
+          deliveryDateIsGuaranteed,
           deliveryDays,
           estDeliveryDays,
           listCurrency,

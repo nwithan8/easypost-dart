@@ -1,9 +1,9 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/models/scan_form.dart';
 import 'package:easypost/src/api/parameters/scan_forms.dart';
+import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/models/scan_form.dart';
 
 /// The [ScanFormService] handles scan forms with the EasyPost API.
 class ScanFormService extends Service {
@@ -11,7 +11,8 @@ class ScanFormService extends Service {
 
   /// Creates a [ScanForm].
   Future<ScanForm> create(ScanFormsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'scan_forms',
@@ -31,7 +32,8 @@ class ScanFormService extends Service {
 
   /// Lists all [ScanForm]s.
   Future<ScanFormCollection> list({ScanFormsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
+    Map<String, dynamic>? parameterMap =
+        parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'scan_forms', ApiVersion.v2,
         parameters: parameterMap);

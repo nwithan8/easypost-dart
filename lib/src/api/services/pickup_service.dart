@@ -1,12 +1,13 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/tools/rates.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
+import 'package:easypost/src/api/parameters/pickups.dart';
+import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/models/pickup.dart';
 import 'package:easypost/src/models/pickup_rate.dart';
 import 'package:easypost/src/models/rate.dart';
-import 'package:easypost/src/api/parameters/pickups.dart';
+import 'package:easypost/src/tools/rates.dart';
 
 /// The [PickupService] handles pickups with the EasyPost API.
 class PickupService extends Service {
@@ -14,7 +15,8 @@ class PickupService extends Service {
 
   /// Creates a [Pickup].
   Future<Pickup> create(PickupsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'pickups',
@@ -34,7 +36,8 @@ class PickupService extends Service {
 
   /// Lists all [Pickup]s.
   Future<PickupCollection> list({PickupsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
+    Map<String, dynamic>? parameterMap =
+        parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'pickups', ApiVersion.v2,
         parameters: parameterMap);
@@ -65,7 +68,7 @@ class PickupService extends Service {
     List<String>? excludeServices,
   }) {
     if (pickup.pickupRates == null) {
-      throw Exception('Order has no rates');
+      throw MissingPropertyException('Order has no rates');
     }
     Rate rate = getLowestRate(pickup.pickupRates!,
         includeCarriers: includeCarriers,

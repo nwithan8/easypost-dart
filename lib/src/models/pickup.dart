@@ -1,11 +1,11 @@
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/models/message.dart';
 import 'package:easypost/src/models/pickup_rate.dart';
 import 'package:easypost/src/models/rate.dart';
-import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'pickup.g.dart';

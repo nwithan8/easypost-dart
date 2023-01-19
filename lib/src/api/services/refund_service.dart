@@ -1,9 +1,9 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/models/refund.dart';
 import 'package:easypost/src/api/parameters/refunds.dart';
+import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/models/refund.dart';
 
 /// The [RefundService] handles refunds with the EasyPost API.
 class RefundService extends Service {
@@ -11,7 +11,8 @@ class RefundService extends Service {
 
   /// Creates a [Refund].
   Future<Refund> create(RefundsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'refunds',
@@ -31,7 +32,8 @@ class RefundService extends Service {
 
   /// Lists all [Refund]s.
   Future<RefundCollection> list({RefundsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
+    Map<String, dynamic>? parameterMap =
+        parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'refunds', ApiVersion.v2,
         parameters: parameterMap);

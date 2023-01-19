@@ -39,5 +39,5 @@ Map<String, dynamic> _$PaymentMethodToJson(PaymentMethod instance) =>
       'exp_year': instance.expYear,
       'last4': instance.last4,
       'name': instance.name,
-      'verified': instance.verified,
+      'verified': instance.isVerified,
     };

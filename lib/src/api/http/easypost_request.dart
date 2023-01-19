@@ -1,18 +1,20 @@
+import 'dart:convert';
+
 import 'package:easypost/src/api/client_configuration.dart';
-import 'package:easypost/src/exceptions/api/api_exception.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/http/streamed_response.dart';
+import 'package:easypost/src/exceptions/api/api_exception.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
+/// A class that represents an HTTP request to the EasyPost API.
 class EasyPostRequest {
   /// Executes a request to the EasyPost API.
   static Future<http.Response> executeRequest(ClientConfiguration config,
       HttpMethod method, String url, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters}) async {
-    final request =
-    _prepareRequest(config, method, url, apiVersion, parameters: parameters);
+    final request = _prepareRequest(config, method, url, apiVersion,
+        parameters: parameters);
 
     final streamedResponse = await config.client.send(request);
 
@@ -25,8 +27,8 @@ class EasyPostRequest {
   }
 
   /// Prepares a request to be sent to the EasyPost API.
-  static http.Request _prepareRequest(ClientConfiguration config, HttpMethod method,
-      String endpoint, ApiVersion apiVersion,
+  static http.Request _prepareRequest(ClientConfiguration config,
+      HttpMethod method, String endpoint, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters}) {
     // Prepare the URL
     Uri uri = Uri.parse('${config.fullBaseUrl}/$endpoint');
@@ -37,7 +39,7 @@ class EasyPostRequest {
       // Each value in the parameters needs to be a String
       uri = uri.replace(
           queryParameters:
-          parameters.map((key, value) => MapEntry(key, value.toString())));
+              parameters.map((key, value) => MapEntry(key, value.toString())));
     }
 
     // Create the request

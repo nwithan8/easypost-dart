@@ -14,7 +14,8 @@ class BillingAddStripePaymentMethod extends Parameters {
   @JsonParameter(Necessity.required, ['payment_method', 'stripe_customer_id'])
   String? stripeCustomerId;
 
-  @JsonParameter(Necessity.required, ['payment_method', 'payment_method_reference'])
+  @JsonParameter(
+      Necessity.required, ['payment_method', 'payment_method_reference'])
   String? stripePaymentMethodId;
 
   @JsonParameter(Necessity.required, ['payment_method', 'priority'])

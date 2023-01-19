@@ -25,7 +25,7 @@ Map<String, dynamic> _$FeeToJson(Fee instance) => <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
       'amount': instance.amount,
-      'charged': instance.charged,
-      'refunded': instance.refunded,
+      'charged': instance.wasCharged,
+      'refunded': instance.wasRefunded,
       'type': instance.type,
     };

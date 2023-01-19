@@ -1,13 +1,13 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/models/referral_customer.dart';
-import 'package:easypost/src/models/payment_method.dart';
-import 'package:easypost/src/models/payment_method_priority.dart';
+import 'package:easypost/src/api/http/api_version.dart';
+import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/parameters/referral_customers.dart';
 import 'package:easypost/src/api/services/extras_service.dart';
-
-import '../http/api_version.dart';
-import '../http/http_method.dart';
+import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
+import 'package:easypost/src/models/payment_method.dart';
+import 'package:easypost/src/models/payment_method_priority.dart';
+import 'package:easypost/src/models/referral_customer.dart';
 
 /// The [PartnerService] handles white-label partner-related requests with the EasyPost API.
 class PartnerService extends Service {
@@ -63,7 +63,8 @@ class PartnerService extends Service {
     try {
       stripePublicKey = await extrasService.retrieveStripeApiKey();
     } catch (e) {
-      throw Exception("Unable to retrieve EasyPost's Stripe API key.");
+      throw ResourceNotFoundException(
+          "Unable to retrieve EasyPost's Stripe API key.");
     }
 
     String stripeToken;

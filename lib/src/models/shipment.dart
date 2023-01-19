@@ -1,5 +1,6 @@
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/models/customs_info.dart';
@@ -13,7 +14,6 @@ import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/scan_form.dart';
 import 'package:easypost/src/models/tax_identifier.dart';
 import 'package:easypost/src/models/tracker.dart';
-import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'shipment.g.dart';

@@ -1,6 +1,6 @@
 import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/models/user.dart';
 import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/models/user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'referral_customer.g.dart';

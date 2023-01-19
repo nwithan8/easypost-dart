@@ -1,7 +1,6 @@
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
-
-import '../../models/customs_item.dart';
+import 'package:easypost/src/models/customs_item.dart';
 
 class CustomsInfoCreate extends Create {
   @JsonParameter(Necessity.required, ['customs_info', 'contents_explanation'])

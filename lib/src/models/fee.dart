@@ -10,10 +10,10 @@ class Fee extends Model {
   final double? amount;
 
   @JsonKey(name: 'charged')
-  final bool? charged;
+  final bool? wasCharged;
 
   @JsonKey(name: 'refunded')
-  final bool? refunded;
+  final bool? wasRefunded;
 
   @JsonKey(name: 'type')
   final String? type;
@@ -25,8 +25,8 @@ class Fee extends Model {
     objectType,
     mode,
     this.amount,
-    this.charged,
-    this.refunded,
+    this.wasCharged,
+    this.wasRefunded,
     this.type,
   ) : super(id, createdAt, updatedAt, objectType, mode);
 

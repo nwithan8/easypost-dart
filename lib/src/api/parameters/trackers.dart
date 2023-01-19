@@ -1,9 +1,8 @@
+import 'package:easypost/src/api/client.dart';
+import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
-
-import '../../../easypost.dart';
-import '../http/api_version.dart';
-import '../../models/tracker.dart';
+import 'package:easypost/src/models/tracker.dart';
 
 class TrackersCreate extends Create {
   @JsonParameter(Necessity.optional, ['tracker', 'amount'])

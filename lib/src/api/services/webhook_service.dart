@@ -1,10 +1,10 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
+import 'package:easypost/src/api/parameters/webhooks.dart';
+import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/event.dart';
 import 'package:easypost/src/models/webhook.dart';
-import 'package:easypost/src/api/parameters/webhooks.dart';
 
 /// The [WebhookService] handles webhooks with the EasyPost API.
 class WebhookService extends Service {
@@ -12,7 +12,8 @@ class WebhookService extends Service {
 
   /// Creates a [Webhook].
   Future<Webhook> create(WebhooksCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     return await client.requestJson(
       HttpMethod.post,
       'webhooks',
@@ -32,7 +33,8 @@ class WebhookService extends Service {
 
   /// Lists all [Webhook]s.
   Future<List<Webhook>> list({WebhooksAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
+    Map<String, dynamic>? parameterMap =
+        parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'webhooks', ApiVersion.v2,
         parameters: parameterMap, rootElement: 'webhooks');
@@ -47,7 +49,8 @@ class WebhookService extends Service {
 
   /// Updates a [Webhook].
   Future<Webhook> update(Webhook webhook, WebhooksUpdate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.patch, 'webhooks/${webhook.id}', ApiVersion.v2,
         parameters: parameterMap);

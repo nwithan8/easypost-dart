@@ -1,6 +1,6 @@
 import 'package:easypost/src/base/model.dart';
-import 'package:easypost/src/models/carbon_offset.dart';
 import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/models/carbon_offset.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'rate.g.dart';
@@ -26,7 +26,7 @@ class Rate extends Model {
   final DateTime? deliveryDate;
 
   @JsonKey(name: 'delivery_date_guaranteed')
-  final bool? deliveryDateGuaranteed;
+  final bool? deliveryDateIsGuaranteed;
 
   @JsonKey(name: 'delivery_days')
   final int? deliveryDays;
@@ -67,7 +67,7 @@ class Rate extends Model {
     this.carrierAccountId,
     this.currency,
     this.deliveryDate,
-    this.deliveryDateGuaranteed,
+    this.deliveryDateIsGuaranteed,
     this.deliveryDays,
     this.estDeliveryDays,
     this.listCurrency,

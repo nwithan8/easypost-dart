@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
+import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/api_key.dart';
 
 /// The [ApiKeyService] handles API keys with the EasyPost API.
@@ -10,7 +10,8 @@ class ApiKeyService extends Service {
 
   /// Lists all [ApiKey]s.
   Future<ApiKeyCollection> list() async {
-    final json = await client.requestJson(HttpMethod.get,'api_keys', ApiVersion.v2);
+    final json =
+        await client.requestJson(HttpMethod.get, 'api_keys', ApiVersion.v2);
     return ApiKeyCollection.fromJson(json);
   }
 }

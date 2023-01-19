@@ -1,6 +1,6 @@
 import 'package:easypost/src/base/model.dart';
-import 'package:easypost/src/models/customs_item.dart';
 import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/models/customs_item.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'customs_info.g.dart';
@@ -14,7 +14,7 @@ class CustomsInfo extends Model {
   final String? contentsType;
 
   @JsonKey(name: 'customs_certify')
-  final bool? customsCertify;
+  final bool? customsShouldCertify;
 
   @JsonKey(name: 'customs_items')
   final List<CustomsItem>? customsItems;
@@ -45,7 +45,7 @@ class CustomsInfo extends Model {
     mode,
     this.contentsExplanation,
     this.contentsType,
-    this.customsCertify,
+    this.customsShouldCertify,
     this.customsItems,
     this.customsSigner,
     this.declaration,

@@ -1,10 +1,10 @@
 import 'dart:mirrors';
 
+import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
+import 'package:easypost/src/exceptions/parameters/missing_parameter_exception.dart';
 import 'package:easypost/src/internal/custom_annotation.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
-
-import '../../../easypost.dart';
 
 class Parameters {
   late Map<String, dynamic> _parameterMap;
@@ -23,8 +23,7 @@ class Parameters {
     for (var property in classMirror.declarations.values) {
       // Get the parameter attribute for this property
       var parameterAttribute =
-      CustomAnnotation.getAnnotationOfType<Parameter>(
-          Parameter, property);
+          CustomAnnotation.getAnnotationOfType<Parameter>(Parameter, property);
       // If the property is not a parameter, ignore it
       if (parameterAttribute == null) {
         continue;
@@ -37,7 +36,7 @@ class Parameters {
         try {
           var value = im.getField(property.simpleName).reflectee;
           if (value == null) {
-            throw Exception(
+            throw MissingParameterException(
                 "Required parameter '${MirrorSystem.getName(property.simpleName)}' is not set");
           }
         } catch (e) {
@@ -78,8 +77,8 @@ class Parameters {
     // Iterate over all properties
     for (var property in properties) {
       var parameterAttribute =
-      CustomAnnotation.getAnnotationOfType<JsonParameter>(
-          JsonParameter, property);
+          CustomAnnotation.getAnnotationOfType<JsonParameter>(
+              JsonParameter, property);
       if (parameterAttribute == null) {
         // Ignore any properties that are not annotated with a JsonParameter attribute
         continue;
@@ -91,7 +90,8 @@ class Parameters {
       // get the value of the property
       try {
         var value = im.getField(property.simpleName).reflectee;
-        if (value == null && parameterAttribute.necessity == Necessity.optional) {
+        if (value == null &&
+            parameterAttribute.necessity == Necessity.optional) {
           // Ignore any optional parameters that are null
           continue;
         }
@@ -105,7 +105,8 @@ class Parameters {
           }
           value = valueList;
         }
-        parameterMap = _updateMap(parameterMap, parameterAttribute.jsonPath, value);
+        parameterMap =
+            _updateMap(parameterMap, parameterAttribute.jsonPath, value);
       } catch (e) {
         // If the property is not set, ignore it
         continue;
@@ -151,7 +152,8 @@ class Parameters {
     var key = keysCopy[0];
     keysCopy.removeAt(0);
     if (!map.containsKey(key)) {
-      map[key] = _updateMap(<String, dynamic>{}, keysCopy as List<String>, value);
+      map[key] =
+          _updateMap(<String, dynamic>{}, keysCopy as List<String>, value);
     }
 
     var subMap = map[key];

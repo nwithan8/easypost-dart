@@ -1,10 +1,9 @@
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
-
-import '../../models/address.dart';
-import '../../models/carrier_account.dart';
-import '../../models/batch.dart';
-import '../../models/shipment.dart';
+import 'package:easypost/src/models/address.dart';
+import 'package:easypost/src/models/batch.dart';
+import 'package:easypost/src/models/carrier_account.dart';
+import 'package:easypost/src/models/shipment.dart';
 
 class PickupsCreate extends Create {
   @JsonParameter(Necessity.optional, ['pickup', 'address'])

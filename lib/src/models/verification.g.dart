@@ -31,5 +31,5 @@ Map<String, dynamic> _$VerificationToJson(Verification instance) =>
       'mode': instance.mode,
       'details': instance.details?.toJson(),
       'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'success': instance.success,
+      'success': instance.wasSuccessful,
     };

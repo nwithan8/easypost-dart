@@ -1,6 +1,6 @@
 import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/models/address.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'end_shipper.g.dart';
@@ -22,7 +22,7 @@ class EndShipper extends Address {
       message,
       name,
       phone,
-      residential,
+      isResidential,
       state,
       stateTaxId,
       street1,
@@ -45,7 +45,7 @@ class EndShipper extends Address {
             message,
             name,
             phone,
-            residential,
+            isResidential,
             state,
             stateTaxId,
             street1,

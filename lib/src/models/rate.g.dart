@@ -47,7 +47,7 @@ Map<String, dynamic> _$RateToJson(Rate instance) => <String, dynamic>{
       'carrier_account_id': instance.carrierAccountId,
       'currency': instance.currency,
       'delivery_date': instance.deliveryDate?.toIso8601String(),
-      'delivery_date_guaranteed': instance.deliveryDateGuaranteed,
+      'delivery_date_guaranteed': instance.deliveryDateIsGuaranteed,
       'delivery_days': instance.deliveryDays,
       'est_delivery_days': instance.estDeliveryDays,
       'list_currency': instance.listCurrency,

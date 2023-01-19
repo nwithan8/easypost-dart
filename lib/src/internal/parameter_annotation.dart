@@ -1,5 +1,3 @@
-
-
 enum Necessity {
   required,
   optional,

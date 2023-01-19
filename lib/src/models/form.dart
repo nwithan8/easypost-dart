@@ -13,7 +13,7 @@ class Form extends Model {
   final String? formUrl;
 
   @JsonKey(name: 'submitted_electronically')
-  final bool? submittedElectronically;
+  final bool? wasSubmittedElectronically;
 
   Form(
     id,
@@ -23,7 +23,7 @@ class Form extends Model {
     mode,
     this.formType,
     this.formUrl,
-    this.submittedElectronically,
+    this.wasSubmittedElectronically,
   ) : super(id, createdAt, updatedAt, objectType, mode);
 
   factory Form.fromJson(Map<String, dynamic> input) => _$FormFromJson(input);

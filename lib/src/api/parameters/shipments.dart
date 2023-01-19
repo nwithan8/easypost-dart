@@ -1,14 +1,14 @@
-import 'package:easypost/src/models/carrier_account.dart';
-import 'package:easypost/src/models/customs_info.dart';
-import 'package:easypost/src/models/address.dart';
-import 'package:easypost/src/models/options.dart';
-import 'package:easypost/src/models/parcel.dart';
-import 'package:easypost/src/models/tax_identifier.dart';
-import 'package:easypost/src/models/end_shipper.dart';
-import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
+import 'package:easypost/src/models/address.dart';
+import 'package:easypost/src/models/carrier_account.dart';
+import 'package:easypost/src/models/customs_info.dart';
+import 'package:easypost/src/models/end_shipper.dart';
+import 'package:easypost/src/models/options.dart';
+import 'package:easypost/src/models/parcel.dart';
+import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/tax_identifier.dart';
 
 class ShipmentsCreate extends Create {
   @JsonParameter(Necessity.optional, ['carbon_offset'])
@@ -55,7 +55,6 @@ class ShipmentsCreate extends Create {
 }
 
 class ShipmentsGenerateRates extends Parameters {
-
   // TODO: What are these parameters?
 
   ShipmentsGenerateRates({Map<String, dynamic>? overrideParameters})
@@ -63,7 +62,6 @@ class ShipmentsGenerateRates extends Parameters {
 }
 
 class ShipmentsCreateDocument extends Parameters {
-
   @JsonParameter(Necessity.required, ['file_format'])
   String? fileFormat;
 
@@ -72,7 +70,6 @@ class ShipmentsCreateDocument extends Parameters {
 }
 
 class ShipmentsInsure extends Parameters {
-
   @JsonParameter(Necessity.required, ['amount'])
   double? amount;
 
@@ -81,7 +78,6 @@ class ShipmentsInsure extends Parameters {
 }
 
 class ShipmentsBuy extends Parameters {
-
   @JsonParameter(Necessity.optional, ['end_shipper'])
   EndShipper? endShipper;
 

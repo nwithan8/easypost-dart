@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/models/payment_method.dart';
-import 'package:easypost/src/models/payment_method_priority.dart';
-import 'package:easypost/src/api/parameters/extras.dart';
-import 'package:easypost/src/api/http/api_version.dart';
-import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/client_configuration.dart';
-
+import 'package:easypost/src/api/http/api_version.dart';
+import 'package:easypost/src/api/http/http_method.dart';
+import 'package:easypost/src/api/parameters/extras.dart';
+import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/exceptions/json/json_deserialization_exception.dart';
+import 'package:easypost/src/models/payment_method.dart';
+import 'package:easypost/src/models/payment_method_priority.dart';
 import 'package:http/http.dart' as http;
 
 /// The [ExtrasService] handles extraneous EasyPost API functionality.
@@ -26,7 +26,7 @@ class ExtrasService extends Service {
     if (json.containsKey(jsonKey)) {
       return json[jsonKey];
     } else {
-      throw Exception("$jsonKey not found in JSON response");
+      throw JsonDeserializationException("$jsonKey not found in JSON response");
     }
   }
 

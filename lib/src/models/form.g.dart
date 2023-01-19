@@ -25,5 +25,5 @@ Map<String, dynamic> _$FormToJson(Form instance) => <String, dynamic>{
       'mode': instance.mode,
       'form_type': instance.formType,
       'form_url': instance.formUrl,
-      'submitted_electronically': instance.submittedElectronically,
+      'submitted_electronically': instance.wasSubmittedElectronically,
     };

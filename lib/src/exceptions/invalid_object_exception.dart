@@ -1,4 +1,4 @@
-import '../base/exception.dart';
+import 'package:easypost/src/base/exception.dart';
 
 /// An exception that is thrown when an object is invalid.
 class InvalidObjectException extends EasyPostException {

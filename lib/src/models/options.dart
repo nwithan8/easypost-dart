@@ -13,7 +13,7 @@ class Options extends Model {
   final String? addressValidationLevel;
 
   @JsonKey(name: 'alcohol')
-  final bool? alcohol;
+  final bool? isAlcohol;
 
   @JsonKey(name: 'billing_ref')
   final String? billingRef;
@@ -34,10 +34,10 @@ class Options extends Model {
   final String? billThirdPartyPostalCode;
 
   @JsonKey(name: 'by_drone')
-  final bool? byDrone;
+  final bool? deliverByDrone;
 
   @JsonKey(name: 'carbon_neutral')
-  final bool? carbonNeutral;
+  final bool? enableCarbonNeutral;
 
   @JsonKey(name: 'carrier_insurance_amount')
   final String? carrierInsuranceAmount;
@@ -49,7 +49,7 @@ class Options extends Model {
   final String? carrierNotificationSms;
 
   @JsonKey(name: 'certified_mail')
-  final bool? certifiedMail;
+  final bool? useCertifiedMail;
 
   @JsonKey(name: 'cod_address_id')
   final String? codAddressId;
@@ -103,10 +103,10 @@ class Options extends Model {
   final String? dropoffType;
 
   @JsonKey(name: 'dry_ice')
-  final bool? dryIce;
+  final bool? isDryIce;
 
   @JsonKey(name: 'dry_ice_medical')
-  final bool? dryIceMedical;
+  final bool? isDryIceMedical;
 
   @JsonKey(name: 'dry_ice_weight')
   final String? dryIceWeight;
@@ -172,10 +172,10 @@ class Options extends Model {
   final String? machinable;
 
   @JsonKey(name: 'neutral_delivery')
-  final bool? neutralDelivery;
+  final bool? enableNeutralDelivery;
 
   @JsonKey(name: 'non_contact')
-  final bool? nonContact;
+  final bool? enableNonContact;
 
   @JsonKey(name: 'overlabel_construct_code')
   final String? overlabelConstructCode;
@@ -190,7 +190,7 @@ class Options extends Model {
   final Map<String, dynamic>? payment;
 
   @JsonKey(name: 'peel_and_return')
-  final bool? peelAndReturn;
+  final bool? enablePeelAndReturn;
 
   @JsonKey(name: 'pickup_max_datetime')
   final DateTime? pickupMaxDatetime;
@@ -211,7 +211,7 @@ class Options extends Model {
   final String? printCustom1;
 
   @JsonKey(name: 'print_custom_1_barcode')
-  final bool? printCustom1Barcode;
+  final bool? includePrintCustom1Barcode;
 
   @JsonKey(name: 'print_custom_1_code')
   final String? printCustom1Code;
@@ -220,7 +220,7 @@ class Options extends Model {
   final String? printCustom2;
 
   @JsonKey(name: 'print_custom_2_barcode')
-  final bool? printCustom2Barcode;
+  final bool? includePrintCustom2Barcode;
 
   @JsonKey(name: 'print_custom_2_code')
   final String? printCustom2Code;
@@ -229,31 +229,31 @@ class Options extends Model {
   final String? printCustom3;
 
   @JsonKey(name: 'print_custom_3_barcode')
-  final bool? printCustom3Barcode;
+  final bool? includePrintCustom3Barcode;
 
   @JsonKey(name: 'print_custom_3_code')
   final String? printCustom3Code;
 
   @JsonKey(name: 'print_rate')
-  final bool? printRate;
+  final bool? includePrintRate;
 
   @JsonKey(name: 'receiver_liquor_license')
   final String? receiverLiquorLicense;
 
   @JsonKey(name: 'registered_mail')
-  final bool? registeredMail;
+  final bool? useRegisteredMail;
 
   @JsonKey(name: 'registered_mail_amount')
   final double? registeredMailAmount;
 
   @JsonKey(name: 'return_receipt')
-  final bool? returnReceipt;
+  final bool? includeReturnReceipt;
 
   @JsonKey(name: 'return_service')
   final String? returnService;
 
   @JsonKey(name: 'saturday_delivery')
-  final bool? saturdayDelivery;
+  final bool? enableSaturdayDelivery;
 
   @JsonKey(name: 'settlement_method')
   final String? settlementMethod;
@@ -278,19 +278,19 @@ class Options extends Model {
     mode,
     this.additionalHandling,
     this.addressValidationLevel,
-    this.alcohol,
+    this.isAlcohol,
     this.billingRef,
     this.billReceiverAmount,
     this.billReceiverPostalCode,
     this.billThirdPartyAccount,
     this.billThirdPartyCountry,
     this.billThirdPartyPostalCode,
-    this.byDrone,
-    this.carbonNeutral,
+    this.deliverByDrone,
+    this.enableCarbonNeutral,
     this.carrierInsuranceAmount,
     this.carrierNotificationEmail,
     this.carrierNotificationSms,
-    this.certifiedMail,
+    this.useCertifiedMail,
     this.codAddressId,
     this.codAmount,
     this.codMethod,
@@ -308,8 +308,8 @@ class Options extends Model {
     this.deliveryTimePreference,
     this.dropoffMaxDatetime,
     this.dropoffType,
-    this.dryIce,
-    this.dryIceMedical,
+    this.isDryIce,
+    this.isDryIceMedical,
     this.dryIceWeight,
     this.dutyPayment,
     this.dutyPaymentAccount,
@@ -331,34 +331,34 @@ class Options extends Model {
     this.labelSize,
     this.licenseNumber,
     this.machinable,
-    this.neutralDelivery,
-    this.nonContact,
+    this.enableNeutralDelivery,
+    this.enableNonContact,
     this.overlabelConstructCode,
     this.overlabelConstructTrackingNumber,
     this.partiesToTransactionAreRelated,
     this.payment,
-    this.peelAndReturn,
+    this.enablePeelAndReturn,
     this.pickupMaxDatetime,
     this.pickupMinDatetime,
     this.poSort,
     this.postageLabelInline,
     this.printCustom,
     this.printCustom1,
-    this.printCustom1Barcode,
+    this.includePrintCustom1Barcode,
     this.printCustom1Code,
     this.printCustom2,
-    this.printCustom2Barcode,
+    this.includePrintCustom2Barcode,
     this.printCustom2Code,
     this.printCustom3,
-    this.printCustom3Barcode,
+    this.includePrintCustom3Barcode,
     this.printCustom3Code,
-    this.printRate,
+    this.includePrintRate,
     this.receiverLiquorLicense,
-    this.registeredMail,
+    this.useRegisteredMail,
     this.registeredMailAmount,
-    this.returnReceipt,
+    this.includeReturnReceipt,
     this.returnService,
-    this.saturdayDelivery,
+    this.enableSaturdayDelivery,
     this.settlementMethod,
     this.smartpostHub,
     this.smartpostManifest,

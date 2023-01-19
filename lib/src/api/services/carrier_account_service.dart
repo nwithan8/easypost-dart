@@ -1,9 +1,9 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/api/parameters/carrier_accounts.dart';
+import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/models/carrier_account.dart';
 
 /// The [CarrierAccountService] handles carrier accounts with the EasyPost API.
 class CarrierAccountService extends Service {
@@ -11,7 +11,8 @@ class CarrierAccountService extends Service {
 
   /// Creates a [CarrierAccount].
   Future<CarrierAccount> create(CarrierAccountsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'carrier_accounts', ApiVersion.v2,
         parameters: parameterMap);
@@ -27,7 +28,8 @@ class CarrierAccountService extends Service {
 
   /// Lists all [CarrierAccount]s.
   Future<List<CarrierAccount>> list({CarrierAccountsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
+    Map<String, dynamic>? parameterMap =
+        parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'carrier_accounts', ApiVersion.v2,
         parameters: parameterMap);
@@ -39,7 +41,8 @@ class CarrierAccountService extends Service {
   /// Updates a [CarrierAccount].
   Future<CarrierAccount> update(
       CarrierAccount carrierAccount, CarrierAccountsUpdate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     final json = await client.requestJson(HttpMethod.patch,
         'carrier_accounts/${carrierAccount.id}', ApiVersion.v2,
         parameters: parameterMap);

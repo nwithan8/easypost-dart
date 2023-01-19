@@ -1,7 +1,3 @@
-
-
-
-
 enum SmartRateAccuracy {
   percentile50,
   percentile75,

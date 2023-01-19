@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:easypost/src/api/http/streamed_response.dart';
+import 'package:easypost/src/constants.dart';
 import 'package:easypost/src/exceptions/api/gateway_timeout_exception.dart';
 import 'package:easypost/src/exceptions/api/internal_server_exception.dart';
 import 'package:easypost/src/exceptions/api/invalid_request_exception.dart';
@@ -8,14 +12,9 @@ import 'package:easypost/src/exceptions/api/rate_limit_exception.dart';
 import 'package:easypost/src/exceptions/api/service_unavailable_exception.dart';
 import 'package:easypost/src/exceptions/api/timeout_exception.dart';
 import 'package:easypost/src/exceptions/api/unauthorized_exception.dart';
-import 'package:easypost/src/api/http/streamed_response.dart';
+import 'package:easypost/src/exceptions/http_exception.dart';
 import 'package:easypost/src/models/error.dart';
-import 'package:easypost/src/constants.dart';
-
-import '../http_exception.dart';
 import 'package:http/http.dart' as http;
-
-import 'dart:convert';
 
 /// Superclass for all EasyPost API-related exceptions.
 abstract class ApiException extends HttpException {
@@ -27,7 +26,8 @@ abstract class ApiException extends HttpException {
       {this.errors});
 
   /// Creates an instance of [ApiException] based on the [response].
-  static Future<ApiException> fromStreamedResponse(http.StreamedResponse response) async {
+  static Future<ApiException> fromStreamedResponse(
+      http.StreamedResponse response) async {
     if (!response.isError) {
       throw HttpException("Response is not an error.", response.statusCode);
     }
@@ -50,11 +50,16 @@ abstract class ApiException extends HttpException {
       }
 
       errorType = json['error']['type'];
-      errors = (json['error']['errors'] as List).map((e) => Error.fromJson(e)).toList();
+      errors = (json['error']['errors'] as List)
+          .map((e) => Error.fromJson(e))
+          .toList();
     } catch (e) {
       // could not extract error details from the API response (or API did not return data, i.e. 1xx, 3xx or 5xx)
-      errorMessage = response.reasonPhrase // fallback to standard HTTP error message
-          ?? ErrorMessages.apiDidNotReturnErrorDetails;  // fallback to no error details
+      errorMessage =
+          response.reasonPhrase // fallback to standard HTTP error message
+              ??
+              ErrorMessages
+                  .apiDidNotReturnErrorDetails; // fallback to no error details
       errorType = ErrorMessages.apiErrorDetailsParsingError;
       errors = null;
     }
@@ -62,38 +67,39 @@ abstract class ApiException extends HttpException {
     // Return the appropriate exception based on the HTTP status code
     switch (statusCode) {
       case 401:
-        return ApiUnauthorizedException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiUnauthorizedException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 402:
-        return ApiPaymentException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiPaymentException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 403:
-        return ApiUnauthorizedException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiUnauthorizedException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 404:
-        return ApiNotFoundException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiNotFoundException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 405:
-        return ApiMethodNotAllowedException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiMethodNotAllowedException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 408:
-        return ApiTimeoutException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiTimeoutException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 422:
-        return ApiInvalidRequestException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiInvalidRequestException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 429:
-        return ApiRateLimitException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiRateLimitException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 500:
-        return ApiInternalServerException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiInternalServerException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 503:
         return ApiServiceUnavailableException(
-            errorMessage, statusCode, errorType, errors: errors);
+            errorMessage, statusCode, errorType,
+            errors: errors);
       case 504:
-        return ApiGatewayTimeoutException(
-            errorMessage, statusCode, errorType, errors: errors);
+        return ApiGatewayTimeoutException(errorMessage, statusCode, errorType,
+            errors: errors);
     }
 
     // A unaccounted-for status code was in the response.

@@ -1,7 +1,7 @@
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
-import 'package:easypost/src/models/verifications.dart';
 import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/models/verifications.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'address.g.dart';
@@ -29,7 +29,7 @@ class Address extends Model {
   @JsonKey(name: 'phone')
   final String? phone;
   @JsonKey(name: 'residential')
-  final bool? residential;
+  final bool? isResidential;
   @JsonKey(name: 'state')
   final String? state;
   @JsonKey(name: 'state_tax_id')
@@ -58,7 +58,7 @@ class Address extends Model {
       this.message,
       this.name,
       this.phone,
-      this.residential,
+      this.isResidential,
       this.state,
       this.stateTaxId,
       this.street1,

@@ -1,8 +1,8 @@
-import 'package:easypost/src/models/carrier_account.dart';
-import 'package:easypost/src/models/shipment.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/api/parameters/shipments.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
+import 'package:easypost/src/models/carrier_account.dart';
+import 'package:easypost/src/models/shipment.dart';
 
 import '_generic.dart';
 

@@ -28,19 +28,19 @@ class CarrierAccount extends Model {
   final String? type;
 
   CarrierAccount(
-    id,
-    createdAt,
-    updatedAt,
-    objectType,
-    mode,
-    this.billableType,
-    this.credentials,
-    this.description,
-    this.readable,
-    this.reference,
-    this.testCredentials,
-    this.type
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+      id,
+      createdAt,
+      updatedAt,
+      objectType,
+      mode,
+      this.billableType,
+      this.credentials,
+      this.description,
+      this.readable,
+      this.reference,
+      this.testCredentials,
+      this.type)
+      : super(id, createdAt, updatedAt, objectType, mode);
 
   factory CarrierAccount.fromJson(Map<String, dynamic> input) =>
       _$CarrierAccountFromJson(input);

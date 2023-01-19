@@ -1,13 +1,15 @@
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/tools/rates.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
+import 'package:easypost/src/api/parameters/shipments.dart';
+import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/exceptions/missing_property_exception.dart';
+import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/shipment.dart';
 import 'package:easypost/src/models/smart_rate.dart';
 import 'package:easypost/src/models/smart_rate_accuracy.dart';
-import 'package:easypost/src/api/parameters/shipments.dart';
+import 'package:easypost/src/tools/rates.dart';
 
 /// The [ShipmentService] handles shipments with the EasyPost API.
 class ShipmentService extends Service {
@@ -15,7 +17,8 @@ class ShipmentService extends Service {
 
   /// Creates a [Shipment].
   Future<Shipment> create(ShipmentsCreate parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments', ApiVersion.v2,
         parameters: parameterMap);
@@ -31,7 +34,8 @@ class ShipmentService extends Service {
 
   /// Lists all [Shipment]s.
   Future<ShipmentCollection> list({ShipmentsAll? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
+    Map<String, dynamic>? parameterMap =
+        parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments', ApiVersion.v2,
         parameters: parameterMap);
@@ -48,7 +52,8 @@ class ShipmentService extends Service {
 
   /// Purchases a [Shipment].
   Future<Shipment> buy(Shipment shipment, ShipmentsBuy parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
 
     final json = await client.requestJson(
         HttpMethod.post, 'shipments/${shipment.id}/buy', ApiVersion.v2,
@@ -59,7 +64,8 @@ class ShipmentService extends Service {
   /// Generates a [Shipment] label.
   Future<Shipment> generateLabel(
       Shipment shipment, ShipmentsCreateDocument parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/label', ApiVersion.v2,
         parameters: parameterMap);
@@ -68,7 +74,8 @@ class ShipmentService extends Service {
 
   /// Insures a [Shipment].
   Future<Shipment> insure(Shipment shipment, ShipmentsInsure parameters) async {
-    Map<String, dynamic> parameterMap = parameters.constructJson(client: client);
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments/${shipment.id}/insure', ApiVersion.v2,
         parameters: parameterMap);
@@ -85,7 +92,8 @@ class ShipmentService extends Service {
   /// Refreshes the [Rate]s for a [Shipment].
   Future<Shipment> refreshRates(Shipment shipment,
       {ShipmentsGenerateRates? parameters}) async {
-    Map<String, dynamic>? parameterMap = parameters?.constructJson(client: client);
+    Map<String, dynamic>? parameterMap =
+        parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/${shipment.id}/rates', ApiVersion.v2,
         parameters: parameterMap);
@@ -101,7 +109,7 @@ class ShipmentService extends Service {
     List<String>? excludeServices,
   }) {
     if (shipment.rates == null) {
-      throw Exception('Shipment has no rates');
+      throw MissingPropertyException('Shipment has no rates');
     }
     return getLowestRate(shipment.rates!,
         includeCarriers: includeCarriers,
@@ -116,7 +124,7 @@ class ShipmentService extends Service {
     List<SmartRate> smartRates = await getSmartRates(shipment);
 
     if (smartRates.isEmpty) {
-      throw Exception('No smart rates available.');
+      throw ResourceNotFoundException('No smart rates available.');
     }
 
     return getLowestSmartRate(smartRates, deliveryDays, deliveryAccuracy);

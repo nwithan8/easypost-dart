@@ -1,7 +1,7 @@
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:easypost/src/internal/conversions.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'api_key.g.dart';
 
@@ -27,8 +27,8 @@ class ApiKeyCollection extends Collection {
   @JsonKey(name: 'keys')
   final List<ApiKey>? keys;
 
-  ApiKeyCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.children, this.keys)
+  ApiKeyCollection(id, createdAt, updatedAt, objectType, mode, hasMore,
+      this.children, this.keys)
       : super(id, createdAt, updatedAt, objectType, mode, hasMore);
 
   factory ApiKeyCollection.fromJson(Map<String, dynamic> input) =>
