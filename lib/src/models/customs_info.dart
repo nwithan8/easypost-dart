@@ -1,4 +1,7 @@
 import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/enums/customs_form_type.dart';
+import 'package:easypost/src/enums/customs_restriction_type.dart';
+import 'package:easypost/src/enums/non_delivery_option.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/customs_item.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -25,17 +28,26 @@ class CustomsInfo extends Model {
   @JsonKey(name: 'declaration')
   final String? declaration;
 
-  @JsonKey(name: 'eel_pfc')
-  final String? eelPfc;
+  @JsonKey(
+      name: 'eel_pfc',
+      fromJson: CustomsFormType.fromString,
+      toJson: CustomsFormType.asString)
+  final CustomsFormType? eelPfc;
 
-  @JsonKey(name: 'non_delivery_option')
-  final String? nonDeliveryOption;
+  @JsonKey(
+      name: 'non_delivery_option',
+      fromJson: NonDeliveryOption.fromString,
+      toJson: NonDeliveryOption.asString)
+  final NonDeliveryOption? nonDeliveryOption;
 
   @JsonKey(name: 'restriction_comments')
   final String? restrictionComments;
 
-  @JsonKey(name: 'restriction_type')
-  final String? restrictionType;
+  @JsonKey(
+      name: 'restriction_type',
+      fromJson: CustomsRestrictionType.fromString,
+      toJson: CustomsRestrictionType.asString)
+  final CustomsRestrictionType? restrictionType;
 
   CustomsInfo(
     id,

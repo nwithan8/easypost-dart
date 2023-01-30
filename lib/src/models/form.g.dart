@@ -12,7 +12,7 @@ Form _$FormFromJson(Map<String, dynamic> json) => Form(
       stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
-      json['form_type'] as String?,
+      FormType.fromString(json['form_type'] as String),
       json['form_url'] as String?,
       json['submitted_electronically'] as bool?,
     );
@@ -23,7 +23,7 @@ Map<String, dynamic> _$FormToJson(Form instance) => <String, dynamic>{
       'updated_at': dateTimeToString(instance.updatedAt),
       'object': instance.objectType,
       'mode': instance.mode,
-      'form_type': instance.formType,
+      'form_type': FormType.asString(instance.formType),
       'form_url': instance.formUrl,
       'submitted_electronically': instance.wasSubmittedElectronically,
     };

@@ -1,5 +1,6 @@
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/enums/batch_state.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/batch_shipment.dart';
 import 'package:easypost/src/models/scan_form.dart';
@@ -30,8 +31,11 @@ class Batch extends Model {
   @JsonKey(name: 'shipments')
   final List<BatchShipment>? shipments;
 
-  @JsonKey(name: 'state')
-  final String? state;
+  @JsonKey(
+      name: 'state',
+      fromJson: BatchState.fromString,
+      toJson: BatchState.asString)
+  final BatchState? state;
 
   @JsonKey(name: 'status')
   final Map<String, int>? status;

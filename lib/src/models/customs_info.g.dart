@@ -20,10 +20,10 @@ CustomsInfo _$CustomsInfoFromJson(Map<String, dynamic> json) => CustomsInfo(
           .toList(),
       json['customs_signer'] as String?,
       json['declaration'] as String?,
-      json['eel_pfc'] as String?,
-      json['non_delivery_option'] as String?,
+      CustomsFormType.fromString(json['eel_pfc'] as String),
+      NonDeliveryOption.fromString(json['non_delivery_option'] as String),
       json['restriction_comments'] as String?,
-      json['restriction_type'] as String?,
+      CustomsRestrictionType.fromString(json['restriction_type'] as String),
     );
 
 Map<String, dynamic> _$CustomsInfoToJson(CustomsInfo instance) =>
@@ -39,8 +39,10 @@ Map<String, dynamic> _$CustomsInfoToJson(CustomsInfo instance) =>
       'customs_items': instance.customsItems?.map((e) => e.toJson()).toList(),
       'customs_signer': instance.customsSigner,
       'declaration': instance.declaration,
-      'eel_pfc': instance.eelPfc,
-      'non_delivery_option': instance.nonDeliveryOption,
+      'eel_pfc': CustomsFormType.asString(instance.eelPfc),
+      'non_delivery_option':
+          NonDeliveryOption.asString(instance.nonDeliveryOption),
       'restriction_comments': instance.restrictionComments,
-      'restriction_type': instance.restrictionType,
+      'restriction_type':
+          CustomsRestrictionType.asString(instance.restrictionType),
     };

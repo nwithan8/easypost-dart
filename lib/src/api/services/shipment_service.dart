@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/shipments.dart';
+import 'package:easypost/src/api/parameters/v2/shipments.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
@@ -19,6 +19,16 @@ class ShipmentService extends Service {
   Future<Shipment> create(ShipmentsCreate parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
+    final json = await client.requestJson(
+        HttpMethod.post, 'shipments', ApiVersion.v2,
+        parameters: parameterMap);
+    return Shipment.fromJson(json);
+  }
+
+  /// Creates and buys a [Shipment] in one API call.
+  Future<Shipment> oneCallBuy(ShipmentsOneCallBuy parameters) async {
+    Map<String, dynamic> parameterMap =
+    parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments', ApiVersion.v2,
         parameters: parameterMap);

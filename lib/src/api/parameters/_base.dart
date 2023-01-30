@@ -2,6 +2,7 @@ import 'dart:mirrors';
 
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
+import 'package:easypost/src/internal/enums.dart';
 import 'package:easypost/src/exceptions/parameters/missing_parameter_exception.dart';
 import 'package:easypost/src/internal/custom_annotation.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
@@ -98,6 +99,9 @@ class Parameters {
         if (value is Parameters) {
           // If the value is a RequestParameters object, recursively add its parameters
           value = value.constructJson(apiVersion: apiVersion);
+        } else if (value is SerializableEnum) {
+          // If the value is a SerializableEnum, convert it to a string
+          value = value.toString();
         } else if (value is List<Parameters>) {
           List<Map<String, dynamic>> valueList = [];
           for (var item in value) {

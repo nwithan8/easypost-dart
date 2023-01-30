@@ -1,5 +1,6 @@
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/enums/report_type.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -24,6 +25,8 @@ class Report extends Model {
 
   @JsonKey(name: 'url_expires_at')
   final DateTime? urlExpiresAt;
+
+  ReportType? get type => ReportType.fromReport(this);
 
   Report(
     id,

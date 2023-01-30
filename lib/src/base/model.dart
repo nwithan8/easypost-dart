@@ -20,6 +20,14 @@ abstract class Model {
   @JsonKey(name: 'mode')
   final String? mode;
 
+  String? get prefix {
+    if (id == null) {
+      return null;
+    }
+
+    return id!.split('_').first;
+  }
+
   const Model(
       this.id, this.createdAt, this.updatedAt, this.objectType, this.mode);
 }
