@@ -20,3 +20,18 @@ examples/
 
 # Ignore test files
 test/
+
+# Ignore GitHub Actions
+.github/
+
+# Ignore VS Code
+.vscode/
+
+# Ignore IntelliJ
+.idea/
+
+# Ignore Android Studio
+*.iml
+
+# Ignore MacOS
+.DS_Store

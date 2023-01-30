@@ -9,5 +9,17 @@ build/
 # https://dart.dev/guides/libraries/private-files#pubspeclock.
 pubspec.lock
 
-# Ignore test files
-test/
+# Ignore generated documentation
+/doc/
+
+# Ignore VS Code
+.vscode/
+
+# Ignore IntelliJ
+.idea/
+
+# Ignore Android Studio
+*.iml
+
+# Ignore MacOS
+.DS_Store
