@@ -1,7 +1,7 @@
 name: easypost
 description: A Dart library for the EasyPost API.
 version: 0.1.0
-# homepage: https://easypost.com
+repository: https://github.com/nwithan8/easypost-dart
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
