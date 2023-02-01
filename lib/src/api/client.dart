@@ -32,17 +32,26 @@ import 'package:easypost/src/api/services/webhook_service.dart';
 
 ///  The Main EasyPost Client
 ///
-///  ## Example
-///
-///       var client = new Client(auth: new Authentication.withToken("SomeToken"));
-///       // Use the Client
-///
+///  ```dart
+///  ClientConfiguration config = ClientConfiguration("TEST_API_KEY", "PRODUCTION_API_KEY", ApiVersion.v2);
+///  Client client = Client(config);
+/// ```
 class Client {
   /// HTTP Client
   final ClientConfiguration config;
 
   /// Creates a new [Client] instance.
   Client(this.config);
+
+  /// Switches the client to production mode.
+  void enableProductionMode() {
+    config.enableProductionMode();
+  }
+
+  /// Switches the client to test mode.
+  void enableTestMode() {
+    config.enableTestMode();
+  }
 
   /// Service for address-related methods of the EasyPost API.
   AddressService get addresses => AddressService(this);

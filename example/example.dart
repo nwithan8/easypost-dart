@@ -3,10 +3,14 @@ import 'package:easypost/easypost.dart';
 Future<void> example() async {
   // Set up the API client
   ClientConfiguration configuration = ClientConfiguration(
-    "YOUR_API_KEY",
+    "TEST_API_KEY",
+    "PRODUCTION_API_KEY",
     apiVersion: ApiVersion.v2,
   );
   Client client = Client(configuration);
+
+  // Set the client to test mode (default)
+  client.enableTestMode();
 
   // Create a to address
   AddressesCreate addressCreateParams = AddressesCreate();

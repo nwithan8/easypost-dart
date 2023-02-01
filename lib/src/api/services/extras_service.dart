@@ -69,9 +69,10 @@ class ExtrasService extends Service {
   Future<PaymentMethod> createEasyPostCreditCardUsingStripeToken(
       String referralCustomerApiKey, String stripeToken,
       {PaymentMethodPriority? priority = PaymentMethodPriority.primary}) async {
-    // Create a one-off Client clone configured with the referral customer's API key
-    Client referralClient = Client(ClientConfiguration(referralCustomerApiKey,
+    // Create a one-off Client clone configured with the referral customer's production API key
+    Client referralClient = Client(ClientConfiguration("none", referralCustomerApiKey,
         apiVersion: client.config.apiVersion, baseUrl: client.config.baseUrl));
+    referralClient.enableProductionMode();
 
     // Create the request parameters
     CreateCreditCard parameters = CreateCreditCard();
