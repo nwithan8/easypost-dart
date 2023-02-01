@@ -35,3 +35,6 @@ test/
 
 # Ignore MacOS
 .DS_Store
+
+# Ignore analysis options
+analysis_options.yaml
