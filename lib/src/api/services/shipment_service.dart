@@ -28,7 +28,7 @@ class ShipmentService extends Service {
   /// Creates and buys a [Shipment] in one API call.
   Future<Shipment> oneCallBuy(ShipmentsOneCallBuy parameters) async {
     Map<String, dynamic> parameterMap =
-    parameters.constructJson(client: client);
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'shipments', ApiVersion.v2,
         parameters: parameterMap);

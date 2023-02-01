@@ -25,7 +25,7 @@ class OrderService extends Service {
   /// Creates and buys an [Order] in one API call.
   Future<Order> oneCallBuy(OrdersOneCallBuy parameters) async {
     Map<String, dynamic> parameterMap =
-    parameters.constructJson(client: client);
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'orders', ApiVersion.v2,
         parameters: parameterMap);
