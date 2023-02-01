@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 
-class AddressCreate extends Create {
+class AddressesCreate extends Create {
   @JsonParameter(Necessity.optional, ['address', "carrier_facility"])
   String? carrierFacility;
 
@@ -50,19 +50,19 @@ class AddressCreate extends Create {
   @JsonParameter(Necessity.optional, ['address', "zip"])
   String? zip;
 
-  AddressCreate({Map<String, dynamic>? overrideParameters})
+  AddressesCreate({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 
 //TODO: matches existing object
 }
 
-class AddressUpdate extends AddressCreate {
+class AddressesUpdate extends AddressesCreate {
   // Update is the same as Create
-  AddressUpdate({Map<String, dynamic>? overrideParameters})
+  AddressesUpdate({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
 
-class AddressAll extends All {
-  AddressAll({Map<String, dynamic>? overrideParameters})
+class AddressesAll extends All {
+  AddressesAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }

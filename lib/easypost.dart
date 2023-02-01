@@ -3,6 +3,7 @@
 // API client
 export 'package:easypost/src/api/client.dart';
 export 'package:easypost/src/api/client_configuration.dart';
+export 'package:easypost/src/api/http/api_version.dart';
 
 // API parameters
 export 'package:easypost/src/api/parameters/v2/addresses.dart';
@@ -34,6 +35,56 @@ export 'package:easypost/src/enums/file_format.dart';
 export 'package:easypost/src/enums/form_type.dart';
 export 'package:easypost/src/enums/non_delivery_option.dart';
 export 'package:easypost/src/enums/report_type.dart';
+
+// API models
+export 'package:easypost/src/models/address.dart';
+export 'package:easypost/src/models/api_key.dart';
+export 'package:easypost/src/models/batch.dart';
+export 'package:easypost/src/models/batch_shipment.dart';
+export 'package:easypost/src/models/brand.dart';
+export 'package:easypost/src/models/carbon_offset.dart';
+export 'package:easypost/src/models/carrier_account.dart';
+export 'package:easypost/src/models/carrier_detail.dart';
+export 'package:easypost/src/models/carrier_type.dart';
+export 'package:easypost/src/models/customs_info.dart';
+export 'package:easypost/src/models/customs_item.dart';
+export 'package:easypost/src/models/end_shipper.dart';
+export 'package:easypost/src/models/error.dart';
+export 'package:easypost/src/models/event.dart';
+export 'package:easypost/src/models/fee.dart';
+export 'package:easypost/src/models/form.dart';
+export 'package:easypost/src/models/insurance.dart';
+export 'package:easypost/src/models/message.dart';
+export 'package:easypost/src/models/options.dart';
+export 'package:easypost/src/models/order.dart';
+export 'package:easypost/src/models/parcel.dart';
+export 'package:easypost/src/models/payload.dart';
+export 'package:easypost/src/models/payment_method.dart';
+export 'package:easypost/src/models/payment_method_priority.dart';
+export 'package:easypost/src/models/payment_method_type.dart';
+export 'package:easypost/src/models/payment_methods_summary.dart';
+export 'package:easypost/src/models/payment_refund.dart';
+export 'package:easypost/src/models/pickup.dart';
+export 'package:easypost/src/models/pickup_rate.dart';
+export 'package:easypost/src/models/postage_label.dart';
+export 'package:easypost/src/models/rate.dart';
+export 'package:easypost/src/models/referral_customer.dart';
+export 'package:easypost/src/models/refund.dart';
+export 'package:easypost/src/models/report.dart';
+export 'package:easypost/src/models/scan_form.dart';
+export 'package:easypost/src/models/shipment.dart';
+export 'package:easypost/src/models/smart_rate.dart';
+export 'package:easypost/src/models/smart_rate_accuracy.dart';
+export 'package:easypost/src/models/tax_identifier.dart';
+export 'package:easypost/src/models/time_in_transit.dart';
+export 'package:easypost/src/models/tracker.dart';
+export 'package:easypost/src/models/tracking_detail.dart';
+export 'package:easypost/src/models/tracking_location.dart';
+export 'package:easypost/src/models/user.dart';
+export 'package:easypost/src/models/verification.dart';
+export 'package:easypost/src/models/verification_details.dart';
+export 'package:easypost/src/models/verifications.dart';
+export 'package:easypost/src/models/webhook.dart';
 
 // Tools
 export 'package:easypost/src/tools/rates.dart';

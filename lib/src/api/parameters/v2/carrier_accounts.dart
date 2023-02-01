@@ -23,10 +23,6 @@ class CarrierAccountsCreate extends Create {
 }
 
 class CarrierAccountsCreateFedEx extends CarrierAccountsCreate {
-  @override
-  @JsonParameter(Necessity.required, ['carrier_account', "type"])
-  String? type = "FedexAccount";
-
   @JsonParameter(Necessity.required,
       ['carrier_account', "registration_data", "account_number"])
   String? accountNumber;
@@ -96,14 +92,12 @@ class CarrierAccountsCreateFedEx extends CarrierAccountsCreate {
   String? shippingAddressStreet;
 
   CarrierAccountsCreateFedEx({Map<String, dynamic>? overrideParameters})
-      : super(overrideParameters: overrideParameters);
+      : super(overrideParameters: overrideParameters) {
+    type = "FedexAccount";
+  }
 }
 
 class CarrierAccountsCreateUps extends CarrierAccountsCreate {
-  @override
-  @JsonParameter(Necessity.required, ['carrier_account', "type"])
-  String? type = "UpsAccount";
-
   @JsonParameter(Necessity.required,
       ['carrier_account', "registration_data", "account_number"])
   String? accountNumber;
@@ -177,7 +171,9 @@ class CarrierAccountsCreateUps extends CarrierAccountsCreate {
   String? website;
 
   CarrierAccountsCreateUps({Map<String, dynamic>? overrideParameters})
-      : super(overrideParameters: overrideParameters);
+      : super(overrideParameters: overrideParameters) {
+    type = "UpsAccount";
+  }
 }
 
 class CarrierAccountsUpdate extends Update {

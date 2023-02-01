@@ -50,6 +50,7 @@ class ReferralCustomer extends User {
   factory ReferralCustomer.fromJson(Map<String, dynamic> input) =>
       _$ReferralCustomerFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ReferralCustomerToJson(this);
 }
 

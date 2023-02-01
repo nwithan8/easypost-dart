@@ -60,5 +60,6 @@ class SmartRate extends Rate {
   factory SmartRate.fromJson(Map<String, dynamic> input) =>
       _$SmartRateFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$SmartRateToJson(this);
 }

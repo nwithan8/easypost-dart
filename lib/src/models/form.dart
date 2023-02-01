@@ -1,4 +1,4 @@
-import 'package:easypost/easypost.dart';
+import 'package:easypost/src/enums/form_type.dart';
 import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';

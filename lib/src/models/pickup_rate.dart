@@ -59,5 +59,6 @@ class PickupRate extends Rate {
   factory PickupRate.fromJson(Map<String, dynamic> input) =>
       _$PickupRateFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PickupRateToJson(this);
 }

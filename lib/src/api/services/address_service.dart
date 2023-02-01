@@ -10,7 +10,7 @@ class AddressService extends Service {
   AddressService(Client client) : super(client);
 
   /// Creates an [Address].
-  Future<Address> create(AddressCreate parameters) async {
+  Future<Address> create(AddressesCreate parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -27,7 +27,7 @@ class AddressService extends Service {
   }
 
   /// Lists all [Address]es.
-  Future<AddressCollection> list({AddressAll? parameters}) async {
+  Future<AddressCollection> list({AddressesAll? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

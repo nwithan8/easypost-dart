@@ -1,4 +1,3 @@
-import 'package:easypost/easypost.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/enums/file_format.dart';

@@ -57,6 +57,7 @@ class EndShipper extends Address {
   factory EndShipper.fromJson(Map<String, dynamic> input) =>
       _$EndShipperFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$EndShipperToJson(this);
 }
 

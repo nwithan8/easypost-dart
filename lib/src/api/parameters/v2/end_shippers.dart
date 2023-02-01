@@ -1,16 +1,16 @@
 import 'package:easypost/src/api/parameters/v2/addresses.dart';
 
-class EndShippersCreate extends AddressCreate {
+class EndShippersCreate extends AddressesCreate {
   EndShippersCreate({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
 
-class EndShippersUpdate extends AddressUpdate {
+class EndShippersUpdate extends AddressesUpdate {
   EndShippersUpdate({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
 
-class EndShippersAll extends AddressAll {
+class EndShippersAll extends AddressesAll {
   EndShippersAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
