@@ -55,6 +55,64 @@
 <p>Package is available on <a href="https://pub.dev/packages/easypost">pub.dev</a>.</p>
 <h2 id="usage">Usage</h2>
 <p>Full documentation is available on <a href="https://pub.dev/documentation/easypost/latest/">Pub.dev</a> or <a href="https://nateharr.is/easypost-dart/">GitHub</a></p>
+<h3 id="example">Example</h3>
+<pre class="language-dart"><code class="language-dart">import 'package:easypost/easypost.dart';
+
+Future&lt;void&gt; example() async {
+  // Set up the API client
+  ClientConfiguration configuration = ClientConfiguration(
+    "YOUR_API_KEY",
+    apiVersion: ApiVersion.v2,
+  );
+  Client client = Client(configuration);
+  
+  // Create a to address
+  AddressesCreate addressCreateParams = AddressesCreate();
+  addressCreateParams.street1 = "388 Townsend St";
+  addressCreateParams.city = "San Francisco";
+  addressCreateParams.state = "CA";
+  addressCreateParams.zip = "94107";
+  addressCreateParams.country = "US";
+  
+  Address toAddress = await client.addresses.create(addressCreateParams);
+  
+  // Create a from address
+  addressCreateParams = AddressesCreate();
+  addressCreateParams.street1 = "388 Townsend St";
+  addressCreateParams.city = "San Francisco";
+  addressCreateParams.state = "CA";
+  addressCreateParams.zip = "94107";
+  addressCreateParams.country = "US";
+  
+  Address fromAddress = await client.addresses.create(addressCreateParams);
+  
+  // Create a parcel
+  ParcelsCreate parcelsCreateParams = ParcelsCreate();
+  parcelsCreateParams.length = 10.2;
+  parcelsCreateParams.width = 7.8;
+  parcelsCreateParams.height = 4.3;
+  parcelsCreateParams.weight = 21.2;
+  
+  Parcel parcel = await client.parcels.create(parcelsCreateParams);
+  
+  // Create a shipment
+  ShipmentsCreate shipmentsCreateParams = ShipmentsCreate();
+  shipmentsCreateParams.toAddress = toAddress;
+  shipmentsCreateParams.fromAddress = fromAddress;
+  shipmentsCreateParams.parcel = parcel;
+  
+  Shipment shipment = await client.shipments.create(shipmentsCreateParams);
+  
+  // Get the lowest rate for the shipment
+  Rate rate = client.shipments.getLowestRateFor(shipment);
+  
+  // Buy the shipment with the lowest rate
+  ShipmentsBuy shipmentBuyParams = ShipmentsBuy();
+  shipmentBuyParams.rate = rate;
+  
+  Shipment purchasedShipment = await client.shipments.buy(shipment, shipmentBuyParams);
+}
+</code></pre>
 <h2 id="development">Development</h2>
 <p>All messages are written with <code>json_serializable</code> so make sure to generate the
 files with <code>dart run build_runner build</code> when you make changes and want to test
@@ -105,7 +163,7 @@ them.</p>
 <footer>
   <span class="no-break">
     easypost
-      0.1.0
+      0.1.1
   </span>
 
   
