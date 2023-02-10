@@ -25,8 +25,8 @@ void main() {
     });
 
     test('create with verification', () async {
-      Client client = TestUtils.setUpVCRClient(
-          "addresses", 'create_with_verification');
+      Client client =
+          TestUtils.setUpVCRClient("addresses", 'create_with_verification');
       client.enableTestMode();
 
       final params = Fixtures.incorrectAddress;
@@ -72,8 +72,7 @@ void main() {
     });
 
     test('all', () async {
-      Client client =
-          TestUtils.setUpVCRClient("addresses", 'all');
+      Client client = TestUtils.setUpVCRClient("addresses", 'all');
       client.enableTestMode();
 
       final params = AddressesAll();

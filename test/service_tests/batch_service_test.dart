@@ -25,8 +25,7 @@ void main() {
     });
 
     test('all', () async {
-      Client client =
-          TestUtils.setUpVCRClient("batches", 'all');
+      Client client = TestUtils.setUpVCRClient("batches", 'all');
       client.enableTestMode();
 
       final params = BatchesAll();
