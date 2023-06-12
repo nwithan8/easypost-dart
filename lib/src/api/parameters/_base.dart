@@ -1,28 +1,51 @@
-// import 'dart:mirrors';
 import 'package:reflectable/reflectable.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/internal/enums.dart';
 import 'package:easypost/src/exceptions/parameters/missing_parameter_exception.dart';
 import 'package:easypost/src/internal/custom_annotation.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
-
-const reflector = const Reflector();
+import 'package:tuple/tuple.dart';
 
 @reflector
 class Parameters {
-  late Map<String, dynamic> _parameterMap;
+  final Map<String, dynamic> _parameterMap = {};
 
-  Parameters({Map<String, dynamic>? overrideParameters}) {
-    _parameterMap = overrideParameters ?? {};
-  }
+  Parameters();
 
   /// Validate all [Parameter]s to ensure that all required parameters are set
   /// Use this method to validate parameters during a function call
   void validate() {
-    return;
+    // Collect all properties for this class
+    var propertiesAndMirror = _allPropertiesAndMirror(this);
+    var properties = propertiesAndMirror.item1;
+    var mirror = propertiesAndMirror.item2;
+
+    // Check that all required parameters are set
+    for (var property in properties) {
+      // Get the parameter attribute for this property
+      var parameterAttribute =
+      CustomAnnotation.getAnnotationOfType<Parameter>(Parameter, property);
+      // If the property is not a parameter, ignore it
+      if (parameterAttribute == null) {
+        continue;
+      }
+
+      // If the parameter is required and not set, throw an exception
+      if (parameterAttribute.necessity == Necessity.required) {
+        try {
+          var value = mirror.invokeGetter(property.simpleName);
+          if (value == null) {
+            throw MissingParameterException(
+                "Required parameter '${property.simpleName}' is not set");
+          }
+        } catch (e) {
+          // If the property is not set, ignore it
+          continue;
+        }
+      }
+    }
   }
 
   /// Convert all [JsonParameter]s to a [Map].
@@ -31,22 +54,10 @@ class Parameters {
     // Verify that all required parameters are set in the dictionary
     validate();
 
-    // Construct the dictionary of all parameters for this API version
-    InstanceMirror im = reflector.reflect(this);
-    ClassMirror classMirror = im.type;
-
     // Collect all properties for this class
-    var properties = classMirror.declarations.values;
-
-    // Collect all properties for all superclasses
-    if (classMirror.qualifiedName != '.Parameters') {
-      var superclass = classMirror.superclass;
-      while (superclass != null && superclass.qualifiedName != '.Parameters') {
-        properties = properties.followedBy(superclass.declarations.values);
-        superclass = superclass.superclass;
-      }
-    }
-
+    var propertiesAndMirror = _allPropertiesAndMirror(this);
+    var properties = propertiesAndMirror.item1;
+    var mirror = propertiesAndMirror.item2;
 
     // Initialize parameter map, using the override parameters if they exist
     Map<String, dynamic> parameterMap = _parameterMap;
@@ -63,8 +74,7 @@ class Parameters {
 
       // get the value of the property
       try {
-        var value = im.invokeGetter(property.simpleName);
-        // var value = im.getField(property.simpleName).reflectee;
+        var value = mirror.invokeGetter(property.simpleName);
         if (value == null &&
             parameterAttribute.necessity == Necessity.optional) {
           // Ignore any optional parameters that are null
@@ -97,6 +107,31 @@ class Parameters {
     return parameterMap;
   }
 
+  /// Get all properties for this class
+  Tuple2<Iterable<DeclarationMirror>, InstanceMirror> _allPropertiesAndMirror(Object reflectee) {
+    // Construct the dictionary of all parameters
+    InstanceMirror im = reflector.reflect(reflectee);
+    ClassMirror classMirror = im.type;
+
+    // Collect all properties for this class
+    var properties = classMirror.declarations.values;
+
+    // Collect all properties for all superclasses
+    if (classMirror.qualifiedName != '.Parameters') {
+      var superclass = classMirror.superclass;
+      while (superclass != null && superclass.qualifiedName != '.Parameters') {
+        properties = properties.followedBy(superclass.declarations.values);
+        superclass = superclass.superclass;
+      }
+    }
+
+    return Tuple2(properties, im);
+  }
+
+  /// Create a [Parameters] object from a [Map].
+  static Parameters fromMap(Map<String, dynamic> map) {
+    return Parameters(); // Base, override in subclasses
+  }
 
   /// Update a [Map] with a value at a given path.
   static Map<String, dynamic> _updateMap(

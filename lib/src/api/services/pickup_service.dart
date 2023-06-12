@@ -1,7 +1,8 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/pickups.dart';
+import 'package:easypost/src/api/parameters/v2/pickups/all_pickups.dart';
+import 'package:easypost/src/api/parameters/v2/pickups/create_pickup.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/models/pickup.dart';
@@ -14,7 +15,7 @@ class PickupService extends Service {
   PickupService(Client client) : super(client);
 
   /// Creates a [Pickup].
-  Future<Pickup> create(PickupsCreate parameters) async {
+  Future<Pickup> create(CreatePickup parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     return await client.requestJson(
@@ -35,7 +36,7 @@ class PickupService extends Service {
   }
 
   /// Lists all [Pickup]s.
-  Future<PickupCollection> list({PickupsAll? parameters}) async {
+  Future<PickupCollection> list({AllPickups? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

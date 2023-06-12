@@ -1,7 +1,9 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/webhooks.dart';
+import 'package:easypost/src/api/parameters/v2/webhooks/all_webhooks.dart';
+import 'package:easypost/src/api/parameters/v2/webhooks/create_webhook.dart';
+import 'package:easypost/src/api/parameters/v2/webhooks/update_webhook.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/event.dart';
 import 'package:easypost/src/models/webhook.dart';
@@ -11,7 +13,7 @@ class WebhookService extends Service {
   WebhookService(Client client) : super(client);
 
   /// Creates a [Webhook].
-  Future<Webhook> create(WebhooksCreate parameters) async {
+  Future<Webhook> create(CreateWebhook parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     return await client.requestJson(
@@ -32,7 +34,7 @@ class WebhookService extends Service {
   }
 
   /// Lists all [Webhook]s.
-  Future<List<Webhook>> list({WebhooksAll? parameters}) async {
+  Future<List<Webhook>> list({AllWebhooks? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(
@@ -48,7 +50,7 @@ class WebhookService extends Service {
   }
 
   /// Updates a [Webhook].
-  Future<Webhook> update(Webhook webhook, WebhooksUpdate parameters) async {
+  Future<Webhook> update(Webhook webhook, UpdateWebhook parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(

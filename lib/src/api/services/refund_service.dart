@@ -1,7 +1,8 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/refunds.dart';
+import 'package:easypost/src/api/parameters/v2/refunds/all_refunds.dart';
+import 'package:easypost/src/api/parameters/v2/refunds/create_refund.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/refund.dart';
 
@@ -10,7 +11,7 @@ class RefundService extends Service {
   RefundService(Client client) : super(client);
 
   /// Creates a [Refund].
-  Future<Refund> create(RefundsCreate parameters) async {
+  Future<Refund> create(CreateRefund parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     return await client.requestJson(
@@ -31,7 +32,7 @@ class RefundService extends Service {
   }
 
   /// Lists all [Refund]s.
-  Future<RefundCollection> list({RefundsAll? parameters}) async {
+  Future<RefundCollection> list({AllRefunds? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

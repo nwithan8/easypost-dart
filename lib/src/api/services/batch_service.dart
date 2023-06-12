@@ -1,7 +1,10 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/batches.dart';
+import 'package:easypost/src/api/parameters/v2/batches/all_batches.dart';
+import 'package:easypost/src/api/parameters/v2/batches/create_batch.dart';
+import 'package:easypost/src/api/parameters/v2/batches/create_batch_document.dart';
+import 'package:easypost/src/api/parameters/v2/batches/update_batch_shipments.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/batch.dart';
 import 'package:easypost/src/models/shipment.dart';
@@ -11,7 +14,7 @@ class BatchService extends Service {
   BatchService(Client client) : super(client);
 
   /// Creates a [Batch].
-  Future<Batch> create(BatchesCreate parameters) async {
+  Future<Batch> create(CreateBatch parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -28,7 +31,7 @@ class BatchService extends Service {
   }
 
   /// Lists all [Batch]es.
-  Future<BatchCollection> list({BatchesAll? parameters}) async {
+  Future<BatchCollection> list({AllBatches? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(
@@ -39,7 +42,7 @@ class BatchService extends Service {
 
   /// Adds [Shipment]s to a [Batch].
   Future<Batch> addShipments(
-      Batch batch, BatchesUpdateShipments parameters) async {
+      Batch batch, UpdateBatchShipments parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -50,7 +53,7 @@ class BatchService extends Service {
 
   /// Removes [Shipment]s from a [Batch].
   Future<Batch> removeShipments(
-      Batch batch, BatchesUpdateShipments parameters) async {
+      Batch batch, UpdateBatchShipments parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
 
@@ -69,7 +72,7 @@ class BatchService extends Service {
 
   /// Generates a [Batch]'s label.
   Future<Batch> generateLabel(
-      Batch batch, BatchesCreateDocument parameters) async {
+      Batch batch, CreateBatchDocument parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -80,7 +83,7 @@ class BatchService extends Service {
 
   /// Generates a [Batch]'s scan form.
   Future<Batch> generateScanForm(
-      Batch batch, BatchesCreateDocument parameters) async {
+      Batch batch, CreateBatchDocument parameters) async {
     Map<String, dynamic>? parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(

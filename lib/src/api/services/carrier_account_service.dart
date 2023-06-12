@@ -1,7 +1,9 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/carrier_accounts.dart';
+import 'package:easypost/src/api/parameters/v2/carrier_accounts/all_carrier_accounts.dart';
+import 'package:easypost/src/api/parameters/v2/carrier_accounts/create_carrier_account.dart';
+import 'package:easypost/src/api/parameters/v2/carrier_accounts/update_carrier_account.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/carrier_account.dart';
 
@@ -10,7 +12,7 @@ class CarrierAccountService extends Service {
   CarrierAccountService(Client client) : super(client);
 
   /// Creates a [CarrierAccount].
-  Future<CarrierAccount> create(CarrierAccountsCreate parameters) async {
+  Future<CarrierAccount> create(CreateCarrierAccount parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -27,7 +29,7 @@ class CarrierAccountService extends Service {
   }
 
   /// Lists all [CarrierAccount]s.
-  Future<List<CarrierAccount>> list({CarrierAccountsAll? parameters}) async {
+  Future<List<CarrierAccount>> list({AllCarrierAccounts? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(
@@ -40,7 +42,7 @@ class CarrierAccountService extends Service {
 
   /// Updates a [CarrierAccount].
   Future<CarrierAccount> update(
-      CarrierAccount carrierAccount, CarrierAccountsUpdate parameters) async {
+      CarrierAccount carrierAccount, UpdateCarrierAccount parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(HttpMethod.patch,

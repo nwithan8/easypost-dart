@@ -1,7 +1,8 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/insurance.dart';
+import 'package:easypost/src/api/parameters/v2/insurance/all_insurance.dart';
+import 'package:easypost/src/api/parameters/v2/insurance/create_insurance.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/insurance.dart';
 
@@ -10,7 +11,7 @@ class InsuranceService extends Service {
   InsuranceService(Client client) : super(client);
 
   /// Creates an [Insurance].
-  Future<Insurance> create(InsuranceCreate parameters) async {
+  Future<Insurance> create(CreateInsurance parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -27,7 +28,7 @@ class InsuranceService extends Service {
   }
 
   /// Lists all [Insurance]s.
-  Future<InsuranceCollection> list({InsuranceAll? parameters}) async {
+  Future<InsuranceCollection> list({AllInsurance? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

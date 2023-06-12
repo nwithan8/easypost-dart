@@ -1,7 +1,13 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/shipments.dart';
+import 'package:easypost/src/api/parameters/v2/shipments/all_shipments.dart';
+import 'package:easypost/src/api/parameters/v2/shipments/buy_shipment.dart';
+import 'package:easypost/src/api/parameters/v2/shipments/create_shipment.dart';
+import 'package:easypost/src/api/parameters/v2/shipments/create_shipment_document.dart';
+import 'package:easypost/src/api/parameters/v2/shipments/generate_rates_for_shipment.dart';
+import 'package:easypost/src/api/parameters/v2/shipments/insure_shipment.dart';
+import 'package:easypost/src/api/parameters/v2/shipments/one_call_buy_shipment.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
@@ -16,7 +22,7 @@ class ShipmentService extends Service {
   ShipmentService(Client client) : super(client);
 
   /// Creates a [Shipment].
-  Future<Shipment> create(ShipmentsCreate parameters) async {
+  Future<Shipment> create(CreateShipment parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -26,7 +32,7 @@ class ShipmentService extends Service {
   }
 
   /// Creates and buys a [Shipment] in one API call.
-  Future<Shipment> oneCallBuy(ShipmentsOneCallBuy parameters) async {
+  Future<Shipment> oneCallBuy(OneCallBuyShipment parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -43,7 +49,7 @@ class ShipmentService extends Service {
   }
 
   /// Lists all [Shipment]s.
-  Future<ShipmentCollection> list({ShipmentsAll? parameters}) async {
+  Future<ShipmentCollection> list({AllShipments? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(
@@ -61,7 +67,7 @@ class ShipmentService extends Service {
   }
 
   /// Purchases a [Shipment].
-  Future<Shipment> buy(Shipment shipment, ShipmentsBuy parameters) async {
+  Future<Shipment> buy(Shipment shipment, BuyShipment parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
 
@@ -73,7 +79,7 @@ class ShipmentService extends Service {
 
   /// Generates a [Shipment] label.
   Future<Shipment> generateLabel(
-      Shipment shipment, ShipmentsCreateDocument parameters) async {
+      Shipment shipment, CreateShipmentDocument parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -83,7 +89,7 @@ class ShipmentService extends Service {
   }
 
   /// Insures a [Shipment].
-  Future<Shipment> insure(Shipment shipment, ShipmentsInsure parameters) async {
+  Future<Shipment> insure(Shipment shipment, InsureShipment parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -101,7 +107,7 @@ class ShipmentService extends Service {
 
   /// Refreshes the [Rate]s for a [Shipment].
   Future<Shipment> refreshRates(Shipment shipment,
-      {ShipmentsGenerateRates? parameters}) async {
+      {GenerateRatesForShipment? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

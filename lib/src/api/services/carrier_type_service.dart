@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/_generic.dart';
+import 'package:easypost/src/api/parameters/v2/carrier_types/all_carrier_types.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/carrier_type.dart';
 
@@ -10,7 +10,7 @@ class CarrierTypeService extends Service {
   CarrierTypeService(Client client) : super(client);
 
   /// List all [CarrierType]s.
-  Future<List<CarrierType>> list({All? parameters}) async {
+  Future<List<CarrierType>> list({AllCarrierTypes? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

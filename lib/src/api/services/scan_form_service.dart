@@ -1,7 +1,8 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/scan_forms.dart';
+import 'package:easypost/src/api/parameters/v2/scan_forms/all_scan_forms.dart';
+import 'package:easypost/src/api/parameters/v2/scan_forms/create_scan_form.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/scan_form.dart';
 
@@ -10,7 +11,7 @@ class ScanFormService extends Service {
   ScanFormService(Client client) : super(client);
 
   /// Creates a [ScanForm].
-  Future<ScanForm> create(ScanFormsCreate parameters) async {
+  Future<ScanForm> create(CreateScanForm parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     return await client.requestJson(
@@ -31,7 +32,7 @@ class ScanFormService extends Service {
   }
 
   /// Lists all [ScanForm]s.
-  Future<ScanFormCollection> list({ScanFormsAll? parameters}) async {
+  Future<ScanFormCollection> list({AllScanForms? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/customs_items.dart';
+import 'package:easypost/src/api/parameters/v2/customs_items/create_customs_item.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/customs_item.dart';
 
@@ -10,7 +10,7 @@ class CustomsItemService extends Service {
   CustomsItemService(Client client) : super(client);
 
   /// Creates a [CustomsItem].
-  Future<CustomsItem> create(CustomsItemsCreate parameters) async {
+  Future<CustomsItem> create(CreateCustomsItem parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(

@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/billing.dart';
+import 'package:easypost/src/api/parameters/v2/billing/fund_wallet.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/payment_methods_not_initialized_exception.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
@@ -39,7 +39,7 @@ class BillingService extends Service {
   }
 
   /// Funds your account with an established [PaymentMethod].
-  Future<bool> fundWallet(BillingFund parameters,
+  Future<bool> fundWallet(FundWallet parameters,
       {PaymentMethodPriority priority = PaymentMethodPriority.primary}) async {
     PaymentMethod? paymentMethod = await retrievePaymentMethod(priority);
     if (paymentMethod == null) {

@@ -1,7 +1,9 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/end_shippers.dart';
+import 'package:easypost/src/api/parameters/v2/end_shippers/all_end_shippers.dart';
+import 'package:easypost/src/api/parameters/v2/end_shippers/create_end_shipper.dart';
+import 'package:easypost/src/api/parameters/v2/end_shippers/update_end_shipper.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/end_shipper.dart';
 
@@ -10,7 +12,7 @@ class EndShipperService extends Service {
   EndShipperService(Client client) : super(client);
 
   /// Creates an [EndShipper].
-  Future<EndShipper> create(EndShippersCreate parameters) async {
+  Future<EndShipper> create(CreateEndShipper parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -27,7 +29,7 @@ class EndShipperService extends Service {
   }
 
   /// Lists all [EndShipper]s.
-  Future<EndShipperCollection> list({EndShippersAll? parameters}) async {
+  Future<EndShipperCollection> list({AllEndShippers? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(
@@ -38,7 +40,7 @@ class EndShipperService extends Service {
 
   /// Updates an [EndShipper].
   Future<EndShipper> update(
-      EndShipper endShipper, EndShippersUpdate parameters) async {
+      EndShipper endShipper, UpdateEndShipper parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(

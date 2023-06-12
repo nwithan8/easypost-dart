@@ -1,7 +1,8 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/addresses.dart';
+import 'package:easypost/src/api/parameters/v2/addresses/create_address.dart';
+import 'package:easypost/src/api/parameters/v2/addresses/all_addresses.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/address.dart';
 
@@ -10,7 +11,7 @@ class AddressService extends Service {
   AddressService(Client client) : super(client);
 
   /// Creates an [Address].
-  Future<Address> create(AddressesCreate parameters) async {
+  Future<Address> create(CreateAddress parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -27,7 +28,7 @@ class AddressService extends Service {
   }
 
   /// Lists all [Address]es.
-  Future<AddressCollection> list({AddressesAll? parameters}) async {
+  Future<AddressCollection> list({AllAddresses? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

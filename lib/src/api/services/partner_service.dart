@@ -1,7 +1,10 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/referral_customers.dart';
+import 'package:easypost/src/api/parameters/v2/referral_customers/add_credit_card_to_referral_customer.dart';
+import 'package:easypost/src/api/parameters/v2/referral_customers/all_referral_customers.dart';
+import 'package:easypost/src/api/parameters/v2/referral_customers/create_referral_customer.dart';
+import 'package:easypost/src/api/parameters/v2/referral_customers/update_referral_customer_email.dart';
 import 'package:easypost/src/api/services/extras_service.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
@@ -15,7 +18,7 @@ class PartnerService extends Service {
 
   /// Creates a [ReferralCustomer].
   Future<ReferralCustomer> createReferralCustomer(
-      ReferralCustomersCreate parameters) async {
+      CreateReferralCustomer parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     return await client.requestJson(
@@ -37,7 +40,7 @@ class PartnerService extends Service {
 
   /// Retrieves all [ReferralCustomer]s.
   Future<ReferralCustomerCollection> retrieveAllReferralCustomers(
-      ReferralCustomersAll parameters) async {
+      AllReferralCustomers parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     return await client.requestJson(
@@ -50,7 +53,7 @@ class PartnerService extends Service {
 
   /// Add a credit card to a [ReferralCustomer]'s account.
   Future<PaymentMethod> addCreditCardToReferralCustomer(
-      String referralCustomerApiKey, ReferralCustomersAddCreditCard parameters,
+      String referralCustomerApiKey, AddCreditCardToReferralCustomer parameters,
       {PaymentMethodPriority? priority = PaymentMethodPriority.primary}) async {
     // Validate the parameters before we begin
     // Will raise an exception if any required parameters are missing
@@ -88,7 +91,7 @@ class PartnerService extends Service {
 
   /// Update a [ReferralCustomer]'s email address.
   Future<bool> updateReferralCustomerEmail(ReferralCustomer referralCustomer,
-      ReferralCustomersUpdateEmail parameters) async {
+      UpdateReferralCustomerEmail parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     return await client.request(HttpMethod.post,

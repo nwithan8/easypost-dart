@@ -1,7 +1,8 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/reports.dart';
+import 'package:easypost/src/api/parameters/v2/reports/all_reports.dart';
+import 'package:easypost/src/api/parameters/v2/reports/create_report.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/report.dart';
 
@@ -10,7 +11,7 @@ class ReportService extends Service {
   ReportService(Client client) : super(client);
 
   /// Creates a [Report].
-  Future<Report> create(String type, ReportsCreate parameters) async {
+  Future<Report> create(String type, CreateReport parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     return await client.requestJson(
@@ -31,7 +32,7 @@ class ReportService extends Service {
   }
 
   /// Lists all [Report]s.
-  Future<ReportCollection> list(String type, {ReportsAll? parameters}) async {
+  Future<ReportCollection> list(String type, {AllReports? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(
