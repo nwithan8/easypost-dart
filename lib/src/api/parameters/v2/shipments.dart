@@ -11,6 +11,7 @@ import 'package:easypost/src/models/parcel.dart';
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/tax_identifier.dart';
 
+@reflector
 class ShipmentsCreate extends Create {
   @JsonParameter(Necessity.optional, ['carbon_offset'])
   bool? carbonOffset;
@@ -49,6 +50,7 @@ class ShipmentsCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class ShipmentsOneCallBuy extends ShipmentsCreate {
   @JsonParameter(Necessity.required, ['shipment', 'carrier'])
   String? carrier;
@@ -60,6 +62,7 @@ class ShipmentsOneCallBuy extends ShipmentsCreate {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class ShipmentsGenerateRates extends Parameters {
   // TODO: What are these parameters?
 
@@ -67,6 +70,7 @@ class ShipmentsGenerateRates extends Parameters {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class ShipmentsCreateDocument extends Parameters {
   @JsonParameter(Necessity.required, ['file_format'])
   FileFormat? fileFormat;
@@ -75,6 +79,7 @@ class ShipmentsCreateDocument extends Parameters {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class ShipmentsInsure extends Parameters {
   @JsonParameter(Necessity.required, ['amount'])
   double? amount;
@@ -83,6 +88,7 @@ class ShipmentsInsure extends Parameters {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class ShipmentsBuy extends Parameters {
   @JsonParameter(Necessity.optional, ['end_shipper'])
   EndShipper? endShipper;
@@ -100,6 +106,7 @@ class ShipmentsBuy extends Parameters {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class ShipmentsAll extends All {
   ShipmentsAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);

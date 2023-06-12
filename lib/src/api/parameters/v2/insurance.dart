@@ -1,7 +1,9 @@
 import 'package:easypost/src/api/parameters/_generic.dart';
+import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/models/address.dart';
 
+@reflector
 class InsuranceCreate extends Create {
   @JsonParameter(Necessity.optional, ['insurance', 'amount'])
   double? amount;
@@ -25,6 +27,7 @@ class InsuranceCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class InsuranceAll extends All {
   InsuranceAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);

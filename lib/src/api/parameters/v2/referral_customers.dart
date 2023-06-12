@@ -2,6 +2,7 @@ import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/api/parameters/_generic.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 
+@reflector
 class ReferralCustomersCreate extends Create {
   @JsonParameter(Necessity.optional, ['user', 'email'])
   String? email;
@@ -16,11 +17,13 @@ class ReferralCustomersCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class ReferralCustomersAll extends All {
   ReferralCustomersAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class ReferralCustomersAddCreditCard extends Parameters {
   @Parameter(Necessity.required)
   int? creditCardNumber;
@@ -37,6 +40,7 @@ class ReferralCustomersAddCreditCard extends Parameters {
   ReferralCustomersAddCreditCard() : super();
 }
 
+@reflector
 class ReferralCustomersUpdateEmail extends Parameters {
   @Parameter(Necessity.required)
   String? email;

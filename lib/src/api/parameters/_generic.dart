@@ -1,16 +1,19 @@
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 
+@reflector
 class Create extends Parameters {
   Create({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class Update extends Parameters {
   Update({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class All extends Parameters {
   @JsonParameter(Necessity.optional, ['after_id'])
   String? afterId;

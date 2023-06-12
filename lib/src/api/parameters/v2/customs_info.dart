@@ -1,7 +1,9 @@
 import 'package:easypost/src/api/parameters/_generic.dart';
+import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/models/customs_item.dart';
 
+@reflector
 class CustomsInfoCreate extends Create {
   @JsonParameter(Necessity.required, ['customs_info', 'contents_explanation'])
   String? contentsExplanation;
@@ -31,6 +33,7 @@ class CustomsInfoCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class CustomsInfoAll extends All {
   CustomsInfoAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);

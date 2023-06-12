@@ -1,7 +1,8 @@
 import 'package:easypost/src/internal/parameter_annotation.dart';
+import 'package:easypost/src/api/parameters/_generic.dart';
+import 'package:easypost/src/api/parameters/_base.dart';
 
-import '../_generic.dart';
-
+@reflector
 class CarrierAccountsCreate extends Create {
   @JsonParameter(Necessity.optional, ['carrier_account', "credentials"])
   Map<String, dynamic>? credentials;
@@ -22,6 +23,7 @@ class CarrierAccountsCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class CarrierAccountsCreateFedEx extends CarrierAccountsCreate {
   @JsonParameter(Necessity.required,
       ['carrier_account', "registration_data", "account_number"])
@@ -97,6 +99,7 @@ class CarrierAccountsCreateFedEx extends CarrierAccountsCreate {
   }
 }
 
+@reflector
 class CarrierAccountsCreateUps extends CarrierAccountsCreate {
   @JsonParameter(Necessity.required,
       ['carrier_account', "registration_data", "account_number"])
@@ -176,6 +179,7 @@ class CarrierAccountsCreateUps extends CarrierAccountsCreate {
   }
 }
 
+@reflector
 class CarrierAccountsUpdate extends Update {
   @JsonParameter(Necessity.optional, ['carrier_account', "credentials"])
   Map<String, dynamic>? credentials;
@@ -193,6 +197,7 @@ class CarrierAccountsUpdate extends Update {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class CarrierAccountsAll extends All {
   CarrierAccountsAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);

@@ -1,4 +1,5 @@
-import 'dart:mirrors';
+// import 'dart:mirrors';
+import 'package:reflectable/reflectable.dart';
 
 class CustomAnnotation {
   static T? getAnnotationOfType<T>(Type type, DeclarationMirror mirror) {
@@ -7,8 +8,8 @@ class CustomAnnotation {
     }
 
     for (var metadata in mirror.metadata) {
-      if (metadata.reflectee.runtimeType == type) {
-        return metadata.reflectee as T;
+      if (metadata.runtimeType == type) {
+        return metadata as T;
       }
     }
 

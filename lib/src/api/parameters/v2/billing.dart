@@ -2,6 +2,7 @@ import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/models/payment_method_priority.dart';
 
+@reflector
 class BillingFund extends Parameters {
   @JsonParameter(Necessity.required, ['amount'])
   String? amount;
@@ -10,6 +11,7 @@ class BillingFund extends Parameters {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class BillingAddStripePaymentMethod extends Parameters {
   @JsonParameter(Necessity.required, ['payment_method', 'stripe_customer_id'])
   String? stripeCustomerId;
@@ -25,6 +27,7 @@ class BillingAddStripePaymentMethod extends Parameters {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class BillingIssueRefund extends Parameters {
   @JsonParameter(Necessity.optional, ['refund_amount'])
   String? amount;

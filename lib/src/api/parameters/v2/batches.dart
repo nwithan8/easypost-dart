@@ -7,6 +7,7 @@ import 'package:easypost/src/models/shipment.dart';
 
 import '../_generic.dart';
 
+@reflector
 class BatchesCreate extends Create {
   @JsonParameter(Necessity.optional, ['shipment', "carrier"])
   String? carrier;
@@ -27,6 +28,7 @@ class BatchesCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class BatchesUpdateShipments extends Parameters {
   @JsonParameter(Necessity.required, ['shipments'])
   List<Shipment>? shipments;
@@ -38,6 +40,7 @@ class BatchesUpdateShipments extends Parameters {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class BatchesCreateDocument extends Parameters {
   @JsonParameter(Necessity.required, ['file_format'])
   FileFormat? fileFormat;
@@ -46,6 +49,7 @@ class BatchesCreateDocument extends Parameters {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class BatchesAll extends All {
   BatchesAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);

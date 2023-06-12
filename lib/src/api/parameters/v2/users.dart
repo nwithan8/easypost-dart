@@ -1,6 +1,8 @@
 import 'package:easypost/src/api/parameters/_generic.dart';
+import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 
+@reflector
 class UsersUpdate extends Update {
   @JsonParameter(Necessity.optional, ['user', 'current_password'])
   String? currentPassword;
@@ -33,6 +35,7 @@ class UsersUpdate extends Update {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class UsersUpdateBrand extends Update {
   @JsonParameter(Necessity.optional, ['brand', 'ad'])
   String? adBase64;
@@ -59,6 +62,7 @@ class UsersUpdateBrand extends Update {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class UsersCreate extends Create {
   @JsonParameter(Necessity.optional, ['user', 'name'])
   String? name;

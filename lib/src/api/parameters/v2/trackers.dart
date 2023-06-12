@@ -1,9 +1,11 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/parameters/_generic.dart';
+import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/models/tracker.dart';
 
+@reflector
 class TrackersCreate extends Create {
   @JsonParameter(Necessity.optional, ['tracker', 'amount'])
   String? amount;
@@ -27,6 +29,7 @@ class TrackersCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class TrackersCreateList extends Create {
   @JsonParameter(Necessity.optional, ['trackers'])
   List<Tracker>? trackers;
@@ -52,6 +55,7 @@ class TrackersCreateList extends Create {
   }
 }
 
+@reflector
 class TrackersAll extends All {
   @JsonParameter(Necessity.optional, ['carrier'])
   String? carrier;

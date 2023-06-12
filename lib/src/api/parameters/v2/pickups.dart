@@ -1,10 +1,12 @@
 import 'package:easypost/src/api/parameters/_generic.dart';
+import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/batch.dart';
 import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/models/shipment.dart';
 
+@reflector
 class PickupsCreate extends Create {
   @JsonParameter(Necessity.optional, ['pickup', 'address'])
   Address? address;
@@ -37,6 +39,7 @@ class PickupsCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class PickupsBuy extends All {
   @JsonParameter(Necessity.required, ['carrier'])
   String? carrier;
@@ -48,6 +51,7 @@ class PickupsBuy extends All {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class PickupsAll extends All {
   PickupsAll({Map<String, dynamic>? overrideParameters})
       : super(overrideParameters: overrideParameters);

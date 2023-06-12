@@ -1,9 +1,11 @@
 import 'package:easypost/src/api/parameters/_generic.dart';
+import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/models/shipment.dart';
 
+@reflector
 class OrdersCreate extends Create {
   @JsonParameter(Necessity.optional, ['order', 'carrier_accounts'])
   List<CarrierAccount>? carrierAccounts;
@@ -24,6 +26,7 @@ class OrdersCreate extends Create {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class OrdersOneCallBuy extends OrdersCreate {
   @JsonParameter(Necessity.required, ['carrier'])
   String? carrier;
@@ -35,6 +38,7 @@ class OrdersOneCallBuy extends OrdersCreate {
       : super(overrideParameters: overrideParameters);
 }
 
+@reflector
 class OrdersBuy extends All {
   @JsonParameter(Necessity.required, ['carrier'])
   String? carrier;
