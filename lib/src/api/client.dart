@@ -10,6 +10,7 @@ import 'package:easypost/src/api/services/api_key_service.dart';
 import 'package:easypost/src/api/services/batch_service.dart';
 import 'package:easypost/src/api/services/billing_service.dart';
 import 'package:easypost/src/api/services/carrier_account_service.dart';
+import 'package:easypost/src/api/services/carrier_info_service.dart';
 import 'package:easypost/src/api/services/carrier_type_service.dart';
 import 'package:easypost/src/api/services/customs_info_service.dart';
 import 'package:easypost/src/api/services/customs_item_service.dart';
@@ -67,6 +68,9 @@ class Client {
 
   /// Service for carrier account-related methods of the EasyPost API.
   CarrierAccountService get carrierAccounts => CarrierAccountService(this);
+
+  /// Service for carrier info-related methods of the EasyPost API.
+  CarrierInfoService get carrierMetadata => CarrierInfoService(this);
 
   /// Service for carrier type-related methods of the EasyPost API.
   CarrierTypeService get carrierTypes => CarrierTypeService(this);
