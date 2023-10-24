@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/enums/customs_form_type.dart';
 import 'package:easypost/src/enums/customs_restriction_type.dart';
 import 'package:easypost/src/enums/non_delivery_option.dart';
@@ -9,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'customs_info.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CustomsInfo extends Model {
+class CustomsInfo extends ModelWithId {
   @JsonKey(name: 'contents_explanation')
   final String? contentsExplanation;
 

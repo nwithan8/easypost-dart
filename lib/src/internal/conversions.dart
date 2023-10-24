@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 
 DateTime? stringToDateTime(String? timestamp) =>
     timestamp == null ? null : DateTime.parse(timestamp).toUtc();
@@ -10,4 +10,4 @@ double stringToMoney(String? money) =>
 
 String? moneyToString(double? money) => money?.toString();
 
-String? modelToId(Model? model) => model?.id;
+String? modelToId(ModelWithId? model) => model?.id;

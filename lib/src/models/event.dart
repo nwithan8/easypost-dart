@@ -1,12 +1,12 @@
 import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'event.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Event extends Model {
+class Event extends ModelWithId {
   @JsonKey(name: 'completed_urls')
   final List<String>? completedUrls;
 

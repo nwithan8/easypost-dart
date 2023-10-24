@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
@@ -11,7 +11,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'order.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Order extends Model {
+class Order extends ModelWithId {
   @JsonKey(name: 'buyer_address')
   final Address? buyerAddress;
 

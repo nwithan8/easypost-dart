@@ -1,5 +1,5 @@
 import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/tracker.dart';
@@ -8,7 +8,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'insurance.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Insurance extends Model {
+class Insurance extends ModelWithId {
   @JsonKey(name: 'amount', fromJson: stringToMoney, toJson: moneyToString)
   final double? amount;
 

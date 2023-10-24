@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'tax_identifier.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class TaxIdentifier extends Model {
+class TaxIdentifier extends ModelWithId {
   @JsonKey(name: 'entity')
   final String? entity;
 

@@ -1,5 +1,5 @@
 import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/enums/report_type.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'report.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Report extends Model {
+class Report extends ModelWithId {
   @JsonKey(name: 'end_date')
   final DateTime? endDate;
 

@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/payment_method_type.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'payment_method.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaymentMethod extends Model {
+class PaymentMethod extends ModelWithId {
   @JsonKey(name: 'bank_name')
   final String? bankName;
 

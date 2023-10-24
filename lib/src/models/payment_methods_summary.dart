@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/payment_method.dart';
 import 'package:easypost/src/models/payment_method_priority.dart';
@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'payment_methods_summary.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaymentMethodsSummary extends Model {
+class PaymentMethodsSummary extends ModelWithId {
   @JsonKey(name: 'primary_payment_method')
   final PaymentMethod? primaryPaymentMethod;
 

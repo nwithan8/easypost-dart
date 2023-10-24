@@ -1,5 +1,5 @@
 import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/enums/batch_state.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/batch_shipment.dart';
@@ -9,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'batch.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Batch extends Model {
+class Batch extends ModelWithId {
   @JsonKey(name: 'error')
   final String? error;
 

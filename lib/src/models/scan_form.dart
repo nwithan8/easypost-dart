@@ -1,5 +1,5 @@
 import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'scan_form.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class ScanForm extends Model {
+class ScanForm extends ModelWithId {
   @JsonKey(name: 'address')
   final Address? address;
 

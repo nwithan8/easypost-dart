@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'webhook.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Webhook extends Model {
+class Webhook extends ModelWithId {
   @JsonKey(name: 'disabled_at')
   final DateTime? disabledAt;
 

@@ -1,12 +1,12 @@
 import 'package:easypost/src/enums/form_type.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'form.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Form extends Model {
+class Form extends ModelWithId {
   @JsonKey(
       name: 'form_type',
       fromJson: FormType.fromString,

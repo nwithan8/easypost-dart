@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/smart_rate_accuracy.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'time_in_transit.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class TimeInTransit extends Model {
+class TimeInTransit extends ModelWithId {
   @JsonKey(name: 'percentile_50')
   final int? percentile50;
 

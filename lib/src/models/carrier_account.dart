@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'carrier_account.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CarrierAccount extends Model {
+class CarrierAccount extends ModelWithId {
   @JsonKey(name: 'billable_type')
   final String? billableType;
 

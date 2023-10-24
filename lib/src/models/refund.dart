@@ -1,12 +1,12 @@
 import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'refund.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Refund extends Model {
+class Refund extends ModelWithId {
   @JsonKey(name: 'carrier')
   final String? carrier;
 

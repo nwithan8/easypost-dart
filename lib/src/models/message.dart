@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'message.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Message extends Model {
+class Message extends ModelWithId {
   @JsonKey(name: 'carrier')
   final String? carrier;
 
