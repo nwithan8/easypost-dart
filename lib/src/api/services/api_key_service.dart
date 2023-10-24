@@ -14,4 +14,23 @@ class ApiKeyService extends Service {
         await client.requestJson(HttpMethod.get, 'api_keys', ApiVersion.v2);
     return ApiKeyCollection.fromJson(json);
   }
+
+  /// Retrieve all [ApiKey]s for a given user.
+  Future<List<ApiKey>?> retrieveApiKeysForUser(String userId) async {
+    final data = await list();
+
+    if (data.id == userId) {
+      return data.keys;
+    }
+
+    if (data.children != null) {
+      for (var child in data.children!) {
+        if (child.id == userId) {
+          return child.keys;
+        }
+      }
+    }
+
+    return null;
+  }
 }

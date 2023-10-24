@@ -70,6 +70,16 @@ class BatchService extends Service {
     return Batch.fromJson(json);
   }
 
+  /// Create and purchase a [Batch] in one call.
+  Future<Batch> createAndPurchase(CreateBatch parameters) async {
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
+    final json = await client.requestJson(
+        HttpMethod.post, 'batches/create_and_buy', ApiVersion.v2,
+        parameters: parameterMap);
+    return Batch.fromJson(json);
+  }
+
   /// Generates a [Batch]'s label.
   Future<Batch> generateLabel(
       Batch batch, CreateBatchDocument parameters) async {

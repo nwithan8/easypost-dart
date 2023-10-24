@@ -44,4 +44,14 @@ class AddressService extends Service {
         rootElement: "address");
     return Address.fromJson(json);
   }
+
+  /// Creates and verifies an [Address] in one call.
+  Future<Address> createAndVerify(CreateAddress parameters) async {
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
+    final json = await client.requestJson(
+        HttpMethod.post, 'addresses/create_and_verify', ApiVersion.v2,
+        parameters: parameterMap);
+    return Address.fromJson(json);
+  }
 }
