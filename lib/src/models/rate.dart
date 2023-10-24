@@ -1,6 +1,5 @@
 import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/internal/conversions.dart';
-import 'package:easypost/src/models/carbon_offset.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'rate.g.dart';
@@ -9,9 +8,6 @@ part 'rate.g.dart';
 class Rate extends Model {
   @JsonKey(name: 'billing_type')
   final String? billingType;
-
-  @JsonKey(name: 'carbon_offset')
-  final CarbonOffset? carbonOffset;
 
   @JsonKey(name: 'carrier')
   final String? carrier;
@@ -41,7 +37,7 @@ class Rate extends Model {
   final double? listRate;
 
   @JsonKey(name: 'rate', fromJson: stringToMoney, toJson: moneyToString)
-  final double? rate;
+  final double? price;
 
   @JsonKey(name: 'retail_currency')
   final String? retailCurrency;
@@ -56,13 +52,9 @@ class Rate extends Model {
   final String? shipmentId;
 
   Rate(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.billingType,
-    this.carbonOffset,
     this.carrier,
     this.carrierAccountId,
     this.currency,
@@ -72,12 +64,12 @@ class Rate extends Model {
     this.estDeliveryDays,
     this.listCurrency,
     this.listRate,
-    this.rate,
+    this.price,
     this.retailCurrency,
     this.retailRate,
     this.service,
     this.shipmentId,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory Rate.fromJson(Map<String, dynamic> input) => _$RateFromJson(input);
 
