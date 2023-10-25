@@ -26,11 +26,11 @@ ScanForm _$ScanFormFromJson(Map<String, dynamic> json) => ScanForm(
     );
 
 Map<String, dynamic> _$ScanFormToJson(ScanForm instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'address': instance.address?.toJson(),
       'batch_id': instance.batchId,
       'form_file_type': instance.formFileType,
@@ -55,11 +55,11 @@ ScanFormCollection _$ScanFormCollectionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ScanFormCollectionToJson(ScanFormCollection instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'has_more': instance.hasMore,
       'scan_forms': instance.scanForms?.map((e) => e.toJson()).toList(),
     };

@@ -24,11 +24,11 @@ TimeInTransit _$TimeInTransitFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$TimeInTransitToJson(TimeInTransit instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'percentile_50': instance.percentile50,
       'percentile_75': instance.percentile75,
       'percentile_85': instance.percentile85,

@@ -20,11 +20,11 @@ Parcel _$ParcelFromJson(Map<String, dynamic> json) => Parcel(
     );
 
 Map<String, dynamic> _$ParcelToJson(Parcel instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'height': instance.height,
       'length': instance.length,
       'predefined_package': instance.predefinedPackage,

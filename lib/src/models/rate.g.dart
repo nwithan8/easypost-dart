@@ -1,34 +1,34 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'pickup_rate.dart';
+part of 'rate.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PickupRate _$PickupRateFromJson(Map<String, dynamic> json) => PickupRate(
+Rate _$RateFromJson(Map<String, dynamic> json) => Rate(
       json['object'],
       json['mode'],
-      json['billing_type'],
-      json['carrier'],
-      json['carrier_account_id'],
-      json['currency'],
-      json['delivery_date'],
-      json['delivery_date_guaranteed'],
-      json['delivery_days'],
-      json['est_delivery_days'],
-      json['list_currency'],
+      json['billing_type'] as String?,
+      json['carrier'] as String?,
+      json['carrier_account_id'] as String?,
+      json['currency'] as String?,
+      json['delivery_date'] == null
+          ? null
+          : DateTime.parse(json['delivery_date'] as String),
+      json['delivery_date_guaranteed'] as bool?,
+      json['delivery_days'] as int?,
+      json['est_delivery_days'] as int?,
+      json['list_currency'] as String?,
       stringToMoney(json['list_rate'] as String?),
       stringToMoney(json['rate'] as String?),
-      json['retail_currency'],
+      json['retail_currency'] as String?,
       stringToMoney(json['retail_rate'] as String?),
-      json['service'],
-      json['shipment_id'],
-      json['pickup_id'] as String?,
+      json['service'] as String?,
+      json['shipment_id'] as String?,
     );
 
-Map<String, dynamic> _$PickupRateToJson(PickupRate instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$RateToJson(Rate instance) => <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
       'billing_type': instance.billingType,
@@ -46,5 +46,4 @@ Map<String, dynamic> _$PickupRateToJson(PickupRate instance) =>
       'retail_rate': moneyToString(instance.retailRate),
       'service': instance.service,
       'shipment_id': instance.shipmentId,
-      'pickup_id': instance.pickupId,
     };

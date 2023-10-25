@@ -18,11 +18,11 @@ Form _$FormFromJson(Map<String, dynamic> json) => Form(
     );
 
 Map<String, dynamic> _$FormToJson(Form instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'form_type': FormType.asString(instance.formType),
       'form_url': instance.formUrl,
       'submitted_electronically': instance.wasSubmittedElectronically,

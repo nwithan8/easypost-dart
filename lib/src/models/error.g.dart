@@ -22,11 +22,11 @@ Error _$ErrorFromJson(Map<String, dynamic> json) => Error(
     );
 
 Map<String, dynamic> _$ErrorToJson(Error instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'code': instance.code,
       'errors': instance.errors?.map((e) => e.toJson()).toList(),
       'field': instance.field,

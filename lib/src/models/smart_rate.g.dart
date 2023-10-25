@@ -7,13 +7,9 @@ part of 'smart_rate.dart';
 // **************************************************************************
 
 SmartRate _$SmartRateFromJson(Map<String, dynamic> json) => SmartRate(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['billing_type'],
-      json['carbon_offset'],
       json['carrier'],
       json['carrier_account_id'],
       json['currency'],
@@ -35,13 +31,9 @@ SmartRate _$SmartRateFromJson(Map<String, dynamic> json) => SmartRate(
     );
 
 Map<String, dynamic> _$SmartRateToJson(SmartRate instance) => <String, dynamic>{
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'object': instance.objectType,
       'mode': instance.mode,
       'billing_type': instance.billingType,
-      'carbon_offset': instance.carbonOffset?.toJson(),
       'carrier': instance.carrier,
       'carrier_account_id': instance.carrierAccountId,
       'currency': instance.currency,
@@ -51,7 +43,7 @@ Map<String, dynamic> _$SmartRateToJson(SmartRate instance) => <String, dynamic>{
       'est_delivery_days': instance.estDeliveryDays,
       'list_currency': instance.listCurrency,
       'list_rate': moneyToString(instance.listRate),
-      'rate': moneyToString(instance.rate),
+      'rate': moneyToString(instance.price),
       'retail_currency': instance.retailCurrency,
       'retail_rate': moneyToString(instance.retailRate),
       'service': instance.service,

@@ -113,11 +113,11 @@ Options _$OptionsFromJson(Map<String, dynamic> json) => Options(
     );
 
 Map<String, dynamic> _$OptionsToJson(Options instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'additional_handling': instance.additionalHandling,
       'address_validation_level': instance.addressValidationLevel,
       'alcohol': instance.isAlcohol,

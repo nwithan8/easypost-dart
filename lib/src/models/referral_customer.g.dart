@@ -30,11 +30,11 @@ ReferralCustomer _$ReferralCustomerFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ReferralCustomerToJson(ReferralCustomer instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'api_keys': instance.apiKeys?.map((e) => e.toJson()).toList(),
       'balance': moneyToString(instance.balance),
       'children': instance.children?.map((e) => e.toJson()).toList(),
@@ -68,11 +68,11 @@ ReferralCustomerCollection _$ReferralCustomerCollectionFromJson(
 Map<String, dynamic> _$ReferralCustomerCollectionToJson(
         ReferralCustomerCollection instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'has_more': instance.hasMore,
       'referral_customers':
           instance.referralCustomers?.map((e) => e.toJson()).toList(),

@@ -24,11 +24,11 @@ Brand _$BrandFromJson(Map<String, dynamic> json) => Brand(
     );
 
 Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'ad': instance.ad,
       'ad_href': instance.adHref,
       'background_color': instance.backgroundColor,

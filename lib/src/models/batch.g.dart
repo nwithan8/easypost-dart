@@ -30,11 +30,11 @@ Batch _$BatchFromJson(Map<String, dynamic> json) => Batch(
     );
 
 Map<String, dynamic> _$BatchToJson(Batch instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'error': instance.error,
       'label_url': instance.labelUrl,
       'message': instance.message,
@@ -61,11 +61,11 @@ BatchCollection _$BatchCollectionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$BatchCollectionToJson(BatchCollection instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'has_more': instance.hasMore,
       'batches': instance.batches?.map((e) => e.toJson()).toList(),
     };

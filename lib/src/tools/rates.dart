@@ -21,11 +21,11 @@ Rate getLowestRate(List<Rate> rates,
   Rate? lowestRate;
 
   for (final rate in rates) {
-    if (rate.rate == null) {
+    if (rate.price == null) {
       continue; // Skip this rate if it doesn't have a price
     }
 
-    if (lowestRate != null && lowestRate.rate == null) {
+    if (lowestRate != null && lowestRate.price == null) {
       // somehow a rate with null got selected in the last iteration, throw an error
       // the guard clause above should have prevented this, so this should never happen
       throw FilteringException(
@@ -69,7 +69,7 @@ Rate getLowestRate(List<Rate> rates,
     }
 
     // if the rate is lower than the current lowest rate, use it
-    if (rate.rate! < lowestRate.rate!) {
+    if (rate.price! < lowestRate.price!) {
       lowestRate = rate;
       continue;
     }
@@ -87,11 +87,11 @@ SmartRate getLowestSmartRate(List<SmartRate> smartRates, int deliveryDays,
   SmartRate? lowestRate;
 
   for (SmartRate rate in smartRates) {
-    if (rate.rate == null) {
+    if (rate.price == null) {
       continue; // Skip this rate if it doesn't have a price
     }
 
-    if (lowestRate != null && lowestRate.rate == null) {
+    if (lowestRate != null && lowestRate.price == null) {
       // somehow a rate with null got selected in the last iteration, throw an error
       // the guard clause above should have prevented this, so this should never happen
       throw FilteringException(
@@ -120,7 +120,7 @@ SmartRate getLowestSmartRate(List<SmartRate> smartRates, int deliveryDays,
     }
 
     // if the rate is lower than the current lowest rate, use it
-    if (rate.rate! < lowestRate.rate!) {
+    if (rate.price! < lowestRate.price!) {
       lowestRate = rate;
       continue;
     }

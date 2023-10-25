@@ -39,11 +39,11 @@ Pickup _$PickupFromJson(Map<String, dynamic> json) => Pickup(
     );
 
 Map<String, dynamic> _$PickupToJson(Pickup instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'address': instance.address?.toJson(),
       'carrier_accounts':
           instance.carrierAccounts?.map((e) => e.toJson()).toList(),
@@ -74,11 +74,11 @@ PickupCollection _$PickupCollectionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PickupCollectionToJson(PickupCollection instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'has_more': instance.hasMore,
       'pickups': instance.pickups?.map((e) => e.toJson()).toList(),
     };

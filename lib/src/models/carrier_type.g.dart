@@ -20,11 +20,11 @@ CarrierType _$CarrierTypeFromJson(Map<String, dynamic> json) => CarrierType(
 
 Map<String, dynamic> _$CarrierTypeToJson(CarrierType instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'fields': instance.fields,
       'logo': instance.logo,
       'readable': instance.readable,

@@ -23,11 +23,11 @@ Verifications _$VerificationsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$VerificationsToJson(Verifications instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'delivery': instance.delivery?.toJson(),
       'zip4': instance.zip4?.toJson(),
     };

@@ -26,11 +26,11 @@ PaymentRefund _$PaymentRefundFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PaymentRefundToJson(PaymentRefund instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'refunded_amount': instance.refundedAmount,
       'refunded_amount_currencys': instance.refundCurrency,
       'refunded_payment_logs': instance.refundedPaymentLogsIds,

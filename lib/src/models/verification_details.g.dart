@@ -21,11 +21,11 @@ VerificationDetails _$VerificationDetailsFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$VerificationDetailsToJson(
         VerificationDetails instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
       'time_zone': instance.timeZone,

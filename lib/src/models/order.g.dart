@@ -45,11 +45,11 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
     );
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'buyer_address': instance.buyerAddress?.toJson(),
       'carrier_accounts':
           instance.carrierAccounts?.map((e) => e.toJson()).toList(),

@@ -48,11 +48,6 @@ class Pickup extends ModelWithId {
   @JsonKey(name: 'status')
   final String? status;
 
-  PickupRate associatedPickupRate(Rate rate) {
-    return pickupRates!.firstWhere(
-        (pickupRate) => pickupRate.id != null && pickupRate.id == rate.id);
-  }
-
   Pickup(
     id,
     createdAt,

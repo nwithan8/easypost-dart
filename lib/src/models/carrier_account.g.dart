@@ -24,11 +24,11 @@ CarrierAccount _$CarrierAccountFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CarrierAccountToJson(CarrierAccount instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'billable_type': instance.billableType,
       'credentials': instance.credentials,
       'description': instance.description,

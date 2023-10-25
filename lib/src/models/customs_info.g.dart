@@ -28,11 +28,11 @@ CustomsInfo _$CustomsInfoFromJson(Map<String, dynamic> json) => CustomsInfo(
 
 Map<String, dynamic> _$CustomsInfoToJson(CustomsInfo instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'contents_explanation': instance.contentsExplanation,
       'contents_type': instance.contentsType,
       'customs_certify': instance.customsShouldCertify,

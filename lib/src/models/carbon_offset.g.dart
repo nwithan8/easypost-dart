@@ -19,11 +19,11 @@ CarbonOffset _$CarbonOffsetFromJson(Map<String, dynamic> json) => CarbonOffset(
 
 Map<String, dynamic> _$CarbonOffsetToJson(CarbonOffset instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'currency': instance.currency,
       'grams': instance.grams,
       'price': moneyToString(instance.price),

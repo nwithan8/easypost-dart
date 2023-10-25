@@ -32,11 +32,11 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'api_keys': instance.apiKeys?.map((e) => e.toJson()).toList(),
       'balance': moneyToString(instance.balance),
       'children': instance.children?.map((e) => e.toJson()).toList(),

@@ -32,11 +32,11 @@ Insurance _$InsuranceFromJson(Map<String, dynamic> json) => Insurance(
     );
 
 Map<String, dynamic> _$InsuranceToJson(Insurance instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'amount': moneyToString(instance.amount),
       'from_address': instance.fromAddress?.toJson(),
       'messages': instance.messages,
@@ -66,11 +66,11 @@ InsuranceCollection _$InsuranceCollectionFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$InsuranceCollectionToJson(
         InsuranceCollection instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'has_more': instance.hasMore,
       'insurances': instance.insurances?.map((e) => e.toJson()).toList(),
     };

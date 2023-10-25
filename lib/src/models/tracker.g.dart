@@ -35,11 +35,11 @@ Tracker _$TrackerFromJson(Map<String, dynamic> json) => Tracker(
     );
 
 Map<String, dynamic> _$TrackerToJson(Tracker instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'carrier': instance.carrier,
       'carrier_detail': instance.carrierDetail?.toJson(),
       'est_delivery_date': instance.estDeliveryDate?.toIso8601String(),
@@ -69,11 +69,11 @@ TrackerCollection _$TrackerCollectionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$TrackerCollectionToJson(TrackerCollection instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'has_more': instance.hasMore,
       'trackers': instance.trackers?.map((e) => e.toJson()).toList(),
     };

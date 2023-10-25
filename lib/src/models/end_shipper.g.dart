@@ -33,11 +33,11 @@ EndShipper _$EndShipperFromJson(Map<String, dynamic> json) => EndShipper(
 
 Map<String, dynamic> _$EndShipperToJson(EndShipper instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'carrier_facility': instance.carrierFacility,
       'city': instance.city,
       'company': instance.company,
@@ -74,11 +74,11 @@ EndShipperCollection _$EndShipperCollectionFromJson(
 Map<String, dynamic> _$EndShipperCollectionToJson(
         EndShipperCollection instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'has_more': instance.hasMore,
       'end_shippers': instance.endShippers?.map((e) => e.toJson()).toList(),
     };

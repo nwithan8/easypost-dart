@@ -24,11 +24,11 @@ Verification _$VerificationFromJson(Map<String, dynamic> json) => Verification(
 
 Map<String, dynamic> _$VerificationToJson(Verification instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'details': instance.details?.toJson(),
       'errors': instance.errors?.map((e) => e.toJson()).toList(),
       'success': instance.wasSuccessful,

@@ -27,11 +27,11 @@ Report _$ReportFromJson(Map<String, dynamic> json) => Report(
     );
 
 Map<String, dynamic> _$ReportToJson(Report instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'end_date': instance.endDate?.toIso8601String(),
       'include_children': instance.includeChildren,
       'start_date': instance.startDate?.toIso8601String(),
@@ -56,11 +56,11 @@ ReportCollection _$ReportCollectionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ReportCollectionToJson(ReportCollection instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'has_more': instance.hasMore,
       'reports': instance.reports?.map((e) => e.toJson()).toList(),
       'type': instance.type,
