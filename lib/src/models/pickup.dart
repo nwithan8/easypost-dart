@@ -72,6 +72,15 @@ class Pickup extends ModelWithId {
       _$PickupFromJson(input);
 
   Map<String, dynamic> toJson() => _$PickupToJson(this);
+
+  PickupRate associatedPickupRate(Rate rate) {
+    return pickupRates!.firstWhere((pickupRate) =>
+        pickupRate.carrier != null &&
+        pickupRate.carrier == rate.carrier &&
+        pickupRate.service != null &&
+        pickupRate.service == rate.service &&
+        pickupRate.price == rate.price);
+  }
 }
 
 @JsonSerializable(explicitToJson: true)
