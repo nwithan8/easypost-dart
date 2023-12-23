@@ -3,11 +3,13 @@ import 'package:test/test.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'carrier_account_service_test.reflectable.dart';
 
 void main() {
   group('Carrier Accounts', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
     test('create', () async {
@@ -31,7 +33,7 @@ void main() {
       client.enableProductionMode();
 
       // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
-      final params = CarrierAccountsCreateFedEx();
+      final params = CreateFedExCarrierAccount();
       params.accountNumber = "RANDOM";
       params.corporateAddressCity = "RANDOM";
       params.corporateAddressCountryCode = "RANDOM";
@@ -67,7 +69,7 @@ void main() {
       Client client = TestUtils.setUpVCRClient("carrier_accounts", 'all');
       client.enableProductionMode();
 
-      final params = CarrierAccountsAll();
+      final params = AllCarrierAccounts();
       params.pageSize = Fixtures.pageSize;
 
       final List<CarrierAccount> carrierAccountsList =

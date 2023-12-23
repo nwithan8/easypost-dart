@@ -1,13 +1,16 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
+import 'package:reflectable/reflectable.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'address_service_test.reflectable.dart';
 
 void main() {
   group('Addresses', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
     test('create', () async {
@@ -75,7 +78,7 @@ void main() {
       Client client = TestUtils.setUpVCRClient("addresses", 'all');
       client.enableTestMode();
 
-      final params = AddressesAll();
+      final params = AllAddresses();
       params.pageSize = Fixtures.pageSize;
 
       final addressCollection = await client.addresses.list(parameters: params);
@@ -91,6 +94,11 @@ void main() {
     test('verify', () async {
       Client client = TestUtils.setUpVCRClient("addresses", 'verify');
       client.enableTestMode();
+
+
+      CreateShipment createShipmentParameters = Fixtures.basicShipment;
+      Map<String, dynamic> testParams = createShipmentParameters.constructJson(client: client);
+
 
       final params = Fixtures.caAddress1;
 

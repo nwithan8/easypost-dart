@@ -3,11 +3,13 @@ import 'package:test/test.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'carrier_type_service_test.reflectable.dart';
 
 void main() {
   group('Carrier Types', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
     test('all', () async {

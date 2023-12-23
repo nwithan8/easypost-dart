@@ -3,11 +3,13 @@ import 'package:test/test.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'api_key_service_test.reflectable.dart';
 
 void main() {
   group('API keys', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
     test('all', () async {

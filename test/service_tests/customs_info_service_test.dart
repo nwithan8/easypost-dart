@@ -3,11 +3,13 @@ import 'package:test/test.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'customs_info_service_test.reflectable.dart';
 
 void main() {
   group('Customs Info', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
     test('create', () async {

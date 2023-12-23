@@ -3,18 +3,20 @@ import 'package:test/test.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'batch_service_test.reflectable.dart';
 
 void main() {
   group('Batches', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
     test('create', () async {
       Client client = TestUtils.setUpVCRClient("batches", 'create');
       client.enableTestMode();
 
-      final params = BatchesCreate();
+      final params = CreateBatch();
       params.shipmentCreationParameters = [Fixtures.basicShipment];
 
       final batch = await client.batches.create(params);
@@ -28,7 +30,7 @@ void main() {
       Client client = TestUtils.setUpVCRClient("batches", 'all');
       client.enableTestMode();
 
-      final params = BatchesAll();
+      final params = AllBatches();
       params.pageSize = Fixtures.pageSize;
 
       final batchCollection = await client.batches.list(parameters: params);
@@ -45,7 +47,7 @@ void main() {
       Client client = TestUtils.setUpVCRClient("batches", 'retrieve');
       client.enableTestMode();
 
-      final params = BatchesCreate();
+      final params = CreateBatch();
       params.shipmentCreationParameters = [Fixtures.basicShipment];
 
       final batch = await client.batches.create(params);
@@ -61,12 +63,12 @@ void main() {
       Client client = TestUtils.setUpVCRClient("batches", 'generate_label');
       client.enableTestMode();
 
-      final createParams = BatchesCreate();
+      final createParams = CreateBatch();
       createParams.shipmentCreationParameters = [Fixtures.basicShipment];
 
       final batch = await client.batches.create(createParams);
 
-      final labelParams = BatchesCreateDocument();
+      final labelParams = CreateBatchDocument();
       labelParams.fileFormat = FileFormat.pdf;
 
       final labeledBatch =
