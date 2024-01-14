@@ -33,5 +33,6 @@ class CarrierType extends ModelWithId {
   factory CarrierType.fromJson(Map<String, dynamic> input) =>
       _$CarrierTypeFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierTypeToJson(this);
 }

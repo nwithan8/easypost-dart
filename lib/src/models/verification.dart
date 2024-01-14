@@ -31,5 +31,6 @@ class Verification extends ModelWithId {
   factory Verification.fromJson(Map<String, dynamic> input) =>
       _$VerificationFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$VerificationToJson(this);
 }

@@ -19,6 +19,5 @@ class AllCarrierTypes extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllCarrierTypes()
-      : super();
+  AllCarrierTypes() : super();
 }

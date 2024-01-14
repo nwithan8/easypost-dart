@@ -14,21 +14,23 @@ class ScanFormService extends Service {
   Future<ScanForm> create(CreateScanForm parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.post,
       'scan_forms',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return ScanForm.fromJson(json);
   }
 
   /// Retrieves a [ScanForm].
   Future<ScanForm> retrieve(String id) async {
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.get,
       'scan_forms/$id',
       ApiVersion.v2,
     );
+    return ScanForm.fromJson(json);
   }
 
   /// Lists all [ScanForm]s.

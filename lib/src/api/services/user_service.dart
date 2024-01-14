@@ -15,59 +15,64 @@ class UserService extends Service {
   Future<User> createChild(CreateUser parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'users',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return User.fromJson(json);
   }
 
   /// Retrieves a [User].
   Future<User> retrieve(String id) async {
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.get,
       'users/$id',
       ApiVersion.v2,
     );
+    return User.fromJson(json);
   }
 
   /// Retrieves the current authenticated [User].
   Future<User> retrieveMe() async {
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.get,
       'users',
       ApiVersion.v2,
     );
+    return User.fromJson(json);
   }
 
   /// Updates a [User].
   Future<User> update(User user, UpdateUser parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.put,
       'users/${user.id}',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return User.fromJson(json);
   }
 
   /// Update the [Brand] of a [User].
   Future<User> updateBrand(User user, UpdateBrand parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.put,
       'users/${user.id}/brand',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return User.fromJson(json);
   }
 
   /// Deletes a [User].
   Future<bool> delete(User user) async {
-    return await client.requestJson(
+    return await client.request(
       HttpMethod.delete,
       'users/${user.id}',
       ApiVersion.v2,

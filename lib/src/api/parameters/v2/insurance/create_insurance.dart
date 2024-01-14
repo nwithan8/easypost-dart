@@ -1,10 +1,11 @@
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
-import 'package:easypost/src/internal/reflection.dart';
 import 'package:easypost/src/models/address.dart';
+import 'package:easypost/src/internal/reflection.dart';
+import 'package:easypost/src/api/parameters/iparameters.dart';
 
 @reflector
-class CreateInsurance extends Parameters {
+class CreateInsurance extends Parameters implements IInsuranceParameter {
   @JsonParameter(Necessity.optional, ['insurance', 'amount'])
   double? amount;
 
@@ -12,10 +13,10 @@ class CreateInsurance extends Parameters {
   String? carrier;
 
   @JsonParameter(Necessity.optional, ['insurance', 'from_address'])
-  Address? fromAddress;
+  IAddressParameter? fromAddress;
 
   @JsonParameter(Necessity.optional, ['insurance', 'to_address'])
-  Address? toAddress;
+  IAddressParameter? toAddress;
 
   @JsonParameter(Necessity.optional, ['insurance', 'reference'])
   String? reference;
@@ -23,6 +24,5 @@ class CreateInsurance extends Parameters {
   @JsonParameter(Necessity.optional, ['insurance', 'tracking_code'])
   String? trackingCode;
 
-  CreateInsurance()
-      : super();
+  CreateInsurance() : super();
 }

@@ -1,21 +1,22 @@
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
-import 'package:easypost/src/internal/reflection.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/batch.dart';
 import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/models/shipment.dart';
+import 'package:easypost/src/api/parameters/iparameters.dart';
+import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class CreatePickup extends Parameters {
+class CreatePickup extends Parameters implements IPickupParameter {
   @JsonParameter(Necessity.optional, ['pickup', 'address'])
-  Address? address;
+  IAddressParameter? address;
 
   @JsonParameter(Necessity.optional, ['pickup', 'batch'])
-  Batch? batch;
+  IBatchParameter? batch;
 
   @JsonParameter(Necessity.optional, ['pickup', 'carrier_accounts'])
-  List<CarrierAccount>? carrierAccounts;
+  List<ICarrierAccountParameter>? carrierAccounts;
 
   @JsonParameter(Necessity.optional, ['pickup', 'instructions'])
   String? instructions;
@@ -35,6 +36,5 @@ class CreatePickup extends Parameters {
   @JsonParameter(Necessity.optional, ['pickup', 'shipment'])
   Shipment? shipment;
 
-  CreatePickup()
-      : super();
+  CreatePickup() : super();
 }

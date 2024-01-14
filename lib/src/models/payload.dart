@@ -45,5 +45,6 @@ class Payload extends ModelWithId {
   factory Payload.fromJson(Map<String, dynamic> input) =>
       _$PayloadFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PayloadToJson(this);
 }

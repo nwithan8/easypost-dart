@@ -16,6 +16,5 @@ class UpdateCarrierAccount extends Parameters {
   @JsonParameter(Necessity.optional, ['carrier_account', "test_credentials"])
   Map<String, dynamic>? testCredentials;
 
-  UpdateCarrierAccount()
-      : super();
+  UpdateCarrierAccount() : super();
 }

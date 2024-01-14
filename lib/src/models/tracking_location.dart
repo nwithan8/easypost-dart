@@ -33,5 +33,6 @@ class TrackingLocation extends ModelWithId {
   factory TrackingLocation.fromJson(Map<String, dynamic> input) =>
       _$TrackingLocationFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TrackingLocationToJson(this);
 }

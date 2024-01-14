@@ -1,6 +1,7 @@
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
+import 'package:easypost/src/api/parameters/iparameters.dart';
 
 @reflector
 class CreateReport extends Parameters {
@@ -22,6 +23,5 @@ class CreateReport extends Parameters {
   @JsonParameter(Necessity.optional, ['report', 'include_children'])
   bool? includeChildren;
 
-  CreateReport()
-      : super();
+  CreateReport() : super();
 }

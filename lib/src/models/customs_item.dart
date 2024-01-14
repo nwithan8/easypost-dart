@@ -49,5 +49,6 @@ class CustomsItem extends ModelWithId {
   factory CustomsItem.fromJson(Map<String, dynamic> input) =>
       _$CustomsItemFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CustomsItemToJson(this);
 }

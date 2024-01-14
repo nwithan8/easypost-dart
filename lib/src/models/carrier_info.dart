@@ -10,14 +10,11 @@ class CarrierInfo extends Model {
   @JsonKey(name: 'carriers')
   final List<CarrierInfoCarrier>? carriers;
 
-  CarrierInfo(
-      objectType,
-      mode,
-      this.carriers)
-      : super(objectType, mode);
+  CarrierInfo(objectType, mode, this.carriers) : super(objectType, mode);
 
   factory CarrierInfo.fromJson(Map<String, dynamic> input) =>
       _$CarrierInfoFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierInfoToJson(this);
 }

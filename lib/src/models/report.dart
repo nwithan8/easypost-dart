@@ -45,6 +45,7 @@ class Report extends ModelWithId {
   factory Report.fromJson(Map<String, dynamic> input) =>
       _$ReportFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ReportToJson(this);
 }
 
@@ -63,5 +64,6 @@ class ReportCollection extends Collection {
   factory ReportCollection.fromJson(Map<String, dynamic> input) =>
       _$ReportCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ReportCollectionToJson(this);
 }

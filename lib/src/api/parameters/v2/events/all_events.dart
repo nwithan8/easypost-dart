@@ -19,6 +19,5 @@ class AllEvents extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllEvents()
-      : super();
+  AllEvents() : super();
 }

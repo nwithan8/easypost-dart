@@ -25,6 +25,5 @@ class UpdateBrand extends Parameters {
   @JsonParameter(Necessity.optional, ['brand', 'theme'])
   String? theme;
 
-  UpdateBrand()
-      : super();
+  UpdateBrand() : super();
 }

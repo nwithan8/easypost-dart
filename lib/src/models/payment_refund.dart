@@ -37,5 +37,6 @@ class PaymentRefund extends ModelWithId {
   factory PaymentRefund.fromJson(Map<String, dynamic> input) =>
       _$PaymentRefundFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PaymentRefundToJson(this);
 }

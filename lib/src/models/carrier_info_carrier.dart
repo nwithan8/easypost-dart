@@ -42,6 +42,7 @@ class CarrierInfoCarrier extends Model {
   factory CarrierInfoCarrier.fromJson(Map<String, dynamic> input) =>
       _$CarrierInfoCarrierFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierInfoCarrierToJson(this);
 
   /// Returns whether or not the carrier supports the given feature.

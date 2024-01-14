@@ -19,6 +19,5 @@ class AllWebhooks extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllWebhooks()
-      : super();
+  AllWebhooks() : super();
 }

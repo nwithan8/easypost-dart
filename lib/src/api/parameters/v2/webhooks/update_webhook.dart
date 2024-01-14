@@ -10,6 +10,5 @@ class UpdateWebhook extends Parameters {
   @JsonParameter(Necessity.optional, ['url'])
   String? url;
 
-  UpdateWebhook()
-      : super();
+  UpdateWebhook() : super();
 }

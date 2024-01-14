@@ -10,6 +10,5 @@ class BuyPickup extends Parameters {
   @JsonParameter(Necessity.required, ['service'])
   String? service;
 
-  BuyPickup()
-      : super();
+  BuyPickup() : super();
 }

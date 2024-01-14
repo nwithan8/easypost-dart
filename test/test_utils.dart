@@ -169,7 +169,9 @@ class TestVCR {
     // get EasyPost client
     ClientConfiguration config = ClientConfiguration(
         testApiKey, productionApiKey,
-        httpClient: _vcr.client);
+        httpClient: _vcr.client,
+        boolFunction: () => _vcr.mode == Mode.record
+    );
     return Client(config);
   }
 }

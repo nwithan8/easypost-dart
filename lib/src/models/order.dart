@@ -70,5 +70,6 @@ class Order extends ModelWithId {
 
   factory Order.fromJson(Map<String, dynamic> input) => _$OrderFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$OrderToJson(this);
 }

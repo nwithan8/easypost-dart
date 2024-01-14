@@ -26,5 +26,6 @@ class Verifications extends ModelWithId {
   factory Verifications.fromJson(Map<String, dynamic> input) =>
       _$VerificationsFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$VerificationsToJson(this);
 }

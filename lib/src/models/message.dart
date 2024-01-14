@@ -33,5 +33,6 @@ class Message extends ModelWithId {
   factory Message.fromJson(Map<String, dynamic> input) =>
       _$MessageFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$MessageToJson(this);
 }

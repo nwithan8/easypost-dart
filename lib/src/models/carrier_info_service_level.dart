@@ -24,19 +24,13 @@ class CarrierInfoServiceLevel extends Model {
   @JsonKey(name: 'name')
   final String? name;
 
-  CarrierInfoServiceLevel(
-      objectType,
-      mode,
-      this.carrier,
-      this.description,
-      this.dimensions,
-      this.humanReadable,
-      this.maxWeight,
-      this.name)
+  CarrierInfoServiceLevel(objectType, mode, this.carrier, this.description,
+      this.dimensions, this.humanReadable, this.maxWeight, this.name)
       : super(objectType, mode);
 
   factory CarrierInfoServiceLevel.fromJson(Map<String, dynamic> input) =>
       _$CarrierInfoServiceLevelFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierInfoServiceLevelToJson(this);
 }

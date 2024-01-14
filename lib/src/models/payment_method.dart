@@ -69,5 +69,6 @@ class PaymentMethod extends ModelWithId {
   factory PaymentMethod.fromJson(Map<String, dynamic> input) =>
       _$PaymentMethodFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PaymentMethodToJson(this);
 }

@@ -64,6 +64,7 @@ class Insurance extends ModelWithId {
   factory Insurance.fromJson(Map<String, dynamic> input) =>
       _$InsuranceFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$InsuranceToJson(this);
 }
 
@@ -79,5 +80,6 @@ class InsuranceCollection extends Collection {
   factory InsuranceCollection.fromJson(Map<String, dynamic> input) =>
       _$InsuranceCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$InsuranceCollectionToJson(this);
 }

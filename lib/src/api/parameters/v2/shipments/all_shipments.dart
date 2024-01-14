@@ -19,6 +19,5 @@ class AllShipments extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllShipments()
-      : super();
+  AllShipments() : super();
 }

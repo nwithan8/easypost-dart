@@ -19,6 +19,5 @@ class AllPickups extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllPickups()
-      : super();
+  AllPickups() : super();
 }

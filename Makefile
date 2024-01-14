@@ -2,8 +2,18 @@
 help:
 	@cat Makefile | grep '^## ' --color=never | cut -c4- | sed -e "`printf 's/ - /\t- /;'`" | column -s "`printf '\t'`" -t
 
+## format - Format code
+format:
+	dart format lib test
+
+## analyze - Analyze code
+analyze:
+	dart analyze
+
 ## unit_tests - Run unit tests
 unit_tests:
+	@make temp_version
+	@make json_files || true
 	dart test test
 
 ## version - Update version number
@@ -41,7 +51,13 @@ outdated_deps:
 ## json_files - Generate JSON files
 json_files:
 	@make temp_version
-	@dart run build_runner build
+	@dart run build_runner build --delete-conflicting-outputs
+	@make github_version
+
+## json_files_live - Generate JSON files and watch for changes
+json_files_live:
+	@make temp_version
+	@dart run build_runner watch --delete-conflicting-outputs
 	@make github_version
 
 ## docs - Generate documentation
@@ -62,3 +78,8 @@ publish:
 	@make version number=$(number)
 	@dart pub publish -f
 	@make github_version
+
+## update_examples - Update the examples submodule
+update_examples:
+	git submodule init
+	git submodule update --remote

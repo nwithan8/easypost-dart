@@ -7,6 +7,5 @@ class FundWallet extends Parameters {
   @JsonParameter(Necessity.required, ['amount'])
   String? amount;
 
-  FundWallet()
-      : super();
+  FundWallet() : super();
 }

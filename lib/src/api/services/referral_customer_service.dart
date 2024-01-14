@@ -16,12 +16,13 @@ class ReferralCustomerService extends Service {
       AddStripePaymentMethod parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.post,
       'referral_customers/payment_method',
       ApiVersion.beta,
       parameters: parameterMap,
     );
+    return PaymentMethod.fromJson(json);
   }
 
   /// Refund a [ReferralCustomer]'s account by either a specific amount or a specific payment log entry.

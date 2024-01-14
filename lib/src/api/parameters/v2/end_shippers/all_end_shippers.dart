@@ -19,6 +19,5 @@ class AllEndShippers extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllEndShippers()
-      : super();
+  AllEndShippers() : super();
 }

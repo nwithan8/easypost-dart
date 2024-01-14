@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:easypost/easypost.dart';
+import 'package:easypost/src/internal/maps.dart';
 
 import 'fixture_structures.dart';
 import 'test_utils.dart';
@@ -17,84 +18,86 @@ class Fixtures {
     return FixtureStructures.fromJson(_data);
   }
 
-  static CarrierAccountsCreate get basicCarrierAccount {
-    return CarrierAccountsCreate(
-        overrideParameters: fixtureStructures.carrierAccounts.basic);
+  static CreateCarrierAccount get basicCarrierAccount {
+    Map<String, dynamic> data = fixtureStructures.carrierAccounts.basic;
+    return createCreateCarrierAccountParameters(data: data);
   }
 
-  static CustomsInfoCreate get basicCustomsInfo {
-    return CustomsInfoCreate(overrideParameters: {
-      "customs_info": fixtureStructures.customsInfos.basic
-    });
+  static CreateCustomsInfo get basicCustomsInfo {
+    Map<String, dynamic> data = fixtureStructures.customsInfos.basic;
+    return CreateCustomsInfo();
   }
 
-  static CustomsItemsCreate get basicCustomsItem {
-    return CustomsItemsCreate(
-        overrideParameters: fixtureStructures.customsItems.basic);
+  static CreateCustomsItem get basicCustomsItem {
+    Map<String, dynamic> data = fixtureStructures.customsItems.basic;
+    return createCreateCustomsItemParameters(data: data);
   }
 
-  static InsuranceCreate get basicInsurance {
-    return InsuranceCreate(
-        overrideParameters: fixtureStructures.insurances.basic);
+  static CreateInsurance get basicInsurance {
+    Map<String, dynamic> data = fixtureStructures.insurances.basic;
+    return CreateInsurance();
   }
 
-  static OrdersCreate get basicOrder {
-    return OrdersCreate(overrideParameters: fixtureStructures.orders.basic);
+  static CreateOrder get basicOrder {
+    Map<String, dynamic> data = fixtureStructures.orders.basic;
+    return CreateOrder();
   }
 
-  static ParcelsCreate get basicParcel {
-    return ParcelsCreate(overrideParameters: fixtureStructures.parcels.basic);
+  static CreateParcel get basicParcel {
+    Map<String, dynamic> data = fixtureStructures.parcels.basic;
+    return createCreateParcelParameters(data: data);
   }
 
-  static PickupsCreate get basicPickup {
+  static CreatePickup get basicPickup {
     Map<String, dynamic> data = fixtureStructures.pickups.basic;
 
     const String pickupDate = '2023-01-01';
     data['min_datetime'] = pickupDate;
     data['max_datetime'] = pickupDate;
 
-    return PickupsCreate(overrideParameters: data);
+    return CreatePickup();
   }
 
-  static ShipmentsCreate get basicShipment {
-    return ShipmentsCreate(
-        overrideParameters: fixtureStructures.shipments.basicDomestic);
+  static CreateShipment get basicShipment {
+    Map<String, dynamic> data = fixtureStructures.shipments.basicDomestic;
+    return createCreateShipmentParameters(data: data);
   }
 
-  static AddressesCreate get caAddress1 {
-    return AddressesCreate(
-        overrideParameters: fixtureStructures.addresses.caAddress1);
+  static CreateAddress get caAddress1 {
+    Map<String, dynamic> data = fixtureStructures.addresses.caAddress1;
+    return createCreateAddressParameters(data: data);
   }
 
-  static AddressesCreate get caAddress2 {
-    return AddressesCreate(
-        overrideParameters: fixtureStructures.addresses.caAddress2);
+  static CreateAddress get caAddress2 {
+    Map<String, dynamic> data = fixtureStructures.addresses.caAddress2;
+    return createCreateAddressParameters(data: data);
   }
 
   static Map<String, dynamic> get creditCardDetails {
     return fixtureStructures.creditCards.test;
   }
 
-  static ShipmentsCreate get fullShipment {
-    return ShipmentsCreate(
-        overrideParameters: fixtureStructures.shipments.full);
+  static CreateShipment get fullShipment {
+    Map<String, dynamic> data = fixtureStructures.shipments.full;
+    return CreateShipment();
   }
 
-  static AddressesCreate get incorrectAddress {
-    return AddressesCreate(
-        overrideParameters: fixtureStructures.addresses.incorrectAddress);
+  static CreateAddress get incorrectAddress {
+    Map<String, dynamic> data = fixtureStructures.addresses.incorrectAddress;
+    return createCreateAddressParameters(data: data);
   }
 
-  static ShipmentsCreate get oneCallBuyShipment {
-    Map<String, dynamic> map = <String, dynamic>{
-      "to_address": caAddress1,
-      "from_address": caAddress2,
-      "parcel": basicParcel,
-      "service": uspsService,
-      "carrier_accounts": [uspsCarrierAccountId],
-      "carrier": usps,
-    };
-    return ShipmentsCreate(overrideParameters: map);
+  static CreateShipment get oneCallBuyShipment {
+    CreateShipment parameters = CreateShipment();
+
+    parameters.toAddress = caAddress1;
+    parameters.fromAddress = caAddress2;
+    parameters.parcel = basicParcel;
+    parameters.service = uspsService;
+    parameters.carrierAccountIds = [uspsCarrierAccountId];
+    parameters.carrier = usps;
+
+    return parameters;
   }
 
   static int get pageSize {
@@ -141,5 +144,143 @@ class Fixtures {
 
   static String get webhookUrl {
     return fixtureStructures.webhookUrl;
+  }
+
+  static CreateAddress createCreateAddressParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreateAddress parameters = CreateAddress();
+
+    parameters.name = getOrDefaultString(data, "name");
+    parameters.company = getOrDefaultString(data, "company");
+    parameters.street1 = getOrDefaultString(data, "street1");
+    parameters.street2 = getOrDefaultString(data, "street2");
+    parameters.city = getOrDefaultString(data, "city");
+    parameters.state = getOrDefaultString(data, "state");
+    parameters.zip = getOrDefaultString(data, "zip");
+    parameters.country = getOrDefaultString(data, "country");
+    parameters.phone = getOrDefaultString(data, "phone");
+    parameters.email = getOrDefaultString(data, "email");
+
+    return parameters;
+  }
+
+  static CreateShipment createCreateShipmentParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreateShipment parameters = CreateShipment();
+
+    parameters.toAddress = createCreateAddressParameters(
+        data: getOrDefaultMap(data, "to_address"));
+    parameters.fromAddress = createCreateAddressParameters(
+        data: getOrDefaultMap(data, "from_address"));
+    parameters.parcel = createCreateParcelParameters(
+        data: getOrDefaultMap(data, "parcel"));
+    parameters.customsInfo = createCreateCustomsInfoParameters(
+        data: getOrDefaultMap(data, "customs_info"));
+    parameters.options = createShipmentOptionsParameters(
+        data: getOrDefaultMap(data, "options"));
+
+    /*
+    List<CreateCarrierAccount> carrierAccountsList = List<CreateCarrierAccount>.empty(growable: true);
+    for (Map<String, dynamic>? item in getOrDefaultMapList(data, "carrier_accounts")) {
+      carrierAccountsList.add(createCreateCarrierAccountParameters(data: item));
+    }
+    parameters.carrierAccounts = carrierAccountsList;
+     */
+
+    return parameters;
+  }
+
+  static CreateParcel createCreateParcelParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreateParcel parameters = CreateParcel();
+
+    parameters.weight = getOrDefaultDouble(data, "weight");
+    parameters.length = getOrDefaultDouble(data, "length");
+    parameters.width = getOrDefaultDouble(data, "width");
+    parameters.height = getOrDefaultDouble(data, "height");
+
+    return parameters;
+  }
+
+  static CreateCustomsInfo createCreateCustomsInfoParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreateCustomsInfo parameters = CreateCustomsInfo();
+
+    parameters.eelPfc = getOrDefaultString(data, "eel_pfc");
+    parameters.customsCertify = getOrDefaultBool(data, "customs_certify");
+    parameters.customsSigner = getOrDefaultString(data, "customs_signer");
+    parameters.contentsType = getOrDefaultString(data, "contents_type");
+    parameters.contentsExplanation = getOrDefaultString(data, "contents_explanation");
+    parameters.restrictionType = getOrDefaultString(data, "restriction_type");
+    parameters.nonDeliveryOption = getOrDefaultString(data, "non_delivery_option");
+
+    /*
+    List<CreateCustomsItem> parametersList = List<CreateCustomsItem>.empty(growable: true);
+    for (Map<String, dynamic>? item in getOrDefaultMapList(data, "customs_items")) {
+      parametersList.add(createCreateCustomsItemParameters(data: item));
+    }
+    parameters.customsItems = parametersList;
+     */
+
+    return parameters;
+  }
+
+  static CreateCustomsItem createCreateCustomsItemParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreateCustomsItem parameters = CreateCustomsItem();
+
+    parameters.description = getOrDefaultString(data, "description");
+    parameters.quantity = getOrDefaultInt(data, "quantity");
+    parameters.value = getOrDefaultDouble(data, "value");
+    parameters.weight = getOrDefaultDouble(data, "weight");
+    parameters.hsTariffNumber = getOrDefaultString(data, "hs_tariff_number");
+    parameters.originCountry = getOrDefaultString(data, "origin_country");
+
+    return parameters;
+  }
+
+  static Options createShipmentOptionsParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    Options parameters = Options.fromJson(data);
+
+    return parameters;
+  }
+
+  static CreateCarrierAccount createCreateCarrierAccountParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreateCarrierAccount parameters = CreateCarrierAccount();
+
+    parameters.type = getOrDefaultString(data, "type");
+    parameters.description = getOrDefaultString(data, "description");
+
+    return parameters;
   }
 }

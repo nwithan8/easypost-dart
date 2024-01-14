@@ -31,6 +31,5 @@ class UpdateUser extends Parameters {
   @JsonParameter(Necessity.optional, ['user', 'secondary_recharge_amount'])
   String? secondaryRechargeAmount;
 
-  UpdateUser()
-      : super();
+  UpdateUser() : super();
 }

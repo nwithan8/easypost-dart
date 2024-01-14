@@ -6,18 +6,20 @@ class CarrierInfoType extends SerializableEnum {
   static CarrierInfoType serviceLevels = CarrierInfoType('service_levels');
 
   /// Get information about the carrier's predefined packages.
-  static CarrierInfoType predefinedPackages = CarrierInfoType('predefined_packages');
+  static CarrierInfoType predefinedPackages =
+      CarrierInfoType('predefined_packages');
 
   /// Get information about the carrier's shipment options.
   static CarrierInfoType shipmentOptions = CarrierInfoType('shipment_options');
 
   /// Get information about the carrier's supported features.
-  static CarrierInfoType supportedFeatures = CarrierInfoType('supported_features');
+  static CarrierInfoType supportedFeatures =
+      CarrierInfoType('supported_features');
 
   CarrierInfoType(super.jsonValue);
 
   /// Get the [CarrierInfoType] from a [String].
-  static CarrierInfoType? fromString(String value) {
+  static CarrierInfoType? fromString(String? value) {
     switch (value) {
       case 'service_levels':
         return serviceLevels;
@@ -33,5 +35,6 @@ class CarrierInfoType extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [CarrierInfoType].
-  static String? asString(CarrierInfoType? carrierInfoType) => carrierInfoType.toString();
+  static String? asString(CarrierInfoType? carrierInfoType) =>
+      carrierInfoType.toString();
 }

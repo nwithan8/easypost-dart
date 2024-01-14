@@ -4,6 +4,5 @@ import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
 class UpdateAddress extends Parameters {
-  UpdateAddress()
-      : super();
+  UpdateAddress() : super();
 }

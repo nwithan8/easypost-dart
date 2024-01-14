@@ -32,5 +32,6 @@ class Form extends ModelWithId {
 
   factory Form.fromJson(Map<String, dynamic> input) => _$FormFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$FormToJson(this);
 }

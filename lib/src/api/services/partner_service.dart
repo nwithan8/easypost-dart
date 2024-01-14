@@ -21,21 +21,23 @@ class PartnerService extends Service {
       CreateReferralCustomer parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'referral_customers',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return ReferralCustomer.fromJson(json);
   }
 
   /// Retrieves a [ReferralCustomer] by its ID.
   Future<ReferralCustomer> retrieveReferralCustomer(String id) async {
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.get,
       'referral_customers/$id',
       ApiVersion.v2,
     );
+    return ReferralCustomer.fromJson(json);
   }
 
   /// Retrieves all [ReferralCustomer]s.
@@ -43,12 +45,13 @@ class PartnerService extends Service {
       AllReferralCustomers parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.get,
       'referral_customers',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return ReferralCustomerCollection.fromJson(json);
   }
 
   /// Add a credit card to a [ReferralCustomer]'s account.

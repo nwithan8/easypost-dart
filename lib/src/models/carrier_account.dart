@@ -45,5 +45,6 @@ class CarrierAccount extends ModelWithId {
   factory CarrierAccount.fromJson(Map<String, dynamic> input) =>
       _$CarrierAccountFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierAccountToJson(this);
 }

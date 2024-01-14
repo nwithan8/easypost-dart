@@ -19,6 +19,5 @@ class AllParcels extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllParcels()
-      : super();
+  AllParcels() : super();
 }

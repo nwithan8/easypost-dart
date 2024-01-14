@@ -1,3 +1,4 @@
+import 'package:easypost/src/api/parameters/iparameters.dart';
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
@@ -7,7 +8,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'address.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Address extends ModelWithId {
+class Address extends ModelWithId implements IAddressParameter {
   @JsonKey(name: 'carrier_facility')
   final String? carrierFacility;
   @JsonKey(name: 'city')
@@ -71,6 +72,7 @@ class Address extends ModelWithId {
   factory Address.fromJson(Map<String, dynamic> input) =>
       _$AddressFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 }
 
@@ -86,5 +88,6 @@ class AddressCollection extends Collection {
   factory AddressCollection.fromJson(Map<String, dynamic> input) =>
       _$AddressCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$AddressCollectionToJson(this);
 }

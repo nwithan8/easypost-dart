@@ -14,7 +14,7 @@ class FileFormat extends SerializableEnum {
   FileFormat(super.jsonValue);
 
   /// Get the [FileFormat] from a [String].
-  static FileFormat? fromString(String value) {
+  static FileFormat? fromString(String? value) {
     switch (value) {
       case 'pdf':
         return pdf;

@@ -58,5 +58,6 @@ class CarrierDetail extends ModelWithId {
   factory CarrierDetail.fromJson(Map<String, dynamic> input) =>
       _$CarrierDetailFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierDetailToJson(this);
 }

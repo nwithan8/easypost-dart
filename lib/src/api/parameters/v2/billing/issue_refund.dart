@@ -10,6 +10,5 @@ class IssueRefund extends Parameters {
   @JsonParameter(Necessity.optional, ['payment_method_id'])
   String? paymentMethodId;
 
-  IssueRefund()
-      : super();
+  IssueRefund() : super();
 }

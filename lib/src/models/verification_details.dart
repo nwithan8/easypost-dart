@@ -29,5 +29,6 @@ class VerificationDetails extends ModelWithId {
   factory VerificationDetails.fromJson(Map<String, dynamic> input) =>
       _$VerificationDetailsFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$VerificationDetailsToJson(this);
 }

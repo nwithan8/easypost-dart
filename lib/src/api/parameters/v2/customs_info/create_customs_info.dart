@@ -1,10 +1,11 @@
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
-import 'package:easypost/src/internal/reflection.dart';
 import 'package:easypost/src/models/customs_item.dart';
+import 'package:easypost/src/api/parameters/iparameters.dart';
+import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class CreateCustomsInfo extends Parameters {
+class CreateCustomsInfo extends Parameters implements ICustomsInfoParameter {
   @JsonParameter(Necessity.required, ['customs_info', 'contents_explanation'])
   String? contentsExplanation;
 
@@ -15,7 +16,7 @@ class CreateCustomsInfo extends Parameters {
   bool? customsCertify;
 
   @JsonParameter(Necessity.required, ['customs_info', 'customs_items'])
-  List<CustomsItem>? customsItems;
+  List<ICustomsItemParameter>? customsItems;
 
   @JsonParameter(Necessity.required, ['customs_info', 'customs_signer'])
   String? customsSigner;
@@ -29,6 +30,5 @@ class CreateCustomsInfo extends Parameters {
   @JsonParameter(Necessity.required, ['customs_info', 'restriction_type'])
   String? restrictionType;
 
-  CreateCustomsInfo()
-      : super();
+  CreateCustomsInfo() : super();
 }

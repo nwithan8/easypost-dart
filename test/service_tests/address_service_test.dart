@@ -33,14 +33,24 @@ void main() {
       client.enableTestMode();
 
       final params = Fixtures.incorrectAddress;
-      params.verify = true;
 
+      // Creating normally (without specifying "verify") will make the address, perform no verifications
       final address = await client.addresses.create(params);
 
       expect(address, isNotNull);
       expect(address, isA<Address>());
       expect(address.id, startsWith("adr_"));
-      expect(address.street1, "417 MONTGOMERY ST FL 5");
+      expect(address.verifications?.delivery, isNull);
+
+      // Creating with verify would make the address and perform verifications
+      params.verify = true;
+
+      final verifiedAddress = await client.addresses.create(params);
+
+      expect(verifiedAddress, isNotNull);
+      expect(verifiedAddress, isA<Address>());
+      expect(verifiedAddress.id, startsWith("adr_"));
+      expect(verifiedAddress.verifications?.delivery, isNotNull);
     });
 
     test('create with strict verification', () async {
@@ -94,11 +104,6 @@ void main() {
     test('verify', () async {
       Client client = TestUtils.setUpVCRClient("addresses", 'verify');
       client.enableTestMode();
-
-
-      CreateShipment createShipmentParameters = Fixtures.basicShipment;
-      Map<String, dynamic> testParams = createShipmentParameters.constructJson(client: client);
-
 
       final params = Fixtures.caAddress1;
 

@@ -1,9 +1,10 @@
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
+import 'package:easypost/src/api/parameters/iparameters.dart';
 
 @reflector
-class CreateCustomsItem extends Parameters {
+class CreateCustomsItem extends Parameters implements ICustomsItemParameter {
   @JsonParameter(Necessity.required, ['customs_item', 'description'])
   String? description;
 
@@ -22,6 +23,5 @@ class CreateCustomsItem extends Parameters {
   @JsonParameter(Necessity.required, ['customs_item', 'weight'])
   double? weight;
 
-  CreateCustomsItem()
-      : super();
+  CreateCustomsItem() : super();
 }

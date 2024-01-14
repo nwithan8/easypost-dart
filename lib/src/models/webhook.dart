@@ -25,5 +25,6 @@ class Webhook extends ModelWithId {
   factory Webhook.fromJson(Map<String, dynamic> input) =>
       _$WebhookFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$WebhookToJson(this);
 }

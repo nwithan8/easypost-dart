@@ -36,5 +36,6 @@ class Error extends ModelWithId {
 
   factory Error.fromJson(Map<String, dynamic> input) => _$ErrorFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ErrorToJson(this);
 }

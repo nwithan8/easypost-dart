@@ -18,17 +18,13 @@ class CarrierInfoSupportedFeature extends Model {
   @JsonKey(name: 'supported')
   final bool? supported;
 
-  CarrierInfoSupportedFeature(
-      objectType,
-      mode,
-      this.carrier,
-      this.description,
-      this.name,
-      this.supported)
+  CarrierInfoSupportedFeature(objectType, mode, this.carrier, this.description,
+      this.name, this.supported)
       : super(objectType, mode);
 
   factory CarrierInfoSupportedFeature.fromJson(Map<String, dynamic> input) =>
       _$CarrierInfoSupportedFeatureFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierInfoSupportedFeatureToJson(this);
 }

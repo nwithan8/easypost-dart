@@ -19,6 +19,5 @@ class AllReports extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllReports()
-      : super();
+  AllReports() : super();
 }

@@ -64,6 +64,7 @@ class Tracker extends ModelWithId {
   factory Tracker.fromJson(Map<String, dynamic> input) =>
       _$TrackerFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TrackerToJson(this);
 }
 
@@ -79,5 +80,6 @@ class TrackerCollection extends Collection {
   factory TrackerCollection.fromJson(Map<String, dynamic> input) =>
       _$TrackerCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TrackerCollectionToJson(this);
 }

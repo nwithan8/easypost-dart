@@ -19,6 +19,5 @@ class AllAddresses extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllAddresses()
-      : super();
+  AllAddresses() : super();
 }

@@ -19,6 +19,5 @@ class AllScanForms extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllScanForms()
-      : super();
+  AllScanForms() : super();
 }

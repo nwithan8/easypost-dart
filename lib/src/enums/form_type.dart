@@ -33,7 +33,7 @@ class FormType extends SerializableEnum {
   FormType(super.jsonValue);
 
   /// Get the [FormType] from a [String].
-  static FormType? fromString(String value) {
+  static FormType? fromString(String? value) {
     switch (value) {
       case 'cn22':
         return cn22;

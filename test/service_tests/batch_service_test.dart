@@ -17,13 +17,14 @@ void main() {
       client.enableTestMode();
 
       final params = CreateBatch();
-      params.shipmentCreationParameters = [Fixtures.basicShipment];
+      params.shipments = [Fixtures.basicShipment];
 
       final batch = await client.batches.create(params);
 
       expect(batch, isNotNull);
       expect(batch, isA<Batch>());
       expect(batch.id, startsWith("batch_"));
+      expect(batch.shipments, isNotNull);
     });
 
     test('all', () async {
@@ -48,7 +49,7 @@ void main() {
       client.enableTestMode();
 
       final params = CreateBatch();
-      params.shipmentCreationParameters = [Fixtures.basicShipment];
+      params.shipments = [Fixtures.basicShipment];
 
       final batch = await client.batches.create(params);
 
@@ -59,23 +60,83 @@ void main() {
       expect(retrievedBatch.id == batch.id, true);
     });
 
+    test('add shipments', () async {
+      Client client = TestUtils.setUpVCRClient("batches", 'add_shipments');
+      client.enableTestMode();
+
+      final batchCreateParams = CreateBatch();
+      final batch = await client.batches.create(batchCreateParams);
+
+      final shipmentCreateParams = Fixtures.oneCallBuyShipment;
+      final shipment = await client.shipments.create(shipmentCreateParams);
+
+      final batchUpdateShipmentsParams = UpdateBatchShipments();
+      batchUpdateShipmentsParams.shipments = [shipment];
+
+      final updatedBatch = await client.batches.addShipments(batch, batchUpdateShipmentsParams);
+
+      expect(updatedBatch, isNotNull);
+      expect(updatedBatch, isA<Batch>());
+      expect(updatedBatch.shipments, isNotNull);
+      expect(updatedBatch.shipments!.length, 1);
+    });
+
     test('generate label', () async {
       Client client = TestUtils.setUpVCRClient("batches", 'generate_label');
       client.enableTestMode();
 
       final createParams = CreateBatch();
-      createParams.shipmentCreationParameters = [Fixtures.basicShipment];
+      createParams.shipments = [Fixtures.oneCallBuyShipment];
 
       final batch = await client.batches.create(createParams);
+
+      if (client.config.boolFunctionResult) {
+        await Future.delayed(Duration(seconds: 10));
+      }
+
+      final purchasedBatch = await client.batches.purchase(batch);
+
+      if (client.config.boolFunctionResult) {
+        await Future.delayed(Duration(seconds: 10));
+      }
 
       final labelParams = CreateBatchDocument();
       labelParams.fileFormat = FileFormat.pdf;
 
       final labeledBatch =
-          await client.batches.generateLabel(batch, labelParams);
+          await client.batches.generateLabel(purchasedBatch, labelParams);
 
       expect(labeledBatch, isNotNull);
-      expect(labeledBatch.labelUrl, isNotNull);
+      expect(labeledBatch.state, BatchState.labelGenerating);
+    });
+
+    test('generate scan form', () async {
+      Client client = TestUtils.setUpVCRClient("batches", 'generate_scan_form');
+      client.enableTestMode();
+
+      final createParams = CreateBatch();
+      createParams.shipments = [Fixtures.oneCallBuyShipment];
+
+      final batch = await client.batches.create(createParams);
+
+      if (client.config.boolFunctionResult) {
+        await Future.delayed(Duration(seconds: 10));
+      }
+
+      final purchasedBatch = await client.batches.purchase(batch);
+
+      if (client.config.boolFunctionResult) {
+        await Future.delayed(Duration(seconds: 10));
+      }
+
+      final scanFormParams = CreateBatchDocument();
+      scanFormParams.fileFormat = FileFormat.zpl;
+
+      final scannedBatch =
+          await client.batches.generateScanForm(purchasedBatch, scanFormParams);
+
+      expect(scannedBatch, isNotNull);
+      expect(scannedBatch.scanForm, isNotNull);
     });
   });
 }

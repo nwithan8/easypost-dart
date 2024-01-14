@@ -4,6 +4,5 @@ import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
 class UpdateEndShipper extends Parameters {
-  UpdateEndShipper()
-      : super();
+  UpdateEndShipper() : super();
 }

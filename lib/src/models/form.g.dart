@@ -12,7 +12,7 @@ Form _$FormFromJson(Map<String, dynamic> json) => Form(
       stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
-      FormType.fromString(json['form_type'] as String),
+      FormType.fromString(json['form_type'] as String?),
       json['form_url'] as String?,
       json['submitted_electronically'] as bool?,
     );

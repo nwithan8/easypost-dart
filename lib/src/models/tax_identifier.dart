@@ -33,5 +33,6 @@ class TaxIdentifier extends ModelWithId {
   factory TaxIdentifier.fromJson(Map<String, dynamic> input) =>
       _$TaxIdentifierFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TaxIdentifierToJson(this);
 }

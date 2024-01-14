@@ -24,19 +24,13 @@ class CarrierInfoShipmentOption extends Model {
   @JsonKey(name: 'type')
   final String? type;
 
-  CarrierInfoShipmentOption(
-      objectType,
-      mode,
-      this.carrier,
-      this.deprecated,
-      this.description,
-      this.humanReadable,
-      this.name,
-      this.type)
+  CarrierInfoShipmentOption(objectType, mode, this.carrier, this.deprecated,
+      this.description, this.humanReadable, this.name, this.type)
       : super(objectType, mode);
 
   factory CarrierInfoShipmentOption.fromJson(Map<String, dynamic> input) =>
       _$CarrierInfoShipmentOptionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierInfoShipmentOptionToJson(this);
 }

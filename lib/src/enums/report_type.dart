@@ -24,7 +24,7 @@ class ReportType extends SerializableEnum {
   ReportType(super.jsonValue);
 
   /// Get the [ReportType] from a [String].
-  static ReportType? fromString(String value) {
+  static ReportType? fromString(String? value) {
     switch (value) {
       case 'cash_flow':
         return cashFlow;

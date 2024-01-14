@@ -46,6 +46,7 @@ class TimeInTransit extends ModelWithId {
   factory TimeInTransit.fromJson(Map<String, dynamic> input) =>
       _$TimeInTransitFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TimeInTransitToJson(this);
 
   int? bySmartRateAccuracy(SmartRateAccuracy accuracy) {

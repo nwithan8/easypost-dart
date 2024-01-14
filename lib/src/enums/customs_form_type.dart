@@ -11,7 +11,7 @@ class CustomsFormType extends SerializableEnum {
   CustomsFormType(super.jsonValue);
 
   /// Get the [CustomsFormType] from a [String].
-  static CustomsFormType? fromString(String value) {
+  static CustomsFormType? fromString(String? value) {
     switch (value) {
       case 'EEL':
         return eel;

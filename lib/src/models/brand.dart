@@ -52,5 +52,6 @@ class Brand extends ModelWithId {
 
   factory Brand.fromJson(Map<String, dynamic> input) => _$BrandFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$BrandToJson(this);
 }

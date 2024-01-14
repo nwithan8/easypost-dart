@@ -37,5 +37,6 @@ class Parcel extends ModelWithId {
   factory Parcel.fromJson(Map<String, dynamic> input) =>
       _$ParcelFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ParcelToJson(this);
 }

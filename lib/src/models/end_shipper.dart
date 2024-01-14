@@ -73,5 +73,6 @@ class EndShipperCollection extends Collection {
   factory EndShipperCollection.fromJson(Map<String, dynamic> input) =>
       _$EndShipperCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$EndShipperCollectionToJson(this);
 }

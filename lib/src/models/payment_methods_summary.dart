@@ -27,6 +27,7 @@ class PaymentMethodsSummary extends ModelWithId {
   factory PaymentMethodsSummary.fromJson(Map<String, dynamic> input) =>
       _$PaymentMethodsSummaryFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PaymentMethodsSummaryToJson(this);
 
   PaymentMethod? byPriority(PaymentMethodPriority priority) {

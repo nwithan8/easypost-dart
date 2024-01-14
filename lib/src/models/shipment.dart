@@ -1,3 +1,4 @@
+import 'package:easypost/src/api/parameters/iparameters.dart';
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
@@ -19,7 +20,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'shipment.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Shipment extends ModelWithId {
+class Shipment extends ModelWithId implements IShipmentParameter {
   @JsonKey(name: 'batch_id')
   final String? batchId;
 
@@ -105,7 +106,7 @@ class Shipment extends ModelWithId {
   final String? trackingCode;
 
   @JsonKey(name: 'usps_zone')
-  final String? uspsZone;
+  final int? uspsZone;
 
   Shipment(
       id,
@@ -147,6 +148,7 @@ class Shipment extends ModelWithId {
   factory Shipment.fromJson(Map<String, dynamic> input) =>
       _$ShipmentFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ShipmentToJson(this);
 }
 
@@ -162,5 +164,6 @@ class ShipmentCollection extends Collection {
   factory ShipmentCollection.fromJson(Map<String, dynamic> input) =>
       _$ShipmentCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ShipmentCollectionToJson(this);
 }

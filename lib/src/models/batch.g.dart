@@ -23,7 +23,7 @@ Batch _$BatchFromJson(Map<String, dynamic> json) => Batch(
       (json['shipments'] as List<dynamic>?)
           ?.map((e) => BatchShipment.fromJson(e as Map<String, dynamic>))
           .toList(),
-      BatchState.fromString(json['state'] as String),
+      BatchState.fromString(json['state'] as String?),
       (json['status'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as int),
       ),

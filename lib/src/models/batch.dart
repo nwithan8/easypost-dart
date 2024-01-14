@@ -59,6 +59,7 @@ class Batch extends ModelWithId {
 
   factory Batch.fromJson(Map<String, dynamic> input) => _$BatchFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$BatchToJson(this);
 }
 
@@ -74,5 +75,6 @@ class BatchCollection extends Collection {
   factory BatchCollection.fromJson(Map<String, dynamic> input) =>
       _$BatchCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$BatchCollectionToJson(this);
 }

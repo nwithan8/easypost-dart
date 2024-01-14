@@ -2,8 +2,11 @@ import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+part 'model_with_id.g.dart';
+
 /// Superclass for all models with an ID.
-abstract class ModelWithId extends Model {
+@JsonSerializable(explicitToJson: true)
+class ModelWithId extends Model {
   @JsonKey(name: 'id')
   final String? id;
 
@@ -25,4 +28,7 @@ abstract class ModelWithId extends Model {
 
   ModelWithId(this.id, this.createdAt, this.updatedAt, objectType, mode)
       : super(objectType, mode);
+
+  @override
+  Map<String, dynamic> toJson() => _$ModelWithIdToJson(this);
 }

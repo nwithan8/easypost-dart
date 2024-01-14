@@ -1,6 +1,7 @@
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
+import 'package:easypost/src/api/parameters/iparameters.dart';
 
 @reflector
 class CreateUpsCarrierAccount extends Parameters {
@@ -79,6 +80,5 @@ class CreateUpsCarrierAccount extends Parameters {
       Necessity.required, ['carrier_account', "registration_data", "website"])
   String? website;
 
-  CreateUpsCarrierAccount()
-      : super();
+  CreateUpsCarrierAccount() : super();
 }

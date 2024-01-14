@@ -18,21 +18,23 @@ class PickupService extends Service {
   Future<Pickup> create(CreatePickup parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.post,
       'pickups',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return Pickup.fromJson(json);
   }
 
   /// Retrieves a [Pickup].
   Future<Pickup> retrieve(String id) async {
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.get,
       'pickups/$id',
       ApiVersion.v2,
     );
+    return Pickup.fromJson(json);
   }
 
   /// Lists all [Pickup]s.

@@ -65,5 +65,6 @@ class PostageLabel extends ModelWithId {
   factory PostageLabel.fromJson(Map<String, dynamic> input) =>
       _$PostageLabelFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PostageLabelToJson(this);
 }

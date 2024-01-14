@@ -12,7 +12,7 @@ class RateService extends Service {
   /// Retrieve a list of [Rate]s for a potential [Shipment].
   Future<List<Rate>> retrieveRates(RetrieveRates parameters) async {
     Map<String, dynamic> parameterMap =
-    parameters.constructJson(client: client);
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'rates', ApiVersion.beta,
         parameters: parameterMap);

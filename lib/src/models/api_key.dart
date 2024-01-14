@@ -16,6 +16,7 @@ class ApiKey extends ModelWithId {
   factory ApiKey.fromJson(Map<String, dynamic> input) =>
       _$ApiKeyFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ApiKeyToJson(this);
 }
 
@@ -34,5 +35,6 @@ class ApiKeyCollection extends Collection {
   factory ApiKeyCollection.fromJson(Map<String, dynamic> input) =>
       _$ApiKeyCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ApiKeyCollectionToJson(this);
 }

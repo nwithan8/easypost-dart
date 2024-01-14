@@ -25,6 +25,5 @@ class AllTrackers extends Parameters {
   @JsonParameter(Necessity.optional, ['tracking_code'])
   String? trackingCode;
 
-  AllTrackers()
-      : super();
+  AllTrackers() : super();
 }

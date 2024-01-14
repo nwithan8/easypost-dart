@@ -20,10 +20,10 @@ CustomsInfo _$CustomsInfoFromJson(Map<String, dynamic> json) => CustomsInfo(
           .toList(),
       json['customs_signer'] as String?,
       json['declaration'] as String?,
-      CustomsFormType.fromString(json['eel_pfc'] as String),
-      NonDeliveryOption.fromString(json['non_delivery_option'] as String),
+      CustomsFormType.fromString(json['eel_pfc'] as String?),
+      NonDeliveryOption.fromString(json['non_delivery_option'] as String?),
       json['restriction_comments'] as String?,
-      CustomsRestrictionType.fromString(json['restriction_type'] as String),
+      CustomsRestrictionType.fromString(json['restriction_type'] as String?),
     );
 
 Map<String, dynamic> _$CustomsInfoToJson(CustomsInfo instance) =>

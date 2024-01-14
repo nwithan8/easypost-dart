@@ -14,21 +14,23 @@ class TrackerService extends Service {
   Future<Tracker> create(CreateTracker parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.post,
       'trackers',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return Tracker.fromJson(json);
   }
 
   /// Retrieves a [Tracker].
   Future<Tracker> retrieve(String id) async {
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.get,
       'trackers/$id',
       ApiVersion.v2,
     );
+    return Tracker.fromJson(json);
   }
 
   /// Lists all [Tracker]s.

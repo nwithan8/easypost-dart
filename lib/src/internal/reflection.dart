@@ -4,6 +4,11 @@ const reflector = Reflector();
 
 class Reflector extends Reflectable {
   const Reflector()
-      : super(invokingCapability, typeCapability, metadataCapability,
-            declarationsCapability, typeRelationsCapability, subtypeQuantifyCapability);
+      : super(
+            invokingCapability,
+            typeCapability,
+            metadataCapability,
+            declarationsCapability,
+            typeRelationsCapability,
+            subtypeQuantifyCapability);
 }

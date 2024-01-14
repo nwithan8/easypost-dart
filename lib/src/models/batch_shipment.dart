@@ -22,5 +22,6 @@ class BatchShipment extends ModelWithId {
   factory BatchShipment.fromJson(Map<String, dynamic> input) =>
       _$BatchShipmentFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$BatchShipmentToJson(this);
 }

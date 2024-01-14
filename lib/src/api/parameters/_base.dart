@@ -1,16 +1,16 @@
-import 'package:reflectable/reflectable.dart';
-import 'package:easypost/src/internal/reflection.dart';
-
 import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/internal/enums.dart';
+import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/exceptions/parameters/missing_parameter_exception.dart';
 import 'package:easypost/src/internal/custom_annotation.dart';
+import 'package:easypost/src/internal/enums.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
+import 'package:easypost/src/internal/reflection.dart';
+import 'package:reflectable/reflectable.dart';
 import 'package:tuple/tuple.dart';
 
 @reflector
 class Parameters {
-  final Map<String, dynamic> _parameterMap = {};
+  Map<String, dynamic> _parameterMap = {};
 
   Parameters();
 
@@ -26,7 +26,7 @@ class Parameters {
     for (var property in properties) {
       // Get the parameter attribute for this property
       var parameterAttribute =
-      CustomAnnotation.getAnnotationOfType<Parameter>(Parameter, property);
+          CustomAnnotation.getAnnotationOfType<Parameter>(Parameter, property);
       // If the property is not a parameter, ignore it
       if (parameterAttribute == null) {
         continue;
@@ -60,13 +60,11 @@ class Parameters {
     var mirror = propertiesAndMirror.item2;
 
     // Initialize parameter map, using the override parameters if they exist
-    Map<String, dynamic> parameterMap = _parameterMap;
+    _parameterMap = {};
 
     // Iterate over all properties
     for (var property in properties) {
-      var parameterAttribute =
-          CustomAnnotation.getAnnotationOfType<JsonParameter>(
-              JsonParameter, property);
+      var parameterAttribute = JsonParameter.getJsonParameter(property);
       if (parameterAttribute == null) {
         // Ignore any properties that are not annotated with a JsonParameter attribute
         continue;
@@ -80,52 +78,91 @@ class Parameters {
           // Ignore any optional parameters that are null
           continue;
         }
-        if (value is Parameters) {
-          // If the value is a RequestParameters object, recursively add its parameters
-          value = value.constructJson();
-        } else if (value is SerializableEnum) {
-          // If the value is a SerializableEnum, convert it to a string
-          value = value.toString();
-        } else if (value is List<Parameters>) {
-          List<Map<String, dynamic>> valueList = [];
-          for (var item in value) {
-            valueList.add(item.constructJson());
-          }
-          value = valueList;
-        }
-        parameterMap =
-            _updateMap(parameterMap, parameterAttribute.jsonPath, value);
+
+        add(parameterAttribute, value);
       } catch (e) {
         // If the property is not set, ignore it
         continue;
       }
     }
 
-    // Return the dictionary, removing any null values now that we've verified all required parameters are set
-    // Anything still null at this point is an optional parameter that was not set that can be stripped from the request
-
-    return parameterMap;
+    return _parameterMap;
   }
 
-  /// Get all properties for this class
-  Tuple2<Iterable<DeclarationMirror>, InstanceMirror> _allPropertiesAndMirror(Object reflectee) {
-    // Construct the dictionary of all parameters
-    InstanceMirror im = reflector.reflect(reflectee);
-    ClassMirror classMirror = im.type;
-
+  Map<String, dynamic> constructSubJson(Type? parentParameterObjectType,
+      {Client? client}) {
     // Collect all properties for this class
-    var properties = classMirror.declarations.values;
+    var propertiesAndMirror = _allPropertiesAndMirror(this);
+    var properties = propertiesAndMirror.item1;
+    var mirror = propertiesAndMirror.item2;
 
-    // Collect all properties for all superclasses
-    if (classMirror.qualifiedName != '.Parameters') {
-      var superclass = classMirror.superclass;
-      while (superclass != null && superclass.qualifiedName != '.Parameters') {
-        properties = properties.followedBy(superclass.declarations.values);
-        superclass = superclass.superclass;
+    _parameterMap = {};
+
+    // Iterate over all properties
+    for (var property in properties) {
+      var parameterAttribute =
+          SubJsonParameter.getSubJsonParameter(
+              parentParameterObjectType, property);
+      if (parameterAttribute == null) {
+        // Ignore any properties that are not annotated with a JsonParameter attribute
+        continue;
+      }
+
+      // get the value of the property
+      try {
+        var value = mirror.invokeGetter(property.simpleName);
+        if (value == null &&
+            parameterAttribute.necessity == Necessity.optional) {
+          // Ignore any optional parameters that are null
+          continue;
+        }
+
+        add(parameterAttribute, value);
+      } catch (e) {
+        // If the property is not set, ignore it
+        continue;
       }
     }
 
-    return Tuple2(properties, im);
+    return _parameterMap;
+  }
+
+  void add(JsonParameter parameter, dynamic value) {
+    // Primitive types can be added directly to the map. Non-primitive types must be converted to a map first
+
+    // if value is not a primitive type, convert it to a map
+    if (value is! String &&
+        value is! int &&
+        value is! double &&
+        value is! bool) {
+      value = serializeObject(value);
+    }
+
+    _parameterMap = _updateMap(_parameterMap, parameter.jsonPath, value);
+  }
+
+  Object? serializeObject(Object? object) {
+    // if the value is an object type, we know by this point that it must inherit from Parameters
+
+    if (object is Model) {
+      // If the value is a Model, convert it to a map
+      return object.toJson();
+    } else if (object is Parameters) {
+      // If the value is a RequestParameters object, recursively add its parameters
+      return object.constructSubJson(runtimeType);
+    } else if (object is SerializableEnum) {
+      // If the value is a SerializableEnum, convert it to a string
+      return object.toString();
+    } else if (object is List<Object?>) {
+      // If the value is a list, recursively serialize each item in the list
+      List<Object?> valueList = [];
+      for (var item in object) {
+        valueList.add(serializeObject(item));
+      }
+      return valueList;
+    } else {
+      return object;
+    }
   }
 
   /// Create a [Parameters] object from a [Map].
@@ -178,5 +215,27 @@ class Parameters {
     }
 
     return map;
+  }
+
+  /// Get all properties for this class
+  Tuple2<Iterable<DeclarationMirror>, InstanceMirror> _allPropertiesAndMirror(
+      Object reflectee) {
+    // Construct the dictionary of all parameters
+    InstanceMirror im = reflector.reflect(reflectee);
+    ClassMirror classMirror = im.type;
+
+    // Collect all properties for this class
+    var properties = classMirror.declarations.values;
+
+    // Collect all properties for all superclasses
+    if (classMirror.qualifiedName != '.Parameters') {
+      var superclass = classMirror.superclass;
+      while (superclass != null && superclass.qualifiedName != '.Parameters') {
+        properties = properties.followedBy(superclass.declarations.values);
+        superclass = superclass.superclass;
+      }
+    }
+
+    return Tuple2(properties, im);
   }
 }

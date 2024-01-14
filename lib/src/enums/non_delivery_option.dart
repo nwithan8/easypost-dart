@@ -11,7 +11,7 @@ class NonDeliveryOption extends SerializableEnum {
   NonDeliveryOption(super.jsonValue);
 
   /// Get the [NonDeliveryOption] from a [String].
-  static NonDeliveryOption? fromString(String value) {
+  static NonDeliveryOption? fromString(String? value) {
     switch (value) {
       case 'return':
         return returnToSender;

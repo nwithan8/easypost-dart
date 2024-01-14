@@ -6,6 +6,5 @@ import 'package:easypost/src/internal/reflection.dart';
 class GenerateRatesForShipment extends Parameters {
   // TODO: What are these parameters?
 
-  GenerateRatesForShipment()
-      : super();
+  GenerateRatesForShipment() : super();
 }

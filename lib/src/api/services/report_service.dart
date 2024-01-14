@@ -14,21 +14,23 @@ class ReportService extends Service {
   Future<Report> create(String type, CreateReport parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.post,
       'reports/$type',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return Report.fromJson(json);
   }
 
   /// Retrieves a [Report].
   Future<Report> retrieve(String id) async {
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.get,
       'reports/$id',
       ApiVersion.v2,
     );
+    return Report.fromJson(json);
   }
 
   /// Lists all [Report]s.

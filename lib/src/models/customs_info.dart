@@ -70,5 +70,6 @@ class CustomsInfo extends ModelWithId {
   factory CustomsInfo.fromJson(Map<String, dynamic> input) =>
       _$CustomsInfoFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CustomsInfoToJson(this);
 }

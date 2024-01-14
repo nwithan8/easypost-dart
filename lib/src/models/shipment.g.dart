@@ -75,7 +75,7 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) => Shipment(
           ? null
           : Tracker.fromJson(json['tracker'] as Map<String, dynamic>),
       json['tracking_code'] as String?,
-      json['usps_zone'] as String?,
+      json['usps_zone'] as int?,
     );
 
 Map<String, dynamic> _$ShipmentToJson(Shipment instance) => <String, dynamic>{

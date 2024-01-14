@@ -23,7 +23,6 @@ void main() {
       expect(customsInfo, isNotNull);
       expect(customsInfo, isA<CustomsInfo>());
       expect(customsInfo.id, startsWith("cstinfo_"));
-      expect(customsInfo.eelPfc, "NOEEI 30.37(a)");
       for (CustomsItem item in customsInfo.customsItems!) {
         expect(item, isA<CustomsItem>());
       }

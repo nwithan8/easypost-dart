@@ -73,5 +73,6 @@ class Rate extends Model {
 
   factory Rate.fromJson(Map<String, dynamic> input) => _$RateFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$RateToJson(this);
 }

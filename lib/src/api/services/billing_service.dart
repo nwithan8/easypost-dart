@@ -49,11 +49,13 @@ class BillingService extends Service {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
 
-    return await client.request(
+    await client.request(
         HttpMethod.post,
         '${paymentMethod.type!.endpoint}/${paymentMethod.id}/charges',
         ApiVersion.v2,
         parameters: parameterMap);
+
+    return true;
   }
 
   /// Deletes a [PaymentMethod].

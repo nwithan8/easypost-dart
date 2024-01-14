@@ -7,6 +7,5 @@ class InsureShipment extends Parameters {
   @JsonParameter(Necessity.required, ['amount'])
   double? amount;
 
-  InsureShipment()
-      : super();
+  InsureShipment() : super();
 }

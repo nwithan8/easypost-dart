@@ -16,21 +16,23 @@ class WebhookService extends Service {
   Future<Webhook> create(CreateWebhook parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'webhooks',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return Webhook.fromJson(json);
   }
 
   /// Retrieves a [Webhook].
   Future<Webhook> retrieve(String id) async {
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.get,
       'webhooks/$id',
       ApiVersion.v2,
     );
+    return Webhook.fromJson(json);
   }
 
   /// Lists all [Webhook]s.
@@ -68,7 +70,7 @@ class WebhookService extends Service {
 
   /// Deletes a [Webhook].
   Future<bool> delete(Webhook webhook) async {
-    return await client.requestJson(
+    return await client.request(
         HttpMethod.delete, 'webhooks/${webhook.id}', ApiVersion.v2);
   }
 }

@@ -38,6 +38,7 @@ class Refund extends ModelWithId {
   factory Refund.fromJson(Map<String, dynamic> input) =>
       _$RefundFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$RefundToJson(this);
 }
 
@@ -53,5 +54,6 @@ class RefundCollection extends Collection {
   factory RefundCollection.fromJson(Map<String, dynamic> input) =>
       _$RefundCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$RefundCollectionToJson(this);
 }

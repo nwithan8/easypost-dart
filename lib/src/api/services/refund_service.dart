@@ -14,21 +14,23 @@ class RefundService extends Service {
   Future<Refund> create(CreateRefund parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.post,
       'refunds',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return Refund.fromJson(json);
   }
 
   /// Retrieves a [Refund].
   Future<Refund> retrieve(String id) async {
-    return await client.requestJson(
+    final json =  await client.requestJson(
       HttpMethod.get,
       'refunds/$id',
       ApiVersion.v2,
     );
+    return Refund.fromJson(json);
   }
 
   /// Lists all [Refund]s.

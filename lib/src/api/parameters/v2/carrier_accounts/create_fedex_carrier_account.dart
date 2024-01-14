@@ -1,11 +1,14 @@
+import 'package:easypost/easypost.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
-import 'package:easypost/src/api/parameters/_base.dart';
+import 'package:easypost/src/api/parameters/v2/carrier_accounts/create_carrier_account.dart';
 import 'package:easypost/src/internal/reflection.dart';
+import 'package:easypost/src/api/parameters/iparameters.dart';
 
 @reflector
-class CreateFedExCarrierAccount extends Parameters {
+class CreateFedExCarrierAccount extends CreateCarrierAccount {
+  @override
   @JsonParameter(Necessity.optional, ['carrier_account', "type"])
-  String? type = "FedExAccount";
+  String? get type => "FedExAccount";
 
   @JsonParameter(Necessity.required,
       ['carrier_account', "registration_data", "account_number"])
@@ -75,6 +78,5 @@ class CreateFedExCarrierAccount extends Parameters {
       ['carrier_account', "registration_data", "shipping_streets"])
   String? shippingAddressStreet;
 
-  CreateFedExCarrierAccount()
-      : super();
+  CreateFedExCarrierAccount() : super();
 }

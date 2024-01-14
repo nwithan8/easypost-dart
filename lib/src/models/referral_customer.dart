@@ -66,5 +66,6 @@ class ReferralCustomerCollection extends Collection {
   factory ReferralCustomerCollection.fromJson(Map<String, dynamic> input) =>
       _$ReferralCustomerCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ReferralCustomerCollectionToJson(this);
 }

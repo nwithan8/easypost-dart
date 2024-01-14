@@ -86,8 +86,8 @@ Options _$OptionsFromJson(Map<String, dynamic> json) => Options(
           : DateTime.parse(json['pickup_min_datetime'] as String),
       json['po_sort'] as String?,
       json['postage_label_inline'] as bool?,
-      (json['print_custom'] as List<dynamic>)
-          .map((e) => e as Map<String, dynamic>)
+      (json['print_custom'] as List<dynamic>?)
+          ?.map((e) => e as Map<String, dynamic>)
           .toList(),
       json['print_custom_1'] as String?,
       json['print_custom_1_barcode'] as bool?,

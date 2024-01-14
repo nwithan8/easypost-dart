@@ -13,20 +13,22 @@ class ParcelService extends Service {
   Future<Parcel> create(CreateParcel parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'parcels',
       ApiVersion.v2,
       parameters: parameterMap,
     );
+    return Parcel.fromJson(json);
   }
 
   /// Retrieves a [Parcel].
   Future<Parcel> retrieve(String id) async {
-    return await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.get,
       'parcels/$id',
       ApiVersion.v2,
     );
+    return Parcel.fromJson(json);
   }
 }

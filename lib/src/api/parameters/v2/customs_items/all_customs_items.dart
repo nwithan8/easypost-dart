@@ -19,6 +19,5 @@ class AllCustomsItems extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllCustomsItems()
-      : super();
+  AllCustomsItems() : super();
 }

@@ -71,6 +71,7 @@ class Pickup extends ModelWithId {
   factory Pickup.fromJson(Map<String, dynamic> input) =>
       _$PickupFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PickupToJson(this);
 
   PickupRate associatedPickupRate(Rate rate) {
@@ -95,5 +96,6 @@ class PickupCollection extends Collection {
   factory PickupCollection.fromJson(Map<String, dynamic> input) =>
       _$PickupCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PickupCollectionToJson(this);
 }

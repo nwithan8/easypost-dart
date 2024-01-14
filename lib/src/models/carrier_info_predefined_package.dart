@@ -24,19 +24,13 @@ class CarrierInfoPredefinedPackage extends Model {
   @JsonKey(name: 'name')
   final String? name;
 
-  CarrierInfoPredefinedPackage(
-      objectType,
-      mode,
-      this.carrier,
-      this.description,
-      this.dimensions,
-      this.humanReadable,
-      this.maxWeight,
-      this.name)
+  CarrierInfoPredefinedPackage(objectType, mode, this.carrier, this.description,
+      this.dimensions, this.humanReadable, this.maxWeight, this.name)
       : super(objectType, mode);
 
   factory CarrierInfoPredefinedPackage.fromJson(Map<String, dynamic> input) =>
       _$CarrierInfoPredefinedPackageFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierInfoPredefinedPackageToJson(this);
 }

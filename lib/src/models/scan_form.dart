@@ -47,6 +47,7 @@ class ScanForm extends ModelWithId {
   factory ScanForm.fromJson(Map<String, dynamic> input) =>
       _$ScanFormFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ScanFormToJson(this);
 }
 
@@ -62,5 +63,6 @@ class ScanFormCollection extends Collection {
   factory ScanFormCollection.fromJson(Map<String, dynamic> input) =>
       _$ScanFormCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ScanFormCollectionToJson(this);
 }

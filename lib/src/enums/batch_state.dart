@@ -29,7 +29,7 @@ class BatchState extends SerializableEnum {
   BatchState(super.jsonValue);
 
   /// Get the [BatchState] from a [String].
-  static BatchState? fromString(String value) {
+  static BatchState? fromString(String? value) {
     switch (value) {
       case 'creating':
         return creating;

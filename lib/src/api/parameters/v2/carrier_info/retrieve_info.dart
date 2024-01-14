@@ -1,8 +1,8 @@
 import 'package:easypost/src/enums/carrier_info_type.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
-import 'package:easypost/src/internal/reflection.dart';
 import 'package:easypost/src/api/client.dart';
+import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
 class RetrieveInfo extends Parameters {
@@ -12,8 +12,7 @@ class RetrieveInfo extends Parameters {
   @JsonParameter(Necessity.optional, ['types'])
   List<CarrierInfoType>? types;
 
-  RetrieveInfo()
-      : super();
+  RetrieveInfo() : super();
 
   // TODO: This custom overload does not check for API compatibility.
   @override

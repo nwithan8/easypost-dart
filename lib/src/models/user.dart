@@ -76,5 +76,6 @@ class User extends ModelWithId {
 
   factory User.fromJson(Map<String, dynamic> input) => _$UserFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$UserToJson(this);
 }

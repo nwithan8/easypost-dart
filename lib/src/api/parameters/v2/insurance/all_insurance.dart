@@ -19,6 +19,5 @@ class AllInsurance extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllInsurance()
-      : super();
+  AllInsurance() : super();
 }

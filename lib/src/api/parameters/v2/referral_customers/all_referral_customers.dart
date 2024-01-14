@@ -19,6 +19,5 @@ class AllReferralCustomers extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllReferralCustomers()
-      : super();
+  AllReferralCustomers() : super();
 }

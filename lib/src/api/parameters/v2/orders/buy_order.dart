@@ -10,6 +10,5 @@ class BuyOrder extends Parameters {
   @JsonParameter(Necessity.required, ['service'])
   String? service;
 
-  BuyOrder()
-      : super();
+  BuyOrder() : super();
 }

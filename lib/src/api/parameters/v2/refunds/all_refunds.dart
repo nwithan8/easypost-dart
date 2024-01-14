@@ -19,6 +19,5 @@ class AllRefunds extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllRefunds()
-      : super();
+  AllRefunds() : super();
 }

@@ -24,5 +24,17 @@ void main() {
         expect(key, isA<ApiKey>());
       }
     });
+
+    test('retrieve api keys for user', () async {
+      Client client = TestUtils.setUpVCRClient("api_keys", 'retrieve_api_keys_for_user');
+      client.enableProductionMode();
+
+      final user = await client.users.retrieveMe();
+      
+      final apiKeyCollection = await client.apiKeys.retrieveApiKeysForUser(user.id!);
+
+      expect(apiKeyCollection, isNotNull);
+      expect(apiKeyCollection, isA<List<ApiKey>>());
+    });
   });
 }

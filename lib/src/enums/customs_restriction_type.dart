@@ -19,7 +19,7 @@ class CustomsRestrictionType extends SerializableEnum {
   CustomsRestrictionType(super.jsonValue);
 
   /// Get the [CustomsRestrictionType] from a [String].
-  static CustomsRestrictionType? fromString(String value) {
+  static CustomsRestrictionType? fromString(String? value) {
     switch (value) {
       case 'none':
         return none;

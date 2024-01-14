@@ -34,5 +34,6 @@ class TrackingDetail extends ModelWithId {
   factory TrackingDetail.fromJson(Map<String, dynamic> input) =>
       _$TrackingDetailFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TrackingDetailToJson(this);
 }

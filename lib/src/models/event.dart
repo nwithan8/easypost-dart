@@ -45,6 +45,7 @@ class Event extends ModelWithId {
 
   factory Event.fromJson(Map<String, dynamic> input) => _$EventFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$EventToJson(this);
 }
 
@@ -60,5 +61,6 @@ class EventCollection extends Collection {
   factory EventCollection.fromJson(Map<String, dynamic> input) =>
       _$EventCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$EventCollectionToJson(this);
 }

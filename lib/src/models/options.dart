@@ -205,7 +205,7 @@ class Options extends ModelWithId {
   final bool? postageLabelInline;
 
   @JsonKey(name: 'print_custom')
-  final List<Map<String, dynamic>> printCustom;
+  final List<Map<String, dynamic>>? printCustom;
 
   @JsonKey(name: 'print_custom_1')
   final String? printCustom1;
@@ -369,5 +369,6 @@ class Options extends ModelWithId {
   factory Options.fromJson(Map<String, dynamic> input) =>
       _$OptionsFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$OptionsToJson(this);
 }

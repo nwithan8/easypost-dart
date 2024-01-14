@@ -59,7 +59,6 @@ export 'package:easypost/src/api/parameters/v2/shipments/insure_shipment.dart';
 export 'package:easypost/src/api/parameters/v2/shipments/one_call_buy_shipment.dart';
 export 'package:easypost/src/api/parameters/v2/trackers/all_trackers.dart';
 export 'package:easypost/src/api/parameters/v2/trackers/create_tracker.dart';
-export 'package:easypost/src/api/parameters/v2/trackers/create_trackers_list.dart';
 export 'package:easypost/src/api/parameters/v2/users/create_user.dart';
 export 'package:easypost/src/api/parameters/v2/users/update_brand.dart';
 export 'package:easypost/src/api/parameters/v2/users/update_user.dart';
@@ -82,7 +81,6 @@ export 'package:easypost/src/models/api_key.dart';
 export 'package:easypost/src/models/batch.dart';
 export 'package:easypost/src/models/batch_shipment.dart';
 export 'package:easypost/src/models/brand.dart';
-export 'package:easypost/src/models/carbon_offset.dart';
 export 'package:easypost/src/models/carrier_account.dart';
 export 'package:easypost/src/models/carrier_detail.dart';
 export 'package:easypost/src/models/carrier_type.dart';
@@ -125,6 +123,32 @@ export 'package:easypost/src/models/verification.dart';
 export 'package:easypost/src/models/verification_details.dart';
 export 'package:easypost/src/models/verifications.dart';
 export 'package:easypost/src/models/webhook.dart';
+
+// Exceptions
+export 'package:easypost/src/exceptions/api/api_exception.dart';
+export 'package:easypost/src/exceptions/api/gateway_timeout_exception.dart';
+export 'package:easypost/src/exceptions/api/internal_server_exception.dart';
+export 'package:easypost/src/exceptions/api/invalid_request_exception.dart';
+export 'package:easypost/src/exceptions/api/method_not_allowed_function.dart';
+export 'package:easypost/src/exceptions/api/not_found_exception.dart';
+export 'package:easypost/src/exceptions/api/payment_exception.dart';
+export 'package:easypost/src/exceptions/api/rate_limit_exception.dart';
+export 'package:easypost/src/exceptions/api/service_unavailable_exception.dart';
+export 'package:easypost/src/exceptions/api/timeout_exception.dart';
+export 'package:easypost/src/exceptions/api/unauthorized_exception.dart';
+export 'package:easypost/src/exceptions/json/json_deserialization_exception.dart';
+export 'package:easypost/src/exceptions/json/json_exception.dart';
+export 'package:easypost/src/exceptions/json/json_no_data_exception.dart';
+export 'package:easypost/src/exceptions/json/json_serialization_exception.dart';
+export 'package:easypost/src/exceptions/parameters/invalid_parameter_exception.dart';
+export 'package:easypost/src/exceptions/parameters/missing_parameter_exception.dart';
+export 'package:easypost/src/exceptions/filtering_exception.dart';
+export 'package:easypost/src/exceptions/http_exception.dart';
+export 'package:easypost/src/exceptions/invalid_object_exception.dart';
+export 'package:easypost/src/exceptions/missing_property_exception.dart';
+export 'package:easypost/src/exceptions/payment_methods_not_initialized_exception.dart';
+export 'package:easypost/src/exceptions/resource_not_found_exception.dart';
+export 'package:easypost/src/exceptions/signature_validation_exception.dart';
 
 // Tools
 export 'package:easypost/src/tools/rates.dart';
