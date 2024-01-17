@@ -62,5 +62,7 @@ class ClientConfiguration {
     _boolFunction = boolFunction;
   }
 
-  String get fullBaseUrl => '$baseUrl/${apiVersion.value}';
+  String fullBaseUrl([ApiVersion? apiVersion]) {
+    return '$baseUrl/${apiVersion?.value ?? this.apiVersion.value}';
+  }
 }
