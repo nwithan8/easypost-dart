@@ -31,7 +31,7 @@ class BatchService extends Service {
   }
 
   /// Lists all [Batch]es.
-  Future<BatchCollection> list({AllBatches? parameters}) async {
+  Future<BatchCollection> list({ListBatches? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

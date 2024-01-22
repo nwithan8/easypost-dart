@@ -29,7 +29,7 @@ class EndShipperService extends Service {
   }
 
   /// Lists all [EndShipper]s.
-  Future<EndShipperCollection> list({AllEndShippers? parameters}) async {
+  Future<EndShipperCollection> list({ListEndShippers? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

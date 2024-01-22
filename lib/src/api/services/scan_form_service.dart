@@ -34,7 +34,7 @@ class ScanFormService extends Service {
   }
 
   /// Lists all [ScanForm]s.
-  Future<ScanFormCollection> list({AllScanForms? parameters}) async {
+  Future<ScanFormCollection> list({ListScanForms? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

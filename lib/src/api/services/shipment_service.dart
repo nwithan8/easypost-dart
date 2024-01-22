@@ -49,7 +49,7 @@ class ShipmentService extends Service {
   }
 
   /// Lists all [Shipment]s.
-  Future<ShipmentCollection> list({AllShipments? parameters}) async {
+  Future<ShipmentCollection> list({ListShipments? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

@@ -28,7 +28,7 @@ class InsuranceService extends Service {
   }
 
   /// Lists all [Insurance]s.
-  Future<InsuranceCollection> list({AllInsurance? parameters}) async {
+  Future<InsuranceCollection> list({ListInsurance? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

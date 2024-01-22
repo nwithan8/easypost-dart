@@ -3,7 +3,7 @@ import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class AllRefunds extends Parameters {
+class ListRefunds extends Parameters {
   @JsonParameter(Necessity.optional, ['after_id'])
   String? afterId;
 
@@ -19,5 +19,5 @@ class AllRefunds extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllRefunds() : super();
+  ListRefunds() : super();
 }

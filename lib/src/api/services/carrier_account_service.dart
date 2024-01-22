@@ -29,7 +29,7 @@ class CarrierAccountService extends Service {
   }
 
   /// Lists all [CarrierAccount]s.
-  Future<List<CarrierAccount>> list({AllCarrierAccounts? parameters}) async {
+  Future<List<CarrierAccount>> list({ListCarrierAccounts? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

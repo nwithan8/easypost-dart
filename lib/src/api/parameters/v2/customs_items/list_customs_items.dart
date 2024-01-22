@@ -3,7 +3,7 @@ import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class AllCustomsItems extends Parameters {
+class ListCustomsItems extends Parameters {
   @JsonParameter(Necessity.optional, ['after_id'])
   String? afterId;
 
@@ -19,5 +19,5 @@ class AllCustomsItems extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllCustomsItems() : super();
+  ListCustomsItems() : super();
 }

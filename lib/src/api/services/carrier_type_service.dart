@@ -10,7 +10,7 @@ class CarrierTypeService extends Service {
   CarrierTypeService(Client client) : super(client);
 
   /// List all [CarrierType]s.
-  Future<List<CarrierType>> list({AllCarrierTypes? parameters}) async {
+  Future<List<CarrierType>> list({ListCarrierTypes? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

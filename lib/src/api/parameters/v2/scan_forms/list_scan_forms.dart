@@ -3,7 +3,7 @@ import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class AllScanForms extends Parameters {
+class ListScanForms extends Parameters {
   @JsonParameter(Necessity.optional, ['after_id'])
   String? afterId;
 
@@ -19,5 +19,5 @@ class AllScanForms extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllScanForms() : super();
+  ListScanForms() : super();
 }

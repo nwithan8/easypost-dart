@@ -34,7 +34,7 @@ class TrackerService extends Service {
   }
 
   /// Lists all [Tracker]s.
-  Future<TrackerCollection> list({AllTrackers? parameters}) async {
+  Future<TrackerCollection> list({ListTrackers? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

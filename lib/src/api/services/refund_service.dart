@@ -34,7 +34,7 @@ class RefundService extends Service {
   }
 
   /// Lists all [Refund]s.
-  Future<RefundCollection> list({AllRefunds? parameters}) async {
+  Future<RefundCollection> list({ListRefunds? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

@@ -41,8 +41,8 @@ class PartnerService extends Service {
   }
 
   /// Retrieves all [ReferralCustomer]s.
-  Future<ReferralCustomerCollection> retrieveAllReferralCustomers(
-      AllReferralCustomers parameters) async {
+  Future<ReferralCustomerCollection> listReferralCustomers(
+      ListReferralCustomers parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json =  await client.requestJson(

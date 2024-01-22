@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:intl/intl.dart';
 
@@ -5,10 +7,9 @@ DateTime? stringToDateTime(String? timestamp) =>
     timestamp == null ? null : DateTime.parse(timestamp).toUtc();
 
 // TODO: If timezone issues arise, check here
-String? dateTimeToString(DateTime? time) =>
-    time == null
-        ? null
-        : '${DateFormat('yyyy-MM-ddTHH:mm:ss').format(time.toUtc())}Z';
+String? dateTimeToString(DateTime? time) => time == null
+    ? null
+    : '${DateFormat('yyyy-MM-ddTHH:mm:ss').format(time.toUtc())}Z';
 
 /// Converts a string (20.00) to an int of cents (2000)
 int? stringToCents(String? money) =>
@@ -52,4 +53,26 @@ List<String?>? modelsToIds(List<ModelWithId>? models) {
     ids.add(model.id);
   }
   return ids;
+}
+
+/// Convert a byte array to a hex string.
+String bytesToHex(List<int> bytes) {
+  return bytes.map((e) => e.toRadixString(16)).join();
+}
+
+/// Convert a hex string to a byte array.
+List<int> hexToBytes(String hex) {
+  return hex.split('').map((e) => int.parse(e, radix: 16)).toList();
+}
+
+/// Convert a string to a hex string.
+String stringToHex(String data) {
+  var dataBytes = utf8.encode(data);
+  return bytesToHex(dataBytes);
+}
+
+/// Convert a hex string to a string.
+String hexToString(String hex) {
+  var dataBytes = hexToBytes(hex);
+  return utf8.decode(dataBytes);
 }

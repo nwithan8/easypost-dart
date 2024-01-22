@@ -4,7 +4,7 @@ import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class AllBatches extends Parameters {
+class ListBatches extends Parameters {
   @JsonParameter(Necessity.optional, ['after_id'])
   String? afterId;
 
@@ -23,5 +23,5 @@ class AllBatches extends Parameters {
   @JsonParameter(Necessity.optional, ['sort'])
   SortDirection? sortDirection;
 
-  AllBatches() : super();
+  ListBatches() : super();
 }

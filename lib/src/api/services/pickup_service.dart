@@ -38,7 +38,7 @@ class PickupService extends Service {
   }
 
   /// Lists all [Pickup]s.
-  Future<PickupCollection> list({AllPickups? parameters}) async {
+  Future<PickupCollection> list({ListPickups? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

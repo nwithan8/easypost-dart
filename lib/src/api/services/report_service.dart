@@ -34,7 +34,7 @@ class ReportService extends Service {
   }
 
   /// Lists all [Report]s.
-  Future<ReportCollection> list(String type, {AllReports? parameters}) async {
+  Future<ReportCollection> list(String type, {ListReports? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(

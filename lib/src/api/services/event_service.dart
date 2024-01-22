@@ -19,7 +19,7 @@ class EventService extends Service {
   }
 
   /// List all [Event]s.
-  Future<EventCollection> list({AllEvents? parameters}) async {
+  Future<EventCollection> list({ListEvents? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(
