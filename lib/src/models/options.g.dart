@@ -7,9 +7,6 @@ part of 'options.dart';
 // **************************************************************************
 
 Options _$OptionsFromJson(Map<String, dynamic> json) => Options(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['additional_handling'] as bool?,
@@ -112,100 +109,112 @@ Options _$OptionsFromJson(Map<String, dynamic> json) => Options(
       json['suppress_etd'] as bool?,
     );
 
-Map<String, dynamic> _$OptionsToJson(Options instance) => <String, dynamic>{
-      'object': instance.objectType,
-      'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
-      'additional_handling': instance.additionalHandling,
-      'address_validation_level': instance.addressValidationLevel,
-      'alcohol': instance.isAlcohol,
-      'billing_ref': instance.billingRef,
-      'bill_receiver_amount': instance.billReceiverAmount,
-      'bill_receiver_postal_code': instance.billReceiverPostalCode,
-      'bill_third_party_account': instance.billThirdPartyAccount,
-      'bill_third_party_country': instance.billThirdPartyCountry,
-      'bill_third_party_postal_code': instance.billThirdPartyPostalCode,
-      'by_drone': instance.deliverByDrone,
-      'carbon_neutral': instance.enableCarbonNeutral,
-      'carrier_insurance_amount': instance.carrierInsuranceAmount,
-      'carrier_notification_email': instance.carrierNotificationEmail,
-      'carrier_notification_sms': instance.carrierNotificationSms,
-      'certified_mail': instance.useCertifiedMail,
-      'cod_address_id': instance.codAddressId,
-      'cod_amount': instance.codAmount,
-      'cod_method': instance.codMethod,
-      'commercial_invoice_format': instance.commercialInvoiceFormat,
-      'commercial_invoice_letterhead': instance.commercialInvoiceLetterhead,
-      'commercial_invoice_signature': instance.commercialInvoiceSignature,
-      'commercial_invoice_size': instance.commercialInvoiceSize,
-      'cost_center': instance.costCenter,
-      'currency': instance.currency,
-      'customs_broker_address_id': instance.customsBrokerAddressId,
-      'customs_include_shipping': instance.customsIncludeShipping,
-      'declared_value': instance.declaredValue,
-      'delivered_duty_paid': instance.deliveredDutyPaid,
-      'delivery_confirmation': instance.deliveryConfirmation,
-      'delivery_time_preference': instance.deliveryTimePreference,
-      'dropoff_max_datetime': instance.dropoffMaxDatetime?.toIso8601String(),
-      'dropoff_type': instance.dropoffType,
-      'dry_ice': instance.isDryIce,
-      'dry_ice_medical': instance.isDryIceMedical,
-      'dry_ice_weight': instance.dryIceWeight,
-      'duty_payment': instance.dutyPayment,
-      'duty_payment_account': instance.dutyPaymentAccount,
-      'endorsement': instance.endorsement,
-      'end_shipper_id': instance.endShipperId,
-      'freight_charge': instance.freightCharge,
-      'group': instance.group,
-      'handling_instructions': instance.handlingInstructions,
-      'hazmat': instance.hazmat,
-      'hold_for_pickup': instance.holdForPickup,
-      'image_format': instance.imageFormat,
-      'importer_address_id': instance.importerAddressId,
-      'import_federal_tax_id': instance.importFederalTaxId,
-      'import_state_tax_id': instance.importStateTaxId,
-      'incoterm': instance.incoterm,
-      'invoice_number': instance.invoiceNumber,
-      'label_date': instance.labelDate?.toIso8601String(),
-      'label_format': instance.labelFormat,
-      'label_size': instance.labelSize,
-      'license_number': instance.licenseNumber,
-      'machinable': instance.machinable,
-      'neutral_delivery': instance.enableNeutralDelivery,
-      'non_contact': instance.enableNonContact,
-      'overlabel_construct_code': instance.overlabelConstructCode,
-      'overlabel_construct_tracking_number':
-          instance.overlabelConstructTrackingNumber,
-      'parties_to_transaction_are_related':
-          instance.partiesToTransactionAreRelated,
-      'payment': instance.payment,
-      'peel_and_return': instance.enablePeelAndReturn,
-      'pickup_max_datetime': instance.pickupMaxDatetime?.toIso8601String(),
-      'pickup_min_datetime': instance.pickupMinDatetime?.toIso8601String(),
-      'po_sort': instance.poSort,
-      'postage_label_inline': instance.postageLabelInline,
-      'print_custom': instance.printCustom,
-      'print_custom_1': instance.printCustom1,
-      'print_custom_1_barcode': instance.includePrintCustom1Barcode,
-      'print_custom_1_code': instance.printCustom1Code,
-      'print_custom_2': instance.printCustom2,
-      'print_custom_2_barcode': instance.includePrintCustom2Barcode,
-      'print_custom_2_code': instance.printCustom2Code,
-      'print_custom_3': instance.printCustom3,
-      'print_custom_3_barcode': instance.includePrintCustom3Barcode,
-      'print_custom_3_code': instance.printCustom3Code,
-      'print_rate': instance.includePrintRate,
-      'receiver_liquor_license': instance.receiverLiquorLicense,
-      'registered_mail': instance.useRegisteredMail,
-      'registered_mail_amount': instance.registeredMailAmount,
-      'return_receipt': instance.includeReturnReceipt,
-      'return_service': instance.returnService,
-      'saturday_delivery': instance.enableSaturdayDelivery,
-      'settlement_method': instance.settlementMethod,
-      'smartpost_hub': instance.smartpostHub,
-      'smartpost_manifest': instance.smartpostManifest,
-      'special_rates_eligibility': instance.specialRatesEligibility,
-      'suppress_etd': instance.suppressEtd,
-    };
+Map<String, dynamic> _$OptionsToJson(Options instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('object', instance.objectType);
+  writeNotNull('mode', instance.mode);
+  writeNotNull('additional_handling', instance.additionalHandling);
+  writeNotNull('address_validation_level', instance.addressValidationLevel);
+  writeNotNull('alcohol', instance.isAlcohol);
+  writeNotNull('billing_ref', instance.billingRef);
+  writeNotNull('bill_receiver_amount', instance.billReceiverAmount);
+  writeNotNull('bill_receiver_postal_code', instance.billReceiverPostalCode);
+  writeNotNull('bill_third_party_account', instance.billThirdPartyAccount);
+  writeNotNull('bill_third_party_country', instance.billThirdPartyCountry);
+  writeNotNull(
+      'bill_third_party_postal_code', instance.billThirdPartyPostalCode);
+  writeNotNull('by_drone', instance.deliverByDrone);
+  writeNotNull('carbon_neutral', instance.enableCarbonNeutral);
+  writeNotNull('carrier_insurance_amount', instance.carrierInsuranceAmount);
+  writeNotNull('carrier_notification_email', instance.carrierNotificationEmail);
+  writeNotNull('carrier_notification_sms', instance.carrierNotificationSms);
+  writeNotNull('certified_mail', instance.useCertifiedMail);
+  writeNotNull('cod_address_id', instance.codAddressId);
+  writeNotNull('cod_amount', instance.codAmount);
+  writeNotNull('cod_method', instance.codMethod);
+  writeNotNull('commercial_invoice_format', instance.commercialInvoiceFormat);
+  writeNotNull(
+      'commercial_invoice_letterhead', instance.commercialInvoiceLetterhead);
+  writeNotNull(
+      'commercial_invoice_signature', instance.commercialInvoiceSignature);
+  writeNotNull('commercial_invoice_size', instance.commercialInvoiceSize);
+  writeNotNull('cost_center', instance.costCenter);
+  writeNotNull('currency', instance.currency);
+  writeNotNull('customs_broker_address_id', instance.customsBrokerAddressId);
+  writeNotNull('customs_include_shipping', instance.customsIncludeShipping);
+  writeNotNull('declared_value', instance.declaredValue);
+  writeNotNull('delivered_duty_paid', instance.deliveredDutyPaid);
+  writeNotNull('delivery_confirmation', instance.deliveryConfirmation);
+  writeNotNull('delivery_time_preference', instance.deliveryTimePreference);
+  writeNotNull(
+      'dropoff_max_datetime', instance.dropoffMaxDatetime?.toIso8601String());
+  writeNotNull('dropoff_type', instance.dropoffType);
+  writeNotNull('dry_ice', instance.isDryIce);
+  writeNotNull('dry_ice_medical', instance.isDryIceMedical);
+  writeNotNull('dry_ice_weight', instance.dryIceWeight);
+  writeNotNull('duty_payment', instance.dutyPayment);
+  writeNotNull('duty_payment_account', instance.dutyPaymentAccount);
+  writeNotNull('endorsement', instance.endorsement);
+  writeNotNull('end_shipper_id', instance.endShipperId);
+  writeNotNull('freight_charge', instance.freightCharge);
+  writeNotNull('group', instance.group);
+  writeNotNull('handling_instructions', instance.handlingInstructions);
+  writeNotNull('hazmat', instance.hazmat);
+  writeNotNull('hold_for_pickup', instance.holdForPickup);
+  writeNotNull('image_format', instance.imageFormat);
+  writeNotNull('importer_address_id', instance.importerAddressId);
+  writeNotNull('import_federal_tax_id', instance.importFederalTaxId);
+  writeNotNull('import_state_tax_id', instance.importStateTaxId);
+  writeNotNull('incoterm', instance.incoterm);
+  writeNotNull('invoice_number', instance.invoiceNumber);
+  writeNotNull('label_date', instance.labelDate?.toIso8601String());
+  writeNotNull('label_format', instance.labelFormat);
+  writeNotNull('label_size', instance.labelSize);
+  writeNotNull('license_number', instance.licenseNumber);
+  writeNotNull('machinable', instance.machinable);
+  writeNotNull('neutral_delivery', instance.enableNeutralDelivery);
+  writeNotNull('non_contact', instance.enableNonContact);
+  writeNotNull('overlabel_construct_code', instance.overlabelConstructCode);
+  writeNotNull('overlabel_construct_tracking_number',
+      instance.overlabelConstructTrackingNumber);
+  writeNotNull('parties_to_transaction_are_related',
+      instance.partiesToTransactionAreRelated);
+  writeNotNull('payment', instance.payment);
+  writeNotNull('peel_and_return', instance.enablePeelAndReturn);
+  writeNotNull(
+      'pickup_max_datetime', instance.pickupMaxDatetime?.toIso8601String());
+  writeNotNull(
+      'pickup_min_datetime', instance.pickupMinDatetime?.toIso8601String());
+  writeNotNull('po_sort', instance.poSort);
+  writeNotNull('postage_label_inline', instance.postageLabelInline);
+  writeNotNull('print_custom', instance.printCustom);
+  writeNotNull('print_custom_1', instance.printCustom1);
+  writeNotNull('print_custom_1_barcode', instance.includePrintCustom1Barcode);
+  writeNotNull('print_custom_1_code', instance.printCustom1Code);
+  writeNotNull('print_custom_2', instance.printCustom2);
+  writeNotNull('print_custom_2_barcode', instance.includePrintCustom2Barcode);
+  writeNotNull('print_custom_2_code', instance.printCustom2Code);
+  writeNotNull('print_custom_3', instance.printCustom3);
+  writeNotNull('print_custom_3_barcode', instance.includePrintCustom3Barcode);
+  writeNotNull('print_custom_3_code', instance.printCustom3Code);
+  writeNotNull('print_rate', instance.includePrintRate);
+  writeNotNull('receiver_liquor_license', instance.receiverLiquorLicense);
+  writeNotNull('registered_mail', instance.useRegisteredMail);
+  writeNotNull('registered_mail_amount', instance.registeredMailAmount);
+  writeNotNull('return_receipt', instance.includeReturnReceipt);
+  writeNotNull('return_service', instance.returnService);
+  writeNotNull('saturday_delivery', instance.enableSaturdayDelivery);
+  writeNotNull('settlement_method', instance.settlementMethod);
+  writeNotNull('smartpost_hub', instance.smartpostHub);
+  writeNotNull('smartpost_manifest', instance.smartpostManifest);
+  writeNotNull('special_rates_eligibility', instance.specialRatesEligibility);
+  writeNotNull('suppress_etd', instance.suppressEtd);
+  return val;
+}

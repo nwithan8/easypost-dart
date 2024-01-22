@@ -4,24 +4,24 @@ import 'package:easypost/src/models/report.dart';
 /// The available report types.
 class ReportType extends SerializableEnum {
   /// The cash flow report type.
-  static ReportType cashFlow = ReportType('cash_flow');
+  static ReportType cashFlow = ReportType(1, 'cash_flow');
 
   /// The payment log report type.
-  static ReportType paymentLog = ReportType('payment_log');
+  static ReportType paymentLog = ReportType(2, 'payment_log');
 
   /// The refund report type.
-  static ReportType refund = ReportType('refund');
+  static ReportType refund = ReportType(3, 'refund');
 
   /// The shipment report type.
-  static ReportType shipment = ReportType('shipment');
+  static ReportType shipment = ReportType(4, 'shipment');
 
   /// The shipment invoice report type.
-  static ReportType shipmentInvoice = ReportType('shipment_invoice');
+  static ReportType shipmentInvoice = ReportType(5, 'shipment_invoice');
 
   /// The tracker report type.
-  static ReportType tracker = ReportType('tracker');
+  static ReportType tracker = ReportType(6, 'tracker');
 
-  ReportType(super.jsonValue);
+  ReportType(super.id, super.jsonValue);
 
   /// Get the [ReportType] from a [String].
   static ReportType? fromString(String? value) {

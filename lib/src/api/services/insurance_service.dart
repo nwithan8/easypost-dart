@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/insurance/all_insurance.dart';
+import 'package:easypost/src/api/parameters/v2/insurance/list_insurance.dart';
 import 'package:easypost/src/api/parameters/v2/insurance/create_insurance.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/insurance.dart';

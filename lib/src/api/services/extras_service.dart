@@ -8,7 +8,7 @@ import 'package:easypost/src/api/parameters/v2/billing/create_credit_card.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/json/json_deserialization_exception.dart';
 import 'package:easypost/src/models/payment_method.dart';
-import 'package:easypost/src/models/payment_method_priority.dart';
+import 'package:easypost/src/enums/payment_method_priority.dart';
 import 'package:http/http.dart' as http;
 
 /// The [ExtrasService] handles extraneous EasyPost API functionality.
@@ -68,7 +68,8 @@ class ExtrasService extends Service {
   /// Store a Stripe token for a credit card on a [ReferralCustomer]'s account.
   Future<PaymentMethod> createEasyPostCreditCardUsingStripeToken(
       String referralCustomerApiKey, String stripeToken,
-      {PaymentMethodPriority? priority = PaymentMethodPriority.primary}) async {
+      {PaymentMethodPriority? priority}) async {
+    priority ??= PaymentMethodPriority.primary;
     // Create a one-off Client clone configured with the referral customer's production API key
     Client referralClient = Client(ClientConfiguration(
         "none", referralCustomerApiKey,

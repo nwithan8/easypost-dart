@@ -3,34 +3,34 @@ import 'package:easypost/src/internal/enums.dart';
 /// The available form types.
 class FormType extends SerializableEnum {
   /// The CN22 form type.
-  static FormType cn22 = FormType('cn22');
+  static FormType cn22 = FormType(1, 'cn22');
 
   /// The COD return label form type.
-  static FormType codReturnLabel = FormType('cod_return_label');
+  static FormType codReturnLabel = FormType(2, 'cod_return_label');
 
   /// The commercial invoice form type.
-  static FormType commercialInvoice = FormType('commercial_invoice');
+  static FormType commercialInvoice = FormType(3, 'commercial_invoice');
 
   /// The high value report form type.
-  static FormType highValueReport = FormType('high_value_report');
+  static FormType highValueReport = FormType(4, 'high_value_report');
 
   /// The label QR code form type.
-  static FormType labelQrCode = FormType('label_qr_code');
+  static FormType labelQrCode = FormType(5, 'label_qr_code');
 
   /// The NAFTA certificate of origin form type.
   static FormType naftaCertificateOfOrigin =
-      FormType('nafta_certificate_of_origin');
+      FormType(6, 'nafta_certificate_of_origin');
 
   /// The order summary form type.
-  static FormType orderSummary = FormType('order_summary');
+  static FormType orderSummary = FormType(7, 'order_summary');
 
   /// The return packing slip form type.
-  static FormType returnPackingSlip = FormType('return_packing_slip');
+  static FormType returnPackingSlip = FormType(8, 'return_packing_slip');
 
   /// The RMA QR code form type.
-  static FormType rmaQrCode = FormType('rma_qr_code');
+  static FormType rmaQrCode = FormType(9, 'rma_qr_code');
 
-  FormType(super.jsonValue);
+  FormType(super.id, super.jsonValue);
 
   /// Get the [FormType] from a [String].
   static FormType? fromString(String? value) {

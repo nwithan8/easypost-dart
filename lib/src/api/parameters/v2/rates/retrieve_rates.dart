@@ -1,15 +1,14 @@
+import 'package:easypost/easypost.dart';
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
-import 'package:easypost/src/models/address.dart';
-import 'package:easypost/src/models/carrier_account.dart';
-import 'package:easypost/src/models/parcel.dart';
 import 'package:easypost/src/api/parameters/iparameters.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
 class RetrieveRates extends Parameters {
   @JsonParameter(Necessity.optional, ['shipment', 'carrier_accounts'])
-  List<ICarrierAccountParameter>? carrierAccounts;
+  List<String>? carrierAccountIds;
 
   @JsonParameter(Necessity.optional, ['shipment', 'from_address'])
   IAddressParameter? fromAddress;
@@ -25,6 +24,9 @@ class RetrieveRates extends Parameters {
 
   @JsonParameter(Necessity.optional, ['shipment', 'to_address'])
   IAddressParameter? toAddress;
+
+  @JsonParameter(Necessity.optional, ['shipment', 'options'])
+  Options? options;
 
   RetrieveRates() : super();
 }

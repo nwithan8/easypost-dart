@@ -1,7 +1,7 @@
 import 'package:easypost/src/exceptions/filtering_exception.dart';
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/smart_rate.dart';
-import 'package:easypost/src/models/smart_rate_accuracy.dart';
+import 'package:easypost/src/enums/smart_rate_accuracy.dart';
 
 Rate getLowestRate(List<Rate> rates,
     {List<String>? includeCarriers,

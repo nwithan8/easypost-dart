@@ -1,9 +1,10 @@
+import 'package:easypost/easypost.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class AllAddresses extends Parameters {
+class AllBatches extends Parameters {
   @JsonParameter(Necessity.optional, ['after_id'])
   String? afterId;
 
@@ -19,5 +20,8 @@ class AllAddresses extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  AllAddresses() : super();
+  @JsonParameter(Necessity.optional, ['sort'])
+  SortDirection? sortDirection;
+
+  AllBatches() : super();
 }

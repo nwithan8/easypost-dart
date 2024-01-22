@@ -6,8 +6,8 @@ import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/payment_methods_not_initialized_exception.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
 import 'package:easypost/src/models/payment_method.dart';
-import 'package:easypost/src/models/payment_method_priority.dart';
-import 'package:easypost/src/models/payment_method_type.dart';
+import 'package:easypost/src/enums/payment_method_priority.dart';
+import 'package:easypost/src/enums/payment_method_type.dart';
 import 'package:easypost/src/models/payment_methods_summary.dart';
 
 /// The [BillingService] handles billing with the EasyPost API.
@@ -30,17 +30,19 @@ class BillingService extends Service {
   Future<PaymentMethod?> retrievePaymentMethod(
       PaymentMethodPriority priority) async {
     PaymentMethodsSummary paymentMethods = await retrievePaymentMethods();
-    switch (priority) {
-      case PaymentMethodPriority.primary:
-        return paymentMethods.primaryPaymentMethod;
-      case PaymentMethodPriority.secondary:
-        return paymentMethods.secondaryPaymentMethod;
+    if (priority.matches(PaymentMethodPriority.primary)) {
+      return paymentMethods.primaryPaymentMethod;
+    } else if (priority.matches(PaymentMethodPriority.secondary)) {
+      return paymentMethods.secondaryPaymentMethod;
+    } else {
+      return null;
     }
   }
 
   /// Funds your account with an established [PaymentMethod].
   Future<bool> fundWallet(FundWallet parameters,
-      {PaymentMethodPriority priority = PaymentMethodPriority.primary}) async {
+      {PaymentMethodPriority? priority}) async {
+    priority ??= PaymentMethodPriority.primary;
     PaymentMethod? paymentMethod = await retrievePaymentMethod(priority);
     if (paymentMethod == null) {
       throw ResourceNotFoundException('No payment method found.');

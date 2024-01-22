@@ -1,279 +1,276 @@
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'options.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class Options extends ModelWithId {
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Options extends Model {
   @JsonKey(name: 'additional_handling')
-  final bool? additionalHandling;
+  late bool? additionalHandling;
 
   @JsonKey(name: 'address_validation_level')
-  final String? addressValidationLevel;
+  late String? addressValidationLevel;
 
   @JsonKey(name: 'alcohol')
-  final bool? isAlcohol;
+  late bool? isAlcohol;
 
   @JsonKey(name: 'billing_ref')
-  final String? billingRef;
+  late String? billingRef;
 
   @JsonKey(name: 'bill_receiver_amount')
-  final String? billReceiverAmount;
+  late String? billReceiverAmount;
 
   @JsonKey(name: 'bill_receiver_postal_code')
-  final String? billReceiverPostalCode;
+  late String? billReceiverPostalCode;
 
   @JsonKey(name: 'bill_third_party_account')
-  final String? billThirdPartyAccount;
+  late String? billThirdPartyAccount;
 
   @JsonKey(name: 'bill_third_party_country')
-  final String? billThirdPartyCountry;
+  late String? billThirdPartyCountry;
 
   @JsonKey(name: 'bill_third_party_postal_code')
-  final String? billThirdPartyPostalCode;
+  late String? billThirdPartyPostalCode;
 
   @JsonKey(name: 'by_drone')
-  final bool? deliverByDrone;
+  late bool? deliverByDrone;
 
   @JsonKey(name: 'carbon_neutral')
-  final bool? enableCarbonNeutral;
+  late bool? enableCarbonNeutral;
 
   @JsonKey(name: 'carrier_insurance_amount')
-  final String? carrierInsuranceAmount;
+  late String? carrierInsuranceAmount;
 
   @JsonKey(name: 'carrier_notification_email')
-  final String? carrierNotificationEmail;
+  late String? carrierNotificationEmail;
 
   @JsonKey(name: 'carrier_notification_sms')
-  final String? carrierNotificationSms;
+  late String? carrierNotificationSms;
 
   @JsonKey(name: 'certified_mail')
-  final bool? useCertifiedMail;
+  late bool? useCertifiedMail;
 
   @JsonKey(name: 'cod_address_id')
-  final String? codAddressId;
+  late String? codAddressId;
 
   @JsonKey(name: 'cod_amount')
-  final String? codAmount;
+  late String? codAmount;
 
   @JsonKey(name: 'cod_method')
-  final String? codMethod;
+  late String? codMethod;
 
   @JsonKey(name: 'commercial_invoice_format')
-  final String? commercialInvoiceFormat;
+  late String? commercialInvoiceFormat;
 
   @JsonKey(name: 'commercial_invoice_letterhead')
-  final String? commercialInvoiceLetterhead;
+  late String? commercialInvoiceLetterhead;
 
   @JsonKey(name: 'commercial_invoice_signature')
-  final String? commercialInvoiceSignature;
+  late String? commercialInvoiceSignature;
 
   @JsonKey(name: 'commercial_invoice_size')
-  final String? commercialInvoiceSize;
+  late String? commercialInvoiceSize;
 
   @JsonKey(name: 'cost_center')
-  final String? costCenter;
+  late String? costCenter;
 
   @JsonKey(name: 'currency')
-  final String? currency;
+  late String? currency;
 
   @JsonKey(name: 'customs_broker_address_id')
-  final String? customsBrokerAddressId;
+  late String? customsBrokerAddressId;
 
   @JsonKey(name: 'customs_include_shipping')
-  final bool? customsIncludeShipping;
+  late bool? customsIncludeShipping;
 
   @JsonKey(name: 'declared_value')
-  final String? declaredValue;
+  late String? declaredValue;
 
   @JsonKey(name: 'delivered_duty_paid')
-  final bool? deliveredDutyPaid;
+  late bool? deliveredDutyPaid;
 
   @JsonKey(name: 'delivery_confirmation')
-  final String? deliveryConfirmation;
+  late String? deliveryConfirmation;
 
   @JsonKey(name: 'delivery_time_preference')
-  final String? deliveryTimePreference;
+  late String? deliveryTimePreference;
 
   @JsonKey(name: 'dropoff_max_datetime')
-  final DateTime? dropoffMaxDatetime;
+  late DateTime? dropoffMaxDatetime;
 
   @JsonKey(name: 'dropoff_type')
-  final String? dropoffType;
+  late String? dropoffType;
 
   @JsonKey(name: 'dry_ice')
-  final bool? isDryIce;
+  late bool? isDryIce;
 
   @JsonKey(name: 'dry_ice_medical')
-  final bool? isDryIceMedical;
+  late bool? isDryIceMedical;
 
   @JsonKey(name: 'dry_ice_weight')
-  final String? dryIceWeight;
+  late String? dryIceWeight;
 
   @JsonKey(name: 'duty_payment')
-  final Map<String, dynamic>? dutyPayment;
+  late Map<String, dynamic>? dutyPayment;
 
   @JsonKey(name: 'duty_payment_account')
-  final String? dutyPaymentAccount;
+  late String? dutyPaymentAccount;
 
   @JsonKey(name: 'endorsement')
-  final String? endorsement;
+  late String? endorsement;
 
   @JsonKey(name: 'end_shipper_id')
-  final String? endShipperId;
+  late String? endShipperId;
 
   @JsonKey(name: 'freight_charge')
-  final String? freightCharge;
+  late String? freightCharge;
 
   @JsonKey(name: 'group')
-  final String? group;
+  late String? group;
 
   @JsonKey(name: 'handling_instructions')
-  final String? handlingInstructions;
+  late String? handlingInstructions;
 
   @JsonKey(name: 'hazmat')
-  final String? hazmat;
+  late String? hazmat;
 
   @JsonKey(name: 'hold_for_pickup')
-  final bool? holdForPickup;
+  late bool? holdForPickup;
 
   @JsonKey(name: 'image_format')
-  final String? imageFormat;
+  late String? imageFormat;
 
   @JsonKey(name: 'importer_address_id')
-  final String? importerAddressId;
+  late String? importerAddressId;
 
   @JsonKey(name: 'import_federal_tax_id')
-  final String? importFederalTaxId;
+  late String? importFederalTaxId;
 
   @JsonKey(name: 'import_state_tax_id')
-  final String? importStateTaxId;
+  late String? importStateTaxId;
 
   @JsonKey(name: 'incoterm')
-  final String? incoterm;
+  late String? incoterm;
 
   @JsonKey(name: 'invoice_number')
-  final String? invoiceNumber;
+  late String? invoiceNumber;
 
   @JsonKey(name: 'label_date')
-  final DateTime? labelDate;
+  late DateTime? labelDate;
 
   @JsonKey(name: 'label_format')
-  final String? labelFormat;
+  late String? labelFormat;
 
   @JsonKey(name: 'label_size')
-  final String? labelSize;
+  late String? labelSize;
 
   @JsonKey(name: 'license_number')
-  final String? licenseNumber;
+  late String? licenseNumber;
 
   @JsonKey(name: 'machinable')
-  final String? machinable;
+  late String? machinable;
 
   @JsonKey(name: 'neutral_delivery')
-  final bool? enableNeutralDelivery;
+  late bool? enableNeutralDelivery;
 
   @JsonKey(name: 'non_contact')
-  final bool? enableNonContact;
+  late bool? enableNonContact;
 
   @JsonKey(name: 'overlabel_construct_code')
-  final String? overlabelConstructCode;
+  late String? overlabelConstructCode;
 
   @JsonKey(name: 'overlabel_construct_tracking_number')
-  final String? overlabelConstructTrackingNumber;
+  late String? overlabelConstructTrackingNumber;
 
   @JsonKey(name: 'parties_to_transaction_are_related')
-  final String? partiesToTransactionAreRelated;
+  late String? partiesToTransactionAreRelated;
 
   @JsonKey(name: 'payment')
-  final Map<String, dynamic>? payment;
+  late Map<String, dynamic>? payment;
 
   @JsonKey(name: 'peel_and_return')
-  final bool? enablePeelAndReturn;
+  late bool? enablePeelAndReturn;
 
   @JsonKey(name: 'pickup_max_datetime')
-  final DateTime? pickupMaxDatetime;
+  late DateTime? pickupMaxDatetime;
 
   @JsonKey(name: 'pickup_min_datetime')
-  final DateTime? pickupMinDatetime;
+  late DateTime? pickupMinDatetime;
 
   @JsonKey(name: 'po_sort')
-  final String? poSort;
+  late String? poSort;
 
   @JsonKey(name: 'postage_label_inline')
-  final bool? postageLabelInline;
+  late bool? postageLabelInline;
 
   @JsonKey(name: 'print_custom')
-  final List<Map<String, dynamic>>? printCustom;
+  late List<Map<String, dynamic>>? printCustom;
 
   @JsonKey(name: 'print_custom_1')
-  final String? printCustom1;
+  late String? printCustom1;
 
   @JsonKey(name: 'print_custom_1_barcode')
-  final bool? includePrintCustom1Barcode;
+  late bool? includePrintCustom1Barcode;
 
   @JsonKey(name: 'print_custom_1_code')
-  final String? printCustom1Code;
+  late String? printCustom1Code;
 
   @JsonKey(name: 'print_custom_2')
-  final String? printCustom2;
+  late String? printCustom2;
 
   @JsonKey(name: 'print_custom_2_barcode')
-  final bool? includePrintCustom2Barcode;
+  late bool? includePrintCustom2Barcode;
 
   @JsonKey(name: 'print_custom_2_code')
-  final String? printCustom2Code;
+  late String? printCustom2Code;
 
   @JsonKey(name: 'print_custom_3')
-  final String? printCustom3;
+  late String? printCustom3;
 
   @JsonKey(name: 'print_custom_3_barcode')
-  final bool? includePrintCustom3Barcode;
+  late bool? includePrintCustom3Barcode;
 
   @JsonKey(name: 'print_custom_3_code')
-  final String? printCustom3Code;
+  late String? printCustom3Code;
 
   @JsonKey(name: 'print_rate')
-  final bool? includePrintRate;
+  late bool? includePrintRate;
 
   @JsonKey(name: 'receiver_liquor_license')
-  final String? receiverLiquorLicense;
+  late String? receiverLiquorLicense;
 
   @JsonKey(name: 'registered_mail')
-  final bool? useRegisteredMail;
+  late bool? useRegisteredMail;
 
   @JsonKey(name: 'registered_mail_amount')
-  final double? registeredMailAmount;
+  late double? registeredMailAmount;
 
   @JsonKey(name: 'return_receipt')
-  final bool? includeReturnReceipt;
+  late bool? includeReturnReceipt;
 
   @JsonKey(name: 'return_service')
-  final String? returnService;
+  late String? returnService;
 
   @JsonKey(name: 'saturday_delivery')
-  final bool? enableSaturdayDelivery;
+  late bool? enableSaturdayDelivery;
 
   @JsonKey(name: 'settlement_method')
-  final String? settlementMethod;
+  late String? settlementMethod;
 
   @JsonKey(name: 'smartpost_hub')
-  final String? smartpostHub;
+  late String? smartpostHub;
 
   @JsonKey(name: 'smartpost_manifest')
-  final String? smartpostManifest;
+  late String? smartpostManifest;
 
   @JsonKey(name: 'special_rates_eligibility')
-  final String? specialRatesEligibility;
+  late String? specialRatesEligibility;
 
   @JsonKey(name: 'suppress_etd')
-  final bool? suppressEtd;
+  late bool? suppressEtd;
 
-  Options(
-    id,
-    createdAt,
-    updatedAt,
+  Options([
     objectType,
     mode,
     this.additionalHandling,
@@ -364,7 +361,7 @@ class Options extends ModelWithId {
     this.smartpostManifest,
     this.specialRatesEligibility,
     this.suppressEtd,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ]) : super(objectType, mode);
 
   factory Options.fromJson(Map<String, dynamic> input) =>
       _$OptionsFromJson(input);

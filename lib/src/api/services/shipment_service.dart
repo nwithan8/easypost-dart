@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/shipments/all_shipments.dart';
+import 'package:easypost/src/api/parameters/v2/shipments/list_shipments.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/buy_shipment.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/create_shipment.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/create_shipment_document.dart';
@@ -14,7 +14,7 @@ import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/shipment.dart';
 import 'package:easypost/src/models/smart_rate.dart';
-import 'package:easypost/src/models/smart_rate_accuracy.dart';
+import 'package:easypost/src/enums/smart_rate_accuracy.dart';
 import 'package:easypost/src/tools/rates.dart';
 
 /// The [ShipmentService] handles shipments with the EasyPost API.

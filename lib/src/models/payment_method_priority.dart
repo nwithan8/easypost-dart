@@ -1,4 +1,0 @@
-enum PaymentMethodPriority {
-  primary,
-  secondary,
-}

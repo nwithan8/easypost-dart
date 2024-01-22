@@ -53,22 +53,6 @@ void main() {
       expect(verifiedAddress.verifications?.delivery, isNotNull);
     });
 
-    test('create with strict verification', () async {
-      Client client = TestUtils.setUpVCRClient(
-          "addresses", 'create_with_strict_verification');
-      client.enableTestMode();
-
-      final params = Fixtures.caAddress1;
-      params.strictlyVerify = true;
-
-      final address = await client.addresses.create(params);
-
-      expect(address, isNotNull);
-      expect(address, isA<Address>());
-      expect(address.id, startsWith("adr_"));
-      expect(address.street1, "388 TOWNSEND ST APT 20");
-    });
-
     test('retrieve', () async {
       Client client = TestUtils.setUpVCRClient("addresses", 'retrieve');
       client.enableTestMode();
@@ -84,11 +68,11 @@ void main() {
       expect(retrievedAddress.id == address.id, true);
     });
 
-    test('all', () async {
-      Client client = TestUtils.setUpVCRClient("addresses", 'all');
+    test('list', () async {
+      Client client = TestUtils.setUpVCRClient("addresses", 'list');
       client.enableTestMode();
 
-      final params = AllAddresses();
+      final params = ListAddresses();
       params.pageSize = Fixtures.pageSize;
 
       final addressCollection = await client.addresses.list(parameters: params);
@@ -115,6 +99,24 @@ void main() {
       expect(verifiedAddress, isA<Address>());
       expect(verifiedAddress.id, startsWith("adr_"));
       expect(verifiedAddress.street1, "388 TOWNSEND ST APT 20");
+    });
+
+    test('scratch', () async {
+      Client client = TestUtils.setUpVCRClient("scratch", 'scratch');
+      client.enableTestMode();
+
+      final options = Options();
+      options.additionalHandling = true;
+      options.billingRef = "1234567890";
+
+      final params = RetrieveRates();
+      params.toAddress = Fixtures.caAddress1;
+      params.fromAddress = Fixtures.caAddress2;
+      params.parcel = Fixtures.basicParcel;
+      params.carrierAccountIds = [Fixtures.uspsCarrierAccountId];
+      params.options = options;
+
+      final rates = await client.rates.retrieveRates(params);
     });
   });
 }

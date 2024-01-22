@@ -1,7 +1,7 @@
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/payment_method.dart';
-import 'package:easypost/src/models/payment_method_priority.dart';
+import 'package:easypost/src/enums/payment_method_priority.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_methods_summary.g.dart';
@@ -31,11 +31,12 @@ class PaymentMethodsSummary extends ModelWithId {
   Map<String, dynamic> toJson() => _$PaymentMethodsSummaryToJson(this);
 
   PaymentMethod? byPriority(PaymentMethodPriority priority) {
-    switch (priority) {
-      case PaymentMethodPriority.primary:
-        return primaryPaymentMethod;
-      case PaymentMethodPriority.secondary:
-        return secondaryPaymentMethod;
+    if (priority.matches(PaymentMethodPriority.primary)) {
+      return primaryPaymentMethod;
+    } else if (priority.matches(PaymentMethodPriority.secondary)) {
+      return secondaryPaymentMethod;
+    } else {
+      return null;
     }
   }
 }

@@ -3,15 +3,15 @@ import 'package:easypost/src/internal/enums.dart';
 /// The available file formats.
 class FileFormat extends SerializableEnum {
   /// The PDF file format.
-  static FileFormat pdf = FileFormat('pdf');
+  static FileFormat pdf = FileFormat(1, 'pdf');
 
   /// The ZPL file format.
-  static FileFormat zpl = FileFormat('zpl');
+  static FileFormat zpl = FileFormat(2, 'zpl');
 
   /// The EPL2 file format.
-  static FileFormat epl2 = FileFormat('epl2');
+  static FileFormat epl2 = FileFormat(3, 'epl2');
 
-  FileFormat(super.jsonValue);
+  FileFormat(super.id, super.jsonValue);
 
   /// Get the [FileFormat] from a [String].
   static FileFormat? fromString(String? value) {

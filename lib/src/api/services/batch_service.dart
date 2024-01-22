@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/batches/all_batches.dart';
+import 'package:easypost/src/api/parameters/v2/batches/list_batches.dart';
 import 'package:easypost/src/api/parameters/v2/batches/create_batch.dart';
 import 'package:easypost/src/api/parameters/v2/batches/create_batch_document.dart';
 import 'package:easypost/src/api/parameters/v2/batches/update_batch_shipments.dart';

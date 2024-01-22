@@ -3,20 +3,20 @@ import 'package:easypost/src/internal/enums.dart';
 /// The available types of information to retrieve about a carrier.
 class CarrierInfoType extends SerializableEnum {
   /// Get information about the carrier's service levels.
-  static CarrierInfoType serviceLevels = CarrierInfoType('service_levels');
+  static CarrierInfoType serviceLevels = CarrierInfoType(1, 'service_levels');
 
   /// Get information about the carrier's predefined packages.
   static CarrierInfoType predefinedPackages =
-      CarrierInfoType('predefined_packages');
+      CarrierInfoType(2, 'predefined_packages');
 
   /// Get information about the carrier's shipment options.
-  static CarrierInfoType shipmentOptions = CarrierInfoType('shipment_options');
+  static CarrierInfoType shipmentOptions = CarrierInfoType(3, 'shipment_options');
 
   /// Get information about the carrier's supported features.
   static CarrierInfoType supportedFeatures =
-      CarrierInfoType('supported_features');
+      CarrierInfoType(4, 'supported_features');
 
-  CarrierInfoType(super.jsonValue);
+  CarrierInfoType(super.id, super.jsonValue);
 
   /// Get the [CarrierInfoType] from a [String].
   static CarrierInfoType? fromString(String? value) {

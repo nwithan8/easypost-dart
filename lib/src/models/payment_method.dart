@@ -1,6 +1,6 @@
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
-import 'package:easypost/src/models/payment_method_type.dart';
+import 'package:easypost/src/enums/payment_method_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_method.g.dart';
@@ -40,13 +40,7 @@ class PaymentMethod extends ModelWithId {
       return null;
     }
 
-    if (id!.startsWith('card_')) {
-      return PaymentMethodType.card;
-    } else if (id!.startsWith('bank_')) {
-      return PaymentMethodType.bank;
-    } else {
-      return null;
-    }
+    return PaymentMethodType.fromPrefix(id!);
   }
 
   PaymentMethod(

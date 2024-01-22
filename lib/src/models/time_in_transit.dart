@@ -1,6 +1,6 @@
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/enums/smart_rate_accuracy.dart';
 import 'package:easypost/src/internal/conversions.dart';
-import 'package:easypost/src/models/smart_rate_accuracy.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'time_in_transit.g.dart';
@@ -50,21 +50,21 @@ class TimeInTransit extends ModelWithId {
   Map<String, dynamic> toJson() => _$TimeInTransitToJson(this);
 
   int? bySmartRateAccuracy(SmartRateAccuracy accuracy) {
-    switch (accuracy) {
-      case SmartRateAccuracy.percentile50:
-        return percentile50;
-      case SmartRateAccuracy.percentile75:
-        return percentile75;
-      case SmartRateAccuracy.percentile85:
-        return percentile85;
-      case SmartRateAccuracy.percentile90:
-        return percentile90;
-      case SmartRateAccuracy.percentile95:
-        return percentile95;
-      case SmartRateAccuracy.percentile97:
-        return percentile97;
-      case SmartRateAccuracy.percentile99:
-        return percentile99;
+    if (accuracy.matches(SmartRateAccuracy.percentile50)) {
+      return percentile50;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile75)) {
+      return percentile75;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile85)) {
+      return percentile85;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile90)) {
+      return percentile90;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile95)) {
+      return percentile95;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile97)) {
+      return percentile97;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile99)) {
+      return percentile99;
     }
+    return null;
   }
 }

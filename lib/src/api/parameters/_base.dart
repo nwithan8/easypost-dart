@@ -130,14 +130,16 @@ class Parameters {
   void add(JsonParameter parameter, dynamic value) {
     // Primitive types can be added directly to the map. Non-primitive types must be converted to a map first
 
-    // if value is not a primitive type, convert it to a map
-    if (value is! String &&
+    if (parameter.toJson != null) {
+      // If a toJson function is specified, use it to convert the value
+      value = parameter.toJson!(value);
+    } else if (value is! String &&
         value is! int &&
         value is! double &&
         value is! bool) {
+      // if value is not a primitive type, serialize it
       value = serializeObject(value);
     }
-
     _parameterMap = _updateMap(_parameterMap, parameter.jsonPath, value);
   }
 
