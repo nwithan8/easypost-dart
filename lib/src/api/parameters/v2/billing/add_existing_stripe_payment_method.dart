@@ -4,7 +4,7 @@ import 'package:easypost/src/internal/reflection.dart';
 import 'package:easypost/src/enums/payment_method_priority.dart';
 
 @reflector
-class AddStripePaymentMethod extends Parameters {
+class AddExistingStripePaymentMethod extends Parameters {
   @JsonParameter(Necessity.required, ['payment_method', 'stripe_customer_id'])
   String? stripeCustomerId;
 
@@ -15,5 +15,5 @@ class AddStripePaymentMethod extends Parameters {
   @JsonParameter(Necessity.required, ['payment_method', 'priority'])
   PaymentMethodPriority? priority = PaymentMethodPriority.primary;
 
-  AddStripePaymentMethod() : super();
+  AddExistingStripePaymentMethod() : super();
 }

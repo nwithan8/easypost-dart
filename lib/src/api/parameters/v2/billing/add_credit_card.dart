@@ -3,7 +3,7 @@ import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class AddCreditCardToReferralCustomer extends Parameters {
+class AddCreditCard extends Parameters {
   @Parameter(Necessity.required)
   int? creditCardNumber;
 
@@ -16,5 +16,5 @@ class AddCreditCardToReferralCustomer extends Parameters {
   @Parameter(Necessity.required)
   int? creditCardCvv;
 
-  AddCreditCardToReferralCustomer() : super();
+  AddCreditCard() : super();
 }
