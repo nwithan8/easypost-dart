@@ -48,17 +48,17 @@ class PickupService extends Service {
   }
 
   /// Purchases a [Pickup].
-  Future<Pickup> buy(Pickup pickup, Rate rate) async {
+  Future<Pickup> buy(String id, Rate rate) async {
     final json = await client.requestJson(
-        HttpMethod.post, 'pickups/${pickup.id}/buy', ApiVersion.v2,
+        HttpMethod.post, 'pickups/$id/buy', ApiVersion.v2,
         parameters: {'carrier': rate.carrier, 'service': rate.service});
     return Pickup.fromJson(json);
   }
 
   /// Cancels a [Pickup].
-  Future<Pickup> cancel(Pickup pickup) async {
+  Future<Pickup> cancel(String id) async {
     final json = await client.requestJson(
-        HttpMethod.post, 'pickups/${pickup.id}/cancel', ApiVersion.v2);
+        HttpMethod.post, 'pickups/$id/cancel', ApiVersion.v2);
     return Pickup.fromJson(json);
   }
 

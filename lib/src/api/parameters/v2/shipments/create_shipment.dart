@@ -1,16 +1,8 @@
 import 'package:easypost/easypost.dart';
 import 'package:easypost/src/api/parameters/iparameters.dart';
-import 'package:easypost/src/internal/maps.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
-import 'package:easypost/src/models/address.dart';
-import 'package:easypost/src/models/carrier_account.dart';
-import 'package:easypost/src/models/customs_info.dart';
-import 'package:easypost/src/models/options.dart';
-import 'package:easypost/src/models/parcel.dart';
-import 'package:easypost/src/models/tax_identifier.dart';
 import 'package:easypost/src/internal/reflection.dart';
-import 'package:easypost/src/api/parameters/iparameters.dart';
 
 @reflector
 class CreateShipment extends Parameters implements IShipmentParameter {
@@ -21,18 +13,11 @@ class CreateShipment extends Parameters implements IShipmentParameter {
   @SubJsonParameter(CreateScanForm, Necessity.optional, ['buyer_address'])
   IAddressParameter? buyerAddress;
 
-  @JsonParameter(Necessity.optional, ['shipment', 'carrier'])
-  @SubJsonParameter(CreateBatch, Necessity.optional, ['carrier'])
-  @SubJsonParameter(CreateOrder, Necessity.optional, ['carrier'])
-  @SubJsonParameter(CreatePickup, Necessity.optional, ['carrier'])
-  @SubJsonParameter(CreateScanForm, Necessity.optional, ['carrier'])
-  String? carrier;
-
-  @JsonParameter(Necessity.optional, ['shipment', 'carrier_accounts'])
-  @SubJsonParameter(CreateBatch, Necessity.optional, ['carrier_accounts'])
-  @SubJsonParameter(CreateOrder, Necessity.optional, ['carrier_accounts'])
-  @SubJsonParameter(CreatePickup, Necessity.optional, ['carrier_accounts'])
-  @SubJsonParameter(CreateScanForm, Necessity.optional, ['carrier_accounts'])
+  @JsonParameter(Necessity.required, ['shipment', 'carrier_accounts'])
+  @SubJsonParameter(CreateBatch, Necessity.required, ['carrier_accounts'])
+  @SubJsonParameter(CreateOrder, Necessity.required, ['carrier_accounts'])
+  @SubJsonParameter(CreatePickup, Necessity.required, ['carrier_accounts'])
+  @SubJsonParameter(CreateScanForm, Necessity.required, ['carrier_accounts'])
   List<String>? carrierAccountIds;
 
   @JsonParameter(Necessity.optional, ['shipment', 'customs_info'])
@@ -42,11 +27,11 @@ class CreateShipment extends Parameters implements IShipmentParameter {
   @SubJsonParameter(CreateScanForm, Necessity.optional, ['customs_info'])
   ICustomsInfoParameter? customsInfo;
 
-  @JsonParameter(Necessity.optional, ['shipment', 'from_address'])
-  @SubJsonParameter(CreateBatch, Necessity.optional, ['from_address'])
-  @SubJsonParameter(CreateOrder, Necessity.optional, ['from_address'])
-  @SubJsonParameter(CreatePickup, Necessity.optional, ['from_address'])
-  @SubJsonParameter(CreateScanForm, Necessity.optional, ['from_address'])
+  @JsonParameter(Necessity.required, ['shipment', 'from_address'])
+  @SubJsonParameter(CreateBatch, Necessity.required, ['from_address'])
+  @SubJsonParameter(CreateOrder, Necessity.required, ['from_address'])
+  @SubJsonParameter(CreatePickup, Necessity.required, ['from_address'])
+  @SubJsonParameter(CreateScanForm, Necessity.required, ['from_address'])
   IAddressParameter? fromAddress;
 
   @JsonParameter(Necessity.optional, ['shipment', 'insurance'])
@@ -70,11 +55,11 @@ class CreateShipment extends Parameters implements IShipmentParameter {
   @SubJsonParameter(CreateScanForm, Necessity.optional, ['options'])
   Options? options;
 
-  @JsonParameter(Necessity.optional, ['shipment', 'parcel'])
-  @SubJsonParameter(CreateBatch, Necessity.optional, ['parcel'])
-  @SubJsonParameter(CreateOrder, Necessity.optional, ['parcel'])
-  @SubJsonParameter(CreatePickup, Necessity.optional, ['parcel'])
-  @SubJsonParameter(CreateScanForm, Necessity.optional, ['parcel'])
+  @JsonParameter(Necessity.required, ['shipment', 'parcel'])
+  @SubJsonParameter(CreateBatch, Necessity.required, ['parcel'])
+  @SubJsonParameter(CreateOrder, Necessity.required, ['parcel'])
+  @SubJsonParameter(CreatePickup, Necessity.required, ['parcel'])
+  @SubJsonParameter(CreateScanForm, Necessity.required, ['parcel'])
   IParcelParameter? parcel;
 
   @JsonParameter(Necessity.optional, ['shipment', 'reference'])
@@ -91,13 +76,6 @@ class CreateShipment extends Parameters implements IShipmentParameter {
   @SubJsonParameter(CreateScanForm, Necessity.optional, ['return_address'])
   IAddressParameter? returnAddress;
 
-  @JsonParameter(Necessity.optional, ['shipment', 'service'])
-  @SubJsonParameter(CreateBatch, Necessity.optional, ['service'])
-  @SubJsonParameter(CreateOrder, Necessity.optional, ['service'])
-  @SubJsonParameter(CreatePickup, Necessity.optional, ['service'])
-  @SubJsonParameter(CreateScanForm, Necessity.optional, ['service'])
-  String? service;
-
   @JsonParameter(Necessity.optional, ['shipment', 'tax_identifiers'])
   @SubJsonParameter(CreateBatch, Necessity.optional, ['tax_identifiers'])
   @SubJsonParameter(CreateOrder, Necessity.optional, ['tax_identifiers'])
@@ -105,11 +83,11 @@ class CreateShipment extends Parameters implements IShipmentParameter {
   @SubJsonParameter(CreateScanForm, Necessity.optional, ['tax_identifiers'])
   List<TaxIdentifier>? taxIdentifiers;
 
-  @JsonParameter(Necessity.optional, ['shipment', 'to_address'])
-  @SubJsonParameter(CreateBatch, Necessity.optional, ['to_address'])
-  @SubJsonParameter(CreateOrder, Necessity.optional, ['to_address'])
-  @SubJsonParameter(CreatePickup, Necessity.optional, ['to_address'])
-  @SubJsonParameter(CreateScanForm, Necessity.optional, ['to_address'])
+  @JsonParameter(Necessity.required, ['shipment', 'to_address'])
+  @SubJsonParameter(CreateBatch, Necessity.required, ['to_address'])
+  @SubJsonParameter(CreateOrder, Necessity.required, ['to_address'])
+  @SubJsonParameter(CreatePickup, Necessity.required, ['to_address'])
+  @SubJsonParameter(CreateScanForm, Necessity.required, ['to_address'])
   IAddressParameter? toAddress;
 
   CreateShipment() : super();

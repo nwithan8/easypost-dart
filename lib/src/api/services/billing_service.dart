@@ -2,12 +2,13 @@ import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/parameters/v2/billing/fund_wallet.dart';
+import 'package:easypost/src/api/parameters/v2/billing/list_payment_logs.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/payment_methods_not_initialized_exception.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
+import 'package:easypost/src/models/payment_log.dart';
 import 'package:easypost/src/models/payment_method.dart';
 import 'package:easypost/src/enums/payment_method_priority.dart';
-import 'package:easypost/src/enums/payment_method_type.dart';
 import 'package:easypost/src/models/payment_methods_summary.dart';
 
 /// The [BillingService] handles billing with the EasyPost API.
@@ -39,6 +40,12 @@ class BillingService extends Service {
     }
   }
 
+  /// Adds a credit card [PaymentMethod] to your account.
+  // TODO: POST /v2/credit_cards, similar to Stripe process
+
+  /// Adds a bank account [PaymentMethod] to your account.
+  // TODO: POST /v2/bank_accounts
+
   /// Funds your account with an established [PaymentMethod].
   Future<bool> fundWallet(FundWallet parameters,
       {PaymentMethodPriority? priority}) async {
@@ -58,6 +65,16 @@ class BillingService extends Service {
         parameters: parameterMap);
 
     return true;
+  }
+
+  /// Lists all [PaymentLog]s.
+  Future<PaymentLogCollection> listPaymentLogs({ListPaymentLogs? parameters}) async {
+    Map<String, dynamic>? parameterMap =
+    parameters?.constructJson(client: client);
+    final json = await client.requestJson(
+        HttpMethod.get, 'payment_logs', ApiVersion.v2,
+        parameters: parameterMap);
+    return PaymentLogCollection.fromJson(json);
   }
 
   /// Deletes a [PaymentMethod].

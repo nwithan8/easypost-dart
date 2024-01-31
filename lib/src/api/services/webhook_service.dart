@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/webhooks/list_webhooks.dart';
 import 'package:easypost/src/api/parameters/v2/webhooks/create_webhook.dart';
+import 'package:easypost/src/api/parameters/v2/webhooks/list_webhooks.dart';
 import 'package:easypost/src/api/parameters/v2/webhooks/update_webhook.dart';
 import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/models/event.dart';
-import 'package:easypost/src/models/webhook.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/internal/crypto.dart';
+import 'package:easypost/src/models/event.dart';
+import 'package:easypost/src/models/webhook.dart';
 
 /// The [WebhookService] handles webhooks with the EasyPost API.
 class WebhookService extends Service {
@@ -31,7 +31,7 @@ class WebhookService extends Service {
 
   /// Retrieves a [Webhook].
   Future<Webhook> retrieve(String id) async {
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.get,
       'webhooks/$id',
       ApiVersion.v2,
@@ -50,7 +50,8 @@ class WebhookService extends Service {
   }
 
   /// Verifies a webhook [Event].
-  Future<Event?> validateIncomingWebhookEvent(List<int> body, Map<String, String> headers, String secret) async {
+  Future<Event?> validateIncomingWebhookEvent(
+      List<int> body, Map<String, String> headers, String secret) async {
     // TODO: Verify this works.
     const String signatureHeader = 'X-Hmac-Signature';
 
@@ -85,10 +86,9 @@ class WebhookService extends Service {
   }
 
   /// Toggle a [Webhook].
-  Future<Webhook> toggle(Webhook webhook) async {
-    final json = await client.requestJson(
+  Future<bool> toggle(Webhook webhook) async {
+    return await client.request(
         HttpMethod.patch, 'webhooks/${webhook.id}', ApiVersion.v2);
-    return Webhook.fromJson(json);
   }
 
   /// Deletes a [Webhook].

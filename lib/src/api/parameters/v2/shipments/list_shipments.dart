@@ -19,5 +19,11 @@ class ListShipments extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
+  @JsonParameter(Necessity.optional, ['purchased'])
+  bool? purchased;
+
+  @JsonParameter(Necessity.optional, ['include_children'])
+  bool? includeShipmentsFromChildren;
+
   ListShipments() : super();
 }

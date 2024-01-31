@@ -3,9 +3,9 @@ import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class UpdateReferralCustomerEmail extends Parameters {
-  @JsonParameter(Necessity.required, ['user', 'email'])
-  String? email;
+class ListApiKeys extends Parameters {
+  @JsonParameter(Necessity.optional, ['exclude_children'])
+  bool? afterId;
 
-  UpdateReferralCustomerEmail() : super();
+  ListApiKeys() : super();
 }

@@ -42,4 +42,14 @@ class TrackerService extends Service {
         parameters: parameterMap);
     return TrackerCollection.fromJson(json);
   }
+
+  /// Refreshes a [Tracker].
+  Future<Tracker> refresh(String id) async {
+    final json =  await client.requestJson(
+      HttpMethod.get,
+      'trackers/$id/refresh',
+      ApiVersion.v2,
+    );
+    return Tracker.fromJson(json);
+  }
 }

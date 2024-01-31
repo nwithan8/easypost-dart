@@ -98,7 +98,7 @@ class PartnerService extends Service {
       UpdateReferralCustomerEmail parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    return await client.request(HttpMethod.post,
+    return await client.request(HttpMethod.put,
         'referral_customers/${referralCustomer.id}', ApiVersion.v2,
         parameters: parameterMap);
   }

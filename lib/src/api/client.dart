@@ -5,6 +5,7 @@ import 'package:easypost/src/api/client_configuration.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/easypost_request.dart';
 import 'package:easypost/src/api/http/http_method.dart';
+import 'package:easypost/src/api/services/account_service.dart';
 import 'package:easypost/src/api/services/address_service.dart';
 import 'package:easypost/src/api/services/api_key_service.dart';
 import 'package:easypost/src/api/services/batch_service.dart';
@@ -53,6 +54,9 @@ class Client {
   void enableTestMode() {
     config.enableTestMode();
   }
+
+  /// Services for account-related methods of the EasyPost API.
+  AccountService get accounts => AccountService(this);
 
   /// Service for address-related methods of the EasyPost API.
   AddressService get addresses => AddressService(this);

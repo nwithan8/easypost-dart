@@ -19,5 +19,17 @@ class ListEvents extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
+  /// Not currently supported. Including this parameter will result in an error.
+  @JsonParameter(Necessity.optional, ['result_id'])
+  String? resultId;
+
+  /// Not currently supported. Including this parameter will result in an error.
+  @JsonParameter(Necessity.optional, ['description'])
+  String? description;
+
+  /// Not currently supported. Including this parameter will result in an error.
+  @JsonParameter(Necessity.optional, ['failed'])
+  bool? failed;
+
   ListEvents() : super();
 }

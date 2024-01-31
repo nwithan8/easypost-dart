@@ -5,18 +5,19 @@ import 'package:easypost/src/api/parameters/v2/reports/list_reports.dart';
 import 'package:easypost/src/api/parameters/v2/reports/create_report.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/report.dart';
+import 'package:easypost/src/enums/report_type.dart';
 
 /// The [ReportService] handles reports with the EasyPost API.
 class ReportService extends Service {
   ReportService(Client client) : super(client);
 
   /// Creates a [Report].
-  Future<Report> create(String type, CreateReport parameters) async {
+  Future<Report> create(ReportType type, CreateReport parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json =  await client.requestJson(
       HttpMethod.post,
-      'reports/$type',
+      'reports/${type.toString()}',
       ApiVersion.v2,
       parameters: parameterMap,
     );
@@ -34,11 +35,11 @@ class ReportService extends Service {
   }
 
   /// Lists all [Report]s.
-  Future<ReportCollection> list(String type, {ListReports? parameters}) async {
+  Future<ReportCollection> list(ReportType type, {ListReports? parameters}) async {
     Map<String, dynamic>? parameterMap =
         parameters?.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.get, 'reports/$type', ApiVersion.v2,
+        HttpMethod.get, 'reports/${type.toString()}', ApiVersion.v2,
         parameters: parameterMap);
     return ReportCollection.fromJson(json);
   }

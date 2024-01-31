@@ -6,15 +6,34 @@ import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/parameters/v2/billing/create_credit_card.dart';
 import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/enums/payment_method_priority.dart';
 import 'package:easypost/src/exceptions/json/json_deserialization_exception.dart';
 import 'package:easypost/src/models/payment_method.dart';
-import 'package:easypost/src/enums/payment_method_priority.dart';
 import 'package:http/http.dart' as http;
 
 /// The [ExtrasService] handles extraneous EasyPost API functionality.
 /// These methods are not directly related to any other service and are not intended for end-user use.
 class ExtrasService extends Service {
   ExtrasService(Client client) : super(client);
+
+  Future<int?> lookupUspsZone(int fromZip, int toZip) async {
+    final Map<String, dynamic> parameters = {
+      'from': fromZip,
+      'to': toZip,
+    };
+
+    final Map<String, dynamic> json = await client.requestJson(
+        HttpMethod.get, 'usps_zones', ApiVersion.v2,
+        parameters: parameters);
+
+    String jsonKey = "usps_zone";
+
+    if (json.containsKey(jsonKey)) {
+      return json[jsonKey];
+    } else {
+      return null;
+    }
+  }
 
   /// Retrieve EasyPost's public Stripe API key.
   Future<String> retrieveStripeApiKey() async {
@@ -26,7 +45,7 @@ class ExtrasService extends Service {
     if (json.containsKey(jsonKey)) {
       return json[jsonKey];
     } else {
-      throw JsonDeserializationException("$jsonKey not found in JSON response");
+      throw JsonDeserializationException("Stripe API key unavailable");
     }
   }
 

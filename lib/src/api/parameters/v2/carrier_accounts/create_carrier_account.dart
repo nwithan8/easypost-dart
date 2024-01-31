@@ -2,6 +2,7 @@ import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
 import 'package:easypost/src/api/parameters/iparameters.dart';
+import 'package:easypost/src/enums/carrier_account_type.dart';
 
 @reflector
 class CreateCarrierAccount extends Parameters implements ICarrierAccountParameter {
@@ -18,7 +19,9 @@ class CreateCarrierAccount extends Parameters implements ICarrierAccountParamete
   Map<String, dynamic>? testCredentials;
 
   @JsonParameter(Necessity.optional, ['carrier_account', "type"])
-  String? type;
+  CarrierAccountType? type;
 
   CreateCarrierAccount() : super();
+
+  // TODO: Parameters per carrier account type
 }

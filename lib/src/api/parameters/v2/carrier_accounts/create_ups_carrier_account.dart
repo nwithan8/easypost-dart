@@ -1,12 +1,13 @@
 import 'package:easypost/src/internal/parameter_annotation.dart';
-import 'package:easypost/src/api/parameters/_base.dart';
+import 'package:easypost/src/api/parameters/v2/carrier_accounts/create_carrier_account.dart';
 import 'package:easypost/src/internal/reflection.dart';
-import 'package:easypost/src/api/parameters/iparameters.dart';
+import 'package:easypost/src/enums/carrier_account_type.dart';
 
 @reflector
-class CreateUpsCarrierAccount extends Parameters {
+class CreateUpsCarrierAccount extends CreateCarrierAccount {
+  @override
   @JsonParameter(Necessity.optional, ['carrier_account', "type"])
-  String? type = "UpsAccount";
+  CarrierAccountType? get type => CarrierAccountType.ups;
 
   @JsonParameter(Necessity.required,
       ['carrier_account', "registration_data", "account_number"])

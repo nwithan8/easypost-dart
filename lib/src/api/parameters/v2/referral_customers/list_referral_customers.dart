@@ -10,12 +10,6 @@ class ListReferralCustomers extends Parameters {
   @JsonParameter(Necessity.optional, ['before_id'])
   String? beforeId;
 
-  @JsonParameter(Necessity.optional, ['end_datetime'])
-  String? endDatetime;
-
-  @JsonParameter(Necessity.optional, ['start_datetime'])
-  String? startDatetime;
-
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 

@@ -3,7 +3,6 @@ import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/parameters/v2/orders/buy_order.dart';
 import 'package:easypost/src/api/parameters/v2/orders/create_order.dart';
-import 'package:easypost/src/api/parameters/v2/orders/one_call_buy_order.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/models/order.dart';
@@ -16,16 +15,6 @@ class OrderService extends Service {
 
   /// Creates an [Order].
   Future<Order> create(CreateOrder parameters) async {
-    Map<String, dynamic> parameterMap =
-        parameters.constructJson(client: client);
-    final json = await client.requestJson(
-        HttpMethod.post, 'orders', ApiVersion.v2,
-        parameters: parameterMap);
-    return Order.fromJson(json);
-  }
-
-  /// Creates and buys an [Order] in one API call.
-  Future<Order> oneCallBuy(OneCallBuyOrder parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -52,9 +41,9 @@ class OrderService extends Service {
   }
 
   /// Refreshes the [Rate]s for an [Order].
-  Future<Order> refreshRates(Order order) async {
+  Future<Order> refreshRates(String id) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'orders/${order.id}/rates', ApiVersion.v2);
+        HttpMethod.get, 'orders/$id/rates', ApiVersion.v2);
     return Order.fromJson(json);
   }
 

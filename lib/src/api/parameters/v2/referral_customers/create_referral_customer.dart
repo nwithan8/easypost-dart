@@ -5,13 +5,13 @@ import 'package:easypost/src/api/parameters/iparameters.dart';
 
 @reflector
 class CreateReferralCustomer extends Parameters {
-  @JsonParameter(Necessity.optional, ['user', 'email'])
+  @JsonParameter(Necessity.required, ['user', 'email'])
   String? email;
 
-  @JsonParameter(Necessity.optional, ['user', 'name'])
+  @JsonParameter(Necessity.required, ['user', 'name'])
   String? name;
 
-  @JsonParameter(Necessity.optional, ['user', 'phone'])
+  @JsonParameter(Necessity.required, ['user', 'phone'])
   String? phoneNumber;
 
   CreateReferralCustomer() : super();

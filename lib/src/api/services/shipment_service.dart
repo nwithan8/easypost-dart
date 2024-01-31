@@ -7,7 +7,6 @@ import 'package:easypost/src/api/parameters/v2/shipments/create_shipment.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/create_shipment_document.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/generate_rates_for_shipment.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/insure_shipment.dart';
-import 'package:easypost/src/api/parameters/v2/shipments/one_call_buy_shipment.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
@@ -23,16 +22,6 @@ class ShipmentService extends Service {
 
   /// Creates a [Shipment].
   Future<Shipment> create(CreateShipment parameters) async {
-    Map<String, dynamic> parameterMap =
-        parameters.constructJson(client: client);
-    final json = await client.requestJson(
-        HttpMethod.post, 'shipments', ApiVersion.v2,
-        parameters: parameterMap);
-    return Shipment.fromJson(json);
-  }
-
-  /// Creates and buys a [Shipment] in one API call.
-  Future<Shipment> oneCallBuy(OneCallBuyShipment parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -145,4 +134,8 @@ class ShipmentService extends Service {
 
     return getLowestSmartRate(smartRates, deliveryDays, deliveryAccuracy);
   }
+
+  // TODO: Update shipment, PUT v2/shipments/{id}
+
+  // TODO: Delete shipment, DELETE v2/shipments/{id}
 }
