@@ -48,12 +48,12 @@ class UserService extends Service {
     return User.fromJson(json);
   }
 
-  /// Updates a child [User].
-  Future<User> updateChildUser(User user, UpdateUser parameters) async {
+  /// Updates a [User].
+  Future<User> updateUser(User user, UpdateUser parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-      HttpMethod.put,
+      HttpMethod.patch,
       'users/${user.id}',
       ApiVersion.v2,
       parameters: parameterMap,
@@ -66,7 +66,7 @@ class UserService extends Service {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-      HttpMethod.put,
+      HttpMethod.patch,
       'users',
       ApiVersion.v2,
       parameters: parameterMap,
@@ -79,7 +79,7 @@ class UserService extends Service {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-      HttpMethod.put,
+      HttpMethod.patch,
       'users/${user.id}/brand',
       ApiVersion.v2,
       parameters: parameterMap,

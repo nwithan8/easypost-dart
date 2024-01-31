@@ -135,7 +135,7 @@ class ShipmentService extends Service {
     return getLowestSmartRate(smartRates, deliveryDays, deliveryAccuracy);
   }
 
-  // TODO: Update shipment, PUT v2/shipments/{id}
+  // TODO: Update shipment, PATCH v2/shipments/{id}
 
   // TODO: Delete shipment, DELETE v2/shipments/{id}
 }

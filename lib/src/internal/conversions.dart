@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 DateTime? stringToDateTime(String? timestamp) =>
     timestamp == null ? null : DateTime.parse(timestamp).toUtc();
 
-// TODO: If timezone issues arise, check here
+// FIXME: If timezone issues arise, check here
 String? dateTimeToString(DateTime? time) => time == null
     ? null
     : '${DateFormat('yyyy-MM-ddTHH:mm:ss').format(time.toUtc())}Z';
@@ -40,7 +40,7 @@ String? moneyToStringCents(double? money) =>
 double stringCentsToMoney(String? money) =>
     money == null ? 0.0 : int.parse(money) / 100;
 
-// TODO: If dependency circle issues arise, check this import
+// FIXME: If dependency circle issues arise, check this import
 String? modelToId(ModelWithId? model) => model?.id;
 
 /// Converts a list of models to a list of ids
