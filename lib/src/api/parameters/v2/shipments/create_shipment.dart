@@ -1,8 +1,13 @@
-import 'package:easypost/easypost.dart';
 import 'package:easypost/src/api/parameters/iparameters.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
+import 'package:easypost/src/api/parameters/v2/batches/create_batch.dart';
+import 'package:easypost/src/api/parameters/v2/orders/create_order.dart';
+import 'package:easypost/src/api/parameters/v2/pickups/create_pickup.dart';
+import 'package:easypost/src/api/parameters/v2/scan_forms/create_scan_form.dart';
+import 'package:easypost/src/models/options.dart';
+import 'package:easypost/src/models/tax_identifier.dart';
 
 @reflector
 class CreateShipment extends Parameters implements IShipmentParameter {

@@ -1,8 +1,8 @@
-import 'package:easypost/easypost.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/api/parameters/iparameters.dart';
 import 'package:easypost/src/internal/reflection.dart';
+import 'package:easypost/src/models/options.dart';
 
 @reflector
 class RetrieveRates extends Parameters {

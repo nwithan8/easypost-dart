@@ -1,8 +1,11 @@
-import 'package:easypost/easypost.dart';
 import 'package:easypost/src/base/collection.dart';
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:easypost/src/enums/payment_log_charge_type.dart';
+import 'package:easypost/src/enums/payment_log_source_type.dart';
+import 'package:easypost/src/enums/payment_log_status.dart';
+import 'package:easypost/src/enums/payment_log_target_type.dart';
 
 part 'payment_log.g.dart';
 
