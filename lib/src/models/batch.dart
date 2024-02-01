@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/batches/list_batches.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/enums/batch_state.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/batch_shipment.dart';
@@ -64,7 +65,7 @@ class Batch extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class BatchCollection extends Collection {
+class BatchCollection extends PaginatedCollection<Batch, ListBatches> {
   @JsonKey(name: 'batches')
   final List<Batch>? batches;
 

@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/refunds/list_refunds.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -43,7 +44,7 @@ class Refund extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class RefundCollection extends Collection {
+class RefundCollection extends PaginatedCollection<Refund, ListRefunds> {
   @JsonKey(name: 'refunds')
   final List<Refund>? refunds;
 

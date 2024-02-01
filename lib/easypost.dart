@@ -31,7 +31,7 @@ export 'package:easypost/src/api/parameters/v2/customs_items/create_customs_item
 export 'package:easypost/src/api/parameters/v2/end_shippers/list_end_shippers.dart';
 export 'package:easypost/src/api/parameters/v2/end_shippers/create_end_shipper.dart';
 export 'package:easypost/src/api/parameters/v2/end_shippers/update_end_shipper.dart';
-export 'package:easypost/src/api/parameters/v2/events/all_events.dart';
+export 'package:easypost/src/api/parameters/v2/events/list_events.dart';
 export 'package:easypost/src/api/parameters/v2/insurance/list_insurance.dart';
 export 'package:easypost/src/api/parameters/v2/insurance/create_insurance.dart';
 export 'package:easypost/src/api/parameters/v2/orders/buy_order.dart';
@@ -59,6 +59,7 @@ export 'package:easypost/src/api/parameters/v2/shipments/insure_shipment.dart';
 export 'package:easypost/src/api/parameters/v2/trackers/list_trackers.dart';
 export 'package:easypost/src/api/parameters/v2/trackers/create_tracker.dart';
 export 'package:easypost/src/api/parameters/v2/users/create_user.dart';
+export 'package:easypost/src/api/parameters/v2/users/list_child_users.dart';
 export 'package:easypost/src/api/parameters/v2/users/update_brand.dart';
 export 'package:easypost/src/api/parameters/v2/users/update_user.dart';
 export 'package:easypost/src/api/parameters/v2/webhooks/list_webhooks.dart';

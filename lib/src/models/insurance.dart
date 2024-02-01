@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/insurance/list_insurance.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/tracker.dart';
@@ -69,7 +70,8 @@ class Insurance extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class InsuranceCollection extends Collection {
+class InsuranceCollection
+    extends PaginatedCollection<Insurance, ListInsurance> {
   @JsonKey(name: 'insurances')
   final List<Insurance>? insurances;
 

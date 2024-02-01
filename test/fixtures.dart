@@ -87,19 +87,6 @@ class Fixtures {
     return createCreateAddressParameters(data: data);
   }
 
-  static CreateShipment get oneCallBuyShipment {
-    CreateShipment parameters = CreateShipment();
-
-    parameters.toAddress = caAddress1;
-    parameters.fromAddress = caAddress2;
-    parameters.parcel = basicParcel;
-    parameters.service = uspsService;
-    parameters.carrierAccountIds = [uspsCarrierAccountId];
-    parameters.carrier = usps;
-
-    return parameters;
-  }
-
   static int get pageSize {
     return fixtureStructures.pageSizes.five;
   }
@@ -278,7 +265,7 @@ class Fixtures {
 
     CreateCarrierAccount parameters = CreateCarrierAccount();
 
-    parameters.type = getOrDefaultString(data, "type");
+    parameters.type = CarrierAccountType.fromString(getOrDefaultString(data, "type"));
     parameters.description = getOrDefaultString(data, "description");
 
     return parameters;

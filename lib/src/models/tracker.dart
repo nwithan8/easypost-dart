@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/trackers/list_trackers.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/carrier_detail.dart';
 import 'package:easypost/src/models/tracking_detail.dart';
@@ -69,7 +70,7 @@ class Tracker extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class TrackerCollection extends Collection {
+class TrackerCollection extends PaginatedCollection<Tracker, ListTrackers> {
   @JsonKey(name: 'trackers')
   final List<Tracker>? trackers;
 

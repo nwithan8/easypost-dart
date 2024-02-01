@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/events/list_events.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -50,7 +51,7 @@ class Event extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class EventCollection extends Collection {
+class EventCollection extends PaginatedCollection<Event, ListEvents> {
   @JsonKey(name: 'events')
   final List<Event>? events;
 

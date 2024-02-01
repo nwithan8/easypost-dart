@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/scan_forms/list_scan_forms.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -52,7 +53,7 @@ class ScanForm extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class ScanFormCollection extends Collection {
+class ScanFormCollection extends PaginatedCollection<ScanForm, ListScanForms> {
   @JsonKey(name: 'scan_forms')
   final List<ScanForm>? scanForms;
 

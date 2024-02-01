@@ -1,4 +1,5 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/end_shippers/list_end_shippers.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -62,7 +63,8 @@ class EndShipper extends Address {
 }
 
 @JsonSerializable(explicitToJson: true)
-class EndShipperCollection extends Collection {
+class EndShipperCollection
+    extends PaginatedCollection<EndShipper, ListEndShippers> {
   @JsonKey(name: 'end_shippers')
   final List<EndShipper>? endShippers;
 

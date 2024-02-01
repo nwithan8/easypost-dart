@@ -101,6 +101,22 @@ void main() {
       expect(verifiedAddress.street1, "388 TOWNSEND ST APT 20");
     });
 
+    test('next page', () async {
+      Client client = TestUtils.setUpVCRClient("addresses", 'next_page');
+      client.enableTestMode();
+
+      final params = ListAddresses();
+      params.pageSize = 1;
+
+      final addressCollection = await client.addresses.list(parameters: params);
+
+      expect(addressCollection, isNotNull);
+
+      final nextPage = await client.addresses.getNextPage(addressCollection, pageSize: 1);
+
+      expect(nextPage, isNotNull);
+    });
+
     test('scratch', () async {
       Client client = TestUtils.setUpVCRClient("scratch", 'scratch');
       client.enableTestMode();

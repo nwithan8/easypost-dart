@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/pickups/list_pickups.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
@@ -85,7 +86,7 @@ class Pickup extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class PickupCollection extends Collection {
+class PickupCollection extends PaginatedCollection<Pickup, ListPickups> {
   @JsonKey(name: 'pickups')
   final List<Pickup>? pickups;
 

@@ -1,4 +1,6 @@
+import 'package:easypost/src/api/parameters/v2/users/list_child_users.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/api_key.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -78,4 +80,20 @@ class User extends ModelWithId {
 
   @override
   Map<String, dynamic> toJson() => _$UserToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class ChildUserCollection extends PaginatedCollection<User, ListChildUsers> {
+  @JsonKey(name: 'children')
+  final List<User> children;
+
+  ChildUserCollection(
+      id, createdAt, updatedAt, objectType, mode, hasMore, this.children)
+      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+
+  factory ChildUserCollection.fromJson(Map<String, dynamic> input) =>
+      _$ChildUserCollectionFromJson(input);
+
+  @override
+  Map<String, dynamic> toJson() => _$ChildUserCollectionToJson(this);
 }

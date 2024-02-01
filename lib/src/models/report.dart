@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/reports/list_reports.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/enums/report_type.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -50,7 +51,7 @@ class Report extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class ReportCollection extends Collection {
+class ReportCollection extends PaginatedCollection<Report, ListReports> {
   @JsonKey(name: 'reports')
   final List<Report>? reports;
 

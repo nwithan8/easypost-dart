@@ -34,7 +34,10 @@ class AddressService extends Service {
     final json = await client.requestJson(
         HttpMethod.get, 'addresses', ApiVersion.v2,
         parameters: parameterMap);
-    return AddressCollection.fromJson(json);
+    final collection = AddressCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
   }
 
   /// Verifies an [Address].
@@ -43,5 +46,20 @@ class AddressService extends Service {
         HttpMethod.get, 'addresses/${address.id}/verify', ApiVersion.v2,
         rootElement: "address");
     return Address.fromJson(json);
+  }
+
+  /// Retrieves the next page of an [AddressCollection].
+  Future<AddressCollection> getNextPage(AddressCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListAddresses? parameters) {
+      return list(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(
+            retrieveNextPageFunction, collection.addresses, pageSize: pageSize)
+        as Future<AddressCollection>;
   }
 }

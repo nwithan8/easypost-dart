@@ -1,4 +1,5 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/referral_customers/list_referral_customers.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/user.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -55,7 +56,8 @@ class ReferralCustomer extends User {
 }
 
 @JsonSerializable(explicitToJson: true)
-class ReferralCustomerCollection extends Collection {
+class ReferralCustomerCollection
+    extends PaginatedCollection<ReferralCustomer, ListReferralCustomers> {
   @JsonKey(name: 'referral_customers')
   final List<ReferralCustomer>? referralCustomers;
 

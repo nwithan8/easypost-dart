@@ -1,11 +1,12 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/billing/list_payment_logs.dart';
 import 'package:easypost/src/base/model_with_id.dart';
-import 'package:easypost/src/internal/conversions.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/enums/payment_log_charge_type.dart';
 import 'package:easypost/src/enums/payment_log_source_type.dart';
 import 'package:easypost/src/enums/payment_log_status.dart';
 import 'package:easypost/src/enums/payment_log_target_type.dart';
+import 'package:easypost/src/internal/conversions.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_log.g.dart';
 
@@ -104,7 +105,8 @@ class PaymentLog extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaymentLogCollection extends Collection {
+class PaymentLogCollection
+    extends PaginatedCollection<PaymentLog, ListPaymentLogs> {
   @JsonKey(name: 'payment_logs')
   final List<PaymentLog> paymentLogs;
 

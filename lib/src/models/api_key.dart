@@ -1,7 +1,8 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:easypost/src/api/parameters/v2/api_keys/list_api_keys.dart';
 
 part 'api_key.g.dart';
 
@@ -21,7 +22,7 @@ class ApiKey extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class ApiKeyCollection extends Collection {
+class ApiKeyCollection extends PaginatedCollection<ApiKey, ListApiKeys> {
   @JsonKey(name: 'children')
   final List<ApiKeyCollection>? children;
 

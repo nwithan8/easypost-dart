@@ -1,6 +1,7 @@
 import 'package:easypost/src/api/parameters/iparameters.dart';
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/addresses/list_addresses.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/verifications.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -77,7 +78,7 @@ class Address extends ModelWithId implements IAddressParameter {
 }
 
 @JsonSerializable(explicitToJson: true)
-class AddressCollection extends Collection {
+class AddressCollection extends PaginatedCollection<Address, ListAddresses> {
   @JsonKey(name: 'addresses')
   final List<Address> addresses;
 
@@ -90,4 +91,17 @@ class AddressCollection extends Collection {
 
   @override
   Map<String, dynamic> toJson() => _$AddressCollectionToJson(this);
+
+  @override
+  ListAddresses buildGetNextPageParameters(List<Address>? currentPageItems, {int? pageSize}) {
+    ListAddresses parameters = filters ?? ListAddresses();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }
