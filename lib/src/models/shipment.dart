@@ -93,8 +93,8 @@ class Shipment extends ModelWithId implements IShipmentParameter {
   @JsonKey(name: 'status')
   final String? status;
 
-  @JsonKey(name: 'tax_idenfifiers')
-  final List<TaxIdentifier>? taxIdenfifiers;
+  @JsonKey(name: 'tax_identifiers')
+  final List<TaxIdentifier>? taxIdentifiers;
 
   @JsonKey(name: 'to_address')
   final Address? toAddress;
@@ -138,7 +138,7 @@ class Shipment extends ModelWithId implements IShipmentParameter {
       this.selectedRate,
       this.service,
       this.status,
-      this.taxIdenfifiers,
+      this.taxIdentifiers,
       this.toAddress,
       this.tracker,
       this.trackingCode,

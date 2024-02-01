@@ -159,3 +159,4 @@ export 'package:easypost/src/exceptions/signature_validation_exception.dart';
 
 // Tools
 export 'package:easypost/src/tools/rates.dart';
+export 'package:easypost/src/tools/statuses.dart';

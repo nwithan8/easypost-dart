@@ -65,7 +65,7 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) => Shipment(
           : Rate.fromJson(json['selected_rate'] as Map<String, dynamic>),
       json['service'] as String?,
       json['status'] as String?,
-      (json['tax_idenfifiers'] as List<dynamic>?)
+      (json['tax_identifiers'] as List<dynamic>?)
           ?.map((e) => TaxIdentifier.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['to_address'] == null
@@ -109,8 +109,8 @@ Map<String, dynamic> _$ShipmentToJson(Shipment instance) => <String, dynamic>{
       'selected_rate': instance.selectedRate?.toJson(),
       'service': instance.service,
       'status': instance.status,
-      'tax_idenfifiers':
-          instance.taxIdenfifiers?.map((e) => e.toJson()).toList(),
+      'tax_identifiers':
+          instance.taxIdentifiers?.map((e) => e.toJson()).toList(),
       'to_address': instance.toAddress?.toJson(),
       'tracker': instance.tracker?.toJson(),
       'tracking_code': instance.trackingCode,
