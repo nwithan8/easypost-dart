@@ -54,7 +54,6 @@ export 'package:easypost/src/api/parameters/v2/shipments/list_shipments.dart';
 export 'package:easypost/src/api/parameters/v2/shipments/buy_shipment.dart';
 export 'package:easypost/src/api/parameters/v2/shipments/create_shipment.dart';
 export 'package:easypost/src/api/parameters/v2/shipments/create_shipment_document.dart';
-export 'package:easypost/src/api/parameters/v2/shipments/generate_rates_for_shipment.dart';
 export 'package:easypost/src/api/parameters/v2/shipments/insure_shipment.dart';
 export 'package:easypost/src/api/parameters/v2/trackers/list_trackers.dart';
 export 'package:easypost/src/api/parameters/v2/trackers/create_tracker.dart';

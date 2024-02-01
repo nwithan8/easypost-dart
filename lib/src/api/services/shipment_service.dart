@@ -5,7 +5,6 @@ import 'package:easypost/src/api/parameters/v2/shipments/list_shipments.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/buy_shipment.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/create_shipment.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/create_shipment_document.dart';
-import 'package:easypost/src/api/parameters/v2/shipments/generate_rates_for_shipment.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/insure_shipment.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
@@ -95,13 +94,9 @@ class ShipmentService extends Service {
   }
 
   /// Refreshes the [Rate]s for a [Shipment].
-  Future<Shipment> refreshRates(Shipment shipment,
-      {GenerateRatesForShipment? parameters}) async {
-    Map<String, dynamic>? parameterMap =
-        parameters?.constructJson(client: client);
+  Future<Shipment> refreshRates(String id) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'shipments/${shipment.id}/rates', ApiVersion.v2,
-        parameters: parameterMap);
+        HttpMethod.get, 'shipments/$id/rates', ApiVersion.v2);
     return Shipment.fromJson(json);
   }
 
