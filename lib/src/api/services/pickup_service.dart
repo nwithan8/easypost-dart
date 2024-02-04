@@ -44,7 +44,25 @@ class PickupService extends Service {
     final json = await client.requestJson(
         HttpMethod.get, 'pickups', ApiVersion.v2,
         parameters: parameterMap);
-    return PickupCollection.fromJson(json);
+    final collection = PickupCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [PickupCollection].
+  Future<PickupCollection> getNextPage(PickupCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListPickups? parameters) {
+      return list(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(
+        retrieveNextPageFunction, collection.pickups, pageSize: pageSize)
+    as Future<PickupCollection>;
   }
 
   /// Purchases a [Pickup].

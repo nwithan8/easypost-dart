@@ -25,7 +25,25 @@ class EventService extends Service {
     final json = await client.requestJson(
         HttpMethod.get, 'events', ApiVersion.v2,
         parameters: parameterMap);
-    return EventCollection.fromJson(json);
+    final collection = EventCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [EventCollection].
+  Future<EventCollection> getNextPage(EventCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListEvents? parameters) {
+      return list(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(
+        retrieveNextPageFunction, collection.events, pageSize: pageSize)
+    as Future<EventCollection>;
   }
 
   /// Retrieve a [Payload] for an [Event].

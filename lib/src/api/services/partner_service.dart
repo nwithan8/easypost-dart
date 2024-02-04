@@ -47,16 +47,35 @@ class PartnerService extends Service {
 
   /// Retrieves all [ReferralCustomer]s.
   Future<ReferralCustomerCollection> listReferralCustomers(
-      ListReferralCustomers parameters) async {
-    Map<String, dynamic> parameterMap =
-        parameters.constructJson(client: client);
+      {ListReferralCustomers? parameters}) async {
+    Map<String, dynamic>? parameterMap =
+        parameters?.constructJson(client: client);
     final json = await client.requestJson(
       HttpMethod.get,
       'referral_customers',
       ApiVersion.v2,
       parameters: parameterMap,
     );
-    return ReferralCustomerCollection.fromJson(json);
+    final collection = ReferralCustomerCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [ReferralCustomerCollection].
+  Future<ReferralCustomerCollection> getNextPageOfReferralCustomers(
+      ReferralCustomerCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListReferralCustomers? parameters) {
+      return listReferralCustomers(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(
+        retrieveNextPageFunction, collection.referralCustomers,
+        pageSize: pageSize) as Future<ReferralCustomerCollection>;
   }
 
   /// Update a [ReferralCustomer]'s email address.

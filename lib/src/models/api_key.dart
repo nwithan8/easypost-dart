@@ -1,8 +1,6 @@
-import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:easypost/src/api/parameters/v2/api_keys/list_api_keys.dart';
 
 part 'api_key.g.dart';
 
@@ -22,16 +20,16 @@ class ApiKey extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class ApiKeyCollection extends PaginatedCollection<ApiKey, ListApiKeys> {
+class ApiKeyCollection extends ModelWithId {
   @JsonKey(name: 'children')
   final List<ApiKeyCollection>? children;
 
   @JsonKey(name: 'keys')
   final List<ApiKey>? keys;
 
-  ApiKeyCollection(id, createdAt, updatedAt, objectType, mode, hasMore,
+  ApiKeyCollection(id, createdAt, updatedAt, objectType, mode,
       this.children, this.keys)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      : super(id, createdAt, updatedAt, objectType, mode);
 
   factory ApiKeyCollection.fromJson(Map<String, dynamic> input) =>
       _$ApiKeyCollectionFromJson(input);

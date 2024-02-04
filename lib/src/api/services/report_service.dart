@@ -1,11 +1,11 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/reports/list_reports.dart';
 import 'package:easypost/src/api/parameters/v2/reports/create_report.dart';
+import 'package:easypost/src/api/parameters/v2/reports/list_reports.dart';
 import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/models/report.dart';
 import 'package:easypost/src/enums/report_type.dart';
+import 'package:easypost/src/models/report.dart';
 
 /// The [ReportService] handles reports with the EasyPost API.
 class ReportService extends Service {
@@ -15,7 +15,7 @@ class ReportService extends Service {
   Future<Report> create(ReportType type, CreateReport parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'reports/${type.toString()}',
       ApiVersion.v2,
@@ -26,7 +26,7 @@ class ReportService extends Service {
 
   /// Retrieves a [Report].
   Future<Report> retrieve(String id) async {
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.get,
       'reports/$id',
       ApiVersion.v2,
@@ -35,12 +35,39 @@ class ReportService extends Service {
   }
 
   /// Lists all [Report]s.
-  Future<ReportCollection> list(ReportType type, {ListReports? parameters}) async {
+  Future<ReportCollection> list({required ListReports parameters}) async {
+    if (parameters.reportType == null) {
+      throw ArgumentError('ReportType is required to list reports.');
+    }
     Map<String, dynamic>? parameterMap =
-        parameters?.constructJson(client: client);
-    final json = await client.requestJson(
-        HttpMethod.get, 'reports/${type.toString()}', ApiVersion.v2,
+        parameters.constructJson(client: client);
+    final json = await client.requestJson(HttpMethod.get,
+        'reports/${parameters.reportType.toString()}', ApiVersion.v2,
         parameters: parameterMap);
-    return ReportCollection.fromJson(json);
+    final collection = ReportCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [RefundCollection].
+  Future<ReportCollection> getNextPage(ReportCollection collection,
+      {int? pageSize}) {
+    if (collection.filters?.reportType == null) {
+      throw ArgumentError('ReportType is required to retrieve the next page.');
+    }
+    retrieveNextPageFunction(ListReports? parameters) {
+      if (parameters == null) {
+        throw ArgumentError(
+            'Parameters are required to retrieve the next page.');
+      }
+      return list(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(retrieveNextPageFunction, collection.reports,
+        pageSize: pageSize) as Future<ReportCollection>;
   }
 }

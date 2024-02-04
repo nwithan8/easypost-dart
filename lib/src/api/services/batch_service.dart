@@ -37,7 +37,25 @@ class BatchService extends Service {
     final json = await client.requestJson(
         HttpMethod.get, 'batches', ApiVersion.v2,
         parameters: parameterMap);
-    return BatchCollection.fromJson(json);
+    final collection = BatchCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [BatchCollection].
+  Future<BatchCollection> getNextPage(BatchCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListBatches? parameters) {
+      return list(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(
+        retrieveNextPageFunction, collection.batches, pageSize: pageSize)
+    as Future<BatchCollection>;
   }
 
   /// Adds [Shipment]s to a [Batch].

@@ -43,7 +43,25 @@ class ShipmentService extends Service {
     final json = await client.requestJson(
         HttpMethod.get, 'shipments', ApiVersion.v2,
         parameters: parameterMap);
-    return ShipmentCollection.fromJson(json);
+    final collection = ShipmentCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [ShipmentCollection].
+  Future<ShipmentCollection> getNextPage(ShipmentCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListShipments? parameters) {
+      return list(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(
+        retrieveNextPageFunction, collection.shipments, pageSize: pageSize)
+    as Future<ShipmentCollection>;
   }
 
   /// Retrieves all [SmartRate]s for a [Shipment].

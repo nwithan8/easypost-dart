@@ -40,6 +40,24 @@ class RefundService extends Service {
     final json = await client.requestJson(
         HttpMethod.get, 'refunds', ApiVersion.v2,
         parameters: parameterMap);
-    return RefundCollection.fromJson(json);
+    final collection = RefundCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [RefundCollection].
+  Future<RefundCollection> getNextPage(RefundCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListRefunds? parameters) {
+      return list(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(
+        retrieveNextPageFunction, collection.refunds, pageSize: pageSize)
+    as Future<RefundCollection>;
   }
 }

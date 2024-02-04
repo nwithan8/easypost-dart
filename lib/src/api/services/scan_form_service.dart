@@ -40,6 +40,24 @@ class ScanFormService extends Service {
     final json = await client.requestJson(
         HttpMethod.get, 'scan_forms', ApiVersion.v2,
         parameters: parameterMap);
-    return ScanFormCollection.fromJson(json);
+    final collection = ScanFormCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [ScanFormCollection].
+  Future<ScanFormCollection> getNextPage(ScanFormCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListScanForms? parameters) {
+      return list(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(
+        retrieveNextPageFunction, collection.scanForms, pageSize: pageSize)
+    as Future<ScanFormCollection>;
   }
 }

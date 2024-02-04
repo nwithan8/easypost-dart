@@ -31,7 +31,6 @@ ApiKeyCollection _$ApiKeyCollectionFromJson(Map<String, dynamic> json) =>
       stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
-      json['has_more'],
       (json['children'] as List<dynamic>?)
           ?.map((e) => ApiKeyCollection.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -47,7 +46,6 @@ Map<String, dynamic> _$ApiKeyCollectionToJson(ApiKeyCollection instance) =>
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'has_more': instance.hasMore,
       'children': instance.children?.map((e) => e.toJson()).toList(),
       'keys': instance.keys?.map((e) => e.toJson()).toList(),
     };

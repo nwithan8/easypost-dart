@@ -2,12 +2,12 @@ import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/parameters/v2/users/create_user.dart';
+import 'package:easypost/src/api/parameters/v2/users/list_child_users.dart';
 import 'package:easypost/src/api/parameters/v2/users/update_brand.dart';
 import 'package:easypost/src/api/parameters/v2/users/update_user.dart';
-import 'package:easypost/src/api/parameters/v2/users/list_child_users.dart';
 import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/models/user.dart';
 import 'package:easypost/src/models/brand.dart';
+import 'package:easypost/src/models/user.dart';
 
 /// The [UserService] handles users with the EasyPost API.
 class UserService extends Service {
@@ -47,14 +47,32 @@ class UserService extends Service {
   }
 
   /// List all child [User]s.
-  // TODO: Get next page for all list methods
-  Future<ChildUserCollection> listChildUsers({ListChildUsers? parameters}) async {
+  Future<ChildUserCollection> listChildUsers(
+      {ListChildUsers? parameters}) async {
     Map<String, dynamic>? parameterMap =
-    parameters?.constructJson(client: client);
+        parameters?.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'users/children', ApiVersion.v2,
         parameters: parameterMap);
-    return ChildUserCollection.fromJson(json);
+    final collection = ChildUserCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [ChildUserCollection].
+  Future<ChildUserCollection> getNextPageOfChildUsers(
+      ChildUserCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListChildUsers? parameters) {
+      return listChildUsers(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(retrieveNextPageFunction, collection.children,
+        pageSize: pageSize) as Future<ChildUserCollection>;
   }
 
   /// Updates a [User].
@@ -95,7 +113,7 @@ class UserService extends Service {
   /// Update the [Brand] of a [User].
   Future<User> updateBrand(User user, UpdateBrand parameters) async {
     Map<String, dynamic> parameterMap =
-    parameters.constructJson(client: client);
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
       HttpMethod.patch,
       'users/${user.id}/brand',

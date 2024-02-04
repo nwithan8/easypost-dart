@@ -1,3 +1,4 @@
+import 'package:easypost/src/enums/report_type.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
@@ -18,6 +19,9 @@ class ListReports extends Parameters {
 
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
+
+  // Not serialized, stored for later
+  ReportType? reportType;
 
   ListReports() : super();
 }

@@ -40,7 +40,25 @@ class TrackerService extends Service {
     final json = await client.requestJson(
         HttpMethod.get, 'trackers', ApiVersion.v2,
         parameters: parameterMap);
-    return TrackerCollection.fromJson(json);
+    final collection = TrackerCollection.fromJson(json);
+    collection.filters = parameters;
+
+    return collection;
+  }
+
+  /// Retrieves the next page of an [TrackerCollection].
+  Future<TrackerCollection> getNextPage(TrackerCollection collection,
+      {int? pageSize}) {
+    retrieveNextPageFunction(ListTrackers? parameters) {
+      return list(parameters: parameters);
+    }
+
+    // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
+    int? pageSize = collection.filters?.pageSize;
+
+    return collection.getNextPage(
+        retrieveNextPageFunction, collection.trackers, pageSize: pageSize)
+    as Future<TrackerCollection>;
   }
 
   /// Refreshes a [Tracker].

@@ -6,6 +6,7 @@ part 'options.g.dart';
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Options extends Model {
+  // TODO: Verify all options available
   @JsonKey(name: 'additional_handling')
   late bool? additionalHandling;
 
