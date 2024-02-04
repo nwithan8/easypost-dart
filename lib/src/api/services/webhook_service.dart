@@ -49,32 +49,6 @@ class WebhookService extends Service {
     return json.map<Webhook>((json) => Webhook.fromJson(json)).toList();
   }
 
-  /// Verifies a webhook [Event].
-  Future<Event?> validateIncomingWebhookEvent(
-      List<int> body, Map<String, String> headers, String secret) async {
-    // TODO: Verify this works.
-    const String signatureHeader = 'X-Hmac-Signature';
-
-    // check for signature header
-    if (!headers.containsKey(signatureHeader)) {
-      throw Exception('Signature header not found');
-    }
-
-    final providedSignature = headers[signatureHeader];
-
-    final computedHash = hmacSha256HexFromBytes(body, secret);
-    final computedHashHexString = bytesToHex(computedHash.bytes);
-    final expectedSignature = 'hmac-sha256-hex=$computedHashHexString';
-
-    // check for matching signatures
-    if (!signaturesMatch(providedSignature, expectedSignature)) {
-      throw Exception('Signature header does not match expected signature');
-    }
-
-    dynamic json = jsonDecode(utf8.decode(body));
-    return Event.fromJson(json);
-  }
-
   /// Updates a [Webhook].
   Future<Webhook> update(Webhook webhook, UpdateWebhook parameters) async {
     Map<String, dynamic> parameterMap =

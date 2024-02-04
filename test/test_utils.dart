@@ -85,6 +85,11 @@ class TestUtils {
     return file.readAsStringSync();
   }
 
+  static String readFirstLineOfFile(String filePath) {
+    File file = File(filePath);
+    return file.readAsLinesSync().first;
+  }
+
   static Client setUpVCRClient(String groupName, String cassetteName,
       {String? overrideTestApiKey, String? overrideProductionApiKey}) {
     TestVCR vcr = TestVCR(testCassettesFolder: groupName);

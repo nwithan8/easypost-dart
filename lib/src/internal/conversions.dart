@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/internal/crypto.dart';
 import 'package:intl/intl.dart';
 
 DateTime? stringToDateTime(String? timestamp) =>
@@ -67,12 +68,12 @@ List<int> hexToBytes(String hex) {
 
 /// Convert a string to a hex string.
 String stringToHex(String data) {
-  var dataBytes = utf8.encode(data);
+  var dataBytes = encodeUtf8(data);
   return bytesToHex(dataBytes);
 }
 
 /// Convert a hex string to a string.
 String hexToString(String hex) {
   var dataBytes = hexToBytes(hex);
-  return utf8.decode(dataBytes);
+  return decodeUtf8(dataBytes);
 }

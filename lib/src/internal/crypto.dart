@@ -1,18 +1,29 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 
-/// Calculate the HMAC-SHA256 hex digest of a list of bytes.
-Digest hmacSha256HexFromBytes(List<int> data, String secret) {
-  var secretBytes = utf8.encode(secret);
+/// Encode a string as UTF-8.
+Uint8List encodeUtf8(String input) {
+  return utf8.encode(input);
+}
+
+/// Decode a string from UTF-8.
+String decodeUtf8(List<int> input) {
+  return utf8.decode(input);
+}
+
+/// Calculate the HMAC-SHA256 hash of a list of bytes.
+Digest hmacSha256HashFromBytes(List<int> data, String secret) {
+  var secretBytes = encodeUtf8(secret);
   var hmacSha256 = Hmac(sha256, secretBytes);
   return hmacSha256.convert(data);
 }
 
-/// Calculate the HMAC-SHA256 hex digest of a string.
-Digest hmacSha256HexFromString(String data, String secret) {
-  var dataBytes = utf8.encode(data);
-  return hmacSha256HexFromBytes(dataBytes, secret);
+/// Calculate the HMAC-SHA256 hash of a string.
+Digest hmacSha256HashFromString(String data, String secret) {
+  var dataBytes = encodeUtf8(data);
+  return hmacSha256HashFromBytes(dataBytes, secret);
 }
 
 
@@ -43,7 +54,7 @@ bool signaturesMatch(String? signature1, String? signature2) {
     return false;
   }
 
-  var bytes1 = utf8.encode(signature1);
-  var bytes2 = utf8.encode(signature2);
+  var bytes1 = encodeUtf8(signature1);
+  var bytes2 = encodeUtf8(signature2);
   return byteArraysMatch(bytes1, bytes2);
 }

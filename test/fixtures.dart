@@ -14,6 +14,20 @@ class Fixtures {
     return jsonDecode(contents);
   }
 
+  static List<int> get webhookEventBody {
+    String path =
+        '${Directory.current.path}/examples/official/fixtures/event-body.json';
+    String contents = TestUtils.readFirstLineOfFile(path);
+
+    return utf8.encode(contents);
+  }
+
+  static Map<String, dynamic> get eventWebhookHeader {
+    return {
+      'X-Hmac-Signature': 'hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b',
+    };
+  }
+
   static FixtureStructures get fixtureStructures {
     return FixtureStructures.fromJson(_data);
   }
