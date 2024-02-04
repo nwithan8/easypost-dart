@@ -31,7 +31,7 @@ void main() {
       Client client = TestUtils.setUpVCRClient("batches", 'all');
       client.enableTestMode();
 
-      final params = AllBatches();
+      final params = ListBatches();
       params.pageSize = Fixtures.pageSize;
 
       final batchCollection = await client.batches.list(parameters: params);
@@ -67,8 +67,7 @@ void main() {
       final batchCreateParams = CreateBatch();
       final batch = await client.batches.create(batchCreateParams);
 
-      final shipmentCreateParams = Fixtures.oneCallBuyShipment;
-      final shipment = await client.shipments.create(shipmentCreateParams);
+      final shipment = await Fixtures.createAndBuyShipment(client);
 
       final batchUpdateShipmentsParams = UpdateBatchShipments();
       batchUpdateShipmentsParams.shipments = [shipment];
@@ -85,8 +84,10 @@ void main() {
       Client client = TestUtils.setUpVCRClient("batches", 'generate_label');
       client.enableTestMode();
 
+      final shipment = await Fixtures.createAndBuyShipment(client);
+
       final createParams = CreateBatch();
-      createParams.shipments = [Fixtures.oneCallBuyShipment];
+      createParams.shipments = [shipment];
 
       final batch = await client.batches.create(createParams);
 
@@ -114,8 +115,10 @@ void main() {
       Client client = TestUtils.setUpVCRClient("batches", 'generate_scan_form');
       client.enableTestMode();
 
+      final shipment = await Fixtures.createAndBuyShipment(client);
+
       final createParams = CreateBatch();
-      createParams.shipments = [Fixtures.oneCallBuyShipment];
+      createParams.shipments = [shipment];
 
       final batch = await client.batches.create(createParams);
 

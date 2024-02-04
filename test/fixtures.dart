@@ -80,6 +80,18 @@ class Fixtures {
     return createCreateShipmentParameters(data: data);
   }
 
+  static Future<Shipment> createAndBuyShipment(Client client) async {
+    CreateShipment parameters = basicShipment;
+    Shipment shipment = await client.shipments.create(parameters);
+
+    final rate = await client.shipments.getLowestRateFor(shipment, includeCarriers: ['USPS']);
+
+    BuyShipment buyShipmentParameters = BuyShipment();
+    buyShipmentParameters.rate = rate;
+
+    return await client.shipments.buy(shipment, buyShipmentParameters);
+  }
+
   static CreateAddress get caAddress1 {
     Map<String, dynamic> data = fixtureStructures.addresses.caAddress1;
     return createCreateAddressParameters(data: data);

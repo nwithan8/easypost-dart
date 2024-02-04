@@ -7,6 +7,9 @@ part of 'smart_rate.dart';
 // **************************************************************************
 
 SmartRate _$SmartRateFromJson(Map<String, dynamic> json) => SmartRate(
+      json['id'],
+      stringToDateTime(json['created_at'] as String?),
+      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['billing_type'],
@@ -33,6 +36,9 @@ SmartRate _$SmartRateFromJson(Map<String, dynamic> json) => SmartRate(
 Map<String, dynamic> _$SmartRateToJson(SmartRate instance) => <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
+      'id': instance.id,
+      'created_at': dateTimeToString(instance.createdAt),
+      'updated_at': dateTimeToString(instance.updatedAt),
       'billing_type': instance.billingType,
       'carrier': instance.carrier,
       'carrier_account_id': instance.carrierAccountId,

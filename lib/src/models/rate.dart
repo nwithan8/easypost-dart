@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'rate.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Rate extends Model {
+class Rate extends ModelWithId { // Still need to have ID until can buy a shipment with a "stateless" rate
   @JsonKey(name: 'billing_type')
   final String? billingType;
 
@@ -52,6 +52,9 @@ class Rate extends Model {
   final String? shipmentId;
 
   Rate(
+    id,
+    createdAt,
+    updatedAt,
     objectType,
     mode,
     this.billingType,
@@ -69,7 +72,7 @@ class Rate extends Model {
     this.retailRate,
     this.service,
     this.shipmentId,
-  ) : super(objectType, mode);
+  ) : super(id, createdAt, updatedAt, objectType, mode);
 
   factory Rate.fromJson(Map<String, dynamic> input) => _$RateFromJson(input);
 

@@ -10,6 +10,9 @@ class PickupRate extends Rate {
   final String? pickupId;
 
   PickupRate(
+    id,
+    createdAt,
+    updatedAt,
     objectType,
     mode,
     billingType,
@@ -29,6 +32,9 @@ class PickupRate extends Rate {
     shipmentId,
     this.pickupId,
   ) : super(
+          id,
+          createdAt,
+          updatedAt,
           objectType,
           mode,
           billingType,

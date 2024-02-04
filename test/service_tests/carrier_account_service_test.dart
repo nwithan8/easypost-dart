@@ -69,11 +69,8 @@ void main() {
       Client client = TestUtils.setUpVCRClient("carrier_accounts", 'all');
       client.enableProductionMode();
 
-      final params = AllCarrierAccounts();
-      params.pageSize = Fixtures.pageSize;
-
       final List<CarrierAccount> carrierAccountsList =
-          await client.carrierAccounts.list(parameters: params);
+          await client.carrierAccounts.list();
 
       expect(carrierAccountsList, isNotNull);
       // page size is not a thing for carrier account list (list, not a collection)

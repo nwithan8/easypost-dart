@@ -11,6 +11,9 @@ class SmartRate extends Rate {
   final TimeInTransit? timeInTransit;
 
   SmartRate(
+    id,
+    createdAt,
+    updatedAt,
     objectType,
     mode,
     billingType,
@@ -30,6 +33,9 @@ class SmartRate extends Rate {
     shipmentId,
     this.timeInTransit,
   ) : super(
+          id,
+          createdAt,
+          updatedAt,
           objectType,
           mode,
           billingType,

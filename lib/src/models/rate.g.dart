@@ -7,6 +7,9 @@ part of 'rate.dart';
 // **************************************************************************
 
 Rate _$RateFromJson(Map<String, dynamic> json) => Rate(
+      json['id'],
+      stringToDateTime(json['created_at'] as String?),
+      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['billing_type'] as String?,
@@ -31,6 +34,9 @@ Rate _$RateFromJson(Map<String, dynamic> json) => Rate(
 Map<String, dynamic> _$RateToJson(Rate instance) => <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
+      'id': instance.id,
+      'created_at': dateTimeToString(instance.createdAt),
+      'updated_at': dateTimeToString(instance.updatedAt),
       'billing_type': instance.billingType,
       'carrier': instance.carrier,
       'carrier_account_id': instance.carrierAccountId,
