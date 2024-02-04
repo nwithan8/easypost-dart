@@ -91,7 +91,7 @@ class PickupService extends Service {
     if (pickup.pickupRates == null) {
       throw MissingPropertyException.generate(pickup.toString(), 'pickupRates');
     }
-    Rate rate = getLowestRate(pickup.pickupRates!,
+    Rate rate = getLowestRateInternal(pickup.pickupRates!,
         includeCarriers: includeCarriers,
         excludeCarriers: excludeCarriers,
         includeServices: includeServices,

@@ -58,7 +58,7 @@ class OrderService extends Service {
     if (order.rates == null) {
       throw MissingPropertyException.generate(order.toString(), 'rates');
     }
-    return getLowestRate(order.rates!,
+    return getLowestRateInternal(order.rates!,
         includeCarriers: includeCarriers,
         excludeCarriers: excludeCarriers,
         includeServices: includeServices,

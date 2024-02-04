@@ -92,6 +92,15 @@ class Fixtures {
     return await client.shipments.buy(shipment, buyShipmentParameters);
   }
 
+  static CreateShipment get oneCallBuyShipment {
+    CreateShipment parameters = basicShipment;
+    parameters.carrierAccountIds = [uspsCarrierAccountId];
+    parameters.carrier = usps;
+    parameters.service = uspsService;
+
+    return parameters;
+  }
+
   static CreateAddress get caAddress1 {
     Map<String, dynamic> data = fixtureStructures.addresses.caAddress1;
     return createCreateAddressParameters(data: data);
@@ -202,14 +211,6 @@ class Fixtures {
         data: getOrDefaultMap(data, "customs_info"));
     parameters.options =
         createShipmentOptionsParameters(data: getOrDefaultMap(data, "options"));
-
-    /*
-    List<CreateCarrierAccount> carrierAccountsList = List<CreateCarrierAccount>.empty(growable: true);
-    for (Map<String, dynamic>? item in getOrDefaultMapList(data, "carrier_accounts")) {
-      carrierAccountsList.add(createCreateCarrierAccountParameters(data: item));
-    }
-    parameters.carrierAccounts = carrierAccountsList;
-     */
 
     return parameters;
   }

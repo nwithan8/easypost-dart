@@ -129,7 +129,7 @@ class ShipmentService extends Service {
     if (shipment.rates == null) {
       throw MissingPropertyException.generate(shipment.toString(), 'rates');
     }
-    return getLowestRate(shipment.rates!,
+    return getLowestRateInternal(shipment.rates!,
         includeCarriers: includeCarriers,
         excludeCarriers: excludeCarriers,
         includeServices: includeServices,

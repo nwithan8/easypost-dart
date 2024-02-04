@@ -4,7 +4,7 @@ import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/smart_rate.dart';
 import 'package:easypost/src/enums/smart_rate_accuracy.dart';
 
-Rate getLowestRate(List<Rate> rates,
+Rate getLowestRateInternal(List<Rate> rates,
     {List<String>? includeCarriers,
     List<String>? excludeCarriers,
     List<String>? includeServices,

@@ -95,5 +95,19 @@ class CreateShipment extends Parameters implements IShipmentParameter {
   @SubJsonParameter(CreateScanForm, Necessity.required, ['to_address'])
   IAddressParameter? toAddress;
 
+  @JsonParameter(Necessity.optional, ['shipment', 'carrier'])
+  @SubJsonParameter(CreateBatch, Necessity.optional, ['carrier'])
+  @SubJsonParameter(CreateOrder, Necessity.optional, ['carrier'])
+  @SubJsonParameter(CreatePickup, Necessity.optional, ['carrier'])
+  @SubJsonParameter(CreateScanForm, Necessity.optional, ['carrier'])
+  String? carrier;
+
+  @JsonParameter(Necessity.optional, ['shipment', 'service'])
+  @SubJsonParameter(CreateBatch, Necessity.optional, ['service'])
+  @SubJsonParameter(CreateOrder, Necessity.optional, ['service'])
+  @SubJsonParameter(CreatePickup, Necessity.optional, ['service'])
+  @SubJsonParameter(CreateScanForm, Necessity.optional, ['service'])
+  String? service;
+
   CreateShipment() : super();
 }

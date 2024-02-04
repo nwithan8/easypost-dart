@@ -72,7 +72,8 @@ void main() {
       final batchUpdateShipmentsParams = UpdateBatchShipments();
       batchUpdateShipmentsParams.shipments = [shipment];
 
-      final updatedBatch = await client.batches.addShipments(batch, batchUpdateShipmentsParams);
+      final updatedBatch =
+          await client.batches.addShipments(batch, batchUpdateShipmentsParams);
 
       expect(updatedBatch, isNotNull);
       expect(updatedBatch, isA<Batch>());
@@ -84,12 +85,10 @@ void main() {
       Client client = TestUtils.setUpVCRClient("batches", 'generate_label');
       client.enableTestMode();
 
-      final shipment = await Fixtures.createAndBuyShipment(client);
+      CreateBatch createBatchParams = CreateBatch();
+      createBatchParams.shipments = [Fixtures.oneCallBuyShipment];
 
-      final createParams = CreateBatch();
-      createParams.shipments = [shipment];
-
-      final batch = await client.batches.create(createParams);
+      Batch batch = await client.batches.create(createBatchParams);
 
       if (client.config.boolFunctionResult) {
         await Future.delayed(Duration(seconds: 10));
@@ -115,10 +114,8 @@ void main() {
       Client client = TestUtils.setUpVCRClient("batches", 'generate_scan_form');
       client.enableTestMode();
 
-      final shipment = await Fixtures.createAndBuyShipment(client);
-
       final createParams = CreateBatch();
-      createParams.shipments = [shipment];
+      createParams.shipments = [Fixtures.oneCallBuyShipment];
 
       final batch = await client.batches.create(createParams);
 

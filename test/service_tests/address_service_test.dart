@@ -116,23 +116,5 @@ void main() {
 
       expect(nextPage, isNotNull);
     });
-
-    test('scratch', () async {
-      Client client = TestUtils.setUpVCRClient("scratch", 'scratch');
-      client.enableTestMode();
-
-      final options = Options();
-      options.additionalHandling = true;
-      options.billingRef = "1234567890";
-
-      final params = RetrieveRates();
-      params.toAddress = Fixtures.caAddress1;
-      params.fromAddress = Fixtures.caAddress2;
-      params.parcel = Fixtures.basicParcel;
-      params.carrierAccountIds = [Fixtures.uspsCarrierAccountId];
-      params.options = options;
-
-      final rates = await client.rates.retrieveRates(params);
-    });
   });
 }
