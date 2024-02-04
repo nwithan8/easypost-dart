@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
@@ -7,7 +5,7 @@ import 'package:easypost/src/api/parameters/v2/webhooks/create_webhook.dart';
 import 'package:easypost/src/api/parameters/v2/webhooks/list_webhooks.dart';
 import 'package:easypost/src/api/parameters/v2/webhooks/update_webhook.dart';
 import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/exceptions/signature_validation_exception.dart';
 import 'package:easypost/src/internal/crypto.dart';
 import 'package:easypost/src/models/event.dart';
 import 'package:easypost/src/models/webhook.dart';
@@ -69,5 +67,26 @@ class WebhookService extends Service {
   Future<bool> delete(Webhook webhook) async {
     return await client.request(
         HttpMethod.delete, 'webhooks/${webhook.id}', ApiVersion.v2);
+  }
+
+  /// Verifies a webhook [Event].
+  /// Returns `true` if the signature is valid, `false` otherwise.
+  /// Throws a [SignatureValidationException] if the signature validation process fails.
+  Future<bool> validateIncomingWebhookEvent(
+      List<int> body, Map<String, dynamic> headers, String secret) async {
+    const String signatureHeader = 'X-Hmac-Signature';
+
+    // check for signature header
+    if (!headers.containsKey(signatureHeader)) {
+      throw SignatureValidationException('Signature header not found');
+    }
+
+    final providedSignature = headers[signatureHeader];
+
+    final computedHash = hmacSha256HashFromBytes(body, secret);
+    final expectedSignature = 'hmac-sha256-hex=$computedHash';
+
+    // check for matching signatures
+    return signaturesMatch(providedSignature, expectedSignature);
   }
 }

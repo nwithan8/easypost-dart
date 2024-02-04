@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:easypost/easypost.dart';
 import 'package:easypost/src/internal/maps.dart';
 
@@ -14,17 +15,19 @@ class Fixtures {
     return jsonDecode(contents);
   }
 
-  static List<int> get webhookEventBody {
-    String path =
-        '${Directory.current.path}/examples/official/fixtures/event-body.json';
-    String contents = TestUtils.readFirstLineOfFile(path);
+  static String get webhookSecret {
+    return "secret";
+  }
 
-    return utf8.encode(contents);
+  static List<int> get webhookEventBody {
+    String data = "event body";
+    return utf8.encode(data);
   }
 
   static Map<String, dynamic> get eventWebhookHeader {
     return {
-      'X-Hmac-Signature': 'hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b',
+      'X-Hmac-Signature':
+          'hmac-sha256-hex=0c28f466dd939b8cd118617e53ef543a1b2e2536242b0a7e4e59016c6149ff64',
     };
   }
 
@@ -181,12 +184,12 @@ class Fixtures {
         data: getOrDefaultMap(data, "to_address"));
     parameters.fromAddress = createCreateAddressParameters(
         data: getOrDefaultMap(data, "from_address"));
-    parameters.parcel = createCreateParcelParameters(
-        data: getOrDefaultMap(data, "parcel"));
+    parameters.parcel =
+        createCreateParcelParameters(data: getOrDefaultMap(data, "parcel"));
     parameters.customsInfo = createCreateCustomsInfoParameters(
         data: getOrDefaultMap(data, "customs_info"));
-    parameters.options = createShipmentOptionsParameters(
-        data: getOrDefaultMap(data, "options"));
+    parameters.options =
+        createShipmentOptionsParameters(data: getOrDefaultMap(data, "options"));
 
     /*
     List<CreateCarrierAccount> carrierAccountsList = List<CreateCarrierAccount>.empty(growable: true);
@@ -227,9 +230,11 @@ class Fixtures {
     parameters.customsCertify = getOrDefaultBool(data, "customs_certify");
     parameters.customsSigner = getOrDefaultString(data, "customs_signer");
     parameters.contentsType = getOrDefaultString(data, "contents_type");
-    parameters.contentsExplanation = getOrDefaultString(data, "contents_explanation");
+    parameters.contentsExplanation =
+        getOrDefaultString(data, "contents_explanation");
     parameters.restrictionType = getOrDefaultString(data, "restriction_type");
-    parameters.nonDeliveryOption = getOrDefaultString(data, "non_delivery_option");
+    parameters.nonDeliveryOption =
+        getOrDefaultString(data, "non_delivery_option");
 
     /*
     List<CreateCustomsItem> parametersList = List<CreateCustomsItem>.empty(growable: true);
@@ -260,8 +265,7 @@ class Fixtures {
     return parameters;
   }
 
-  static Options createShipmentOptionsParameters(
-      {Map<String, dynamic>? data}) {
+  static Options createShipmentOptionsParameters({Map<String, dynamic>? data}) {
     if (data == null) {
       data = Map<String, dynamic>();
     }
@@ -279,7 +283,8 @@ class Fixtures {
 
     CreateCarrierAccount parameters = CreateCarrierAccount();
 
-    parameters.type = CarrierAccountType.fromString(getOrDefaultString(data, "type"));
+    parameters.type =
+        CarrierAccountType.fromString(getOrDefaultString(data, "type"));
     parameters.description = getOrDefaultString(data, "description");
 
     return parameters;
