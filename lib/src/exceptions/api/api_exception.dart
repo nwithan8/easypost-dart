@@ -107,6 +107,8 @@ abstract class ApiException extends HttpException {
     }
 
     // A unaccounted-for status code was in the response.
-    throw HttpException(ErrorMessages.unexpectedHttpStatusCode, statusCode);
+    String message = ErrorMessages.format(
+        ErrorMessages.unexpectedHttpStatusCode, [statusCode.toString()]);
+    throw HttpException(message, statusCode);
   }
 }

@@ -37,8 +37,7 @@ class Parameters {
         try {
           var value = mirror.invokeGetter(property.simpleName);
           if (value == null) {
-            throw MissingParameterException(
-                "Required parameter '${property.simpleName}' is not set");
+            throw MissingParameterException.generate(property.simpleName);
           }
         } catch (e) {
           // If the property is not set, ignore it

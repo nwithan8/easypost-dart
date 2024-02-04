@@ -1,3 +1,4 @@
+import 'package:easypost/src/constants.dart';
 import 'package:easypost/src/base/exception.dart';
 
 /// Superclass for all JSON-related exceptions.

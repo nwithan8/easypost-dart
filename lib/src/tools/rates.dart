@@ -1,3 +1,4 @@
+import 'package:easypost/src/constants.dart';
 import 'package:easypost/src/exceptions/filtering_exception.dart';
 import 'package:easypost/src/models/rate.dart';
 import 'package:easypost/src/models/smart_rate.dart';
@@ -76,7 +77,7 @@ Rate getLowestRate(List<Rate> rates,
   }
 
   if (lowestRate == null) {
-    throw FilteringException('No rates were found');
+    throw FilteringException(ErrorMessages.noMatchingRatesFound);
   }
 
   return lowestRate;
@@ -127,7 +128,7 @@ SmartRate getLowestSmartRate(List<SmartRate> smartRates, int deliveryDays,
   }
 
   if (lowestRate == null) {
-    throw FilteringException('No rates were found');
+    throw FilteringException(ErrorMessages.noMatchingRatesFound);
   }
 
   return lowestRate;

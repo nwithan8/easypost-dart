@@ -5,6 +5,7 @@ import 'package:easypost/src/api/parameters/v2/webhooks/create_webhook.dart';
 import 'package:easypost/src/api/parameters/v2/webhooks/list_webhooks.dart';
 import 'package:easypost/src/api/parameters/v2/webhooks/update_webhook.dart';
 import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/constants.dart';
 import 'package:easypost/src/exceptions/signature_validation_exception.dart';
 import 'package:easypost/src/internal/crypto.dart';
 import 'package:easypost/src/models/event.dart';
@@ -74,14 +75,13 @@ class WebhookService extends Service {
   /// Throws a [SignatureValidationException] if the signature validation process fails.
   Future<bool> validateIncomingWebhookEvent(
       List<int> body, Map<String, dynamic> headers, String secret) async {
-    const String signatureHeader = 'X-Hmac-Signature';
-
     // check for signature header
-    if (!headers.containsKey(signatureHeader)) {
-      throw SignatureValidationException('Signature header not found');
+    if (!headers.containsKey(webhookSignatureHeader)) {
+      throw SignatureValidationException(
+          ErrorMessages.missingWebhookSignature);
     }
 
-    final providedSignature = headers[signatureHeader];
+    final providedSignature = headers[webhookSignatureHeader];
 
     final computedHash = hmacSha256HashFromBytes(body, secret);
     final expectedSignature = 'hmac-sha256-hex=$computedHash';

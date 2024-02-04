@@ -89,7 +89,7 @@ class PickupService extends Service {
     List<String>? excludeServices,
   }) {
     if (pickup.pickupRates == null) {
-      throw MissingPropertyException('Order has no rates');
+      throw MissingPropertyException.generate(pickup.toString(), 'pickupRates');
     }
     Rate rate = getLowestRate(pickup.pickupRates!,
         includeCarriers: includeCarriers,

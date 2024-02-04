@@ -127,7 +127,7 @@ class ShipmentService extends Service {
     List<String>? excludeServices,
   }) {
     if (shipment.rates == null) {
-      throw MissingPropertyException('Shipment has no rates');
+      throw MissingPropertyException.generate(shipment.toString(), 'rates');
     }
     return getLowestRate(shipment.rates!,
         includeCarriers: includeCarriers,

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/constants.dart';
+import 'package:easypost/src/exceptions/pagination_exception.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 
@@ -28,11 +30,11 @@ class PaginatedCollection<ListObjectType extends ModelWithId, ListParametersType
   /// Retrieves the next page of a [PaginatedCollection], using the provided [retrieveNextPageFunction] to retrieve the next page.
   Future<PaginatedCollection<ListObjectType, ListParametersType>> getNextPage(Future<PaginatedCollection<ListObjectType, ListParametersType>> Function(ListParametersType? parameters) retrieveNextPageFunction, List<ListObjectType>? currentPageItems, {int? pageSize}) {
     if (currentPageItems == null || currentPageItems.isEmpty) {
-      throw Exception('No more pages to retrieve.');
+      throw PaginationException(ErrorMessages.noMorePagesToRetrieve);
     }
 
     if (hasMore == false) {
-      throw Exception('No more pages to retrieve.');
+      throw throw PaginationException(ErrorMessages.noMorePagesToRetrieve);
     }
 
     ListParametersType? parameters = buildGetNextPageParameters(currentPageItems, pageSize: pageSize);

@@ -1,3 +1,4 @@
+import 'package:easypost/easypost.dart';
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
@@ -55,7 +56,8 @@ class EventService extends Service {
     } on ApiException catch (e) {
       // Server will throw a 500 if the ID is malformed. Remap to a better error.
       if (e.statusCode == 500) {
-        throw Exception("Payload ID is malformed. Please check the ID.");
+        final message = 'Payload ID is malformed. Please check the ID.';
+        throw BadRequestException(message, 500, message);
       }
       // Otherwise, throw whatever the server threw.
       rethrow;

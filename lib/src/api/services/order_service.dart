@@ -56,7 +56,7 @@ class OrderService extends Service {
     List<String>? excludeServices,
   }) {
     if (order.rates == null) {
-      throw MissingPropertyException('Order has no rates');
+      throw MissingPropertyException.generate(order.toString(), 'rates');
     }
     return getLowestRate(order.rates!,
         includeCarriers: includeCarriers,

@@ -154,6 +154,7 @@ export 'package:easypost/src/exceptions/filtering_exception.dart';
 export 'package:easypost/src/exceptions/http_exception.dart';
 export 'package:easypost/src/exceptions/invalid_object_exception.dart';
 export 'package:easypost/src/exceptions/missing_property_exception.dart';
+export 'package:easypost/src/exceptions/pagination_exception.dart';
 export 'package:easypost/src/exceptions/payment_methods_not_initialized_exception.dart';
 export 'package:easypost/src/exceptions/resource_not_found_exception.dart';
 export 'package:easypost/src/exceptions/signature_validation_exception.dart';

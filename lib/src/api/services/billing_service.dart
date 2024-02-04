@@ -8,6 +8,7 @@ import 'package:easypost/src/api/parameters/v2/billing/fund_wallet.dart';
 import 'package:easypost/src/api/parameters/v2/billing/list_payment_logs.dart';
 import 'package:easypost/src/api/services/extras_service.dart';
 import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/constants.dart';
 import 'package:easypost/src/enums/payment_method_priority.dart';
 import 'package:easypost/src/exceptions/payment_methods_not_initialized_exception.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
@@ -26,7 +27,7 @@ class BillingService extends Service {
     final Map<String, dynamic> data = json as Map<String, dynamic>;
     if (data['id'] == null) {
       throw PaymentMethodsNotInitializedException(
-          "Payment methods have not been set up yet.");
+         ErrorMessages.noPaymentMethodsSetUp);
     }
     return PaymentMethodsSummary.fromJson(json);
   }
@@ -80,7 +81,7 @@ class BillingService extends Service {
     priority ??= PaymentMethodPriority.primary;
     PaymentMethod? paymentMethod = await retrievePaymentMethod(priority);
     if (paymentMethod == null) {
-      throw ResourceNotFoundException('No payment method found.');
+      throw ResourceNotFoundException(ErrorMessages.paymentMethodNotFound);
     }
 
     Map<String, dynamic> parameterMap =
@@ -129,7 +130,7 @@ class BillingService extends Service {
   Future<bool> deletePaymentMethod(PaymentMethodPriority priority) async {
     PaymentMethod? paymentMethod = await retrievePaymentMethod(priority);
     if (paymentMethod == null) {
-      throw ResourceNotFoundException('No payment method found.');
+      throw ResourceNotFoundException(ErrorMessages.paymentMethodNotFound);
     }
 
     return await client.request(HttpMethod.delete,
