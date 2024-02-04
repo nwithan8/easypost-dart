@@ -133,6 +133,7 @@ export 'package:easypost/src/models/webhook.dart';
 
 // Exceptions
 export 'package:easypost/src/exceptions/api/api_exception.dart';
+export 'package:easypost/src/exceptions/api/bad_request_exception.dart';
 export 'package:easypost/src/exceptions/api/gateway_timeout_exception.dart';
 export 'package:easypost/src/exceptions/api/internal_server_exception.dart';
 export 'package:easypost/src/exceptions/api/invalid_request_exception.dart';

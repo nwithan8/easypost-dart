@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:easypost/src/api/http/streamed_response.dart';
 import 'package:easypost/src/constants.dart';
+import 'package:easypost/src/exceptions/api/bad_request_exception.dart';
 import 'package:easypost/src/exceptions/api/gateway_timeout_exception.dart';
 import 'package:easypost/src/exceptions/api/internal_server_exception.dart';
 import 'package:easypost/src/exceptions/api/invalid_request_exception.dart';
@@ -66,6 +67,9 @@ abstract class ApiException extends HttpException {
 
     // Return the appropriate exception based on the HTTP status code
     switch (statusCode) {
+      case 400:
+        return BadRequestException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 401:
         return ApiUnauthorizedException(errorMessage, statusCode, errorType,
             errors: errors);
