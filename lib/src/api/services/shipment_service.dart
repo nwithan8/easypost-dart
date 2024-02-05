@@ -9,8 +9,9 @@ import 'package:easypost/src/api/parameters/v2/shipments/insure_shipment.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
-import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/quoted_rate.dart';
 import 'package:easypost/src/models/shipment.dart';
+import 'package:easypost/src/models/shipment_rate.dart';
 import 'package:easypost/src/models/smart_rate.dart';
 import 'package:easypost/src/enums/smart_rate_accuracy.dart';
 import 'package:easypost/src/tools/rates.dart';
@@ -30,9 +31,9 @@ class ShipmentService extends Service {
   }
 
   /// Retrieves a [Shipment].
-  Future<Shipment> retrieve(String id) async {
+  Future<Shipment> retrieve(String shipmentId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'shipments/$id', ApiVersion.v2);
+        HttpMethod.get, 'shipments/$shipmentId', ApiVersion.v2);
     return Shipment.fromJson(json);
   }
 
@@ -65,61 +66,61 @@ class ShipmentService extends Service {
   }
 
   /// Retrieves all [SmartRate]s for a [Shipment].
-  Future<List<SmartRate>> getSmartRates(Shipment shipment) async {
+  Future<List<SmartRate>> getSmartRates(String shipmentId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'shipments/${shipment.id}/smartrate', ApiVersion.v2,
+        HttpMethod.get, 'shipments/$shipmentId/smartrate', ApiVersion.v2,
         rootElement: "result");
     return json.map<SmartRate>((e) => SmartRate.fromJson(e)).toList();
   }
 
   /// Purchases a [Shipment].
-  Future<Shipment> buy(Shipment shipment, BuyShipment parameters) async {
+  Future<Shipment> buy(String shipmentId, BuyShipment parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
 
     final json = await client.requestJson(
-        HttpMethod.post, 'shipments/${shipment.id}/buy', ApiVersion.v2,
+        HttpMethod.post, 'shipments/$shipmentId/buy', ApiVersion.v2,
         parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
   /// Generates a [Shipment] label.
   Future<Shipment> generateLabel(
-      Shipment shipment, CreateShipmentDocument parameters) async {
+      String shipmentId, CreateShipmentDocument parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.get, 'shipments/${shipment.id}/label', ApiVersion.v2,
+        HttpMethod.get, 'shipments/$shipmentId/label', ApiVersion.v2,
         parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
   /// Insures a [Shipment].
-  Future<Shipment> insure(Shipment shipment, InsureShipment parameters) async {
+  Future<Shipment> insure(String shipmentId, InsureShipment parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.post, 'shipments/${shipment.id}/insure', ApiVersion.v2,
+        HttpMethod.post, 'shipments/$shipmentId/insure', ApiVersion.v2,
         parameters: parameterMap);
     return Shipment.fromJson(json);
   }
 
   /// Refunds a [Shipment].
-  Future<Shipment> refund(Shipment shipment) async {
+  Future<Shipment> refund(String shipmentId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'shipments/${shipment.id}/refund', ApiVersion.v2);
+        HttpMethod.get, 'shipments/$shipmentId/refund', ApiVersion.v2);
     return Shipment.fromJson(json);
   }
 
   /// Refreshes the [Rate]s for a [Shipment].
-  Future<Shipment> refreshRates(String id) async {
+  Future<Shipment> refreshRates(String shipmentId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'shipments/$id/rates', ApiVersion.v2);
+        HttpMethod.get, 'shipments/$shipmentId/rates', ApiVersion.v2);
     return Shipment.fromJson(json);
   }
 
   /// Calculates the lowest [Rate] for a [Shipment].
-  Rate getLowestRateFor(
+  ShipmentRate? getLowestRateFor(
     Shipment shipment, {
     List<String>? includeCarriers,
     List<String>? excludeCarriers,
@@ -129,17 +130,18 @@ class ShipmentService extends Service {
     if (shipment.rates == null) {
       throw MissingPropertyException.generate(shipment.toString(), 'rates');
     }
-    return getLowestRateInternal(shipment.rates!,
+    QuotedRate lowestQuotedRate = getLowestRateInternal(shipment.rates!,
         includeCarriers: includeCarriers,
         excludeCarriers: excludeCarriers,
         includeServices: includeServices,
         excludeServices: excludeServices);
+    return shipment.associatedShipmentRate(lowestQuotedRate, lockPrice: true);
   }
 
   /// Calculates the lowest [SmartRate] for a [Shipment].
   Future<SmartRate> getLowestSmartRateFor(Shipment shipment, int deliveryDays,
       SmartRateAccuracy deliveryAccuracy) async {
-    List<SmartRate> smartRates = await getSmartRates(shipment);
+    List<SmartRate> smartRates = await getSmartRates(shipment.id);
 
     if (smartRates.isEmpty) {
       throw ResourceNotFoundException('No smart rates available.');

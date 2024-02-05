@@ -1,10 +1,12 @@
 import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/models/customs_info.dart';
 import 'package:easypost/src/models/message.dart';
-import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/order_rate.dart';
+import 'package:easypost/src/models/quoted_rate.dart';
 import 'package:easypost/src/models/shipment.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -31,7 +33,7 @@ class Order extends ModelWithId {
   final List<Message>? messages;
 
   @JsonKey(name: 'rates')
-  final List<Rate>? rates;
+  final List<OrderRate>? rates;
 
   @JsonKey(name: 'reference')
   final String? reference;
@@ -72,4 +74,46 @@ class Order extends ModelWithId {
 
   @override
   Map<String, dynamic> toJson() => _$OrderToJson(this);
+
+  OrderRate? associatedOrderRate(QuotedRate rate, {bool lockPrice = false}) {
+    if (rates == null) {
+      throw MissingPropertyException.generate(toString(), 'rates');
+    }
+
+    filterFunction(OrderRate orderRate) {
+      if (orderRate.price == null) {
+        return false;
+      }
+
+      if (lockPrice) {
+        if (orderRate.price != rate.price) {
+          return false;
+        }
+      }
+
+      if (orderRate.carrier != null) {
+        if (rate.carrier != null) {
+          if (orderRate.carrier != rate.carrier) {
+            return false;
+          }
+        }
+      }
+
+      if (orderRate.service != null) {
+        if (rate.service != null) {
+          if (orderRate.service != rate.service) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    }
+
+    try {
+      return rates!.firstWhere(filterFunction);
+    } on StateError {
+      return null;
+    }
+  }
 }

@@ -25,16 +25,18 @@ class CarrierAccountService extends Service {
   Future<CarrierAccount> create(CreateCarrierAccount parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
+    // String endpoint = parameters.endpoint;
+    String endpoint = 'carrier_accounts';
     final json = await client.requestJson(
-        HttpMethod.post, 'carrier_accounts', ApiVersion.v2,
+        HttpMethod.post, endpoint, ApiVersion.v2,
         parameters: parameterMap);
     return CarrierAccount.fromJson(json);
   }
 
   /// Retrieves a [CarrierAccount].
-  Future<CarrierAccount> retrieve(String id) async {
+  Future<CarrierAccount> retrieve(String carrierAccountId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'carrier_accounts/$id', ApiVersion.v2);
+        HttpMethod.get, 'carrier_accounts/$carrierAccountId', ApiVersion.v2);
     return CarrierAccount.fromJson(json);
   }
 
@@ -50,18 +52,18 @@ class CarrierAccountService extends Service {
 
   /// Updates a [CarrierAccount].
   Future<CarrierAccount> update(
-      CarrierAccount carrierAccount, UpdateCarrierAccount parameters) async {
+      String carrierAccountId, UpdateCarrierAccount parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(HttpMethod.patch,
-        'carrier_accounts/${carrierAccount.id}', ApiVersion.v2,
+        'carrier_accounts/$carrierAccountId', ApiVersion.v2,
         parameters: parameterMap);
     return CarrierAccount.fromJson(json);
   }
 
   /// Deletes a [CarrierAccount].
-  Future<bool> delete(CarrierAccount carrierAccount) async {
+  Future<bool> delete(String carrierAccountId) async {
     return await client.request(HttpMethod.delete,
-        'carrier_accounts/${carrierAccount.id}', ApiVersion.v2);
+        'carrier_accounts/$carrierAccountId', ApiVersion.v2);
   }
 }

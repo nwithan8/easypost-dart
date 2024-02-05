@@ -1,10 +1,10 @@
-import 'package:easypost/easypost.dart';
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/parameters/v2/events/list_events.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/api/api_exception.dart';
+import 'package:easypost/src/exceptions/api/bad_request_exception.dart';
 import 'package:easypost/src/models/event.dart';
 import 'package:easypost/src/models/payload.dart';
 
@@ -13,9 +13,9 @@ class EventService extends Service {
   EventService(Client client) : super(client);
 
   /// Retrieve an [Event].
-  Future<Event> retrieve(String id) async {
+  Future<Event> retrieve(String eventId) async {
     final json =
-        await client.requestJson(HttpMethod.get, 'events/$id', ApiVersion.v2);
+        await client.requestJson(HttpMethod.get, 'events/$eventId', ApiVersion.v2);
     return Event.fromJson(json);
   }
 
@@ -48,10 +48,10 @@ class EventService extends Service {
   }
 
   /// Retrieve a [Payload] for an [Event].
-  Future<Payload> retrievePayload(Event event, String payloadId) async {
+  Future<Payload> retrievePayload(String eventId, String payloadId) async {
     try {
       final json = await client.requestJson(HttpMethod.get,
-          'events/${event.id}/payloads/$payloadId', ApiVersion.v2);
+          'events/$eventId/payloads/$payloadId', ApiVersion.v2);
       return Payload.fromJson(json);
     } on ApiException catch (e) {
       // Server will throw a 500 if the ID is malformed. Remap to a better error.
@@ -65,9 +65,9 @@ class EventService extends Service {
   }
 
   /// Retrieve all [Payload]s for an [Event].
-  Future<Payload> retrievePayloads(Event event) async {
+  Future<Payload> retrievePayloads(String eventId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'events/${event.id}/payloads', ApiVersion.v2);
+        HttpMethod.get, 'events/$eventId/payloads', ApiVersion.v2);
     return json.map<Payload>((json) => Payload.fromJson(json)).toList();
   }
 }

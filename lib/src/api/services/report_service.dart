@@ -25,10 +25,10 @@ class ReportService extends Service {
   }
 
   /// Retrieves a [Report].
-  Future<Report> retrieve(String id) async {
+  Future<Report> retrieve(String reportId) async {
     final json = await client.requestJson(
       HttpMethod.get,
-      'reports/$id',
+      'reports/$reportId',
       ApiVersion.v2,
     );
     return Report.fromJson(json);

@@ -22,9 +22,9 @@ class EndShipperService extends Service {
   }
 
   /// Retrieves an [EndShipper].
-  Future<EndShipper> retrieve(String id) async {
+  Future<EndShipper> retrieve(String endShipperId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'end_shippers/$id', ApiVersion.v2);
+        HttpMethod.get, 'end_shippers/$endShipperId', ApiVersion.v2);
     return EndShipper.fromJson(json);
   }
 
@@ -58,11 +58,11 @@ class EndShipperService extends Service {
 
   /// Updates an [EndShipper].
   Future<EndShipper> update(
-      EndShipper endShipper, UpdateEndShipper parameters) async {
+      String endShipperId, UpdateEndShipper parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.put, 'end_shippers/${endShipper.id}', ApiVersion.v2,
+        HttpMethod.put, 'end_shippers/$endShipperId', ApiVersion.v2,
         parameters: parameterMap);
     return EndShipper.fromJson(json);
   }

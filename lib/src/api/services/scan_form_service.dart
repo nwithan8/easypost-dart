@@ -24,10 +24,10 @@ class ScanFormService extends Service {
   }
 
   /// Retrieves a [ScanForm].
-  Future<ScanForm> retrieve(String id) async {
+  Future<ScanForm> retrieve(String scanFormId) async {
     final json =  await client.requestJson(
       HttpMethod.get,
-      'scan_forms/$id',
+      'scan_forms/$scanFormId',
       ApiVersion.v2,
     );
     return ScanForm.fromJson(json);

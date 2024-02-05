@@ -24,10 +24,10 @@ class TrackerService extends Service {
   }
 
   /// Retrieves a [Tracker].
-  Future<Tracker> retrieve(String id) async {
+  Future<Tracker> retrieve(String trackerId) async {
     final json =  await client.requestJson(
       HttpMethod.get,
-      'trackers/$id',
+      'trackers/$trackerId',
       ApiVersion.v2,
     );
     return Tracker.fromJson(json);
@@ -62,10 +62,10 @@ class TrackerService extends Service {
   }
 
   /// Refreshes a [Tracker].
-  Future<Tracker> refresh(String id) async {
+  Future<Tracker> refresh(String trackerId) async {
     final json =  await client.requestJson(
       HttpMethod.get,
-      'trackers/$id/refresh',
+      'trackers/$trackerId/refresh',
       ApiVersion.v2,
     );
     return Tracker.fromJson(json);

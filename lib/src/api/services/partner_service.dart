@@ -36,10 +36,10 @@ class PartnerService extends Service {
   }
 
   /// Retrieves a [ReferralCustomer] by its ID.
-  Future<ReferralCustomer> retrieveReferralCustomer(String id) async {
+  Future<ReferralCustomer> retrieveReferralCustomer(String referralCustomerId) async {
     final json = await client.requestJson(
       HttpMethod.get,
-      'referral_customers/$id',
+      'referral_customers/$referralCustomerId',
       ApiVersion.v2,
     );
     return ReferralCustomer.fromJson(json);
@@ -80,11 +80,11 @@ class PartnerService extends Service {
 
   /// Update a [ReferralCustomer]'s email address.
   Future<bool> updateReferralCustomerEmail(
-      String id, UpdateReferralCustomerEmail parameters) async {
+      String referralCustomerId, UpdateReferralCustomerEmail parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     return await client.request(
-        HttpMethod.put, 'referral_customers/$id', ApiVersion.v2,
+        HttpMethod.put, 'referral_customers/$referralCustomerId', ApiVersion.v2,
         parameters: parameterMap);
   }
 

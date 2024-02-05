@@ -5,10 +5,6 @@ import 'package:easypost/src/enums/carrier_account_type.dart';
 
 @reflector
 class CreateUpsCarrierAccount extends CreateCarrierAccount {
-  @override
-  @JsonParameter(Necessity.optional, ['carrier_account', "type"])
-  CarrierAccountType? get type => CarrierAccountType.ups;
-
   @JsonParameter(Necessity.required,
       ['carrier_account', "registration_data", "account_number"])
   String? accountNumber;
@@ -81,5 +77,5 @@ class CreateUpsCarrierAccount extends CreateCarrierAccount {
       Necessity.required, ['carrier_account', "registration_data", "website"])
   String? website;
 
-  CreateUpsCarrierAccount() : super();
+  CreateUpsCarrierAccount() : super(CarrierAccountType.ups, registerCarrierAccountEndpoint);
 }

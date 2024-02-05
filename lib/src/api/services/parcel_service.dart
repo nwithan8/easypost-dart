@@ -23,10 +23,10 @@ class ParcelService extends Service {
   }
 
   /// Retrieves a [Parcel].
-  Future<Parcel> retrieve(String id) async {
+  Future<Parcel> retrieve(String parcelId) async {
     final json = await client.requestJson(
       HttpMethod.get,
-      'parcels/$id',
+      'parcels/$parcelId',
       ApiVersion.v2,
     );
     return Parcel.fromJson(json);

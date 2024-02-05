@@ -27,10 +27,10 @@ class UserService extends Service {
   }
 
   /// Retrieves a [User].
-  Future<User> retrieveChildUser(String id) async {
+  Future<User> retrieveChildUser(String userId) async {
     final json = await client.requestJson(
       HttpMethod.get,
-      'users/$id',
+      'users/$userId',
       ApiVersion.v2,
     );
     return User.fromJson(json);
@@ -76,12 +76,12 @@ class UserService extends Service {
   }
 
   /// Updates a [User].
-  Future<User> updateUser(User user, UpdateUser parameters) async {
+  Future<User> updateUser(String userId, UpdateUser parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
       HttpMethod.patch,
-      'users/${user.id}',
+      'users/$userId',
       ApiVersion.v2,
       parameters: parameterMap,
     );
@@ -102,21 +102,21 @@ class UserService extends Service {
   }
 
   /// Deletes a child [User].
-  Future<bool> deleteChildUser(User user) async {
+  Future<bool> deleteChildUser(String childUserId) async {
     return await client.request(
       HttpMethod.delete,
-      'users/${user.id}',
+      'users/$childUserId',
       ApiVersion.v2,
     );
   }
 
   /// Update the [Brand] of a [User].
-  Future<User> updateBrand(User user, UpdateBrand parameters) async {
+  Future<User> updateBrand(String userId, UpdateBrand parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
       HttpMethod.patch,
-      'users/${user.id}/brand',
+      'users/$userId/brand',
       ApiVersion.v2,
       parameters: parameterMap,
     );
@@ -124,10 +124,10 @@ class UserService extends Service {
   }
 
   /// Retrieves the [Brand] of a [User].
-  Future<Brand> retrieveBrand(User user) async {
+  Future<Brand> retrieveBrand(String userId) async {
     final json = await client.requestJson(
       HttpMethod.get,
-      'users/${user.id}/brand',
+      'users/$userId/brand',
       ApiVersion.v2,
     );
     return Brand.fromJson(json);

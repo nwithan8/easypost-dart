@@ -1,10 +1,10 @@
 import 'package:easypost/src/constants.dart';
 import 'package:easypost/src/exceptions/filtering_exception.dart';
-import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/quoted_rate.dart';
 import 'package:easypost/src/models/smart_rate.dart';
 import 'package:easypost/src/enums/smart_rate_accuracy.dart';
 
-Rate getLowestRateInternal(List<Rate> rates,
+QuotedRate getLowestRateInternal(List<QuotedRate> rates,
     {List<String>? includeCarriers,
     List<String>? excludeCarriers,
     List<String>? includeServices,
@@ -19,7 +19,7 @@ Rate getLowestRateInternal(List<Rate> rates,
   includeServices = includeServices.map((e) => e.toLowerCase()).toList();
   excludeServices = excludeServices.map((e) => e.toLowerCase()).toList();
 
-  Rate? lowestRate;
+  QuotedRate? lowestRate;
 
   for (final rate in rates) {
     if (rate.price == null) {

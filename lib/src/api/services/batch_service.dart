@@ -24,9 +24,9 @@ class BatchService extends Service {
   }
 
   /// Retrieves a [Batch].
-  Future<Batch> retrieve(String id) async {
+  Future<Batch> retrieve(String batchId) async {
     final json =
-        await client.requestJson(HttpMethod.get, 'batches/$id', ApiVersion.v2);
+        await client.requestJson(HttpMethod.get, 'batches/$batchId', ApiVersion.v2);
     return Batch.fromJson(json);
   }
 
@@ -60,52 +60,52 @@ class BatchService extends Service {
 
   /// Adds [Shipment]s to a [Batch].
   Future<Batch> addShipments(
-      Batch batch, UpdateBatchShipments parameters) async {
+      String batchId, UpdateBatchShipments parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.post, 'batches/${batch.id}/add_shipments', ApiVersion.v2,
+        HttpMethod.post, 'batches/$batchId/add_shipments', ApiVersion.v2,
         parameters: parameterMap);
     return Batch.fromJson(json);
   }
 
   /// Removes [Shipment]s from a [Batch].
   Future<Batch> removeShipments(
-      Batch batch, UpdateBatchShipments parameters) async {
+      String batchId, UpdateBatchShipments parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
 
     final json = await client.requestJson(
-        HttpMethod.post, 'batches/${batch.id}/remove_shipments', ApiVersion.v2,
+        HttpMethod.post, 'batches/$batchId/remove_shipments', ApiVersion.v2,
         parameters: parameterMap);
     return Batch.fromJson(json);
   }
 
   /// Purchases a [Batch].
-  Future<Batch> purchase(Batch batch) async {
+  Future<Batch> purchase(String batchId) async {
     final json = await client.requestJson(
-        HttpMethod.post, 'batches/${batch.id}/buy', ApiVersion.v2);
+        HttpMethod.post, 'batches/$batchId/buy', ApiVersion.v2);
     return Batch.fromJson(json);
   }
 
   /// Generates a [Batch]'s label.
   Future<Batch> generateLabel(
-      Batch batch, CreateBatchDocument parameters) async {
+      String batchId, CreateBatchDocument parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.post, 'batches/${batch.id}/label', ApiVersion.v2,
+        HttpMethod.post, 'batches/$batchId/label', ApiVersion.v2,
         parameters: parameterMap);
     return Batch.fromJson(json);
   }
 
   /// Generates a [Batch]'s scan form.
   Future<Batch> generateScanForm(
-      Batch batch, CreateBatchDocument parameters) async {
+      String batchId, CreateBatchDocument parameters) async {
     Map<String, dynamic>? parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.post, 'batches/${batch.id}/scan_form', ApiVersion.v2,
+        HttpMethod.post, 'batches/$batchId/scan_form', ApiVersion.v2,
         parameters: parameterMap);
     return Batch.fromJson(json);
   }

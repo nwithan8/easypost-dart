@@ -29,10 +29,10 @@ class WebhookService extends Service {
   }
 
   /// Retrieves a [Webhook].
-  Future<Webhook> retrieve(String id) async {
+  Future<Webhook> retrieve(String webhookId) async {
     final json = await client.requestJson(
       HttpMethod.get,
-      'webhooks/$id',
+      'webhooks/$webhookId',
       ApiVersion.v2,
     );
     return Webhook.fromJson(json);
@@ -49,25 +49,25 @@ class WebhookService extends Service {
   }
 
   /// Updates a [Webhook].
-  Future<Webhook> update(Webhook webhook, UpdateWebhook parameters) async {
+  Future<Webhook> update(String webhookId, UpdateWebhook parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.patch, 'webhooks/${webhook.id}', ApiVersion.v2,
+        HttpMethod.patch, 'webhooks/$webhookId', ApiVersion.v2,
         parameters: parameterMap);
     return Webhook.fromJson(json);
   }
 
   /// Toggle a [Webhook].
-  Future<bool> toggle(Webhook webhook) async {
+  Future<bool> toggle(String webhookId) async {
     return await client.request(
-        HttpMethod.patch, 'webhooks/${webhook.id}', ApiVersion.v2);
+        HttpMethod.patch, 'webhooks/$webhookId', ApiVersion.v2);
   }
 
   /// Deletes a [Webhook].
-  Future<bool> delete(Webhook webhook) async {
+  Future<bool> delete(String webhookId) async {
     return await client.request(
-        HttpMethod.delete, 'webhooks/${webhook.id}', ApiVersion.v2);
+        HttpMethod.delete, 'webhooks/$webhookId', ApiVersion.v2);
   }
 
   /// Verifies a webhook [Event].

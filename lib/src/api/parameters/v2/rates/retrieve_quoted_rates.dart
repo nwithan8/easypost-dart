@@ -5,7 +5,7 @@ import 'package:easypost/src/internal/reflection.dart';
 import 'package:easypost/src/models/options.dart';
 
 @reflector
-class RetrieveRates extends Parameters {
+class RetrieveQuotedRates extends Parameters {
   @JsonParameter(Necessity.optional, ['shipment', 'carrier_accounts'])
   List<String>? carrierAccountIds;
 
@@ -27,5 +27,5 @@ class RetrieveRates extends Parameters {
   @JsonParameter(Necessity.optional, ['shipment', 'options'])
   Options? options;
 
-  RetrieveRates() : super();
+  RetrieveQuotedRates() : super();
 }

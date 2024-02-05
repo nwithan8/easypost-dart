@@ -7,9 +7,6 @@ part of 'pickup_rate.dart';
 // **************************************************************************
 
 PickupRate _$PickupRateFromJson(Map<String, dynamic> json) => PickupRate(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['billing_type'],
@@ -26,7 +23,7 @@ PickupRate _$PickupRateFromJson(Map<String, dynamic> json) => PickupRate(
       json['retail_currency'],
       stringToMoney(json['retail_rate'] as String?),
       json['service'],
-      json['shipment_id'],
+      json['id'] as String?,
       json['pickup_id'] as String?,
     );
 
@@ -34,9 +31,6 @@ Map<String, dynamic> _$PickupRateToJson(PickupRate instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'billing_type': instance.billingType,
       'carrier': instance.carrier,
       'carrier_account_id': instance.carrierAccountId,
@@ -51,6 +45,6 @@ Map<String, dynamic> _$PickupRateToJson(PickupRate instance) =>
       'retail_currency': instance.retailCurrency,
       'retail_rate': moneyToString(instance.retailRate),
       'service': instance.service,
-      'shipment_id': instance.shipmentId,
+      'id': instance.id,
       'pickup_id': instance.pickupId,
     };

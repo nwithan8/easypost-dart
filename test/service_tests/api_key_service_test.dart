@@ -12,8 +12,8 @@ void main() {
       initializeReflectable();
     });
 
-    test('all', () async {
-      Client client = TestUtils.setUpVCRClient("api_keys", 'all');
+    test('list', () async {
+      Client client = TestUtils.setUpVCRClient("api_keys", 'list');
       client.enableProductionMode();
 
       final apiKeyCollection = await client.apiKeys.list();

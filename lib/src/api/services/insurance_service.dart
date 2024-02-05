@@ -21,9 +21,9 @@ class InsuranceService extends Service {
   }
 
   /// Retrieves an [Insurance].
-  Future<Insurance> retrieve(String id) async {
+  Future<Insurance> retrieve(String insuranceId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'insurances/$id', ApiVersion.v2);
+        HttpMethod.get, 'insurances/$insuranceId', ApiVersion.v2);
     return Insurance.fromJson(json);
   }
 

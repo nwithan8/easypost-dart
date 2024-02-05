@@ -1,15 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'rate.dart';
+part of 'quoted_rate.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Rate _$RateFromJson(Map<String, dynamic> json) => Rate(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
+QuotedRate _$QuotedRateFromJson(Map<String, dynamic> json) => QuotedRate(
       json['object'],
       json['mode'],
       json['billing_type'] as String?,
@@ -28,15 +25,12 @@ Rate _$RateFromJson(Map<String, dynamic> json) => Rate(
       json['retail_currency'] as String?,
       stringToMoney(json['retail_rate'] as String?),
       json['service'] as String?,
-      json['shipment_id'] as String?,
     );
 
-Map<String, dynamic> _$RateToJson(Rate instance) => <String, dynamic>{
+Map<String, dynamic> _$QuotedRateToJson(QuotedRate instance) =>
+    <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'billing_type': instance.billingType,
       'carrier': instance.carrier,
       'carrier_account_id': instance.carrierAccountId,
@@ -51,5 +45,4 @@ Map<String, dynamic> _$RateToJson(Rate instance) => <String, dynamic>{
       'retail_currency': instance.retailCurrency,
       'retail_rate': moneyToString(instance.retailRate),
       'service': instance.service,
-      'shipment_id': instance.shipmentId,
     };

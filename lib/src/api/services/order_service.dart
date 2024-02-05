@@ -6,7 +6,8 @@ import 'package:easypost/src/api/parameters/v2/orders/create_order.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/models/order.dart';
-import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/order_rate.dart';
+import 'package:easypost/src/models/quoted_rate.dart';
 import 'package:easypost/src/tools/rates.dart';
 
 /// The [OrderService] handles orders with the EasyPost API.
@@ -24,31 +25,31 @@ class OrderService extends Service {
   }
 
   /// Retrieves an [Order].
-  Future<Order> retrieve(String id) async {
+  Future<Order> retrieve(String orderId) async {
     final json =
-        await client.requestJson(HttpMethod.get, 'orders/$id', ApiVersion.v2);
+        await client.requestJson(HttpMethod.get, 'orders/$orderId', ApiVersion.v2);
     return Order.fromJson(json);
   }
 
   /// Purchases an [Order].
-  Future<Order> buy(Order order, BuyOrder parameters) async {
+  Future<Order> buy(String orderId, BuyOrder parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.post, 'orders/${order.id}/buy', ApiVersion.v2,
+        HttpMethod.post, 'orders/$orderId/buy', ApiVersion.v2,
         parameters: parameterMap);
     return Order.fromJson(json);
   }
 
   /// Refreshes the [Rate]s for an [Order].
-  Future<Order> refreshRates(String id) async {
+  Future<Order> refreshRates(String orderId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'orders/$id/rates', ApiVersion.v2);
+        HttpMethod.get, 'orders/$orderId/rates', ApiVersion.v2);
     return Order.fromJson(json);
   }
 
   /// Calculates the lowest [Rate] for an [Order].
-  Rate getLowestRateFor(
+  OrderRate? getLowestRateFor(
     Order order, {
     List<String>? includeCarriers,
     List<String>? excludeCarriers,
@@ -58,10 +59,11 @@ class OrderService extends Service {
     if (order.rates == null) {
       throw MissingPropertyException.generate(order.toString(), 'rates');
     }
-    return getLowestRateInternal(order.rates!,
+    QuotedRate lowestQuotedRate = getLowestRateInternal(order.rates!,
         includeCarriers: includeCarriers,
         excludeCarriers: excludeCarriers,
         includeServices: includeServices,
         excludeServices: excludeServices);
+    return order.associatedOrderRate(lowestQuotedRate, lockPrice: true);
   }
 }

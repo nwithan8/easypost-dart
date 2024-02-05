@@ -116,5 +116,24 @@ void main() {
       expect(verifiedAddress.id, startsWith("adr_"));
       expect(verifiedAddress.street1, "388 TOWNSEND ST APT 20");
     });
+    
+    test('scratch', () async {
+      Client client = TestUtils.setUpVCRClient("scratch", 'scratch');
+      client.enableTestMode();
+      
+      RetrieveQuotedRates quotedRatesParameters = RetrieveQuotedRates();
+      QuotedRate rate = await client.rates.retrieveRateQuotes(quotedRatesParameters);
+      QuotedRate lowestRate = client.rates.getLowestRate(rates);
+
+      CreateShipment shipmentParameters = CreateShipment();
+      Shipment shipment = await client.shipments.create(shipmentParameters);
+
+      ShipmentRate associatedShipmentRate = shipment.associatedShipmentRate(lowestRate, lockPrice: true);
+
+      BuyShipment buyShipmentParameters = BuyShipment();
+      buyShipmentParameters.rate = associatedShipmentRate;
+
+      Shipment boughtShipment = await client.shipments.buy(shipment.id, buyShipmentParameters);
+    });
   });
 }

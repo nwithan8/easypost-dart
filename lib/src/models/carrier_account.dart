@@ -44,6 +44,6 @@ class CarrierAccount extends ModelWithId implements ICarrierAccountParameter {
   @override
   Map<String, dynamic> toJson() => _$CarrierAccountToJson(this);
 
-  static CarrierAccount fromId(String id) =>
-      CarrierAccount(id, null, null, null, null);
+  static CarrierAccount fromId(String carrierAccountId) =>
+      CarrierAccount(carrierAccountId, null, null, null, null);
 }

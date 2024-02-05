@@ -8,7 +8,7 @@ part 'model_with_id.g.dart';
 @JsonSerializable(explicitToJson: true)
 class ModelWithId extends Model {
   @JsonKey(name: 'id')
-  final String? id;
+  final String id;
 
   @JsonKey(
       name: 'created_at', fromJson: stringToDateTime, toJson: dateTimeToString)
@@ -19,11 +19,7 @@ class ModelWithId extends Model {
   final DateTime? updatedAt;
 
   String? get prefix {
-    if (id == null) {
-      return null;
-    }
-
-    return id!.split('_').first;
+    return id.split('_').first;
   }
 
   ModelWithId(this.id, this.createdAt, this.updatedAt, objectType, mode)

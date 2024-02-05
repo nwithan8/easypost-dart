@@ -50,7 +50,7 @@ Future<void> example() async {
   Shipment shipment = await client.shipments.create(shipmentsCreateParams);
 
   // Get the lowest rate for the shipment
-  Rate rate = client.shipments.getLowestRateFor(shipment);
+  ShipmentRate rate = client.shipments.getLowestRateFor(shipment);
 
   // Buy the shipment with the lowest rate
   BuyShipment shipmentBuyParams = BuyShipment();

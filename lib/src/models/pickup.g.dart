@@ -54,7 +54,7 @@ Map<String, dynamic> _$PickupToJson(Pickup instance) => <String, dynamic>{
       'messages': instance.messages?.map((e) => e.toJson()).toList(),
       'min_datetime': instance.minDatetime?.toIso8601String(),
       'name': instance.name,
-      'pickup_rates': instance.pickupRates?.map((e) => e.toJson()).toList(),
+      'pickup_rates': instance.rates?.map((e) => e.toJson()).toList(),
       'reference': instance.reference,
       'status': instance.status,
     };

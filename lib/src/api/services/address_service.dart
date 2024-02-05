@@ -21,9 +21,9 @@ class AddressService extends Service {
   }
 
   /// Retrieves an [Address].
-  Future<Address> retrieve(String id) async {
+  Future<Address> retrieve(String addressId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'addresses/$id', ApiVersion.v2);
+        HttpMethod.get, 'addresses/$addressId', ApiVersion.v2);
     return Address.fromJson(json);
   }
 
@@ -41,9 +41,9 @@ class AddressService extends Service {
   }
 
   /// Verifies an [Address].
-  Future<Address> verify(Address address) async {
+  Future<Address> verify(String addressId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'addresses/${address.id}/verify', ApiVersion.v2,
+        HttpMethod.get, 'addresses/$addressId/verify', ApiVersion.v2,
         rootElement: "address");
     return Address.fromJson(json);
   }

@@ -1,13 +1,14 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/pickups/list_pickups.dart';
+import 'package:easypost/src/api/parameters/v2/pickups/buy_pickup.dart';
 import 'package:easypost/src/api/parameters/v2/pickups/create_pickup.dart';
+import 'package:easypost/src/api/parameters/v2/pickups/list_pickups.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/models/pickup.dart';
 import 'package:easypost/src/models/pickup_rate.dart';
-import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/quoted_rate.dart';
 import 'package:easypost/src/tools/rates.dart';
 
 /// The [PickupService] handles pickups with the EasyPost API.
@@ -18,7 +19,7 @@ class PickupService extends Service {
   Future<Pickup> create(CreatePickup parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'pickups',
       ApiVersion.v2,
@@ -28,10 +29,10 @@ class PickupService extends Service {
   }
 
   /// Retrieves a [Pickup].
-  Future<Pickup> retrieve(String id) async {
-    final json =  await client.requestJson(
+  Future<Pickup> retrieve(String pickupId) async {
+    final json = await client.requestJson(
       HttpMethod.get,
-      'pickups/$id',
+      'pickups/$pickupId',
       ApiVersion.v2,
     );
     return Pickup.fromJson(json);
@@ -60,42 +61,43 @@ class PickupService extends Service {
     // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
     int? pageSize = collection.filters?.pageSize;
 
-    return collection.getNextPage(
-        retrieveNextPageFunction, collection.pickups, pageSize: pageSize)
-    as Future<PickupCollection>;
+    return collection.getNextPage(retrieveNextPageFunction, collection.pickups,
+        pageSize: pageSize) as Future<PickupCollection>;
   }
 
   /// Purchases a [Pickup].
-  Future<Pickup> buy(String id, Rate rate) async {
+  Future<Pickup> buy(String pickupId, BuyPickup parameters) async {
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
     final json = await client.requestJson(
-        HttpMethod.post, 'pickups/$id/buy', ApiVersion.v2,
-        parameters: {'carrier': rate.carrier, 'service': rate.service});
+        HttpMethod.post, 'pickups/$pickupId/buy', ApiVersion.v2,
+        parameters: parameterMap);
     return Pickup.fromJson(json);
   }
 
   /// Cancels a [Pickup].
-  Future<Pickup> cancel(String id) async {
+  Future<Pickup> cancel(String pickupId) async {
     final json = await client.requestJson(
-        HttpMethod.post, 'pickups/$id/cancel', ApiVersion.v2);
+        HttpMethod.post, 'pickups/$pickupId/cancel', ApiVersion.v2);
     return Pickup.fromJson(json);
   }
 
   /// Calculates the lowest [Rate] for a [Pickup].
-  PickupRate getLowestRateFor(
+  PickupRate? getLowestRateFor(
     Pickup pickup, {
     List<String>? includeCarriers,
     List<String>? excludeCarriers,
     List<String>? includeServices,
     List<String>? excludeServices,
   }) {
-    if (pickup.pickupRates == null) {
-      throw MissingPropertyException.generate(pickup.toString(), 'pickupRates');
+    if (pickup.rates == null) {
+      throw MissingPropertyException.generate(pickup.toString(), 'rates');
     }
-    Rate rate = getLowestRateInternal(pickup.pickupRates!,
+    QuotedRate lowestQuotedRate = getLowestRateInternal(pickup.rates!,
         includeCarriers: includeCarriers,
         excludeCarriers: excludeCarriers,
         includeServices: includeServices,
         excludeServices: excludeServices);
-    return pickup.associatedPickupRate(rate);
+    return pickup.associatedPickupRate(lowestQuotedRate, lockPrice: true);
   }
 }

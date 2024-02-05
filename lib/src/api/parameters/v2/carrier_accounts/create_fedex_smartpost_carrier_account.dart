@@ -5,10 +5,6 @@ import 'package:easypost/src/enums/carrier_account_type.dart';
 
 @reflector
 class CreateFedExCarrierAccount extends CreateCarrierAccount {
-  @override
-  @JsonParameter(Necessity.optional, ['carrier_account', "type"])
-  CarrierAccountType? get type => CarrierAccountType.fedExSmartPost;
-
   @JsonParameter(Necessity.required,
       ['carrier_account', "registration_data", "account_number"])
   String? accountNumber;
@@ -81,5 +77,5 @@ class CreateFedExCarrierAccount extends CreateCarrierAccount {
       ['carrier_account', "registration_data", "shipping_streets"])
   String? shippingAddressStreet;
 
-  CreateFedExCarrierAccount() : super();
+  CreateFedExCarrierAccount() : super(CarrierAccountType.fedExSmartPost, registerCarrierAccountEndpoint);
 }

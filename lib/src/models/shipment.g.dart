@@ -50,7 +50,7 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) => Shipment(
           : PostageLabel.fromJson(
               json['postage_label'] as Map<String, dynamic>),
       (json['rates'] as List<dynamic>?)
-          ?.map((e) => Rate.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ShipmentRate.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['reference'] as String?,
       json['refund_status'] as String?,
@@ -62,7 +62,8 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) => Shipment(
           : ScanForm.fromJson(json['scan_form'] as Map<String, dynamic>),
       json['selected_rate'] == null
           ? null
-          : Rate.fromJson(json['selected_rate'] as Map<String, dynamic>),
+          : ShipmentRate.fromJson(
+              json['selected_rate'] as Map<String, dynamic>),
       json['service'] as String?,
       json['status'] as String?,
       (json['tax_identifiers'] as List<dynamic>?)

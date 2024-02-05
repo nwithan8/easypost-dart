@@ -27,8 +27,26 @@ void main() {
       expect(batch.shipments, isNotNull);
     });
 
-    test('all', () async {
-      Client client = TestUtils.setUpVCRClient("batches", 'all');
+    test('create with existing shipments', () async {
+      Client client = TestUtils.setUpVCRClient("batches", 'create_with_existing_shipments');
+      client.enableTestMode();
+
+      final shipment = await client.shipments.create(Fixtures.basicShipment);
+
+      final params = CreateBatch();
+      params.shipments = [shipment];
+
+      final batch = await client.batches.create(params);
+
+      expect(batch, isNotNull);
+      expect(batch, isA<Batch>());
+      expect(batch.id, startsWith("batch_"));
+      expect(batch.shipments, isNotNull);
+    });
+
+
+    test('list', () async {
+      Client client = TestUtils.setUpVCRClient("batches", 'list');
       client.enableTestMode();
 
       final params = ListBatches();
@@ -67,7 +85,7 @@ void main() {
       final batchCreateParams = CreateBatch();
       final batch = await client.batches.create(batchCreateParams);
 
-      final shipment = await Fixtures.createAndBuyShipment(client);
+      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final batchUpdateShipmentsParams = UpdateBatchShipments();
       batchUpdateShipmentsParams.shipments = [shipment];
@@ -79,6 +97,38 @@ void main() {
       expect(updatedBatch, isA<Batch>());
       expect(updatedBatch.shipments, isNotNull);
       expect(updatedBatch.shipments!.length, 1);
+    });
+
+    test('remove shipments', () async {
+      Client client = TestUtils.setUpVCRClient("batches", 'remove_shipments');
+      client.enableTestMode();
+
+      final batchCreateParams = CreateBatch();
+      final batch = await client.batches.create(batchCreateParams);
+
+      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+
+      final batchUpdateShipmentsParams = UpdateBatchShipments();
+      batchUpdateShipmentsParams.shipments = [shipment];
+
+      final updatedBatch =
+          await client.batches.addShipments(batch, batchUpdateShipmentsParams);
+
+      expect(updatedBatch, isNotNull);
+      expect(updatedBatch, isA<Batch>());
+      expect(updatedBatch.shipments, isNotNull);
+      expect(updatedBatch.shipments!.length, 1);
+
+      final batchRemoveShipmentsParams = UpdateBatchShipments();
+      batchRemoveShipmentsParams.shipments = [shipment];
+
+      final removedBatch =
+          await client.batches.removeShipments(updatedBatch, batchRemoveShipmentsParams);
+
+      expect(removedBatch, isNotNull);
+      expect(removedBatch, isA<Batch>());
+      expect(removedBatch.shipments, isNotNull);
+      expect(removedBatch.shipments!.length, 0);
     });
 
     test('generate label', () async {

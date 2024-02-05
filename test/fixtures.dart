@@ -35,9 +35,27 @@ class Fixtures {
     return FixtureStructures.fromJson(_data);
   }
 
-  static CreateCarrierAccount get basicCarrierAccount {
-    Map<String, dynamic> data = fixtureStructures.carrierAccounts.basic;
-    return createCreateCarrierAccountParameters(data: data);
+  static CreateFedExCarrierAccount get basicCarrierAccount {
+    final params = CreateFedExCarrierAccount();
+    params.accountNumber = "RANDOM";
+    params.corporateAddressCity = "RANDOM";
+    params.corporateAddressCountryCode = "RANDOM";
+    params.corporateAddressPostalCode = "RANDOM";
+    params.corporateAddressState = "RANDOM";
+    params.corporateAddressStreet = "RANDOM";
+    params.corporateCompanyName = "RANDOM";
+    params.corporateEmailAddress = "RANDOM";
+    params.corporateFirstName = "RANDOM";
+    params.corporateJobTitle = "RANDOM";
+    params.corporateLastName = "RANDOM";
+    params.corporatePhoneNumber = "RANDOM";
+    params.shippingAddressCity = "RANDOM";
+    params.shippingAddressCountryCode = "RANDOM";
+    params.shippingAddressPostalCode = "RANDOM";
+    params.shippingAddressState = "RANDOM";
+    params.shippingAddressStreet = "RANDOM";
+
+    return params;
   }
 
   static CreateCustomsInfo get basicCustomsInfo {
@@ -284,21 +302,6 @@ class Fixtures {
     }
 
     Options parameters = Options.fromJson(data);
-
-    return parameters;
-  }
-
-  static CreateCarrierAccount createCreateCarrierAccountParameters(
-      {Map<String, dynamic>? data}) {
-    if (data == null) {
-      data = Map<String, dynamic>();
-    }
-
-    CreateCarrierAccount parameters = CreateCarrierAccount();
-
-    parameters.type =
-        CarrierAccountType.fromString(getOrDefaultString(data, "type"));
-    parameters.description = getOrDefaultString(data, "description");
 
     return parameters;
   }

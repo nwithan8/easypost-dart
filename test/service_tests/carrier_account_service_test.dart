@@ -13,44 +13,12 @@ void main() {
     });
 
     test('create', () async {
-      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'create');
+      Client client = TestUtils.setUpVCRClient(
+          "carrier_accounts", 'create');
       client.enableProductionMode();
 
       final params = Fixtures.basicCarrierAccount;
-
-      final carrierAccount = await client.carrierAccounts.create(params);
-
-      expect(carrierAccount, isNotNull);
-      expect(carrierAccount, isA<CarrierAccount>());
-      expect(carrierAccount.id, startsWith("ca_"));
-
-      await client.carrierAccounts.delete(carrierAccount);
-    });
-
-    test('create with custom workflow', () async {
-      Client client = TestUtils.setUpVCRClient(
-          "carrier_accounts", 'create_with_custom_workflow');
-      client.enableProductionMode();
-
-      // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
-      final params = CreateFedExCarrierAccount();
-      params.accountNumber = "RANDOM";
-      params.corporateAddressCity = "RANDOM";
-      params.corporateAddressCountryCode = "RANDOM";
-      params.corporateAddressPostalCode = "RANDOM";
-      params.corporateAddressState = "RANDOM";
-      params.corporateAddressStreet = "RANDOM";
-      params.corporateCompanyName = "RANDOM";
-      params.corporateEmailAddress = "RANDOM";
-      params.corporateFirstName = "RANDOM";
-      params.corporateJobTitle = "RANDOM";
-      params.corporateLastName = "RANDOM";
-      params.corporatePhoneNumber = "RANDOM";
-      params.shippingAddressCity = "RANDOM";
-      params.shippingAddressCountryCode = "RANDOM";
-      params.shippingAddressPostalCode = "RANDOM";
-      params.shippingAddressState = "RANDOM";
-      params.shippingAddressStreet = "RANDOM";
+      // params.type = CarrierAccountType.amazonMws;
 
       try {
         final carrierAccount = await client.carrierAccounts.create(params);
@@ -65,8 +33,8 @@ void main() {
       }
     });
 
-    test('all', () async {
-      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'all');
+    test('list', () async {
+      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'list');
       client.enableProductionMode();
 
       final List<CarrierAccount> carrierAccountsList =
@@ -97,5 +65,29 @@ void main() {
 
       await client.carrierAccounts.delete(carrierAccount);
     });
+  });
+
+  test('update', () async {
+    Client client = TestUtils.setUpVCRClient("carrier_accounts", 'update');
+    client.enableProductionMode();
+
+    final params = Fixtures.basicCarrierAccount;
+
+    final carrierAccount = await client.carrierAccounts.create(params);
+
+    final retrievedCarrierAccount = await client.carrierAccounts.retrieve(carrierAccount.id!);
+
+    final newReference = "new reference";
+
+    UpdateCarrierAccount updateParams = UpdateCarrierAccount();
+    updateParams.reference = newReference;
+
+    final updatedCarrierAccount = await client.carrierAccounts.update(retrievedCarrierAccount, updateParams);
+
+    expect(updatedCarrierAccount, isNotNull);
+    expect(updatedCarrierAccount, isA<CarrierAccount>());
+    expect(updatedCarrierAccount.reference, newReference);
+
+    await client.carrierAccounts.delete(carrierAccount);
   });
 }

@@ -1,12 +1,13 @@
 import 'package:easypost/src/api/parameters/v2/pickups/list_pickups.dart';
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
+import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
 import 'package:easypost/src/models/message.dart';
 import 'package:easypost/src/models/pickup_rate.dart';
-import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/quoted_rate.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'pickup.g.dart';
@@ -41,7 +42,7 @@ class Pickup extends ModelWithId {
   final String? name;
 
   @JsonKey(name: 'pickup_rates')
-  final List<PickupRate>? pickupRates;
+  final List<PickupRate>? rates;
 
   @JsonKey(name: 'reference')
   final String? reference;
@@ -64,7 +65,7 @@ class Pickup extends ModelWithId {
     this.messages,
     this.minDatetime,
     this.name,
-    this.pickupRates,
+    this.rates,
     this.reference,
     this.status,
   ) : super(id, createdAt, updatedAt, objectType, mode);
@@ -75,13 +76,46 @@ class Pickup extends ModelWithId {
   @override
   Map<String, dynamic> toJson() => _$PickupToJson(this);
 
-  PickupRate associatedPickupRate(Rate rate) {
-    return pickupRates!.firstWhere((pickupRate) =>
-        pickupRate.carrier != null &&
-        pickupRate.carrier == rate.carrier &&
-        pickupRate.service != null &&
-        pickupRate.service == rate.service &&
-        pickupRate.price == rate.price);
+  PickupRate? associatedPickupRate(QuotedRate rate, {bool lockPrice = false}) {
+    if (rates == null) {
+      throw MissingPropertyException.generate(toString(), 'rates');
+    }
+
+    filterFunction(PickupRate pickupRate) {
+      if (pickupRate.price == null) {
+        return false;
+      }
+
+      if (lockPrice) {
+        if (pickupRate.price != rate.price) {
+          return false;
+        }
+      }
+
+      if (pickupRate.carrier != null) {
+        if (rate.carrier != null) {
+          if (pickupRate.carrier != rate.carrier) {
+            return false;
+          }
+        }
+      }
+
+      if (pickupRate.service != null) {
+        if (rate.service != null) {
+          if (pickupRate.service != rate.service) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    }
+
+    try {
+      return rates!.firstWhere(filterFunction);
+    } on StateError {
+      return null;
+    }
   }
 }
 
@@ -101,7 +135,8 @@ class PickupCollection extends PaginatedCollection<Pickup, ListPickups> {
   Map<String, dynamic> toJson() => _$PickupCollectionToJson(this);
 
   @override
-  ListPickups buildGetNextPageParameters(List<Pickup>? currentPageItems, {int? pageSize}) {
+  ListPickups buildGetNextPageParameters(List<Pickup>? currentPageItems,
+      {int? pageSize}) {
     ListPickups parameters = filters ?? ListPickups();
 
     parameters.beforeId = currentPageItems?.last.id;

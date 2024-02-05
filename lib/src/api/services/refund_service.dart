@@ -24,10 +24,10 @@ class RefundService extends Service {
   }
 
   /// Retrieves a [Refund].
-  Future<Refund> retrieve(String id) async {
+  Future<Refund> retrieve(String refundId) async {
     final json =  await client.requestJson(
       HttpMethod.get,
-      'refunds/$id',
+      'refunds/$refundId',
       ApiVersion.v2,
     );
     return Refund.fromJson(json);

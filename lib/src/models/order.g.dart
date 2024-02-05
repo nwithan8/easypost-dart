@@ -29,7 +29,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
           ?.map((e) => Message.fromJson(e as Map<String, dynamic>))
           .toList(),
       (json['rates'] as List<dynamic>?)
-          ?.map((e) => Rate.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => OrderRate.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['reference'] as String?,
       json['return_address'] == null

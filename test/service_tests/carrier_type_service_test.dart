@@ -12,8 +12,8 @@ void main() {
       initializeReflectable();
     });
 
-    test('all', () async {
-      Client client = TestUtils.setUpVCRClient("carrier_types", 'all');
+    test('list', () async {
+      Client client = TestUtils.setUpVCRClient("carrier_types", 'list');
       client.enableProductionMode();
 
       final List<CarrierType> carrierTypesList =

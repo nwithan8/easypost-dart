@@ -2,6 +2,7 @@ import 'package:easypost/src/api/parameters/iparameters.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/list_shipments.dart';
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
+import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/carrier_account.dart';
@@ -12,8 +13,9 @@ import 'package:easypost/src/models/message.dart';
 import 'package:easypost/src/models/options.dart';
 import 'package:easypost/src/models/parcel.dart';
 import 'package:easypost/src/models/postage_label.dart';
-import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/quoted_rate.dart';
 import 'package:easypost/src/models/scan_form.dart';
+import 'package:easypost/src/models/shipment_rate.dart';
 import 'package:easypost/src/models/tax_identifier.dart';
 import 'package:easypost/src/models/tracker.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -71,7 +73,7 @@ class Shipment extends ModelWithId implements IShipmentParameter {
   final PostageLabel? postageLabel;
 
   @JsonKey(name: 'rates')
-  final List<Rate>? rates;
+  final List<ShipmentRate>? rates;
 
   @JsonKey(name: 'reference')
   final String? reference;
@@ -86,7 +88,7 @@ class Shipment extends ModelWithId implements IShipmentParameter {
   final ScanForm? scanForm;
 
   @JsonKey(name: 'selected_rate')
-  final Rate? selectedRate;
+  final ShipmentRate? selectedRate;
 
   @JsonKey(name: 'service')
   final String? service;
@@ -151,6 +153,48 @@ class Shipment extends ModelWithId implements IShipmentParameter {
 
   @override
   Map<String, dynamic> toJson() => _$ShipmentToJson(this);
+
+  ShipmentRate? associatedShipmentRate(QuotedRate rate, {bool lockPrice = false}) {
+    if (rates == null) {
+      throw MissingPropertyException.generate(toString(), 'rates');
+    }
+
+    filterFunction(ShipmentRate shipmentRate) {
+      if (shipmentRate.price == null) {
+        return false;
+      }
+
+      if (lockPrice) {
+        if (shipmentRate.price != rate.price) {
+          return false;
+        }
+      }
+
+      if (shipmentRate.carrier != null) {
+        if (rate.carrier != null) {
+          if (shipmentRate.carrier != rate.carrier) {
+            return false;
+          }
+        }
+      }
+
+      if (shipmentRate.service != null) {
+        if (rate.service != null) {
+          if (shipmentRate.service != rate.service) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    }
+
+    try {
+      return rates!.firstWhere(filterFunction);
+    } on StateError {
+      return null;
+    }
+  }
 }
 
 @JsonSerializable(explicitToJson: true)

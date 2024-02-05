@@ -20,9 +20,9 @@ class CustomsItemService extends Service {
   }
 
   /// Retrieves a [CustomsItem].
-  Future<CustomsItem> retrieve(String id) async {
+  Future<CustomsItem> retrieve(String customsItemId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'customs_items/$id', ApiVersion.v2);
+        HttpMethod.get, 'customs_items/$customsItemId', ApiVersion.v2);
     return CustomsItem.fromJson(json);
   }
 }
