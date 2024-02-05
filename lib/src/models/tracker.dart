@@ -83,4 +83,18 @@ class TrackerCollection extends PaginatedCollection<Tracker, ListTrackers> {
 
   @override
   Map<String, dynamic> toJson() => _$TrackerCollectionToJson(this);
+
+  @override
+  ListTrackers buildGetNextPageParameters(List<Tracker>? currentPageItems,
+      {int? pageSize}) {
+    ListTrackers parameters = filters ?? ListTrackers();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

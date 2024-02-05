@@ -78,4 +78,18 @@ class BatchCollection extends PaginatedCollection<Batch, ListBatches> {
 
   @override
   Map<String, dynamic> toJson() => _$BatchCollectionToJson(this);
+
+  @override
+  ListBatches buildGetNextPageParameters(List<Batch>? currentPageItems, {int? pageSize}) {
+    ListBatches parameters = filters ?? ListBatches();
+
+    // Batches get returned in reverse order from everything else (oldest first instead of newest first), so this needs to be "after_id" instead of "before_id"
+    parameters.afterId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

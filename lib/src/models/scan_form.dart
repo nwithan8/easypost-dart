@@ -66,4 +66,17 @@ class ScanFormCollection extends PaginatedCollection<ScanForm, ListScanForms> {
 
   @override
   Map<String, dynamic> toJson() => _$ScanFormCollectionToJson(this);
+
+  @override
+  ListScanForms buildGetNextPageParameters(List<ScanForm>? currentPageItems, {int? pageSize}) {
+    ListScanForms parameters = filters ?? ListScanForms();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

@@ -57,4 +57,17 @@ class RefundCollection extends PaginatedCollection<Refund, ListRefunds> {
 
   @override
   Map<String, dynamic> toJson() => _$RefundCollectionToJson(this);
+
+  @override
+  ListRefunds buildGetNextPageParameters(List<Refund>? currentPageItems, {int? pageSize}) {
+    ListRefunds parameters = filters ?? ListRefunds();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

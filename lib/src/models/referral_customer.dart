@@ -70,4 +70,17 @@ class ReferralCustomerCollection
 
   @override
   Map<String, dynamic> toJson() => _$ReferralCustomerCollectionToJson(this);
+
+  @override
+  ListReferralCustomers buildGetNextPageParameters(List<ReferralCustomer>? currentPageItems, {int? pageSize}) {
+    ListReferralCustomers parameters = filters ?? ListReferralCustomers();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

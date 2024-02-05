@@ -64,4 +64,17 @@ class EventCollection extends PaginatedCollection<Event, ListEvents> {
 
   @override
   Map<String, dynamic> toJson() => _$EventCollectionToJson(this);
+
+  @override
+  ListEvents buildGetNextPageParameters(List<Event>? currentPageItems, {int? pageSize}) {
+    ListEvents parameters = filters ?? ListEvents();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

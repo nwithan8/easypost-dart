@@ -167,4 +167,17 @@ class ShipmentCollection extends PaginatedCollection<Shipment, ListShipments> {
 
   @override
   Map<String, dynamic> toJson() => _$ShipmentCollectionToJson(this);
+
+  @override
+  ListShipments buildGetNextPageParameters(List<Shipment>? currentPageItems, {int? pageSize}) {
+    ListShipments parameters = filters ?? ListShipments();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

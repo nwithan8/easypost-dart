@@ -85,22 +85,6 @@ void main() {
       }
     });
 
-    test('verify', () async {
-      Client client = TestUtils.setUpVCRClient("addresses", 'verify');
-      client.enableTestMode();
-
-      final params = Fixtures.caAddress1;
-
-      final address = await client.addresses.create(params);
-
-      final verifiedAddress = await client.addresses.verify(address);
-
-      expect(verifiedAddress, isNotNull);
-      expect(verifiedAddress, isA<Address>());
-      expect(verifiedAddress.id, startsWith("adr_"));
-      expect(verifiedAddress.street1, "388 TOWNSEND ST APT 20");
-    });
-
     test('next page', () async {
       Client client = TestUtils.setUpVCRClient("addresses", 'next_page');
       client.enableTestMode();
@@ -115,6 +99,22 @@ void main() {
       final nextPage = await client.addresses.getNextPage(addressCollection, pageSize: 1);
 
       expect(nextPage, isNotNull);
+    });
+
+    test('verify', () async {
+      Client client = TestUtils.setUpVCRClient("addresses", 'verify');
+      client.enableTestMode();
+
+      final params = Fixtures.caAddress1;
+
+      final address = await client.addresses.create(params);
+
+      final verifiedAddress = await client.addresses.verify(address);
+
+      expect(verifiedAddress, isNotNull);
+      expect(verifiedAddress, isA<Address>());
+      expect(verifiedAddress.id, startsWith("adr_"));
+      expect(verifiedAddress.street1, "388 TOWNSEND ST APT 20");
     });
   });
 }

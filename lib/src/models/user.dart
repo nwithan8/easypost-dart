@@ -96,4 +96,18 @@ class ChildUserCollection extends PaginatedCollection<User, ListChildUsers> {
 
   @override
   Map<String, dynamic> toJson() => _$ChildUserCollectionToJson(this);
+
+  @override
+  ListChildUsers buildGetNextPageParameters(List<User>? currentPageItems, {int? pageSize}) {
+    ListChildUsers parameters = filters ?? ListChildUsers();
+
+    // Child users go oldest to newest, so only can use afterId
+    parameters.afterId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

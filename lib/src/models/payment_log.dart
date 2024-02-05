@@ -119,4 +119,17 @@ class PaymentLogCollection
 
   @override
   Map<String, dynamic> toJson() => _$PaymentLogCollectionToJson(this);
+
+  @override
+  ListPaymentLogs buildGetNextPageParameters(List<PaymentLog>? currentPageItems, {int? pageSize}) {
+    ListPaymentLogs parameters = filters ?? ListPaymentLogs();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

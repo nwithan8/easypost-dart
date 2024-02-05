@@ -99,4 +99,17 @@ class PickupCollection extends PaginatedCollection<Pickup, ListPickups> {
 
   @override
   Map<String, dynamic> toJson() => _$PickupCollectionToJson(this);
+
+  @override
+  ListPickups buildGetNextPageParameters(List<Pickup>? currentPageItems, {int? pageSize}) {
+    ListPickups parameters = filters ?? ListPickups();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

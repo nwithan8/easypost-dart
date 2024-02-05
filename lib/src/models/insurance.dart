@@ -84,4 +84,17 @@ class InsuranceCollection
 
   @override
   Map<String, dynamic> toJson() => _$InsuranceCollectionToJson(this);
+
+  @override
+  ListInsurance buildGetNextPageParameters(List<Insurance>? currentPageItems, {int? pageSize}) {
+    ListInsurance parameters = filters ?? ListInsurance();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

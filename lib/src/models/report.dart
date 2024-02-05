@@ -67,4 +67,17 @@ class ReportCollection extends PaginatedCollection<Report, ListReports> {
 
   @override
   Map<String, dynamic> toJson() => _$ReportCollectionToJson(this);
+
+  @override
+  ListReports buildGetNextPageParameters(List<Report>? currentPageItems, {int? pageSize}) {
+    ListReports parameters = filters ?? ListReports();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }
