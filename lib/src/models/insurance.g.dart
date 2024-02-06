@@ -18,7 +18,7 @@ Insurance _$InsuranceFromJson(Map<String, dynamic> json) => Insurance(
           ? null
           : Address.fromJson(json['from_address'] as Map<String, dynamic>),
       (json['messages'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      json['provider'] as String?,
+      InsuranceProvider.fromString(json['provider'] as String?),
       json['provider_id'] as String?,
       json['reference'] as String?,
       json['shipment_id'] as String?,
@@ -40,7 +40,7 @@ Map<String, dynamic> _$InsuranceToJson(Insurance instance) => <String, dynamic>{
       'amount': moneyToString(instance.amount),
       'from_address': instance.fromAddress?.toJson(),
       'messages': instance.messages,
-      'provider': instance.provider,
+      'provider': InsuranceProvider.asString(instance.provider),
       'provider_id': instance.providerId,
       'reference': instance.reference,
       'shipment_id': instance.shipmentId,

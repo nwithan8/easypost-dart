@@ -73,6 +73,7 @@ export 'package:easypost/src/enums/customs_form_type.dart';
 export 'package:easypost/src/enums/customs_restriction_type.dart';
 export 'package:easypost/src/enums/file_format.dart';
 export 'package:easypost/src/enums/form_type.dart';
+export 'package:easypost/src/enums/insurance_provider.dart';
 export 'package:easypost/src/enums/non_delivery_option.dart';
 export 'package:easypost/src/enums/payment_log_charge_type.dart';
 export 'package:easypost/src/enums/payment_log_source_type.dart';

@@ -1,6 +1,7 @@
 import 'package:easypost/src/api/parameters/v2/insurance/list_insurance.dart';
 import 'package:easypost/src/base/model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
+import 'package:easypost/src/enums/insurance_provider.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/tracker.dart';
@@ -19,8 +20,11 @@ class Insurance extends ModelWithId {
   @JsonKey(name: 'messages')
   final List<String>? messages;
 
-  @JsonKey(name: 'provider')
-  final String? provider;
+  @JsonKey(
+      name: 'provider',
+      fromJson: InsuranceProvider.fromString,
+      toJson: InsuranceProvider.asString)
+  final InsuranceProvider? provider;
 
   @JsonKey(name: 'provider_id')
   final String? providerId;
@@ -86,7 +90,8 @@ class InsuranceCollection
   Map<String, dynamic> toJson() => _$InsuranceCollectionToJson(this);
 
   @override
-  ListInsurance buildGetNextPageParameters(List<Insurance>? currentPageItems, {int? pageSize}) {
+  ListInsurance buildGetNextPageParameters(List<Insurance>? currentPageItems,
+      {int? pageSize}) {
     ListInsurance parameters = filters ?? ListInsurance();
 
     parameters.beforeId = currentPageItems?.last.id;
