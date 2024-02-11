@@ -107,7 +107,7 @@ class Fixtures {
     BuyShipment buyShipmentParameters = BuyShipment();
     buyShipmentParameters.rate = rate;
 
-    return await client.shipments.buy(shipment, buyShipmentParameters);
+    return await client.shipments.buy(shipment.id, buyShipmentParameters);
   }
 
   static CreateShipment get oneCallBuyShipment {

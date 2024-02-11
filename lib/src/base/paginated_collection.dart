@@ -13,7 +13,7 @@ part 'paginated_collection.g.dart';
 
 /// Superclass for all paginated collections.
 @JsonSerializable(explicitToJson: true)
-class PaginatedCollection<ListObjectType extends ModelWithId, ListParametersType extends Parameters> extends ModelWithId {
+class PaginatedCollection<ListObjectType extends ModelWithId, ListParametersType extends Parameters> extends Model {
   @JsonKey(name: 'has_more')
   final bool? hasMore;
 
@@ -21,8 +21,8 @@ class PaginatedCollection<ListObjectType extends ModelWithId, ListParametersType
   @JsonKey(includeFromJson: false, includeToJson: false)
   ListParametersType? filters;
 
-  PaginatedCollection(id, createdAt, updatedAt, objectType, mode, this.hasMore)
-      : super(id, createdAt, updatedAt, objectType, mode);
+  PaginatedCollection(objectType, mode, this.hasMore)
+      : super(objectType, mode);
 
   @override
   Map<String, dynamic> toJson() => _$PaginatedCollectionToJson(this);

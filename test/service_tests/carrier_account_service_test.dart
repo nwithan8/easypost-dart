@@ -27,7 +27,7 @@ void main() {
         expect(carrierAccount, isA<CarrierAccount>());
         expect(carrierAccount.id, startsWith("ca_"));
 
-        await client.carrierAccounts.delete(carrierAccount);
+        await client.carrierAccounts.delete(carrierAccount.id);
       } catch (e) {
         print(e);
       }
@@ -57,13 +57,13 @@ void main() {
       final carrierAccount = await client.carrierAccounts.create(params);
 
       final retrievedCarrierAccount =
-          await client.carrierAccounts.retrieve(carrierAccount.id!);
+          await client.carrierAccounts.retrieve(carrierAccount.id);
 
       expect(retrievedCarrierAccount, isNotNull);
       expect(retrievedCarrierAccount, isA<CarrierAccount>());
       expect(retrievedCarrierAccount.id == carrierAccount.id, true);
 
-      await client.carrierAccounts.delete(carrierAccount);
+      await client.carrierAccounts.delete(carrierAccount.id);
     });
   });
 
@@ -75,19 +75,19 @@ void main() {
 
     final carrierAccount = await client.carrierAccounts.create(params);
 
-    final retrievedCarrierAccount = await client.carrierAccounts.retrieve(carrierAccount.id!);
+    final retrievedCarrierAccount = await client.carrierAccounts.retrieve(carrierAccount.id);
 
     final newReference = "new reference";
 
     UpdateCarrierAccount updateParams = UpdateCarrierAccount();
     updateParams.reference = newReference;
 
-    final updatedCarrierAccount = await client.carrierAccounts.update(retrievedCarrierAccount, updateParams);
+    final updatedCarrierAccount = await client.carrierAccounts.update(retrievedCarrierAccount.id, updateParams);
 
     expect(updatedCarrierAccount, isNotNull);
     expect(updatedCarrierAccount, isA<CarrierAccount>());
     expect(updatedCarrierAccount.reference, newReference);
 
-    await client.carrierAccounts.delete(carrierAccount);
+    await client.carrierAccounts.delete(carrierAccount.id);
   });
 }

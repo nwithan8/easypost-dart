@@ -61,9 +61,9 @@ class ReferralCustomerCollection
   @JsonKey(name: 'referral_customers')
   final List<ReferralCustomer>? referralCustomers;
 
-  ReferralCustomerCollection(id, createdAt, updatedAt, objectType, mode,
+  ReferralCustomerCollection(objectType, mode,
       hasMore, this.referralCustomers)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      : super(objectType, mode, hasMore);
 
   factory ReferralCustomerCollection.fromJson(Map<String, dynamic> input) =>
       _$ReferralCustomerCollectionFromJson(input);

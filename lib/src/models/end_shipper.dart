@@ -68,9 +68,8 @@ class EndShipperCollection
   @JsonKey(name: 'end_shippers')
   final List<EndShipper>? endShippers;
 
-  EndShipperCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.endShippers)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  EndShipperCollection(objectType, mode, hasMore, this.endShippers)
+      : super(objectType, mode, hasMore);
 
   factory EndShipperCollection.fromJson(Map<String, dynamic> input) =>
       _$EndShipperCollectionFromJson(input);

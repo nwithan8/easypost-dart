@@ -49,8 +49,8 @@ class RefundCollection extends PaginatedCollection<Refund, ListRefunds> {
   final List<Refund>? refunds;
 
   RefundCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.refunds)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      objectType, mode, hasMore, this.refunds)
+      : super(objectType, mode, hasMore);
 
   factory RefundCollection.fromJson(Map<String, dynamic> input) =>
       _$RefundCollectionFromJson(input);

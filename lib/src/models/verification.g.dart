@@ -7,9 +7,6 @@ part of 'verification.dart';
 // **************************************************************************
 
 Verification _$VerificationFromJson(Map<String, dynamic> json) => Verification(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['details'] == null
@@ -26,9 +23,6 @@ Map<String, dynamic> _$VerificationToJson(Verification instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'details': instance.details?.toJson(),
       'errors': instance.errors?.map((e) => e.toJson()).toList(),
       'success': instance.wasSuccessful,

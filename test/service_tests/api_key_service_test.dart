@@ -31,7 +31,7 @@ void main() {
 
       final user = await client.users.retrieveMe();
       
-      final apiKeyCollection = await client.apiKeys.retrieveApiKeysForUser(user.id!);
+      final apiKeyCollection = await client.apiKeys.retrieveApiKeysForUser(user.id);
 
       expect(apiKeyCollection, isNotNull);
       expect(apiKeyCollection, isA<List<ApiKey>>());

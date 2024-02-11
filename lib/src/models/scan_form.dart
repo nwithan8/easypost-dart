@@ -58,8 +58,8 @@ class ScanFormCollection extends PaginatedCollection<ScanForm, ListScanForms> {
   final List<ScanForm>? scanForms;
 
   ScanFormCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.scanForms)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      objectType, mode, hasMore, this.scanForms)
+      : super(objectType, mode, hasMore);
 
   factory ScanFormCollection.fromJson(Map<String, dynamic> input) =>
       _$ScanFormCollectionFromJson(input);

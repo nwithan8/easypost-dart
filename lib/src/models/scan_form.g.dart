@@ -42,9 +42,6 @@ Map<String, dynamic> _$ScanFormToJson(ScanForm instance) => <String, dynamic>{
 
 ScanFormCollection _$ScanFormCollectionFromJson(Map<String, dynamic> json) =>
     ScanFormCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -57,9 +54,6 @@ Map<String, dynamic> _$ScanFormCollectionToJson(ScanFormCollection instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'has_more': instance.hasMore,
       'scan_forms': instance.scanForms?.map((e) => e.toJson()).toList(),
     };

@@ -80,8 +80,8 @@ class InsuranceCollection
   final List<Insurance>? insurances;
 
   InsuranceCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.insurances)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      objectType, mode, hasMore, this.insurances)
+      : super(objectType, mode, hasMore);
 
   factory InsuranceCollection.fromJson(Map<String, dynamic> input) =>
       _$InsuranceCollectionFromJson(input);

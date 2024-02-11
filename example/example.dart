@@ -56,5 +56,5 @@ Future<void> example() async {
   BuyShipment shipmentBuyParams = BuyShipment();
   shipmentBuyParams.rate = rate;
 
-  await client.shipments.buy(shipment, shipmentBuyParams);
+  await client.shipments.buy(shipment.id, shipmentBuyParams);
 }

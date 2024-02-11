@@ -37,7 +37,7 @@ void main() {
       final customsInfo = await client.customsInfos.create(params);
 
       final retrievedCustomsInfo =
-          await client.customsInfos.retrieve(customsInfo.id!);
+          await client.customsInfos.retrieve(customsInfo.id);
 
       expect(retrievedCustomsInfo, isNotNull);
       expect(retrievedCustomsInfo, isA<CustomsInfo>());

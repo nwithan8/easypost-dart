@@ -82,9 +82,8 @@ class AddressCollection extends PaginatedCollection<Address, ListAddresses> {
   @JsonKey(name: 'addresses')
   final List<Address> addresses;
 
-  AddressCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.addresses)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  AddressCollection(objectType, mode, hasMore, this.addresses)
+      : super(objectType, mode, hasMore);
 
   factory AddressCollection.fromJson(Map<String, dynamic> input) =>
       _$AddressCollectionFromJson(input);

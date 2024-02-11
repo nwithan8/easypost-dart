@@ -61,9 +61,6 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
 
 AddressCollection _$AddressCollectionFromJson(Map<String, dynamic> json) =>
     AddressCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -76,9 +73,6 @@ Map<String, dynamic> _$AddressCollectionToJson(AddressCollection instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'has_more': instance.hasMore,
       'addresses': instance.addresses.map((e) => e.toJson()).toList(),
     };

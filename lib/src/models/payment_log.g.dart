@@ -58,9 +58,6 @@ Map<String, dynamic> _$PaymentLogToJson(PaymentLog instance) =>
 PaymentLogCollection _$PaymentLogCollectionFromJson(
         Map<String, dynamic> json) =>
     PaymentLogCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -74,9 +71,6 @@ Map<String, dynamic> _$PaymentLogCollectionToJson(
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'has_more': instance.hasMore,
       'payment_logs': instance.paymentLogs.map((e) => e.toJson()).toList(),
     };

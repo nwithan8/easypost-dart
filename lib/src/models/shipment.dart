@@ -202,9 +202,8 @@ class ShipmentCollection extends PaginatedCollection<Shipment, ListShipments> {
   @JsonKey(name: 'shipments')
   final List<Shipment>? shipments;
 
-  ShipmentCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.shipments)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  ShipmentCollection(objectType, mode, hasMore, this.shipments)
+      : super(objectType, mode, hasMore);
 
   factory ShipmentCollection.fromJson(Map<String, dynamic> input) =>
       _$ShipmentCollectionFromJson(input);

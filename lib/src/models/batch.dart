@@ -70,8 +70,8 @@ class BatchCollection extends PaginatedCollection<Batch, ListBatches> {
   final List<Batch>? batches;
 
   BatchCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.batches)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      objectType, mode, hasMore, this.batches)
+      : super(objectType, mode, hasMore);
 
   factory BatchCollection.fromJson(Map<String, dynamic> input) =>
       _$BatchCollectionFromJson(input);

@@ -36,11 +36,12 @@ class PaymentMethod extends ModelWithId {
   final bool? isVerified;
 
   PaymentMethodType? get type {
+    // ignore: unnecessary_null_comparison
     if (id == null) {
       return null;
     }
 
-    return PaymentMethodType.fromPrefix(id!);
+    return PaymentMethodType.fromPrefix(id);
   }
 
   PaymentMethod(

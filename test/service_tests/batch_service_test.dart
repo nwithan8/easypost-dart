@@ -71,7 +71,7 @@ void main() {
 
       final batch = await client.batches.create(params);
 
-      final retrievedBatch = await client.batches.retrieve(batch.id!);
+      final retrievedBatch = await client.batches.retrieve(batch.id);
 
       expect(retrievedBatch, isNotNull);
       expect(retrievedBatch, isA<Batch>());
@@ -91,7 +91,7 @@ void main() {
       batchUpdateShipmentsParams.shipments = [shipment];
 
       final updatedBatch =
-          await client.batches.addShipments(batch, batchUpdateShipmentsParams);
+          await client.batches.addShipments(batch.id, batchUpdateShipmentsParams);
 
       expect(updatedBatch, isNotNull);
       expect(updatedBatch, isA<Batch>());
@@ -112,7 +112,7 @@ void main() {
       batchUpdateShipmentsParams.shipments = [shipment];
 
       final updatedBatch =
-          await client.batches.addShipments(batch, batchUpdateShipmentsParams);
+          await client.batches.addShipments(batch.id, batchUpdateShipmentsParams);
 
       expect(updatedBatch, isNotNull);
       expect(updatedBatch, isA<Batch>());
@@ -123,7 +123,7 @@ void main() {
       batchRemoveShipmentsParams.shipments = [shipment];
 
       final removedBatch =
-          await client.batches.removeShipments(updatedBatch, batchRemoveShipmentsParams);
+          await client.batches.removeShipments(updatedBatch.id, batchRemoveShipmentsParams);
 
       expect(removedBatch, isNotNull);
       expect(removedBatch, isA<Batch>());
@@ -144,7 +144,7 @@ void main() {
         await Future.delayed(Duration(seconds: 10));
       }
 
-      final purchasedBatch = await client.batches.purchase(batch);
+      final purchasedBatch = await client.batches.purchase(batch.id);
 
       if (client.config.boolFunctionResult) {
         await Future.delayed(Duration(seconds: 10));
@@ -154,7 +154,7 @@ void main() {
       labelParams.fileFormat = FileFormat.pdf;
 
       final labeledBatch =
-          await client.batches.generateLabel(purchasedBatch, labelParams);
+          await client.batches.generateLabel(purchasedBatch.id, labelParams);
 
       expect(labeledBatch, isNotNull);
       expect(labeledBatch.state, BatchState.labelGenerating);
@@ -173,7 +173,7 @@ void main() {
         await Future.delayed(Duration(seconds: 10));
       }
 
-      final purchasedBatch = await client.batches.purchase(batch);
+      final purchasedBatch = await client.batches.purchase(batch.id);
 
       if (client.config.boolFunctionResult) {
         await Future.delayed(Duration(seconds: 10));
@@ -183,7 +183,7 @@ void main() {
       scanFormParams.fileFormat = FileFormat.zpl;
 
       final scannedBatch =
-          await client.batches.generateScanForm(purchasedBatch, scanFormParams);
+          await client.batches.generateScanForm(purchasedBatch.id, scanFormParams);
 
       expect(scannedBatch, isNotNull);
       expect(scannedBatch.scanForm, isNotNull);

@@ -7,9 +7,6 @@ part of 'error.dart';
 // **************************************************************************
 
 Error _$ErrorFromJson(Map<String, dynamic> json) => Error(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['code'] as String?,
@@ -24,9 +21,6 @@ Error _$ErrorFromJson(Map<String, dynamic> json) => Error(
 Map<String, dynamic> _$ErrorToJson(Error instance) => <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'code': instance.code,
       'errors': instance.errors?.map((e) => e.toJson()).toList(),
       'field': instance.field,

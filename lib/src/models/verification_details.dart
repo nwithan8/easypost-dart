@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'verification_details.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class VerificationDetails extends ModelWithId {
+class VerificationDetails extends Model {
   @JsonKey(name: 'latitude')
   final double? latitude;
 
@@ -16,15 +16,12 @@ class VerificationDetails extends ModelWithId {
   final String? timeZone;
 
   VerificationDetails(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.latitude,
     this.longitude,
     this.timeZone,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory VerificationDetails.fromJson(Map<String, dynamic> input) =>
       _$VerificationDetailsFromJson(input);

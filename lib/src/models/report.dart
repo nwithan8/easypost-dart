@@ -58,9 +58,9 @@ class ReportCollection extends PaginatedCollection<Report, ListReports> {
   @JsonKey(name: 'type')
   final String? type;
 
-  ReportCollection(id, createdAt, updatedAt, objectType, mode, hasMore,
+  ReportCollection(objectType, mode, hasMore,
       this.reports, this.type)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      : super(objectType, mode, hasMore);
 
   factory ReportCollection.fromJson(Map<String, dynamic> input) =>
       _$ReportCollectionFromJson(input);

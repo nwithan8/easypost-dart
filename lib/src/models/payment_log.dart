@@ -111,8 +111,8 @@ class PaymentLogCollection
   final List<PaymentLog> paymentLogs;
 
   PaymentLogCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.paymentLogs)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      objectType, mode, hasMore, this.paymentLogs)
+      : super(objectType, mode, hasMore);
 
   factory PaymentLogCollection.fromJson(Map<String, dynamic> input) =>
       _$PaymentLogCollectionFromJson(input);

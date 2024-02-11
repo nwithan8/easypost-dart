@@ -125,8 +125,8 @@ class PickupCollection extends PaginatedCollection<Pickup, ListPickups> {
   final List<Pickup>? pickups;
 
   PickupCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.pickups)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      objectType, mode, hasMore, this.pickups)
+      : super(objectType, mode, hasMore);
 
   factory PickupCollection.fromJson(Map<String, dynamic> input) =>
       _$PickupCollectionFromJson(input);

@@ -56,9 +56,6 @@ Map<String, dynamic> _$TrackerToJson(Tracker instance) => <String, dynamic>{
 
 TrackerCollection _$TrackerCollectionFromJson(Map<String, dynamic> json) =>
     TrackerCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -71,9 +68,6 @@ Map<String, dynamic> _$TrackerCollectionToJson(TrackerCollection instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'has_more': instance.hasMore,
       'trackers': instance.trackers?.map((e) => e.toJson()).toList(),
     };

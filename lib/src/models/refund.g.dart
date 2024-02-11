@@ -34,9 +34,6 @@ Map<String, dynamic> _$RefundToJson(Refund instance) => <String, dynamic>{
 
 RefundCollection _$RefundCollectionFromJson(Map<String, dynamic> json) =>
     RefundCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -49,9 +46,6 @@ Map<String, dynamic> _$RefundCollectionToJson(RefundCollection instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'has_more': instance.hasMore,
       'refunds': instance.refunds?.map((e) => e.toJson()).toList(),
     };

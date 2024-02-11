@@ -61,9 +61,6 @@ Map<String, dynamic> _$PickupToJson(Pickup instance) => <String, dynamic>{
 
 PickupCollection _$PickupCollectionFromJson(Map<String, dynamic> json) =>
     PickupCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -76,9 +73,6 @@ Map<String, dynamic> _$PickupCollectionToJson(PickupCollection instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'has_more': instance.hasMore,
       'pickups': instance.pickups?.map((e) => e.toJson()).toList(),
     };

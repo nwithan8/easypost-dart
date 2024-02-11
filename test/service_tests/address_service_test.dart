@@ -61,7 +61,7 @@ void main() {
 
       final address = await client.addresses.create(params);
 
-      final retrievedAddress = await client.addresses.retrieve(address.id!);
+      final retrievedAddress = await client.addresses.retrieve(address.id);
 
       expect(retrievedAddress, isNotNull);
       expect(retrievedAddress, isA<Address>());
@@ -109,7 +109,7 @@ void main() {
 
       final address = await client.addresses.create(params);
 
-      final verifiedAddress = await client.addresses.verify(address);
+      final verifiedAddress = await client.addresses.verify(address.id);
 
       expect(verifiedAddress, isNotNull);
       expect(verifiedAddress, isA<Address>());
@@ -120,20 +120,6 @@ void main() {
     test('scratch', () async {
       Client client = TestUtils.setUpVCRClient("scratch", 'scratch');
       client.enableTestMode();
-      
-      RetrieveQuotedRates quotedRatesParameters = RetrieveQuotedRates();
-      QuotedRate rate = await client.rates.retrieveRateQuotes(quotedRatesParameters);
-      QuotedRate lowestRate = client.rates.getLowestRate(rates);
-
-      CreateShipment shipmentParameters = CreateShipment();
-      Shipment shipment = await client.shipments.create(shipmentParameters);
-
-      ShipmentRate associatedShipmentRate = shipment.associatedShipmentRate(lowestRate, lockPrice: true);
-
-      BuyShipment buyShipmentParameters = BuyShipment();
-      buyShipmentParameters.rate = associatedShipmentRate;
-
-      Shipment boughtShipment = await client.shipments.buy(shipment.id, buyShipmentParameters);
     });
   });
 }

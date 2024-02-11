@@ -42,9 +42,6 @@ Map<String, dynamic> _$ReportToJson(Report instance) => <String, dynamic>{
 
 ReportCollection _$ReportCollectionFromJson(Map<String, dynamic> json) =>
     ReportCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -58,9 +55,6 @@ Map<String, dynamic> _$ReportCollectionToJson(ReportCollection instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'has_more': instance.hasMore,
       'reports': instance.reports?.map((e) => e.toJson()).toList(),
       'type': instance.type,

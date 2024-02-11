@@ -88,8 +88,8 @@ class ChildUserCollection extends PaginatedCollection<User, ListChildUsers> {
   final List<User> children;
 
   ChildUserCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.children)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      objectType, mode, hasMore, this.children)
+      : super(objectType, mode, hasMore);
 
   factory ChildUserCollection.fromJson(Map<String, dynamic> input) =>
       _$ChildUserCollectionFromJson(input);

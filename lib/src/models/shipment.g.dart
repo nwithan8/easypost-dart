@@ -120,9 +120,6 @@ Map<String, dynamic> _$ShipmentToJson(Shipment instance) => <String, dynamic>{
 
 ShipmentCollection _$ShipmentCollectionFromJson(Map<String, dynamic> json) =>
     ShipmentCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -135,9 +132,6 @@ Map<String, dynamic> _$ShipmentCollectionToJson(ShipmentCollection instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'has_more': instance.hasMore,
       'shipments': instance.shipments?.map((e) => e.toJson()).toList(),
     };

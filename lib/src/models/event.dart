@@ -56,8 +56,8 @@ class EventCollection extends PaginatedCollection<Event, ListEvents> {
   final List<Event>? events;
 
   EventCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.events)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+      objectType, mode, hasMore, this.events)
+      : super(objectType, mode, hasMore);
 
   factory EventCollection.fromJson(Map<String, dynamic> input) =>
       _$EventCollectionFromJson(input);

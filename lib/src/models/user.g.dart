@@ -55,9 +55,6 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
 
 ChildUserCollection _$ChildUserCollectionFromJson(Map<String, dynamic> json) =>
     ChildUserCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -71,9 +68,6 @@ Map<String, dynamic> _$ChildUserCollectionToJson(
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'has_more': instance.hasMore,
       'children': instance.children.map((e) => e.toJson()).toList(),
     };
