@@ -11,9 +11,9 @@ class PaymentMethodType extends SerializableEnum {
   PaymentMethodType(super.id, super.jsonValue);
 
   String? get endpoint {
-    if (this.matches(PaymentMethodType.bank)) {
+    if (matches(PaymentMethodType.bank)) {
       return 'bank_accounts';
-    } else if (this.matches(PaymentMethodType.card)) {
+    } else if (matches(PaymentMethodType.card)) {
       return 'credit_cards';
     } else {
       return null;

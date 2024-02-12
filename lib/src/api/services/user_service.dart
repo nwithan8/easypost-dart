@@ -110,6 +110,16 @@ class UserService extends Service {
     );
   }
 
+  /// Retrieves the [Brand] of a [User].
+  Future<Brand> retrieveBrand(String userId) async {
+    final json = await client.requestJson(
+      HttpMethod.get,
+      'users/$userId/brand',
+      ApiVersion.v2,
+    );
+    return Brand.fromJson(json);
+  }
+
   /// Update the [Brand] of a [User].
   Future<User> updateBrand(String userId, UpdateBrand parameters) async {
     Map<String, dynamic> parameterMap =
@@ -121,15 +131,5 @@ class UserService extends Service {
       parameters: parameterMap,
     );
     return User.fromJson(json);
-  }
-
-  /// Retrieves the [Brand] of a [User].
-  Future<Brand> retrieveBrand(String userId) async {
-    final json = await client.requestJson(
-      HttpMethod.get,
-      'users/$userId/brand',
-      ApiVersion.v2,
-    );
-    return Brand.fromJson(json);
   }
 }
