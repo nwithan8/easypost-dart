@@ -24,5 +24,5 @@ class CustomsFormType extends SerializableEnum {
 
   /// Get the [String] representation of a [CustomsFormType].
   static String? asString(CustomsFormType? customsFormType) =>
-      customsFormType.toString();
+      customsFormType?.toString();
 }

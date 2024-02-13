@@ -14,8 +14,6 @@ abstract class AddCarrierAccount extends Parameters
   final String endpoint; // Cannot be overridden by end user
 
   AddCarrierAccount(this.type, this.endpoint) : super();
-
-// TODO: Parameters per carrier account type
 }
 
 String get defaultCarrierAccountCreationEndpoint => 'carrier_accounts';

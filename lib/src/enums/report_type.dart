@@ -69,5 +69,5 @@ class ReportType extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [ReportType].
-  static String? asString(ReportType? reportType) => reportType.toString();
+  static String? asString(ReportType? reportType) => reportType?.toString();
 }

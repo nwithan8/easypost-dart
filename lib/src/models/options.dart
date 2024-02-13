@@ -1,12 +1,20 @@
 import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/enums/cod_method.dart';
+import 'package:easypost/src/enums/delivery_confirmation.dart';
+import 'package:easypost/src/enums/dropoff_type.dart';
+import 'package:easypost/src/enums/endorsement.dart';
+import 'package:easypost/src/enums/hazmat_type.dart';
+import 'package:easypost/src/enums/incoterm_type.dart';
+import 'package:easypost/src/enums/label_format.dart';
+import 'package:easypost/src/enums/print_custom_code.dart';
 import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/models/payment_options.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'options.g.dart';
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Options extends Model {
-  // TODO: Verify all options available
   @JsonKey(name: 'additional_handling')
   late bool? additionalHandling;
 
@@ -19,26 +27,8 @@ class Options extends Model {
   @JsonKey(name: 'billing_ref')
   late String? billingRef;
 
-  @JsonKey(name: 'bill_receiver_amount')
-  late String? billReceiverAmount;
-
-  @JsonKey(name: 'bill_receiver_postal_code')
-  late String? billReceiverPostalCode;
-
-  @JsonKey(name: 'bill_third_party_account')
-  late String? billThirdPartyAccount;
-
-  @JsonKey(name: 'bill_third_party_country')
-  late String? billThirdPartyCountry;
-
-  @JsonKey(name: 'bill_third_party_postal_code')
-  late String? billThirdPartyPostalCode;
-
   @JsonKey(name: 'by_drone')
   late bool? deliverByDrone;
-
-  @JsonKey(name: 'carbon_neutral')
-  late bool? enableCarbonNeutral;
 
   @JsonKey(name: 'carrier_insurance_amount')
   late String? carrierInsuranceAmount;
@@ -58,8 +48,8 @@ class Options extends Model {
   @JsonKey(name: 'cod_amount')
   late String? codAmount;
 
-  @JsonKey(name: 'cod_method')
-  late String? codMethod;
+  @JsonKey(name: 'cod_method', toJson: codMethodToJson, fromJson: codMethodFromJson, includeIfNull: false)
+  late CodMethod? codMethod;
 
   @JsonKey(name: 'commercial_invoice_format')
   late String? commercialInvoiceFormat;
@@ -72,6 +62,9 @@ class Options extends Model {
 
   @JsonKey(name: 'commercial_invoice_size')
   late String? commercialInvoiceSize;
+
+  @JsonKey(name: 'content_description')
+  late String? contentDescription;
 
   @JsonKey(name: 'cost_center')
   late String? costCenter;
@@ -91,17 +84,23 @@ class Options extends Model {
   @JsonKey(name: 'delivered_duty_paid')
   late bool? deliveredDutyPaid;
 
-  @JsonKey(name: 'delivery_confirmation')
-  late String? deliveryConfirmation;
+  @JsonKey(name: 'delivery_confirmation', toJson: deliveryConfirmationToJson, fromJson: deliveryConfirmationFromJson, includeIfNull: false)
+  late DeliveryConfirmation? deliveryConfirmation;
 
   @JsonKey(name: 'delivery_time_preference')
   late String? deliveryTimePreference;
 
-  @JsonKey(name: 'dropoff_max_datetime')
+  @JsonKey(name: 'delivery_min_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
+  late DateTime? deliveryMinDatetime;
+
+  @JsonKey(name: 'delivery_max_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
+  late DateTime? deliveryMaxDatetime;
+
+  @JsonKey(name: 'dropoff_max_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
   late DateTime? dropoffMaxDatetime;
 
-  @JsonKey(name: 'dropoff_type')
-  late String? dropoffType;
+  @JsonKey(name: 'dropoff_type', toJson: dropOffTypeToJson, fromJson: dropOffTypeFromJson)
+  late DropOffType? dropoffType;
 
   @JsonKey(name: 'dry_ice')
   late bool? isDryIce;
@@ -113,13 +112,13 @@ class Options extends Model {
   late String? dryIceWeight;
 
   @JsonKey(name: 'duty_payment')
-  late Map<String, dynamic>? dutyPayment;
+  late PaymentOptions? dutyPayment;
 
   @JsonKey(name: 'duty_payment_account')
   late String? dutyPaymentAccount;
 
-  @JsonKey(name: 'endorsement')
-  late String? endorsement;
+  @JsonKey(name: 'endorsement', toJson: endorsementToJson, fromJson: endorsementFromJson, includeIfNull: false)
+  late Endorsement? endorsement;
 
   @JsonKey(name: 'end_shipper_id')
   late String? endShipperId;
@@ -133,8 +132,8 @@ class Options extends Model {
   @JsonKey(name: 'handling_instructions')
   late String? handlingInstructions;
 
-  @JsonKey(name: 'hazmat')
-  late String? hazmat;
+  @JsonKey(name: 'hazmat', toJson: hazmatTypeToJson, fromJson: hazmatTypeFromJson, includeIfNull: false)
+  late HazmatType? hazmat;
 
   @JsonKey(name: 'hold_for_pickup')
   late bool? holdForPickup;
@@ -151,17 +150,17 @@ class Options extends Model {
   @JsonKey(name: 'import_state_tax_id')
   late String? importStateTaxId;
 
-  @JsonKey(name: 'incoterm')
-  late String? incoterm;
+  @JsonKey(name: 'incoterm', toJson: incotermTypeToJson, fromJson: incotermTypeFromJson)
+  late IncotermType? incoterm;
 
   @JsonKey(name: 'invoice_number')
   late String? invoiceNumber;
 
-  @JsonKey(name: 'label_date')
+  @JsonKey(name: 'label_date', toJson: dateTimeToString, fromJson: stringToDateTime)
   late DateTime? labelDate;
 
-  @JsonKey(name: 'label_format')
-  late String? labelFormat;
+  @JsonKey(name: 'label_format', toJson: labelFormatToJson, fromJson: labelFormatFromJson, includeIfNull: false)
+  late LabelFormat? labelFormat;
 
   @JsonKey(name: 'label_size')
   late String? labelSize;
@@ -188,15 +187,15 @@ class Options extends Model {
   late String? partiesToTransactionAreRelated;
 
   @JsonKey(name: 'payment')
-  late Map<String, dynamic>? payment;
+  late PaymentOptions? payment;
 
   @JsonKey(name: 'peel_and_return')
   late bool? enablePeelAndReturn;
 
-  @JsonKey(name: 'pickup_max_datetime')
+  @JsonKey(name: 'pickup_max_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
   late DateTime? pickupMaxDatetime;
 
-  @JsonKey(name: 'pickup_min_datetime')
+  @JsonKey(name: 'pickup_min_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
   late DateTime? pickupMinDatetime;
 
   @JsonKey(name: 'po_sort')
@@ -209,31 +208,31 @@ class Options extends Model {
   late List<Map<String, dynamic>>? printCustom;
 
   @JsonKey(name: 'print_custom_1')
-  late String? printCustom1;
+  late String? printCustomMessage1;
 
   @JsonKey(name: 'print_custom_1_barcode')
-  late bool? includePrintCustom1Barcode;
+  late bool? includePrintCustomBarcode1;
 
-  @JsonKey(name: 'print_custom_1_code')
-  late String? printCustom1Code;
+  @JsonKey(name: 'print_custom_1_code', toJson: printCustomCodeToJson, fromJson: printCustomCodeFromJson, includeIfNull: false)
+  late PrintCustomCode? printCustomCode1;
 
   @JsonKey(name: 'print_custom_2')
-  late String? printCustom2;
+  late String? printCustomMessage2;
 
   @JsonKey(name: 'print_custom_2_barcode')
-  late bool? includePrintCustom2Barcode;
+  late bool? includePrintCustomBarcode2;
 
-  @JsonKey(name: 'print_custom_2_code')
-  late String? printCustom2Code;
+  @JsonKey(name: 'print_custom_2_code', toJson: printCustomCodeToJson, fromJson: printCustomCodeFromJson, includeIfNull: false)
+  late PrintCustomCode? printCustomCode2;
 
   @JsonKey(name: 'print_custom_3')
-  late String? printCustom3;
+  late String? printCustomMessage3;
 
   @JsonKey(name: 'print_custom_3_barcode')
-  late bool? includePrintCustom3Barcode;
+  late bool? includePrintCustomBarcode3;
 
-  @JsonKey(name: 'print_custom_3_code')
-  late String? printCustom3Code;
+  @JsonKey(name: 'print_custom_3_code', toJson: printCustomCodeToJson, fromJson: printCustomCodeFromJson, includeIfNull: false)
+  late PrintCustomCode? printCustomCode3;
 
   @JsonKey(name: 'print_rate')
   late bool? includePrintRate;
@@ -271,6 +270,9 @@ class Options extends Model {
   @JsonKey(name: 'suppress_etd')
   late bool? suppressEtd;
 
+  @JsonKey(name: 'tax_id_expiration_date', toJson: dateTimeToStringDDMMYYYY, fromJson: stringToDateTime)
+  late DateTime? taxIdExpirationDate;
+
   Options([
     objectType,
     mode,
@@ -278,13 +280,7 @@ class Options extends Model {
     this.addressValidationLevel,
     this.isAlcohol,
     this.billingRef,
-    this.billReceiverAmount,
-    this.billReceiverPostalCode,
-    this.billThirdPartyAccount,
-    this.billThirdPartyCountry,
-    this.billThirdPartyPostalCode,
     this.deliverByDrone,
-    this.enableCarbonNeutral,
     this.carrierInsuranceAmount,
     this.carrierNotificationEmail,
     this.carrierNotificationSms,
@@ -341,15 +337,15 @@ class Options extends Model {
     this.poSort,
     this.postageLabelInline,
     this.printCustom,
-    this.printCustom1,
-    this.includePrintCustom1Barcode,
-    this.printCustom1Code,
-    this.printCustom2,
-    this.includePrintCustom2Barcode,
-    this.printCustom2Code,
-    this.printCustom3,
-    this.includePrintCustom3Barcode,
-    this.printCustom3Code,
+    this.printCustomMessage1,
+    this.includePrintCustomBarcode1,
+    this.printCustomCode1,
+    this.printCustomMessage2,
+    this.includePrintCustomBarcode2,
+    this.printCustomCode2,
+    this.printCustomMessage3,
+    this.includePrintCustomBarcode3,
+    this.printCustomCode3,
     this.includePrintRate,
     this.receiverLiquorLicense,
     this.useRegisteredMail,
@@ -362,6 +358,7 @@ class Options extends Model {
     this.smartpostManifest,
     this.specialRatesEligibility,
     this.suppressEtd,
+    this.taxIdExpirationDate,
   ]) : super(objectType, mode);
 
   factory Options.fromJson(Map<String, dynamic> input) =>

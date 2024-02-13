@@ -35,8 +35,8 @@ class Fixtures {
     return FixtureStructures.fromJson(_data);
   }
 
-  static CreateFedExCarrierAccount get basicCarrierAccount {
-    final params = CreateFedExCarrierAccount();
+  static AddFedExCarrierAccount get basicCarrierAccount {
+    final params = AddFedExCarrierAccount();
     params.accountNumber = "RANDOM";
     params.corporateAddressCity = "RANDOM";
     params.corporateAddressCountryCode = "RANDOM";
@@ -302,6 +302,7 @@ class Fixtures {
     }
 
     Options parameters = Options.fromJson(data);
+    // parameters.endorsement = getOrDefaultString(data, "endorsement");
 
     return parameters;
   }

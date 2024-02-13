@@ -74,5 +74,5 @@ class PaymentLogChargeType extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [PaymentLogChargeType].
-  static String? asString(PaymentLogChargeType? paymentLogChargeType) => paymentLogChargeType.toString();
+  static String? asString(PaymentLogChargeType? paymentLogChargeType) => paymentLogChargeType?.toString();
 }

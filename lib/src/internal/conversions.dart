@@ -12,6 +12,9 @@ String? dateTimeToString(DateTime? time) => time == null
     ? null
     : '${DateFormat('yyyy-MM-ddTHH:mm:ss').format(time.toUtc())}Z';
 
+String? dateTimeToStringDDMMYYYY(DateTime? time) =>
+    time == null ? null : DateFormat("dd/MM/yyyy").format(time);
+
 /// Converts a string (20.00) to an int of cents (2000)
 int? stringToCents(String? money) =>
     money == null ? null : (stringToMoney(money) * 100).toInt();

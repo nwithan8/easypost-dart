@@ -65,5 +65,5 @@ class SmartRateAccuracy extends SerializableEnum {
 
   /// Get the [String] representation of a [SmartRateAccuracy].
   static String? asString(SmartRateAccuracy? smartRateAccuracy) =>
-      smartRateAccuracy.toString();
+      smartRateAccuracy?.toString();
 }

@@ -21,7 +21,7 @@ void main() {
       // params.type = CarrierAccountType.amazonMws;
 
       try {
-        final carrierAccount = await client.carrierAccounts.create(params);
+        final carrierAccount = await client.carrierAccounts.add(params);
 
         expect(carrierAccount, isNotNull);
         expect(carrierAccount, isA<CarrierAccount>());
@@ -54,7 +54,7 @@ void main() {
 
       final params = Fixtures.basicCarrierAccount;
 
-      final carrierAccount = await client.carrierAccounts.create(params);
+      final carrierAccount = await client.carrierAccounts.add(params);
 
       final retrievedCarrierAccount =
           await client.carrierAccounts.retrieve(carrierAccount.id);
@@ -73,7 +73,7 @@ void main() {
 
     final params = Fixtures.basicCarrierAccount;
 
-    final carrierAccount = await client.carrierAccounts.create(params);
+    final carrierAccount = await client.carrierAccounts.add(params);
 
     final retrievedCarrierAccount = await client.carrierAccounts.retrieve(carrierAccount.id);
 

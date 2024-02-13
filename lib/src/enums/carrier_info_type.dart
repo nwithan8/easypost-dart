@@ -36,5 +36,5 @@ class CarrierInfoType extends SerializableEnum {
 
   /// Get the [String] representation of a [CarrierInfoType].
   static String? asString(CarrierInfoType? carrierInfoType) =>
-      carrierInfoType.toString();
+      carrierInfoType?.toString();
 }

@@ -53,5 +53,5 @@ class BatchState extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [BatchState].
-  static String? asString(BatchState? batchState) => batchState.toString();
+  static String? asString(BatchState? batchState) => batchState?.toString();
 }

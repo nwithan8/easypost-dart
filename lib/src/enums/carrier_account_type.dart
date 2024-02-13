@@ -251,5 +251,5 @@ class CarrierAccountType extends SerializableEnum {
 
   /// Get the [String] representation of a [CarrierAccountType].
   static String? asString(CarrierAccountType? carrierAccountType) =>
-      carrierAccountType.toString();
+      carrierAccountType?.toString();
 }

@@ -11,7 +11,16 @@ Model _$ModelFromJson(Map<String, dynamic> json) => Model(
       json['mode'] as String?,
     );
 
-Map<String, dynamic> _$ModelToJson(Model instance) => <String, dynamic>{
-      'object': instance.objectType,
-      'mode': instance.mode,
-    };
+Map<String, dynamic> _$ModelToJson(Model instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('object', instance.objectType);
+  writeNotNull('mode', instance.mode);
+  return val;
+}

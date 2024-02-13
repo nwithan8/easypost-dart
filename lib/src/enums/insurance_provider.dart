@@ -29,5 +29,5 @@ class InsuranceProvider extends SerializableEnum {
 
   /// Get the [String] representation of a [InsuranceProvider].
   static String? asString(InsuranceProvider? insuranceProvider) =>
-      insuranceProvider.toString();
+      insuranceProvider?.toString();
 }

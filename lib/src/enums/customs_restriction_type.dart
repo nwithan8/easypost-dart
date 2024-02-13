@@ -36,5 +36,5 @@ class CustomsRestrictionType extends SerializableEnum {
 
   /// Get the [String] representation of a [CustomsRestrictionType].
   static String? asString(CustomsRestrictionType? customsRestrictionType) =>
-      customsRestrictionType.toString();
+      customsRestrictionType?.toString();
 }

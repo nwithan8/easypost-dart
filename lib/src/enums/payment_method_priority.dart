@@ -23,5 +23,5 @@ class PaymentMethodPriority extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [PaymentMethodPriority].
-  static String? asString(PaymentMethodPriority? paymentMethodPriority) => paymentMethodPriority.toString();
+  static String? asString(PaymentMethodPriority? paymentMethodPriority) => paymentMethodPriority?.toString();
 }

@@ -59,5 +59,5 @@ class FormType extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [FormType].
-  static String? asString(FormType? formType) => formType.toString();
+  static String? asString(FormType? formType) => formType?.toString();
 }

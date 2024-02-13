@@ -24,5 +24,5 @@ class NonDeliveryOption extends SerializableEnum {
 
   /// Get the [String] representation of a [NonDeliveryOption].
   static String? asString(NonDeliveryOption? nonDeliveryOption) =>
-      nonDeliveryOption.toString();
+      nonDeliveryOption?.toString();
 }

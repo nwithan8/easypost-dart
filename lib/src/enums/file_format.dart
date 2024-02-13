@@ -28,5 +28,5 @@ class FileFormat extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [FileFormat].
-  static String? asString(FileFormat? fileFormat) => fileFormat.toString();
+  static String? asString(FileFormat? fileFormat) => fileFormat?.toString();
 }
