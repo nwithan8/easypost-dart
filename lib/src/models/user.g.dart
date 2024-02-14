@@ -58,8 +58,8 @@ ChildUserCollection _$ChildUserCollectionFromJson(Map<String, dynamic> json) =>
       json['object'],
       json['mode'],
       json['has_more'],
-      (json['children'] as List<dynamic>)
-          .map((e) => User.fromJson(e as Map<String, dynamic>))
+      (json['children'] as List<dynamic>?)
+          ?.map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -69,5 +69,5 @@ Map<String, dynamic> _$ChildUserCollectionToJson(
       'object': instance.objectType,
       'mode': instance.mode,
       'has_more': instance.hasMore,
-      'children': instance.children.map((e) => e.toJson()).toList(),
+      'children': instance.children?.map((e) => e.toJson()).toList(),
     };

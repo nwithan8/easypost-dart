@@ -92,7 +92,7 @@ class Client {
   EventService get events => EventService(this);
 
   /// Service for insurance-related methods of the EasyPost API.
-  InsuranceService get insurances => InsuranceService(this);
+  InsuranceService get insurance => InsuranceService(this);
 
   /// Service for order-related methods of the EasyPost API.
   OrderService get orders => OrderService(this);

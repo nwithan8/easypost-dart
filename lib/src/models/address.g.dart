@@ -64,8 +64,8 @@ AddressCollection _$AddressCollectionFromJson(Map<String, dynamic> json) =>
       json['object'],
       json['mode'],
       json['has_more'],
-      (json['addresses'] as List<dynamic>)
-          .map((e) => Address.fromJson(e as Map<String, dynamic>))
+      (json['addresses'] as List<dynamic>?)
+          ?.map((e) => Address.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -74,5 +74,5 @@ Map<String, dynamic> _$AddressCollectionToJson(AddressCollection instance) =>
       'object': instance.objectType,
       'mode': instance.mode,
       'has_more': instance.hasMore,
-      'addresses': instance.addresses.map((e) => e.toJson()).toList(),
+      'addresses': instance.addresses?.map((e) => e.toJson()).toList(),
     };

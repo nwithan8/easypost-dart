@@ -61,8 +61,8 @@ PaymentLogCollection _$PaymentLogCollectionFromJson(
       json['object'],
       json['mode'],
       json['has_more'],
-      (json['payment_logs'] as List<dynamic>)
-          .map((e) => PaymentLog.fromJson(e as Map<String, dynamic>))
+      (json['payment_logs'] as List<dynamic>?)
+          ?.map((e) => PaymentLog.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -72,5 +72,5 @@ Map<String, dynamic> _$PaymentLogCollectionToJson(
       'object': instance.objectType,
       'mode': instance.mode,
       'has_more': instance.hasMore,
-      'payment_logs': instance.paymentLogs.map((e) => e.toJson()).toList(),
+      'payment_logs': instance.paymentLogs?.map((e) => e.toJson()).toList(),
     };

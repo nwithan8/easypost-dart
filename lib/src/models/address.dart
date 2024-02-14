@@ -80,7 +80,7 @@ class Address extends ModelWithId implements IAddressParameter {
 @JsonSerializable(explicitToJson: true)
 class AddressCollection extends PaginatedCollection<Address, ListAddresses> {
   @JsonKey(name: 'addresses')
-  final List<Address> addresses;
+  final List<Address>? addresses;
 
   AddressCollection(objectType, mode, hasMore, this.addresses)
       : super(objectType, mode, hasMore);

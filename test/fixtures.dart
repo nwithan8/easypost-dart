@@ -77,7 +77,7 @@ class Fixtures {
 
   static CreateInsurance get basicInsurance {
     Map<String, dynamic> data = fixtureStructures.insurances.basic;
-    return CreateInsurance();
+    return createCreateInsuranceParameters(data: data);
   }
 
   static CreateOrder get basicOrder {
@@ -129,6 +129,11 @@ class Fixtures {
   static CreateAddress get caAddress1 {
     Map<String, dynamic> data = fixtureStructures.addresses.caAddress1;
     return createCreateAddressParameters(data: data);
+  }
+
+  static CreateEndShipper get endShipper {
+    Map<String, dynamic> data = fixtureStructures.addresses.caAddress1;
+    return createCreateEndShipperParameters(data: data);
   }
 
   static CreateAddress get caAddress2 {
@@ -218,6 +223,28 @@ class Fixtures {
     return parameters;
   }
 
+  static CreateEndShipper createCreateEndShipperParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreateEndShipper parameters = CreateEndShipper();
+
+    parameters.name = getOrDefaultString(data, "name");
+    parameters.company = getOrDefaultString(data, "company");
+    parameters.street1 = getOrDefaultString(data, "street1");
+    parameters.street2 = getOrDefaultString(data, "street2");
+    parameters.city = getOrDefaultString(data, "city");
+    parameters.state = getOrDefaultString(data, "state");
+    parameters.zip = getOrDefaultString(data, "zip");
+    parameters.country = getOrDefaultString(data, "country");
+    parameters.phone = getOrDefaultString(data, "phone");
+    parameters.email = getOrDefaultString(data, "email");
+
+    return parameters;
+  }
+
   static CreateShipment createCreateShipmentParameters(
       {Map<String, dynamic>? data}) {
     if (data == null) {
@@ -281,6 +308,25 @@ class Fixtures {
     }
     parameters.customsItems = parametersList;
      */
+
+    return parameters;
+  }
+
+  static CreateInsurance createCreateInsuranceParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreateInsurance parameters = CreateInsurance();
+
+    parameters.trackingCode = getOrDefaultString(data, "tracking_code");
+    parameters.amount = getOrDefaultDouble(data, "amount");
+    parameters.carrier = getOrDefaultString(data, "carrier");
+    parameters.fromAddress = createCreateAddressParameters(
+        data: getOrDefaultMap(data, "from_address"));
+    parameters.toAddress = createCreateAddressParameters(
+        data: getOrDefaultMap(data, "to_address"));
 
     return parameters;
   }

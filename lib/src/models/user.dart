@@ -85,7 +85,7 @@ class User extends ModelWithId {
 @JsonSerializable(explicitToJson: true)
 class ChildUserCollection extends PaginatedCollection<User, ListChildUsers> {
   @JsonKey(name: 'children')
-  final List<User> children;
+  final List<User>? children;
 
   ChildUserCollection(
       objectType, mode, hasMore, this.children)

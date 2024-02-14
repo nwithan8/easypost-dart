@@ -79,8 +79,8 @@ void main() {
 
       expect(addressCollection, isNotNull);
       expect(addressCollection.addresses, isNotNull);
-      expect(addressCollection.addresses.length <= Fixtures.pageSize, true);
-      for (Address address in addressCollection.addresses) {
+      expect(addressCollection.addresses!.length <= Fixtures.pageSize, true);
+      for (Address address in addressCollection.addresses!) {
         expect(address, isA<Address>());
       }
     });

@@ -108,7 +108,7 @@ class PaymentLog extends ModelWithId {
 class PaymentLogCollection
     extends PaginatedCollection<PaymentLog, ListPaymentLogs> {
   @JsonKey(name: 'payment_logs')
-  final List<PaymentLog> paymentLogs;
+  final List<PaymentLog>? paymentLogs;
 
   PaymentLogCollection(
       objectType, mode, hasMore, this.paymentLogs)

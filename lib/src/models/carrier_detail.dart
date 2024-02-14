@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'carrier_detail.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CarrierDetail extends ModelWithId {
+class CarrierDetail extends Model {
   @JsonKey(name: 'alternate_identifier')
   final String? alternateIdentifier;
 
@@ -40,9 +40,6 @@ class CarrierDetail extends ModelWithId {
   final String? service;
 
   CarrierDetail(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.alternateIdentifier,
@@ -53,7 +50,7 @@ class CarrierDetail extends ModelWithId {
     this.initialDeliveryAttempt,
     this.originLocation,
     this.service,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory CarrierDetail.fromJson(Map<String, dynamic> input) =>
       _$CarrierDetailFromJson(input);

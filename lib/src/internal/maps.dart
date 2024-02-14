@@ -19,7 +19,15 @@ bool? getOrDefaultBool(Map<String, dynamic> map, String key,
 int? getOrDefaultInt(Map<String, dynamic> map, String key,
     {int? defaultValue}) {
   if (map.containsKey(key)) {
-    return map[key] is double ? (map[key] as double).toInt() : map[key];
+    if (map[key] is int) {
+      return map[key];
+    } else if (map[key] is double) {
+      return (map[key] as double).toInt();
+    } else if (map[key] is String) {
+      return int.parse(map[key]);
+    } else {
+      return defaultValue;
+    }
   } else {
     return defaultValue;
   }
@@ -28,7 +36,15 @@ int? getOrDefaultInt(Map<String, dynamic> map, String key,
 double? getOrDefaultDouble(Map<String, dynamic> map, String key,
     {double? defaultValue}) {
   if (map.containsKey(key)) {
-    return map[key] is int ? (map[key] as int).toDouble() : map[key];
+    if (map[key] is int) {
+      return (map[key] as int).toDouble();
+    } else if (map[key] is double) {
+      return map[key];
+    } else if (map[key] is String) {
+      return double.parse(map[key]);
+    } else {
+      return defaultValue;
+    }
   } else {
     return defaultValue;
   }

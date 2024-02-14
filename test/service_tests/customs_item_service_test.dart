@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
-import 'customs_info_service_test.reflectable.dart';
+import 'customs_item_service_test.reflectable.dart';
 
 void main() {
   group('Customs Item', () {
@@ -13,7 +13,7 @@ void main() {
     });
 
     test('create', () async {
-      Client client = TestUtils.setUpVCRClient("customs_item", 'create');
+      Client client = TestUtils.setUpVCRClient("customs_items", 'create');
       client.enableTestMode();
 
       final params = Fixtures.basicCustomsItem;
@@ -27,7 +27,7 @@ void main() {
     });
 
     test('retrieve', () async {
-      Client client = TestUtils.setUpVCRClient("customs_item", 'retrieve');
+      Client client = TestUtils.setUpVCRClient("customs_items", 'retrieve');
       client.enableTestMode();
 
       final params = Fixtures.basicCustomsItem;

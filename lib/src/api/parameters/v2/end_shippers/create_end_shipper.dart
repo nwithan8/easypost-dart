@@ -30,7 +30,7 @@ class CreateEndShipper extends Parameters {
   String? phone;
 
   @JsonParameter(Necessity.optional, ['address', "residential"])
-  bool? residential;
+  bool? isResidential;
 
   @JsonParameter(Necessity.optional, ['address', "state"])
   String? state;
@@ -43,12 +43,6 @@ class CreateEndShipper extends Parameters {
 
   @JsonParameter(Necessity.optional, ['address', "street2"])
   String? street2;
-
-  @JsonParameter(Necessity.optional, ['verify'])
-  bool? verify;
-
-  @JsonParameter(Necessity.optional, ["verify_strict"])
-  bool? strictlyVerify;
 
   @JsonParameter(Necessity.optional, ['address', "zip"])
   String? zip;
