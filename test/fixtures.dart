@@ -35,7 +35,14 @@ class Fixtures {
     return FixtureStructures.fromJson(_data);
   }
 
-  static AddFedExCarrierAccount get basicCarrierAccount {
+  static OpenCarrierAccount get basicCarrierAccount {
+    final params = OpenCarrierAccount();
+    params.type = CarrierAccountType.speedee;
+
+    return params;
+  }
+
+  static AddFedExCarrierAccount get basicFedExCarrierAccount {
     final params = AddFedExCarrierAccount();
     params.accountNumber = "RANDOM";
     params.corporateAddressCity = "RANDOM";

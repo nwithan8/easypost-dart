@@ -12,13 +12,32 @@ void main() {
       initializeReflectable();
     });
 
-    test('create', () async {
+    test('register (create) new carrier account', () async {
       Client client = TestUtils.setUpVCRClient(
-          "carrier_accounts", 'create');
+          "carrier_accounts", 'register');
       client.enableProductionMode();
 
       final params = Fixtures.basicCarrierAccount;
-      // params.type = CarrierAccountType.amazonMws;
+
+      try {
+        final carrierAccount = await client.carrierAccounts.register(params);
+
+        expect(carrierAccount, isNotNull);
+        expect(carrierAccount, isA<CarrierAccount>());
+        expect(carrierAccount.id, startsWith("ca_"));
+
+        await client.carrierAccounts.delete(carrierAccount.id);
+      } catch (e) {
+        print(e);
+      }
+    });
+
+    test('add existing carrier account', () async {
+      Client client = TestUtils.setUpVCRClient(
+          "carrier_accounts", 'add');
+      client.enableProductionMode();
+
+      final params = Fixtures.basicFedExCarrierAccount;
 
       try {
         final carrierAccount = await client.carrierAccounts.add(params);
@@ -52,7 +71,7 @@ void main() {
       Client client = TestUtils.setUpVCRClient("carrier_accounts", 'retrieve');
       client.enableProductionMode();
 
-      final params = Fixtures.basicCarrierAccount;
+      final params = Fixtures.basicFedExCarrierAccount;
 
       final carrierAccount = await client.carrierAccounts.add(params);
 
@@ -71,7 +90,7 @@ void main() {
     Client client = TestUtils.setUpVCRClient("carrier_accounts", 'update');
     client.enableProductionMode();
 
-    final params = Fixtures.basicCarrierAccount;
+    final params = Fixtures.basicFedExCarrierAccount;
 
     final carrierAccount = await client.carrierAccounts.add(params);
 
@@ -89,5 +108,20 @@ void main() {
     expect(updatedCarrierAccount.reference, newReference);
 
     await client.carrierAccounts.delete(carrierAccount.id);
+  });
+
+  test('delete', () async {
+    Client client = TestUtils.setUpVCRClient("carrier_accounts", 'delete');
+    client.enableProductionMode();
+
+    final params = Fixtures.basicFedExCarrierAccount;
+
+    final carrierAccount = await client.carrierAccounts.add(params);
+
+    final retrievedCarrierAccount = await client.carrierAccounts.retrieve(carrierAccount.id);
+
+    final success = await client.carrierAccounts.delete(retrievedCarrierAccount.id);
+
+    expect(success, true);
   });
 }
