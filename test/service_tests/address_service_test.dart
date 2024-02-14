@@ -116,10 +116,5 @@ void main() {
       expect(verifiedAddress.id, startsWith("adr_"));
       expect(verifiedAddress.street1, "388 TOWNSEND ST APT 20");
     });
-    
-    test('scratch', () async {
-      Client client = TestUtils.setUpVCRClient("scratch", 'scratch');
-      client.enableTestMode();
-    });
   });
 }

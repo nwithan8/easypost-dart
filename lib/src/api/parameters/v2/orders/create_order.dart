@@ -21,7 +21,7 @@ class CreateOrder extends Parameters implements IOrderParameter {
   String? reference;
 
   @JsonParameter(Necessity.optional, ['order', 'shipments'])
-  List<Shipment>? shipments;
+  List<IShipmentParameter>? shipments;
 
   CreateOrder() : super();
 }

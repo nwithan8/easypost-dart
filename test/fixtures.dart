@@ -82,7 +82,7 @@ class Fixtures {
 
   static CreateOrder get basicOrder {
     Map<String, dynamic> data = fixtureStructures.orders.basic;
-    return CreateOrder();
+    return createCreateOrderParameters(data: data);
   }
 
   static CreateParcel get basicParcel {
@@ -327,6 +327,29 @@ class Fixtures {
         data: getOrDefaultMap(data, "from_address"));
     parameters.toAddress = createCreateAddressParameters(
         data: getOrDefaultMap(data, "to_address"));
+
+    return parameters;
+  }
+
+  static CreateOrder createCreateOrderParameters({Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreateOrder parameters = CreateOrder();
+
+    parameters.toAddress = createCreateAddressParameters(
+        data: getOrDefaultMap(data, "to_address"));
+    parameters.fromAddress = createCreateAddressParameters(
+        data: getOrDefaultMap(data, "from_address"));
+
+    parameters.shipments = List<CreateShipment>.empty(growable: true);
+    List<Map<String, dynamic>>? shipmentData = getOrDefaultMapList(data, "shipments");
+    if (shipmentData != null) {
+      for (Map<String, dynamic> item in shipmentData) {
+        parameters.shipments?.add(createCreateShipmentParameters(data: item));
+      }
+    }
 
     return parameters;
   }
