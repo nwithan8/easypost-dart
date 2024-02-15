@@ -1,5 +1,6 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
@@ -22,7 +23,7 @@ void main() {
 
       expect(customsItem, isNotNull);
       expect(customsItem, isA<CustomsItem>());
-      expect(customsItem.id, startsWith("cstitem_"));
+      expect(customsItem.id, startsWith(ModelPrefixes.customsItem));
       expect(customsItem.value, params.value.toString());
     });
 

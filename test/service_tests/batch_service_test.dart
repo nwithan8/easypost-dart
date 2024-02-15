@@ -1,5 +1,6 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
@@ -23,7 +24,7 @@ void main() {
 
       expect(batch, isNotNull);
       expect(batch, isA<Batch>());
-      expect(batch.id, startsWith("batch_"));
+      expect(batch.id, startsWith(ModelPrefixes.batch));
       expect(batch.shipments, isNotNull);
     });
 
@@ -40,7 +41,7 @@ void main() {
 
       expect(batch, isNotNull);
       expect(batch, isA<Batch>());
-      expect(batch.id, startsWith("batch_"));
+      expect(batch.id, startsWith(ModelPrefixes.batch));
       expect(batch.shipments, isNotNull);
     });
 

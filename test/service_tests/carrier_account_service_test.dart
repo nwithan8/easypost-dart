@@ -1,5 +1,6 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
@@ -24,7 +25,7 @@ void main() {
 
         expect(carrierAccount, isNotNull);
         expect(carrierAccount, isA<CarrierAccount>());
-        expect(carrierAccount.id, startsWith("ca_"));
+        expect(carrierAccount.id, startsWith(ModelPrefixes.carrierAccount));
 
         await client.carrierAccounts.delete(carrierAccount.id);
       } catch (e) {
@@ -44,7 +45,7 @@ void main() {
 
         expect(carrierAccount, isNotNull);
         expect(carrierAccount, isA<CarrierAccount>());
-        expect(carrierAccount.id, startsWith("ca_"));
+        expect(carrierAccount.id, startsWith(ModelPrefixes.carrierAccount));
 
         await client.carrierAccounts.delete(carrierAccount.id);
       } catch (e) {

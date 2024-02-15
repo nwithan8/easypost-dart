@@ -1,3 +1,4 @@
+import 'package:easypost/src/constants.dart';
 import 'package:easypost/src/internal/enums.dart';
 import 'package:easypost/src/models/report.dart';
 
@@ -51,17 +52,17 @@ class ReportType extends SerializableEnum {
   /// Get the [ReportType] of a [Report] by its ID prefix.
   static ReportType? fromId(String? prefix) {
     switch (prefix) {
-      case 'cfrep':
+      case ModelPrefixes.cashFlowReport:
         return ReportType.cashFlow;
-      case 'plrep':
+      case ModelPrefixes.paymentLogReport:
         return ReportType.paymentLog;
-      case 'refrep':
+      case ModelPrefixes.refundReport:
         return ReportType.refund;
-      case 'shprep':
+      case ModelPrefixes.shipmentReport:
         return ReportType.shipment;
-      case 'shpinvrep':
+      case ModelPrefixes.shipmentInvoiceReport:
         return ReportType.shipmentInvoice;
-      case 'trkrep':
+      case ModelPrefixes.trackerReport:
         return ReportType.tracker;
       default:
         return null;

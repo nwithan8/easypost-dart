@@ -1,6 +1,7 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
 import 'package:reflectable/reflectable.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
@@ -23,7 +24,7 @@ void main() {
 
       expect(endShipper, isNotNull);
       expect(endShipper, isA<EndShipper>());
-      expect(endShipper.id, startsWith("es_"));
+      expect(endShipper.id, startsWith(ModelPrefixes.endShipper));
       expect(endShipper.street1, "388 TOWNSEND ST APT 20");
     });
 

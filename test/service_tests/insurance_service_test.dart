@@ -1,6 +1,7 @@
 import 'package:easypost/easypost.dart';
 import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
@@ -27,7 +28,7 @@ void main() {
 
       expect(insurance, isNotNull);
       expect(insurance, isA<Insurance>());
-      expect(insurance.id, startsWith("ins_"));
+      expect(insurance.id, startsWith(ModelPrefixes.insurance));
       expect(insurance.amount == params.amount, true);
     });
 

@@ -1,6 +1,7 @@
 import 'package:easypost/easypost.dart';
 import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
@@ -23,7 +24,7 @@ void main() {
 
       expect(order, isNotNull);
       expect(order, isA<Order>());
-      expect(order.id, startsWith("order_"));
+      expect(order.id, startsWith(ModelPrefixes.order));
       expect(order.rates, isNotNull);
     });
 

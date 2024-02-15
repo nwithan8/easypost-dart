@@ -1,5 +1,6 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
@@ -22,7 +23,7 @@ void main() {
 
       expect(customsInfo, isNotNull);
       expect(customsInfo, isA<CustomsInfo>());
-      expect(customsInfo.id, startsWith("cstinfo_"));
+      expect(customsInfo.id, startsWith(ModelPrefixes.customsInfo));
       for (CustomsItem item in customsInfo.customsItems!) {
         expect(item, isA<CustomsItem>());
       }

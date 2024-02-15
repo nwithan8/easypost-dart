@@ -1,6 +1,7 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
 import 'package:reflectable/reflectable.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
@@ -23,7 +24,7 @@ void main() {
 
       expect(address, isNotNull);
       expect(address, isA<Address>());
-      expect(address.id, startsWith("adr_"));
+      expect(address.id, startsWith(ModelPrefixes.address));
       expect(address.street1, "388 Townsend St");
     });
 
@@ -39,7 +40,7 @@ void main() {
 
       expect(address, isNotNull);
       expect(address, isA<Address>());
-      expect(address.id, startsWith("adr_"));
+      expect(address.id, startsWith(ModelPrefixes.address));
       expect(address.verifications?.delivery, isNull);
 
       // Creating with verify would make the address and perform verifications
@@ -49,7 +50,7 @@ void main() {
 
       expect(verifiedAddress, isNotNull);
       expect(verifiedAddress, isA<Address>());
-      expect(verifiedAddress.id, startsWith("adr_"));
+      expect(verifiedAddress.id, startsWith(ModelPrefixes.address));
       expect(verifiedAddress.verifications?.delivery, isNotNull);
     });
 
@@ -113,7 +114,7 @@ void main() {
 
       expect(verifiedAddress, isNotNull);
       expect(verifiedAddress, isA<Address>());
-      expect(verifiedAddress.id, startsWith("adr_"));
+      expect(verifiedAddress.id, startsWith(ModelPrefixes.address));
       expect(verifiedAddress.street1, "388 TOWNSEND ST APT 20");
     });
   });

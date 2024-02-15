@@ -1,5 +1,31 @@
 const String webhookSignatureHeader = 'X-Hmac-Signature';
 
+class ModelPrefixes {
+  static const String address = 'adr';
+  static const String batch = 'batch';
+  static const String carrierAccount = 'ca';
+  static const String customsInfo = 'cstinfo';
+  static const String customsItem = 'cstitem';
+  static const String endShipper = 'es';
+  static const String insurance = 'ins';
+  static const String order = 'order';
+  static const String parcel = 'prcl';
+  static const String pickup = 'pickup';
+  static const String rate = 'rate';
+  static const String cashFlowReport = 'cfrep';
+  static const String paymentLogReport = 'plrep';
+  static const String refundReport = 'refrep';
+  static const String shipmentReport = 'shprep';
+  static const String shipmentInvoiceReport = 'shpinvrep';
+  static const String trackerReport = 'trkrep';
+  static const String refund = 'rfnd';
+  static const String scanForm = 'sf';
+  static const String shipment = 'shp';
+  static const String tracker = 'trk';
+  static const String user = 'user';
+  static const String webhook = 'hook';
+}
+
 class ErrorMessages {
   static const String invalidApiKeyType =
       'Invalid API key type.';
