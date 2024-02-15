@@ -44,13 +44,14 @@ abstract class ApiException extends HttpException {
       final body = await response.stream.bytesToString();
       final json = jsonDecode(body);
 
-      dynamic errorMessage = json['error']['message'];
-      if (errorMessage is List) {
+      dynamic msg = json['error']['message'];
+      if (msg is List) {
         // Errors may be an array improperly assigned to the `message` field instead of the `errors` field, concatenate those here
-        errorMessage = errorMessage.join(', ');
+        msg = msg.join(', ');
       }
+      errorMessage = msg;
 
-      errorType = json['error']['type'];
+      errorType = json['error']['code'];
       errors = (json['error']['errors'] as List)
           .map((e) => Error.fromJson(e))
           .toList();

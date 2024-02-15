@@ -8,9 +8,6 @@ part of 'payment_refund.dart';
 
 PaymentRefund _$PaymentRefundFromJson(Map<String, dynamic> json) =>
     PaymentRefund(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['refunded_amount'] as int?,
@@ -28,9 +25,6 @@ Map<String, dynamic> _$PaymentRefundToJson(PaymentRefund instance) =>
     <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'refunded_amount': instance.refundedAmount,
       'refunded_amount_currencys': instance.refundCurrency,
       'refunded_payment_logs': instance.refundedPaymentLogsIds,
