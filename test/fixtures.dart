@@ -93,11 +93,11 @@ class Fixtures {
   static CreatePickup get basicPickup {
     Map<String, dynamic> data = fixtureStructures.pickups.basic;
 
-    const String pickupDate = '2023-01-01';
+    const String pickupDate = '2024-02-21';
     data['min_datetime'] = pickupDate;
     data['max_datetime'] = pickupDate;
 
-    return CreatePickup();
+    return createCreatePickupParameters(data: data);
   }
 
   static CreateShipment get basicShipment {
@@ -109,7 +109,8 @@ class Fixtures {
     CreateShipment parameters = basicShipment;
     Shipment shipment = await client.shipments.create(parameters);
 
-    final rate = await client.shipments.getLowestRateFor(shipment, includeCarriers: ['USPS']);
+    final rate = await client.shipments
+        .getLowestRateFor(shipment, includeCarriers: ['USPS']);
 
     BuyShipment buyShipmentParameters = BuyShipment();
     buyShipmentParameters.rate = rate;
@@ -283,6 +284,25 @@ class Fixtures {
     return parameters;
   }
 
+  static CreatePickup createCreatePickupParameters(
+      {Map<String, dynamic>? data}) {
+    if (data == null) {
+      data = Map<String, dynamic>();
+    }
+
+    CreatePickup parameters = CreatePickup();
+
+    parameters.address =
+        createCreateAddressParameters(data: getOrDefaultMap(data, "address"));
+    parameters.reference = getOrDefaultString(data, "reference");
+    parameters.minDatetime = getOrDefaultDateTime(data, "min_datetime");
+    parameters.maxDatetime = getOrDefaultDateTime(data, "max_datetime");
+    parameters.isAccountAddress = getOrDefaultBool(data, "is_account_address");
+    parameters.instructions = getOrDefaultString(data, "instructions");
+
+    return parameters;
+  }
+
   static CreateCustomsInfo createCreateCustomsInfoParameters(
       {Map<String, dynamic>? data}) {
     if (data == null) {
@@ -344,7 +364,8 @@ class Fixtures {
         data: getOrDefaultMap(data, "from_address"));
 
     parameters.shipments = List<CreateShipment>.empty(growable: true);
-    List<Map<String, dynamic>>? shipmentData = getOrDefaultMapList(data, "shipments");
+    List<Map<String, dynamic>>? shipmentData =
+        getOrDefaultMapList(data, "shipments");
     if (shipmentData != null) {
       for (Map<String, dynamic> item in shipmentData) {
         parameters.shipments?.add(createCreateShipmentParameters(data: item));

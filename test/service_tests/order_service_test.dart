@@ -51,9 +51,10 @@ void main() {
 
       final order = await client.orders.create(params);
 
+      final lowestRate = client.orders.getLowestRateFor(order);
       final buyParams = BuyOrder();
-      buyParams.carrier = Fixtures.usps;
-      buyParams.service = Fixtures.uspsService;
+      buyParams.carrier = lowestRate!.carrier;
+      buyParams.service = lowestRate.service;
 
       final boughtOrder = await client.orders.buy(order.id, buyParams);
 

@@ -1,3 +1,4 @@
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/models/address.dart';
@@ -24,10 +25,10 @@ class CreatePickup extends Parameters implements IPickupParameter {
   @JsonParameter(Necessity.optional, ['pickup', 'is_account_address'])
   bool? isAccountAddress;
 
-  @JsonParameter(Necessity.optional, ['pickup', 'max_datetime'])
+  @JsonParameter(Necessity.optional, ['pickup', 'max_datetime'], toJson: dateTimeToString)
   DateTime? maxDatetime;
 
-  @JsonParameter(Necessity.optional, ['pickup', 'min_datetime'])
+  @JsonParameter(Necessity.optional, ['pickup', 'min_datetime'], toJson: dateTimeToString)
   DateTime? minDatetime;
 
   @JsonParameter(Necessity.optional, ['pickup', 'reference'])
