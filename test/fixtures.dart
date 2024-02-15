@@ -105,6 +105,19 @@ class Fixtures {
     return createCreateShipmentParameters(data: data);
   }
 
+  static RetrieveQuotedRates get retrieveQuotedRatesParameters {
+    RetrieveQuotedRates parameters = RetrieveQuotedRates();
+    parameters.carrierAccountIds = [uspsCarrierAccountId];
+    parameters.fromAddress = basicShipment.fromAddress;
+    parameters.parcel = basicShipment.parcel;
+    parameters.reference = basicShipment.reference;
+    parameters.service = basicShipment.service;
+    parameters.toAddress = basicShipment.toAddress;
+    parameters.options = basicShipment.options;
+
+    return parameters;
+  }
+
   static Future<Shipment> createAndBuyShipment(Client client) async {
     CreateShipment parameters = basicShipment;
     Shipment shipment = await client.shipments.create(parameters);

@@ -12,14 +12,22 @@ class RateService extends Service {
   RateService(Client client) : super(client);
 
   /// Retrieve a list of [Rate]s for a potential [Shipment].
-  Future<List<QuotedRate>?> retrieveRateQuotes(RetrieveQuotedRates parameters) async {
+  Future<List<QuotedRate>?> retrieveRateQuotes(
+      RetrieveQuotedRates parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.post, 'rates', ApiVersion.beta,
         parameters: parameterMap);
-    final shipment = Shipment.fromJson(json);
-    return shipment.rates;
+    final rateData = json['rates'];
+    if (rateData == null) {
+      return null;
+    }
+    final List<QuotedRate> rates = [];
+    for (var rate in rateData) {
+      rates.add(QuotedRate.fromJson(rate));
+    }
+    return rates;
   }
 
   /// Calculates the lowest [Rate].
