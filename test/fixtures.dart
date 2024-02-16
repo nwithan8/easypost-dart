@@ -159,6 +159,18 @@ class Fixtures {
     return fixtureStructures.creditCards.test;
   }
 
+  static AddCreditCard get addCreditCardParams {
+    Map<String, dynamic> data = creditCardDetails;
+    AddCreditCard parameters = AddCreditCard();
+
+    parameters.creditCardNumber = getOrDefaultInt(data, "number");
+    parameters.creditCardExpirationMonth = getOrDefaultInt(data, "expiration_month");
+    parameters.creditCardExpirationYear = getOrDefaultInt(data, "expiration_year");
+    parameters.creditCardCvv = getOrDefaultInt(data, "cvc");
+
+    return parameters;
+  }
+
   static CreateShipment get fullShipment {
     Map<String, dynamic> data = fixtureStructures.shipments.full;
     return CreateShipment();
@@ -213,6 +225,17 @@ class Fixtures {
 
   static String get webhookUrl {
     return fixtureStructures.webhookUrl;
+  }
+
+  static CreateReferralCustomer get createReferralCustomer {
+    Map<String, dynamic> data = referralUser;
+
+    CreateReferralCustomer parameters = CreateReferralCustomer();
+    parameters.name = getOrDefaultString(data, "name");
+    parameters.email = getOrDefaultString(data, "email");
+    parameters.phoneNumber = getOrDefaultString(data, "phone");
+
+    return parameters;
   }
 
   static CreateAddress createCreateAddressParameters(

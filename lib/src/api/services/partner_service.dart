@@ -36,13 +36,27 @@ class PartnerService extends Service {
   }
 
   /// Retrieves a [ReferralCustomer] by its ID.
-  Future<ReferralCustomer> retrieveReferralCustomer(String referralCustomerId) async {
-    final json = await client.requestJson(
-      HttpMethod.get,
-      'referral_customers/$referralCustomerId',
-      ApiVersion.v2,
-    );
-    return ReferralCustomer.fromJson(json);
+  /// WARNING: This method may require multiple requests to retrieve the [ReferralCustomer], and may be slow.
+  Future<ReferralCustomer?> retrieveReferralCustomer(
+      String referralCustomerId) async {
+    bool hasMore = true;
+    final params = ListReferralCustomers();
+    while (hasMore) {
+      ReferralCustomerCollection collection =
+          await listReferralCustomers(parameters: params);
+      for (ReferralCustomer referralCustomer in collection.referralCustomers!) {
+        if (referralCustomer.id == referralCustomerId) {
+          return referralCustomer;
+        }
+      }
+      if (collection.hasMore == true) {
+        params.afterId = collection.referralCustomers!.last.id;
+      } else {
+        return null;
+      }
+    }
+
+    return null;
   }
 
   /// Retrieves all [ReferralCustomer]s.

@@ -18,8 +18,24 @@ class User extends ModelWithId {
   @JsonKey(name: 'children')
   final List<User>? children;
 
+  @JsonKey(
+      name: 'cc_fee_rate', fromJson: stringToDouble, toJson: doubleToString)
+  final double? convenienceFeeRate;
+
   @JsonKey(name: 'email')
   final String? email;
+
+  @JsonKey(
+      name: 'insurance_fee_rate',
+      fromJson: stringToDouble,
+      toJson: doubleToString)
+  final double? insuranceFeeRate;
+
+  @JsonKey(
+      name: 'insurance_fee_minimum',
+      fromJson: stringToMoney,
+      toJson: moneyToString)
+  final double? insuranceFeeMinimum;
 
   @JsonKey(name: 'name')
   final String? name;
@@ -64,7 +80,10 @@ class User extends ModelWithId {
     this.apiKeys,
     this.balance,
     this.children,
+    this.convenienceFeeRate,
     this.email,
+    this.insuranceFeeRate,
+    this.insuranceFeeMinimum,
     this.name,
     this.parentId,
     this.password,

@@ -19,7 +19,10 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       (json['children'] as List<dynamic>?)
           ?.map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
+      stringToDouble(json['cc_fee_rate'] as String?),
       json['email'] as String?,
+      stringToDouble(json['insurance_fee_rate'] as String?),
+      stringToMoney(json['insurance_fee_minimum'] as String?),
       json['name'] as String?,
       json['parent_id'] as String?,
       json['password'] as String?,
@@ -40,7 +43,10 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'api_keys': instance.apiKeys?.map((e) => e.toJson()).toList(),
       'balance': moneyToString(instance.balance),
       'children': instance.children?.map((e) => e.toJson()).toList(),
+      'cc_fee_rate': doubleToString(instance.convenienceFeeRate),
       'email': instance.email,
+      'insurance_fee_rate': doubleToString(instance.insuranceFeeRate),
+      'insurance_fee_minimum': moneyToString(instance.insuranceFeeMinimum),
       'name': instance.name,
       'parent_id': instance.parentId,
       'password': instance.password,

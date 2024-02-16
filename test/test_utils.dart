@@ -21,7 +21,7 @@ String getApiKey(ApiKeyEnum keyType) {
       keyName = "PARTNER_USER_PROD_API_KEY";
       break;
     case ApiKeyEnum.referral:
-      keyName = "REFERRAL_USER_PROD_API_KEY";
+      keyName = "REFERRAL_CUSTOMER_PROD_API_KEY";
       break;
     case ApiKeyEnum.mock:
       keyName =
