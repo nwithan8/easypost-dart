@@ -7,8 +7,6 @@ import 'package:easypost/src/exceptions/pagination_exception.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
 
-import '../internal/conversions.dart';
-
 part 'paginated_collection.g.dart';
 
 /// Superclass for all paginated collections.
@@ -23,6 +21,9 @@ class PaginatedCollection<ListObjectType extends ReadOnlyModelWithId,
   ListParametersType? filters;
 
   PaginatedCollection(objectType, mode, this.hasMore) : super(objectType, mode);
+
+  factory PaginatedCollection.fromJson(Map<String, dynamic> input) =>
+      _$PaginatedCollectionFromJson(input);
 
   @override
   Map<String, dynamic> toJson() => _$PaginatedCollectionToJson(this);

@@ -1,5 +1,4 @@
 import 'package:easypost/src/base/readonly_model.dart';
-import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'tracking_location.g.dart';

@@ -6,7 +6,6 @@ import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/parameters/v2/billing/add_credit_card.dart';
 import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/constants.dart';
 import 'package:easypost/src/enums/payment_method_priority.dart';
 import 'package:easypost/src/exceptions/json/json_deserialization_exception.dart';
 import 'package:easypost/src/exceptions/resource_not_found_exception.dart';

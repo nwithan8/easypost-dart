@@ -4,7 +4,7 @@ import 'package:easypost/src/internal/reflection.dart';
 import 'package:easypost/src/api/parameters/iparameters.dart';
 
 @reflector
-class CreateEndShipper extends Parameters {
+class CreateEndShipper extends Parameters implements IEndShipperParameter {
   @JsonParameter(Necessity.optional, ['address', "carrier_facility"])
   String? carrierFacility;
 

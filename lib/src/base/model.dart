@@ -7,5 +7,8 @@ part 'model.g.dart';
 class Model {
   const Model();
 
+  factory Model.fromJson(Map<String, dynamic> input) =>
+      _$ModelFromJson(input);
+
   Map<String, dynamic> toJson() => _$ModelToJson(this);
 }

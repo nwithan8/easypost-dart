@@ -25,6 +25,9 @@ class ReadOnlyModelWithId extends ReadOnlyModel {
   ReadOnlyModelWithId(this.id, this.createdAt, this.updatedAt, objectType, mode)
       : super(objectType, mode);
 
+  factory ReadOnlyModelWithId.fromJson(Map<String, dynamic> input) =>
+      _$ReadOnlyModelWithIdFromJson(input);
+
   @override
   Map<String, dynamic> toJson() => _$ReadOnlyModelWithIdToJson(this);
 }

@@ -1,3 +1,7 @@
+## 1.0.0 (2024-02-19)
+
+- [CHANGED] Major overhaul of the library to complete all features
+
 ## 0.1.1 (2023-02-10)
 
 - [ADDED] Examples and documentation

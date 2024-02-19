@@ -4,14 +4,14 @@ version: VERSIONADDEDBYGITHUB
 repository: https://github.com/nwithan8/easypost-dart
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: '>=2.18.2 <4.0.0'
 
 dependencies:
   http: ^1.1.2
   http_parser: ^4.0.0
   json_annotation: ^4.8.1
   meta: ^1.3.0
-  reflectable: any
+  reflectable: ^4.0.5
   tuple: ^2.0.1
   intl: ^0.19.0
   crypto: ^3.0.3

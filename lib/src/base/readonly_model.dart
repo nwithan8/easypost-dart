@@ -14,6 +14,9 @@ class ReadOnlyModel extends Model {
 
   const ReadOnlyModel(this.objectType, this.mode);
 
+  factory ReadOnlyModel.fromJson(Map<String, dynamic> input) =>
+      _$ReadOnlyModelFromJson(input);
+
   @override
   Map<String, dynamic> toJson() => _$ReadOnlyModelToJson(this);
 }

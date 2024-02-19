@@ -55,8 +55,6 @@ class PartnerService extends Service {
         return null;
       }
     }
-
-    return null;
   }
 
   /// Retrieves all [ReferralCustomer]s.

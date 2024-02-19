@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/crypto.dart';
 import 'package:intl/intl.dart';
