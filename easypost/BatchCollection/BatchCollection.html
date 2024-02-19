@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">easypost</a></li>
-    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost.dart</a></li>
     <li><a href="../../easypost/BatchCollection-class.html">BatchCollection</a></li>
     <li class="self-crumb">BatchCollection constructor</li>
   </ol>
@@ -40,29 +40,32 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="easypost&#47;BatchCollection-class-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-constructor">BatchCollection</span> constructor 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
-      <span class="name ">BatchCollection</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-id"><span class="type-annotation">dynamic</span> <span class="parameter-name">id</span>, </span></li>
-<li><span class="parameter" id="-param-createdAt"><span class="type-annotation">dynamic</span> <span class="parameter-name">createdAt</span>, </span></li>
-<li><span class="parameter" id="-param-updatedAt"><span class="type-annotation">dynamic</span> <span class="parameter-name">updatedAt</span>, </span></li>
-<li><span class="parameter" id="-param-objectType"><span class="type-annotation">dynamic</span> <span class="parameter-name">objectType</span>, </span></li>
+      <span class="name ">BatchCollection</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-objectType"><span class="type-annotation">dynamic</span> <span class="parameter-name">objectType</span>, </span></li>
 <li><span class="parameter" id="-param-mode"><span class="type-annotation">dynamic</span> <span class="parameter-name">mode</span>, </span></li>
 <li><span class="parameter" id="-param-hasMore"><span class="type-annotation">dynamic</span> <span class="parameter-name">hasMore</span>, </span></li>
-<li><span class="parameter" id="-param-batches"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/Batch-class.html">Batch</a></span>&gt;</span>?</span> <span class="parameter-name">batches</span></span></li>
+<li><span class="parameter" id="-param-batches"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/Batch-class.html">Batch</a></span>&gt;</span>?</span> <span class="parameter-name">batches</span></span></li>
 </ol>)
     </section>
 
@@ -72,64 +75,31 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">BatchCollection(
-    id, createdAt, updatedAt, objectType, mode, hasMore, this.batches)
-    : super(id, createdAt, updatedAt, objectType, mode, hasMore);</code></pre>
+  <pre class="language-dart"><code class="language-dart">BatchCollection(objectType, mode, hasMore, this.batches)
+    : super(objectType, mode, hasMore);</code></pre>
 </section>
 
 
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../../index.html">easypost</a></li>
-  <li><a href="../../easypost/easypost-library.html">easypost</a></li>
-  <li><a href="../../easypost/BatchCollection-class.html">BatchCollection</a></li>
-  <li class="self-crumb">BatchCollection constructor</li>
+    <li><a href="../../index.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/BatchCollection-class.html">BatchCollection</a></li>
+    <li class="self-crumb">BatchCollection constructor</li>
 </ol>
 
 
     <h5>BatchCollection class</h5>
-    <ol>
-
-        <li class="section-title"><a href="../../easypost/BatchCollection-class.html#constructors">Constructors</a></li>
-          <li><a href="../../easypost/BatchCollection/BatchCollection.html">BatchCollection</a></li>
-          <li><a href="../../easypost/BatchCollection/BatchCollection.fromJson.html">fromJson</a></li>
-
-
-        <li class="section-title">
-          <a href="../../easypost/BatchCollection-class.html#instance-properties">Properties</a>
-        </li>
-          <li><a href="../../easypost/BatchCollection/batches.html">batches</a></li>
-          <li class="inherited"><a href="../../easypost/BatchCollection/createdAt.html">createdAt</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li class="inherited"><a href="../../easypost/BatchCollection/hasMore.html">hasMore</a></li>
-          <li class="inherited"><a href="../../easypost/BatchCollection/id.html">id</a></li>
-          <li class="inherited"><a href="../../easypost/BatchCollection/mode.html">mode</a></li>
-          <li class="inherited"><a href="../../easypost/BatchCollection/objectType.html">objectType</a></li>
-          <li class="inherited"><a href="../../easypost/BatchCollection/prefix.html">prefix</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../../easypost/BatchCollection/updatedAt.html">updatedAt</a></li>
-
-        <li class="section-title"><a href="../../easypost/BatchCollection-class.html#instance-methods">Methods</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../../easypost/BatchCollection/toJson.html">toJson</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/toString.html">toString</a></li>
-
-        <li class="section-title inherited"><a href="../../easypost/BatchCollection-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -140,7 +110,7 @@
 <footer>
   <span class="no-break">
     easypost
-      0.1.1
+      1.0.0
   </span>
 
   

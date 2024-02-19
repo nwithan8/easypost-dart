@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">easypost</a></li>
-    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost.dart</a></li>
     <li><a href="../../easypost/TimeInTransit-class.html">TimeInTransit</a></li>
     <li class="self-crumb">TimeInTransit constructor</li>
   </ol>
@@ -40,34 +40,35 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="easypost&#47;TimeInTransit-class-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-constructor">TimeInTransit</span> constructor 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
-      <span class="name ">TimeInTransit</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-id"><span class="type-annotation">dynamic</span> <span class="parameter-name">id</span>, </span></li>
-<li><span class="parameter" id="-param-createdAt"><span class="type-annotation">dynamic</span> <span class="parameter-name">createdAt</span>, </span></li>
-<li><span class="parameter" id="-param-updatedAt"><span class="type-annotation">dynamic</span> <span class="parameter-name">updatedAt</span>, </span></li>
-<li><span class="parameter" id="-param-objectType"><span class="type-annotation">dynamic</span> <span class="parameter-name">objectType</span>, </span></li>
-<li><span class="parameter" id="-param-mode"><span class="type-annotation">dynamic</span> <span class="parameter-name">mode</span>, </span></li>
-<li><span class="parameter" id="-param-percentile50"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile50</span>, </span></li>
-<li><span class="parameter" id="-param-percentile75"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile75</span>, </span></li>
-<li><span class="parameter" id="-param-percentile85"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile85</span>, </span></li>
-<li><span class="parameter" id="-param-percentile90"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile90</span>, </span></li>
-<li><span class="parameter" id="-param-percentile95"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile95</span>, </span></li>
-<li><span class="parameter" id="-param-percentile97"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile97</span>, </span></li>
-<li><span class="parameter" id="-param-percentile99"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile99</span></span></li>
+      <span class="name ">TimeInTransit</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-percentile50"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile50</span>, </span></li>
+<li><span class="parameter" id="-param-percentile75"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile75</span>, </span></li>
+<li><span class="parameter" id="-param-percentile85"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile85</span>, </span></li>
+<li><span class="parameter" id="-param-percentile90"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile90</span>, </span></li>
+<li><span class="parameter" id="-param-percentile95"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile95</span>, </span></li>
+<li><span class="parameter" id="-param-percentile97"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile97</span>, </span></li>
+<li><span class="parameter" id="-param-percentile99"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">percentile99</span></span></li>
 </ol>)
     </section>
 
@@ -78,11 +79,6 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">TimeInTransit(
-  id,
-  createdAt,
-  updatedAt,
-  objectType,
-  mode,
   this.percentile50,
   this.percentile75,
   this.percentile85,
@@ -90,68 +86,30 @@
   this.percentile95,
   this.percentile97,
   this.percentile99,
-) : super(id, createdAt, updatedAt, objectType, mode);</code></pre>
+) : super();</code></pre>
 </section>
 
 
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../../index.html">easypost</a></li>
-  <li><a href="../../easypost/easypost-library.html">easypost</a></li>
-  <li><a href="../../easypost/TimeInTransit-class.html">TimeInTransit</a></li>
-  <li class="self-crumb">TimeInTransit constructor</li>
+    <li><a href="../../index.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/TimeInTransit-class.html">TimeInTransit</a></li>
+    <li class="self-crumb">TimeInTransit constructor</li>
 </ol>
 
 
     <h5>TimeInTransit class</h5>
-    <ol>
-
-        <li class="section-title"><a href="../../easypost/TimeInTransit-class.html#constructors">Constructors</a></li>
-          <li><a href="../../easypost/TimeInTransit/TimeInTransit.html">TimeInTransit</a></li>
-          <li><a href="../../easypost/TimeInTransit/TimeInTransit.fromJson.html">fromJson</a></li>
-
-
-        <li class="section-title">
-          <a href="../../easypost/TimeInTransit-class.html#instance-properties">Properties</a>
-        </li>
-          <li class="inherited"><a href="../../easypost/TimeInTransit/createdAt.html">createdAt</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li class="inherited"><a href="../../easypost/TimeInTransit/id.html">id</a></li>
-          <li class="inherited"><a href="../../easypost/TimeInTransit/mode.html">mode</a></li>
-          <li class="inherited"><a href="../../easypost/TimeInTransit/objectType.html">objectType</a></li>
-          <li><a href="../../easypost/TimeInTransit/percentile50.html">percentile50</a></li>
-          <li><a href="../../easypost/TimeInTransit/percentile75.html">percentile75</a></li>
-          <li><a href="../../easypost/TimeInTransit/percentile85.html">percentile85</a></li>
-          <li><a href="../../easypost/TimeInTransit/percentile90.html">percentile90</a></li>
-          <li><a href="../../easypost/TimeInTransit/percentile95.html">percentile95</a></li>
-          <li><a href="../../easypost/TimeInTransit/percentile97.html">percentile97</a></li>
-          <li><a href="../../easypost/TimeInTransit/percentile99.html">percentile99</a></li>
-          <li class="inherited"><a href="../../easypost/TimeInTransit/prefix.html">prefix</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../../easypost/TimeInTransit/updatedAt.html">updatedAt</a></li>
-
-        <li class="section-title"><a href="../../easypost/TimeInTransit-class.html#instance-methods">Methods</a></li>
-          <li><a href="../../easypost/TimeInTransit/bySmartRateAccuracy.html">bySmartRateAccuracy</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../../easypost/TimeInTransit/toJson.html">toJson</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/toString.html">toString</a></li>
-
-        <li class="section-title inherited"><a href="../../easypost/TimeInTransit-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -162,7 +120,7 @@
 <footer>
   <span class="no-break">
     easypost
-      0.1.1
+      1.0.0
   </span>
 
   

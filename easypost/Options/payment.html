@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">easypost</a></li>
-    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost.dart</a></li>
     <li><a href="../../easypost/Options-class.html">Options</a></li>
     <li class="self-crumb">payment property</li>
   </ol>
@@ -40,30 +40,36 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="easypost&#47;Options-class-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-property">payment</span> property 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
         <section class="multi-line-signature">
           
   <div>
     <ol class="annotation-list">
-        <li>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;payment&#39;)</li>
+        <li>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;payment&#39;)</li>
     </ol>
   </div>
-          <a href="https://api.dart.dev/stable/2.19.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?
+          <a href="../../easypost/PaymentOptions-class.html">PaymentOptions</a>?
           <span class="name ">payment</span>
-          <div class="features"><span class="feature">final</span></div>
+          <div class="features"><span class="feature">getter/setter pair</span></div>
 
         </section>
         
@@ -72,148 +78,30 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@JsonKey(name: &#39;payment&#39;)
-final Map&lt;String, dynamic&gt;? payment;</code></pre>
+late PaymentOptions? payment;</code></pre>
 </section>
 
 
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../../index.html">easypost</a></li>
-  <li><a href="../../easypost/easypost-library.html">easypost</a></li>
-  <li><a href="../../easypost/Options-class.html">Options</a></li>
-  <li class="self-crumb">payment property</li>
+    <li><a href="../../index.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/Options-class.html">Options</a></li>
+    <li class="self-crumb">payment property</li>
 </ol>
 
 
     <h5>Options class</h5>
-    <ol>
-
-        <li class="section-title"><a href="../../easypost/Options-class.html#constructors">Constructors</a></li>
-          <li><a href="../../easypost/Options/Options.html">Options</a></li>
-          <li><a href="../../easypost/Options/Options.fromJson.html">fromJson</a></li>
-
-
-        <li class="section-title">
-          <a href="../../easypost/Options-class.html#instance-properties">Properties</a>
-        </li>
-          <li><a href="../../easypost/Options/additionalHandling.html">additionalHandling</a></li>
-          <li><a href="../../easypost/Options/addressValidationLevel.html">addressValidationLevel</a></li>
-          <li><a href="../../easypost/Options/billingRef.html">billingRef</a></li>
-          <li><a href="../../easypost/Options/billReceiverAmount.html">billReceiverAmount</a></li>
-          <li><a href="../../easypost/Options/billReceiverPostalCode.html">billReceiverPostalCode</a></li>
-          <li><a href="../../easypost/Options/billThirdPartyAccount.html">billThirdPartyAccount</a></li>
-          <li><a href="../../easypost/Options/billThirdPartyCountry.html">billThirdPartyCountry</a></li>
-          <li><a href="../../easypost/Options/billThirdPartyPostalCode.html">billThirdPartyPostalCode</a></li>
-          <li><a href="../../easypost/Options/carrierInsuranceAmount.html">carrierInsuranceAmount</a></li>
-          <li><a href="../../easypost/Options/carrierNotificationEmail.html">carrierNotificationEmail</a></li>
-          <li><a href="../../easypost/Options/carrierNotificationSms.html">carrierNotificationSms</a></li>
-          <li><a href="../../easypost/Options/codAddressId.html">codAddressId</a></li>
-          <li><a href="../../easypost/Options/codAmount.html">codAmount</a></li>
-          <li><a href="../../easypost/Options/codMethod.html">codMethod</a></li>
-          <li><a href="../../easypost/Options/commercialInvoiceFormat.html">commercialInvoiceFormat</a></li>
-          <li><a href="../../easypost/Options/commercialInvoiceLetterhead.html">commercialInvoiceLetterhead</a></li>
-          <li><a href="../../easypost/Options/commercialInvoiceSignature.html">commercialInvoiceSignature</a></li>
-          <li><a href="../../easypost/Options/commercialInvoiceSize.html">commercialInvoiceSize</a></li>
-          <li><a href="../../easypost/Options/costCenter.html">costCenter</a></li>
-          <li class="inherited"><a href="../../easypost/Options/createdAt.html">createdAt</a></li>
-          <li><a href="../../easypost/Options/currency.html">currency</a></li>
-          <li><a href="../../easypost/Options/customsBrokerAddressId.html">customsBrokerAddressId</a></li>
-          <li><a href="../../easypost/Options/customsIncludeShipping.html">customsIncludeShipping</a></li>
-          <li><a href="../../easypost/Options/declaredValue.html">declaredValue</a></li>
-          <li><a href="../../easypost/Options/deliverByDrone.html">deliverByDrone</a></li>
-          <li><a href="../../easypost/Options/deliveredDutyPaid.html">deliveredDutyPaid</a></li>
-          <li><a href="../../easypost/Options/deliveryConfirmation.html">deliveryConfirmation</a></li>
-          <li><a href="../../easypost/Options/deliveryTimePreference.html">deliveryTimePreference</a></li>
-          <li><a href="../../easypost/Options/dropoffMaxDatetime.html">dropoffMaxDatetime</a></li>
-          <li><a href="../../easypost/Options/dropoffType.html">dropoffType</a></li>
-          <li><a href="../../easypost/Options/dryIceWeight.html">dryIceWeight</a></li>
-          <li><a href="../../easypost/Options/dutyPayment.html">dutyPayment</a></li>
-          <li><a href="../../easypost/Options/dutyPaymentAccount.html">dutyPaymentAccount</a></li>
-          <li><a href="../../easypost/Options/enableCarbonNeutral.html">enableCarbonNeutral</a></li>
-          <li><a href="../../easypost/Options/enableNeutralDelivery.html">enableNeutralDelivery</a></li>
-          <li><a href="../../easypost/Options/enableNonContact.html">enableNonContact</a></li>
-          <li><a href="../../easypost/Options/enablePeelAndReturn.html">enablePeelAndReturn</a></li>
-          <li><a href="../../easypost/Options/enableSaturdayDelivery.html">enableSaturdayDelivery</a></li>
-          <li><a href="../../easypost/Options/endorsement.html">endorsement</a></li>
-          <li><a href="../../easypost/Options/endShipperId.html">endShipperId</a></li>
-          <li><a href="../../easypost/Options/freightCharge.html">freightCharge</a></li>
-          <li><a href="../../easypost/Options/group.html">group</a></li>
-          <li><a href="../../easypost/Options/handlingInstructions.html">handlingInstructions</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li><a href="../../easypost/Options/hazmat.html">hazmat</a></li>
-          <li><a href="../../easypost/Options/holdForPickup.html">holdForPickup</a></li>
-          <li class="inherited"><a href="../../easypost/Options/id.html">id</a></li>
-          <li><a href="../../easypost/Options/imageFormat.html">imageFormat</a></li>
-          <li><a href="../../easypost/Options/importerAddressId.html">importerAddressId</a></li>
-          <li><a href="../../easypost/Options/importFederalTaxId.html">importFederalTaxId</a></li>
-          <li><a href="../../easypost/Options/importStateTaxId.html">importStateTaxId</a></li>
-          <li><a href="../../easypost/Options/includePrintCustom1Barcode.html">includePrintCustom1Barcode</a></li>
-          <li><a href="../../easypost/Options/includePrintCustom2Barcode.html">includePrintCustom2Barcode</a></li>
-          <li><a href="../../easypost/Options/includePrintCustom3Barcode.html">includePrintCustom3Barcode</a></li>
-          <li><a href="../../easypost/Options/includePrintRate.html">includePrintRate</a></li>
-          <li><a href="../../easypost/Options/includeReturnReceipt.html">includeReturnReceipt</a></li>
-          <li><a href="../../easypost/Options/incoterm.html">incoterm</a></li>
-          <li><a href="../../easypost/Options/invoiceNumber.html">invoiceNumber</a></li>
-          <li><a href="../../easypost/Options/isAlcohol.html">isAlcohol</a></li>
-          <li><a href="../../easypost/Options/isDryIce.html">isDryIce</a></li>
-          <li><a href="../../easypost/Options/isDryIceMedical.html">isDryIceMedical</a></li>
-          <li><a href="../../easypost/Options/labelDate.html">labelDate</a></li>
-          <li><a href="../../easypost/Options/labelFormat.html">labelFormat</a></li>
-          <li><a href="../../easypost/Options/labelSize.html">labelSize</a></li>
-          <li><a href="../../easypost/Options/licenseNumber.html">licenseNumber</a></li>
-          <li><a href="../../easypost/Options/machinable.html">machinable</a></li>
-          <li class="inherited"><a href="../../easypost/Options/mode.html">mode</a></li>
-          <li class="inherited"><a href="../../easypost/Options/objectType.html">objectType</a></li>
-          <li><a href="../../easypost/Options/overlabelConstructCode.html">overlabelConstructCode</a></li>
-          <li><a href="../../easypost/Options/overlabelConstructTrackingNumber.html">overlabelConstructTrackingNumber</a></li>
-          <li><a href="../../easypost/Options/partiesToTransactionAreRelated.html">partiesToTransactionAreRelated</a></li>
-          <li><a href="../../easypost/Options/payment.html">payment</a></li>
-          <li><a href="../../easypost/Options/pickupMaxDatetime.html">pickupMaxDatetime</a></li>
-          <li><a href="../../easypost/Options/pickupMinDatetime.html">pickupMinDatetime</a></li>
-          <li><a href="../../easypost/Options/poSort.html">poSort</a></li>
-          <li><a href="../../easypost/Options/postageLabelInline.html">postageLabelInline</a></li>
-          <li class="inherited"><a href="../../easypost/Options/prefix.html">prefix</a></li>
-          <li><a href="../../easypost/Options/printCustom.html">printCustom</a></li>
-          <li><a href="../../easypost/Options/printCustom1.html">printCustom1</a></li>
-          <li><a href="../../easypost/Options/printCustom1Code.html">printCustom1Code</a></li>
-          <li><a href="../../easypost/Options/printCustom2.html">printCustom2</a></li>
-          <li><a href="../../easypost/Options/printCustom2Code.html">printCustom2Code</a></li>
-          <li><a href="../../easypost/Options/printCustom3.html">printCustom3</a></li>
-          <li><a href="../../easypost/Options/printCustom3Code.html">printCustom3Code</a></li>
-          <li><a href="../../easypost/Options/receiverLiquorLicense.html">receiverLiquorLicense</a></li>
-          <li><a href="../../easypost/Options/registeredMailAmount.html">registeredMailAmount</a></li>
-          <li><a href="../../easypost/Options/returnService.html">returnService</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li><a href="../../easypost/Options/settlementMethod.html">settlementMethod</a></li>
-          <li><a href="../../easypost/Options/smartpostHub.html">smartpostHub</a></li>
-          <li><a href="../../easypost/Options/smartpostManifest.html">smartpostManifest</a></li>
-          <li><a href="../../easypost/Options/specialRatesEligibility.html">specialRatesEligibility</a></li>
-          <li><a href="../../easypost/Options/suppressEtd.html">suppressEtd</a></li>
-          <li class="inherited"><a href="../../easypost/Options/updatedAt.html">updatedAt</a></li>
-          <li><a href="../../easypost/Options/useCertifiedMail.html">useCertifiedMail</a></li>
-          <li><a href="../../easypost/Options/useRegisteredMail.html">useRegisteredMail</a></li>
-
-        <li class="section-title"><a href="../../easypost/Options-class.html#instance-methods">Methods</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../../easypost/Options/toJson.html">toJson</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/toString.html">toString</a></li>
-
-        <li class="section-title inherited"><a href="../../easypost/Options-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -224,7 +112,7 @@ final Map&lt;String, dynamic&gt;? payment;</code></pre>
 <footer>
   <span class="no-break">
     easypost
-      0.1.1
+      1.0.0
   </span>
 
   

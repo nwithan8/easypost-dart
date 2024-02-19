@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">easypost</a></li>
-    <li><a href="../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../easypost/easypost-library.html">easypost.dart</a></li>
     <li class="self-crumb">Options class</li>
   </ol>
   <div class="self-name">Options</div>
@@ -39,18 +39,24 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="easypost&#47;easypost-library-sidebar.html"
+      data-below-sidebar="easypost&#47;Options-class-sidebar.html">
       <div>
 <h1><span class="kind-class">Options</span> class 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
 
@@ -70,7 +76,7 @@
   <dt>Annotations</dt>
   <dd>
     <ul class="annotation-list clazz-relationships">
-        <li>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonSerializable-class.html">JsonSerializable</a>(explicitToJson: true)</li>
+        <li>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonSerializable-class.html">JsonSerializable</a>(explicitToJson: true, includeIfNull: false)</li>
     </ul>
   </dd>
 
@@ -84,13 +90,13 @@
 
     <dl class="constructor-summary-list">
         <dt id="Options" class="callable">
-          <span class="name"><a href="../easypost/Options/Options.html">Options</a></span><span class="signature">(<span class="parameter" id="-param-id"><span class="type-annotation">dynamic</span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-createdAt"><span class="type-annotation">dynamic</span> <span class="parameter-name">createdAt</span>, </span><span class="parameter" id="-param-updatedAt"><span class="type-annotation">dynamic</span> <span class="parameter-name">updatedAt</span>, </span><span class="parameter" id="-param-objectType"><span class="type-annotation">dynamic</span> <span class="parameter-name">objectType</span>, </span><span class="parameter" id="-param-mode"><span class="type-annotation">dynamic</span> <span class="parameter-name">mode</span>, </span><span class="parameter" id="-param-additionalHandling"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">additionalHandling</span>, </span><span class="parameter" id="-param-addressValidationLevel"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">addressValidationLevel</span>, </span><span class="parameter" id="-param-isAlcohol"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isAlcohol</span>, </span><span class="parameter" id="-param-billingRef"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">billingRef</span>, </span><span class="parameter" id="-param-billReceiverAmount"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">billReceiverAmount</span>, </span><span class="parameter" id="-param-billReceiverPostalCode"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">billReceiverPostalCode</span>, </span><span class="parameter" id="-param-billThirdPartyAccount"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">billThirdPartyAccount</span>, </span><span class="parameter" id="-param-billThirdPartyCountry"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">billThirdPartyCountry</span>, </span><span class="parameter" id="-param-billThirdPartyPostalCode"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">billThirdPartyPostalCode</span>, </span><span class="parameter" id="-param-deliverByDrone"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">deliverByDrone</span>, </span><span class="parameter" id="-param-enableCarbonNeutral"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableCarbonNeutral</span>, </span><span class="parameter" id="-param-carrierInsuranceAmount"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">carrierInsuranceAmount</span>, </span><span class="parameter" id="-param-carrierNotificationEmail"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">carrierNotificationEmail</span>, </span><span class="parameter" id="-param-carrierNotificationSms"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">carrierNotificationSms</span>, </span><span class="parameter" id="-param-useCertifiedMail"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">useCertifiedMail</span>, </span><span class="parameter" id="-param-codAddressId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">codAddressId</span>, </span><span class="parameter" id="-param-codAmount"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">codAmount</span>, </span><span class="parameter" id="-param-codMethod"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">codMethod</span>, </span><span class="parameter" id="-param-commercialInvoiceFormat"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">commercialInvoiceFormat</span>, </span><span class="parameter" id="-param-commercialInvoiceLetterhead"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">commercialInvoiceLetterhead</span>, </span><span class="parameter" id="-param-commercialInvoiceSignature"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">commercialInvoiceSignature</span>, </span><span class="parameter" id="-param-commercialInvoiceSize"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">commercialInvoiceSize</span>, </span><span class="parameter" id="-param-costCenter"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">costCenter</span>, </span><span class="parameter" id="-param-currency"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">currency</span>, </span><span class="parameter" id="-param-customsBrokerAddressId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">customsBrokerAddressId</span>, </span><span class="parameter" id="-param-customsIncludeShipping"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">customsIncludeShipping</span>, </span><span class="parameter" id="-param-declaredValue"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">declaredValue</span>, </span><span class="parameter" id="-param-deliveredDutyPaid"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">deliveredDutyPaid</span>, </span><span class="parameter" id="-param-deliveryConfirmation"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">deliveryConfirmation</span>, </span><span class="parameter" id="-param-deliveryTimePreference"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">deliveryTimePreference</span>, </span><span class="parameter" id="-param-dropoffMaxDatetime"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">dropoffMaxDatetime</span>, </span><span class="parameter" id="-param-dropoffType"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">dropoffType</span>, </span><span class="parameter" id="-param-isDryIce"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isDryIce</span>, </span><span class="parameter" id="-param-isDryIceMedical"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isDryIceMedical</span>, </span><span class="parameter" id="-param-dryIceWeight"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">dryIceWeight</span>, </span><span class="parameter" id="-param-dutyPayment"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">dutyPayment</span>, </span><span class="parameter" id="-param-dutyPaymentAccount"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">dutyPaymentAccount</span>, </span><span class="parameter" id="-param-endorsement"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">endorsement</span>, </span><span class="parameter" id="-param-endShipperId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">endShipperId</span>, </span><span class="parameter" id="-param-freightCharge"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">freightCharge</span>, </span><span class="parameter" id="-param-group"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">group</span>, </span><span class="parameter" id="-param-handlingInstructions"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">handlingInstructions</span>, </span><span class="parameter" id="-param-hazmat"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">hazmat</span>, </span><span class="parameter" id="-param-holdForPickup"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">holdForPickup</span>, </span><span class="parameter" id="-param-imageFormat"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">imageFormat</span>, </span><span class="parameter" id="-param-importerAddressId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">importerAddressId</span>, </span><span class="parameter" id="-param-importFederalTaxId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">importFederalTaxId</span>, </span><span class="parameter" id="-param-importStateTaxId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">importStateTaxId</span>, </span><span class="parameter" id="-param-incoterm"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">incoterm</span>, </span><span class="parameter" id="-param-invoiceNumber"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">invoiceNumber</span>, </span><span class="parameter" id="-param-labelDate"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">labelDate</span>, </span><span class="parameter" id="-param-labelFormat"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">labelFormat</span>, </span><span class="parameter" id="-param-labelSize"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">labelSize</span>, </span><span class="parameter" id="-param-licenseNumber"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">licenseNumber</span>, </span><span class="parameter" id="-param-machinable"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">machinable</span>, </span><span class="parameter" id="-param-enableNeutralDelivery"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableNeutralDelivery</span>, </span><span class="parameter" id="-param-enableNonContact"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableNonContact</span>, </span><span class="parameter" id="-param-overlabelConstructCode"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">overlabelConstructCode</span>, </span><span class="parameter" id="-param-overlabelConstructTrackingNumber"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">overlabelConstructTrackingNumber</span>, </span><span class="parameter" id="-param-partiesToTransactionAreRelated"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">partiesToTransactionAreRelated</span>, </span><span class="parameter" id="-param-payment"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">payment</span>, </span><span class="parameter" id="-param-enablePeelAndReturn"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enablePeelAndReturn</span>, </span><span class="parameter" id="-param-pickupMaxDatetime"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">pickupMaxDatetime</span>, </span><span class="parameter" id="-param-pickupMinDatetime"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">pickupMinDatetime</span>, </span><span class="parameter" id="-param-poSort"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">poSort</span>, </span><span class="parameter" id="-param-postageLabelInline"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">postageLabelInline</span>, </span><span class="parameter" id="-param-printCustom"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">printCustom</span>, </span><span class="parameter" id="-param-printCustom1"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">printCustom1</span>, </span><span class="parameter" id="-param-includePrintCustom1Barcode"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includePrintCustom1Barcode</span>, </span><span class="parameter" id="-param-printCustom1Code"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">printCustom1Code</span>, </span><span class="parameter" id="-param-printCustom2"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">printCustom2</span>, </span><span class="parameter" id="-param-includePrintCustom2Barcode"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includePrintCustom2Barcode</span>, </span><span class="parameter" id="-param-printCustom2Code"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">printCustom2Code</span>, </span><span class="parameter" id="-param-printCustom3"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">printCustom3</span>, </span><span class="parameter" id="-param-includePrintCustom3Barcode"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includePrintCustom3Barcode</span>, </span><span class="parameter" id="-param-printCustom3Code"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">printCustom3Code</span>, </span><span class="parameter" id="-param-includePrintRate"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includePrintRate</span>, </span><span class="parameter" id="-param-receiverLiquorLicense"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">receiverLiquorLicense</span>, </span><span class="parameter" id="-param-useRegisteredMail"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">useRegisteredMail</span>, </span><span class="parameter" id="-param-registeredMailAmount"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">registeredMailAmount</span>, </span><span class="parameter" id="-param-includeReturnReceipt"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeReturnReceipt</span>, </span><span class="parameter" id="-param-returnService"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">returnService</span>, </span><span class="parameter" id="-param-enableSaturdayDelivery"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableSaturdayDelivery</span>, </span><span class="parameter" id="-param-settlementMethod"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">settlementMethod</span>, </span><span class="parameter" id="-param-smartpostHub"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">smartpostHub</span>, </span><span class="parameter" id="-param-smartpostManifest"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">smartpostManifest</span>, </span><span class="parameter" id="-param-specialRatesEligibility"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">specialRatesEligibility</span>, </span><span class="parameter" id="-param-suppressEtd"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">suppressEtd</span></span>)</span>
+          <span class="name"><a href="../easypost/Options/Options.html">Options</a></span><span class="signature">(<span class="parameter" id="-param-additionalHandling">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">additionalHandling</span>, </span><span class="parameter" id="-param-addressValidationLevel"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">addressValidationLevel</span>, </span><span class="parameter" id="-param-isAlcohol"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isAlcohol</span>, </span><span class="parameter" id="-param-billingRef"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">billingRef</span>, </span><span class="parameter" id="-param-deliverByDrone"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">deliverByDrone</span>, </span><span class="parameter" id="-param-carrierInsuranceAmount"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">carrierInsuranceAmount</span>, </span><span class="parameter" id="-param-carrierNotificationEmail"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">carrierNotificationEmail</span>, </span><span class="parameter" id="-param-carrierNotificationSms"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">carrierNotificationSms</span>, </span><span class="parameter" id="-param-useCertifiedMail"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">useCertifiedMail</span>, </span><span class="parameter" id="-param-codAddressId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">codAddressId</span>, </span><span class="parameter" id="-param-codAmount"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">codAmount</span>, </span><span class="parameter" id="-param-codMethod"><span class="type-annotation"><a href="../easypost/CodMethod-class.html">CodMethod</a>?</span> <span class="parameter-name">codMethod</span>, </span><span class="parameter" id="-param-commercialInvoiceFormat"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">commercialInvoiceFormat</span>, </span><span class="parameter" id="-param-commercialInvoiceLetterhead"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">commercialInvoiceLetterhead</span>, </span><span class="parameter" id="-param-commercialInvoiceSignature"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">commercialInvoiceSignature</span>, </span><span class="parameter" id="-param-commercialInvoiceSize"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">commercialInvoiceSize</span>, </span><span class="parameter" id="-param-costCenter"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">costCenter</span>, </span><span class="parameter" id="-param-currency"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">currency</span>, </span><span class="parameter" id="-param-customsBrokerAddressId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">customsBrokerAddressId</span>, </span><span class="parameter" id="-param-customsIncludeShipping"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">customsIncludeShipping</span>, </span><span class="parameter" id="-param-declaredValue"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">declaredValue</span>, </span><span class="parameter" id="-param-deliveredDutyPaid"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">deliveredDutyPaid</span>, </span><span class="parameter" id="-param-deliveryConfirmation"><span class="type-annotation"><a href="../easypost/DeliveryConfirmation-class.html">DeliveryConfirmation</a>?</span> <span class="parameter-name">deliveryConfirmation</span>, </span><span class="parameter" id="-param-deliveryTimePreference"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">deliveryTimePreference</span>, </span><span class="parameter" id="-param-dropoffMaxDatetime"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">dropoffMaxDatetime</span>, </span><span class="parameter" id="-param-dropoffType"><span class="type-annotation"><a href="../easypost/DropOffType-class.html">DropOffType</a>?</span> <span class="parameter-name">dropoffType</span>, </span><span class="parameter" id="-param-isDryIce"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isDryIce</span>, </span><span class="parameter" id="-param-isDryIceMedical"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isDryIceMedical</span>, </span><span class="parameter" id="-param-dryIceWeight"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">dryIceWeight</span>, </span><span class="parameter" id="-param-dutyPayment"><span class="type-annotation"><a href="../easypost/PaymentOptions-class.html">PaymentOptions</a>?</span> <span class="parameter-name">dutyPayment</span>, </span><span class="parameter" id="-param-dutyPaymentAccount"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">dutyPaymentAccount</span>, </span><span class="parameter" id="-param-endorsement"><span class="type-annotation"><a href="../easypost/Endorsement-class.html">Endorsement</a>?</span> <span class="parameter-name">endorsement</span>, </span><span class="parameter" id="-param-endShipperId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">endShipperId</span>, </span><span class="parameter" id="-param-freightCharge"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">freightCharge</span>, </span><span class="parameter" id="-param-group"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">group</span>, </span><span class="parameter" id="-param-handlingInstructions"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">handlingInstructions</span>, </span><span class="parameter" id="-param-hazmat"><span class="type-annotation"><a href="../easypost/HazmatType-class.html">HazmatType</a>?</span> <span class="parameter-name">hazmat</span>, </span><span class="parameter" id="-param-holdForPickup"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">holdForPickup</span>, </span><span class="parameter" id="-param-imageFormat"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">imageFormat</span>, </span><span class="parameter" id="-param-importerAddressId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">importerAddressId</span>, </span><span class="parameter" id="-param-importFederalTaxId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">importFederalTaxId</span>, </span><span class="parameter" id="-param-importStateTaxId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">importStateTaxId</span>, </span><span class="parameter" id="-param-incoterm"><span class="type-annotation"><a href="../easypost/IncotermType-class.html">IncotermType</a>?</span> <span class="parameter-name">incoterm</span>, </span><span class="parameter" id="-param-invoiceNumber"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">invoiceNumber</span>, </span><span class="parameter" id="-param-labelDate"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">labelDate</span>, </span><span class="parameter" id="-param-labelFormat"><span class="type-annotation"><a href="../easypost/LabelFormat-class.html">LabelFormat</a>?</span> <span class="parameter-name">labelFormat</span>, </span><span class="parameter" id="-param-labelSize"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">labelSize</span>, </span><span class="parameter" id="-param-licenseNumber"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">licenseNumber</span>, </span><span class="parameter" id="-param-machinable"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">machinable</span>, </span><span class="parameter" id="-param-enableNeutralDelivery"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableNeutralDelivery</span>, </span><span class="parameter" id="-param-enableNonContact"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableNonContact</span>, </span><span class="parameter" id="-param-overlabelConstructCode"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">overlabelConstructCode</span>, </span><span class="parameter" id="-param-overlabelConstructTrackingNumber"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">overlabelConstructTrackingNumber</span>, </span><span class="parameter" id="-param-partiesToTransactionAreRelated"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">partiesToTransactionAreRelated</span>, </span><span class="parameter" id="-param-payment"><span class="type-annotation"><a href="../easypost/PaymentOptions-class.html">PaymentOptions</a>?</span> <span class="parameter-name">payment</span>, </span><span class="parameter" id="-param-enablePeelAndReturn"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enablePeelAndReturn</span>, </span><span class="parameter" id="-param-pickupMaxDatetime"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">pickupMaxDatetime</span>, </span><span class="parameter" id="-param-pickupMinDatetime"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">pickupMinDatetime</span>, </span><span class="parameter" id="-param-poSort"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">poSort</span>, </span><span class="parameter" id="-param-postageLabelInline"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">postageLabelInline</span>, </span><span class="parameter" id="-param-printCustom"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>&gt;</span>?</span> <span class="parameter-name">printCustom</span>, </span><span class="parameter" id="-param-printCustomMessage1"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">printCustomMessage1</span>, </span><span class="parameter" id="-param-includePrintCustomBarcode1"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includePrintCustomBarcode1</span>, </span><span class="parameter" id="-param-printCustomCode1"><span class="type-annotation"><a href="../easypost/PrintCustomCode-class.html">PrintCustomCode</a>?</span> <span class="parameter-name">printCustomCode1</span>, </span><span class="parameter" id="-param-printCustomMessage2"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">printCustomMessage2</span>, </span><span class="parameter" id="-param-includePrintCustomBarcode2"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includePrintCustomBarcode2</span>, </span><span class="parameter" id="-param-printCustomCode2"><span class="type-annotation"><a href="../easypost/PrintCustomCode-class.html">PrintCustomCode</a>?</span> <span class="parameter-name">printCustomCode2</span>, </span><span class="parameter" id="-param-printCustomMessage3"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">printCustomMessage3</span>, </span><span class="parameter" id="-param-includePrintCustomBarcode3"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includePrintCustomBarcode3</span>, </span><span class="parameter" id="-param-printCustomCode3"><span class="type-annotation"><a href="../easypost/PrintCustomCode-class.html">PrintCustomCode</a>?</span> <span class="parameter-name">printCustomCode3</span>, </span><span class="parameter" id="-param-includePrintRate"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includePrintRate</span>, </span><span class="parameter" id="-param-receiverLiquorLicense"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">receiverLiquorLicense</span>, </span><span class="parameter" id="-param-useRegisteredMail"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">useRegisteredMail</span>, </span><span class="parameter" id="-param-registeredMailAmount"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">registeredMailAmount</span>, </span><span class="parameter" id="-param-includeReturnReceipt"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeReturnReceipt</span>, </span><span class="parameter" id="-param-returnService"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">returnService</span>, </span><span class="parameter" id="-param-enableSaturdayDelivery"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableSaturdayDelivery</span>, </span><span class="parameter" id="-param-settlementMethod"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">settlementMethod</span>, </span><span class="parameter" id="-param-smartpostHub"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">smartpostHub</span>, </span><span class="parameter" id="-param-smartpostManifest"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">smartpostManifest</span>, </span><span class="parameter" id="-param-specialRatesEligibility"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">specialRatesEligibility</span>, </span><span class="parameter" id="-param-suppressEtd"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">suppressEtd</span>, </span><span class="parameter" id="-param-taxIdExpirationDate"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">taxIdExpirationDate</span>}</span>)</span>
         </dt>
         <dd>
           
         </dd>
         <dt id="Options.fromJson" class="callable">
-          <span class="name"><a href="../easypost/Options/Options.fromJson.html">Options.fromJson</a></span><span class="signature">(<span class="parameter" id="fromJson-param-input"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">input</span></span>)</span>
+          <span class="name"><a href="../easypost/Options/Options.fromJson.html">Options.fromJson</a></span><span class="signature">(<span class="parameter" id="fromJson-param-input"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">input</span></span>)</span>
         </dt>
         <dd>
           
@@ -105,1057 +111,969 @@
       <dl class="properties">
         <dt id="additionalHandling" class="property">
   <span class="name"><a href="../easypost/Options/additionalHandling.html">additionalHandling</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="addressValidationLevel" class="property">
   <span class="name"><a href="../easypost/Options/addressValidationLevel.html">addressValidationLevel</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="billingRef" class="property">
   <span class="name"><a href="../easypost/Options/billingRef.html">billingRef</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="billReceiverAmount" class="property">
-  <span class="name"><a href="../easypost/Options/billReceiverAmount.html">billReceiverAmount</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
-
-</dt>
-<dd>
-  
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="billReceiverPostalCode" class="property">
-  <span class="name"><a href="../easypost/Options/billReceiverPostalCode.html">billReceiverPostalCode</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
-
-</dt>
-<dd>
-  
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="billThirdPartyAccount" class="property">
-  <span class="name"><a href="../easypost/Options/billThirdPartyAccount.html">billThirdPartyAccount</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
-
-</dt>
-<dd>
-  
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="billThirdPartyCountry" class="property">
-  <span class="name"><a href="../easypost/Options/billThirdPartyCountry.html">billThirdPartyCountry</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
-
-</dt>
-<dd>
-  
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="billThirdPartyPostalCode" class="property">
-  <span class="name"><a href="../easypost/Options/billThirdPartyPostalCode.html">billThirdPartyPostalCode</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
-
-</dt>
-<dd>
-  
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="carrierInsuranceAmount" class="property">
   <span class="name"><a href="../easypost/Options/carrierInsuranceAmount.html">carrierInsuranceAmount</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="carrierNotificationEmail" class="property">
   <span class="name"><a href="../easypost/Options/carrierNotificationEmail.html">carrierNotificationEmail</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="carrierNotificationSms" class="property">
   <span class="name"><a href="../easypost/Options/carrierNotificationSms.html">carrierNotificationSms</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="codAddressId" class="property">
   <span class="name"><a href="../easypost/Options/codAddressId.html">codAddressId</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="codAmount" class="property">
   <span class="name"><a href="../easypost/Options/codAmount.html">codAmount</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="codMethod" class="property">
   <span class="name"><a href="../easypost/Options/codMethod.html">codMethod</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="../easypost/CodMethod-class.html">CodMethod</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="commercialInvoiceFormat" class="property">
   <span class="name"><a href="../easypost/Options/commercialInvoiceFormat.html">commercialInvoiceFormat</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="commercialInvoiceLetterhead" class="property">
   <span class="name"><a href="../easypost/Options/commercialInvoiceLetterhead.html">commercialInvoiceLetterhead</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="commercialInvoiceSignature" class="property">
   <span class="name"><a href="../easypost/Options/commercialInvoiceSignature.html">commercialInvoiceSignature</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="commercialInvoiceSize" class="property">
   <span class="name"><a href="../easypost/Options/commercialInvoiceSize.html">commercialInvoiceSize</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="contentDescription" class="property">
+  <span class="name"><a href="../easypost/Options/contentDescription.html">contentDescription</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="costCenter" class="property">
   <span class="name"><a href="../easypost/Options/costCenter.html">costCenter</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="createdAt" class="property inherited">
-  <span class="name"><a href="../easypost/Options/createdAt.html">createdAt</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> 
-
-</dt>
-<dd class="inherited">
-  
-  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="currency" class="property">
   <span class="name"><a href="../easypost/Options/currency.html">currency</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="customsBrokerAddressId" class="property">
   <span class="name"><a href="../easypost/Options/customsBrokerAddressId.html">customsBrokerAddressId</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="customsIncludeShipping" class="property">
   <span class="name"><a href="../easypost/Options/customsIncludeShipping.html">customsIncludeShipping</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="declaredValue" class="property">
   <span class="name"><a href="../easypost/Options/declaredValue.html">declaredValue</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="deliverByDrone" class="property">
   <span class="name"><a href="../easypost/Options/deliverByDrone.html">deliverByDrone</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="deliveredDutyPaid" class="property">
   <span class="name"><a href="../easypost/Options/deliveredDutyPaid.html">deliveredDutyPaid</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="deliveryConfirmation" class="property">
   <span class="name"><a href="../easypost/Options/deliveryConfirmation.html">deliveryConfirmation</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="../easypost/DeliveryConfirmation-class.html">DeliveryConfirmation</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="deliveryMaxDatetime" class="property">
+  <span class="name"><a href="../easypost/Options/deliveryMaxDatetime.html">deliveryMaxDatetime</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="deliveryMinDatetime" class="property">
+  <span class="name"><a href="../easypost/Options/deliveryMinDatetime.html">deliveryMinDatetime</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="deliveryTimePreference" class="property">
   <span class="name"><a href="../easypost/Options/deliveryTimePreference.html">deliveryTimePreference</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="dropoffMaxDatetime" class="property">
   <span class="name"><a href="../easypost/Options/dropoffMaxDatetime.html">dropoffMaxDatetime</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="dropoffType" class="property">
   <span class="name"><a href="../easypost/Options/dropoffType.html">dropoffType</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="../easypost/DropOffType-class.html">DropOffType</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="dryIceWeight" class="property">
   <span class="name"><a href="../easypost/Options/dryIceWeight.html">dryIceWeight</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="dutyPayment" class="property">
   <span class="name"><a href="../easypost/Options/dutyPayment.html">dutyPayment</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> 
+  <span class="signature">&#8596; <a href="../easypost/PaymentOptions-class.html">PaymentOptions</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="dutyPaymentAccount" class="property">
   <span class="name"><a href="../easypost/Options/dutyPaymentAccount.html">dutyPaymentAccount</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="enableCarbonNeutral" class="property">
-  <span class="name"><a href="../easypost/Options/enableCarbonNeutral.html">enableCarbonNeutral</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
-
-</dt>
-<dd>
-  
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="enableNeutralDelivery" class="property">
   <span class="name"><a href="../easypost/Options/enableNeutralDelivery.html">enableNeutralDelivery</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="enableNonContact" class="property">
   <span class="name"><a href="../easypost/Options/enableNonContact.html">enableNonContact</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="enablePeelAndReturn" class="property">
   <span class="name"><a href="../easypost/Options/enablePeelAndReturn.html">enablePeelAndReturn</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="enableSaturdayDelivery" class="property">
   <span class="name"><a href="../easypost/Options/enableSaturdayDelivery.html">enableSaturdayDelivery</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="endorsement" class="property">
   <span class="name"><a href="../easypost/Options/endorsement.html">endorsement</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="../easypost/Endorsement-class.html">Endorsement</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="endShipperId" class="property">
   <span class="name"><a href="../easypost/Options/endShipperId.html">endShipperId</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="freightCharge" class="property">
   <span class="name"><a href="../easypost/Options/freightCharge.html">freightCharge</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="group" class="property">
   <span class="name"><a href="../easypost/Options/group.html">group</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="handlingInstructions" class="property">
   <span class="name"><a href="../easypost/Options/handlingInstructions.html">handlingInstructions</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="hashCode" class="property inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/hashCode.html">hashCode</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/int-class.html">int</a></span> 
+  <span class="name"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.3.0/dart-core/int-class.html">int</a></span> 
 
 </dt>
 <dd class="inherited">
   The hash code for this object.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="hazmat" class="property">
   <span class="name"><a href="../easypost/Options/hazmat.html">hazmat</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="../easypost/HazmatType-class.html">HazmatType</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="holdForPickup" class="property">
   <span class="name"><a href="../easypost/Options/holdForPickup.html">holdForPickup</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="id" class="property inherited">
-  <span class="name"><a href="../easypost/Options/id.html">id</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
-
-</dt>
-<dd class="inherited">
-  
-  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="imageFormat" class="property">
   <span class="name"><a href="../easypost/Options/imageFormat.html">imageFormat</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="importerAddressId" class="property">
   <span class="name"><a href="../easypost/Options/importerAddressId.html">importerAddressId</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="importFederalTaxId" class="property">
   <span class="name"><a href="../easypost/Options/importFederalTaxId.html">importFederalTaxId</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="importStateTaxId" class="property">
   <span class="name"><a href="../easypost/Options/importStateTaxId.html">importStateTaxId</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="includePrintCustom1Barcode" class="property">
-  <span class="name"><a href="../easypost/Options/includePrintCustom1Barcode.html">includePrintCustom1Barcode</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+        <dt id="includePrintCustomBarcode1" class="property">
+  <span class="name"><a href="../easypost/Options/includePrintCustomBarcode1.html">includePrintCustomBarcode1</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="includePrintCustom2Barcode" class="property">
-  <span class="name"><a href="../easypost/Options/includePrintCustom2Barcode.html">includePrintCustom2Barcode</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+        <dt id="includePrintCustomBarcode2" class="property">
+  <span class="name"><a href="../easypost/Options/includePrintCustomBarcode2.html">includePrintCustomBarcode2</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="includePrintCustom3Barcode" class="property">
-  <span class="name"><a href="../easypost/Options/includePrintCustom3Barcode.html">includePrintCustom3Barcode</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+        <dt id="includePrintCustomBarcode3" class="property">
+  <span class="name"><a href="../easypost/Options/includePrintCustomBarcode3.html">includePrintCustomBarcode3</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="includePrintRate" class="property">
   <span class="name"><a href="../easypost/Options/includePrintRate.html">includePrintRate</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="includeReturnReceipt" class="property">
   <span class="name"><a href="../easypost/Options/includeReturnReceipt.html">includeReturnReceipt</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="incoterm" class="property">
   <span class="name"><a href="../easypost/Options/incoterm.html">incoterm</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="../easypost/IncotermType-class.html">IncotermType</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="invoiceNumber" class="property">
   <span class="name"><a href="../easypost/Options/invoiceNumber.html">invoiceNumber</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="isAlcohol" class="property">
   <span class="name"><a href="../easypost/Options/isAlcohol.html">isAlcohol</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="isDryIce" class="property">
   <span class="name"><a href="../easypost/Options/isDryIce.html">isDryIce</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="isDryIceMedical" class="property">
   <span class="name"><a href="../easypost/Options/isDryIceMedical.html">isDryIceMedical</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="labelDate" class="property">
   <span class="name"><a href="../easypost/Options/labelDate.html">labelDate</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="labelFormat" class="property">
   <span class="name"><a href="../easypost/Options/labelFormat.html">labelFormat</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="../easypost/LabelFormat-class.html">LabelFormat</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="labelSize" class="property">
   <span class="name"><a href="../easypost/Options/labelSize.html">labelSize</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="licenseNumber" class="property">
   <span class="name"><a href="../easypost/Options/licenseNumber.html">licenseNumber</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="machinable" class="property">
   <span class="name"><a href="../easypost/Options/machinable.html">machinable</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="mode" class="property inherited">
-  <span class="name"><a href="../easypost/Options/mode.html">mode</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
-
-</dt>
-<dd class="inherited">
-  
-  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="objectType" class="property inherited">
-  <span class="name"><a href="../easypost/Options/objectType.html">objectType</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
-
-</dt>
-<dd class="inherited">
-  
-  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="overlabelConstructCode" class="property">
   <span class="name"><a href="../easypost/Options/overlabelConstructCode.html">overlabelConstructCode</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="overlabelConstructTrackingNumber" class="property">
   <span class="name"><a href="../easypost/Options/overlabelConstructTrackingNumber.html">overlabelConstructTrackingNumber</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="partiesToTransactionAreRelated" class="property">
   <span class="name"><a href="../easypost/Options/partiesToTransactionAreRelated.html">partiesToTransactionAreRelated</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="payment" class="property">
   <span class="name"><a href="../easypost/Options/payment.html">payment</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> 
+  <span class="signature">&#8596; <a href="../easypost/PaymentOptions-class.html">PaymentOptions</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="pickupMaxDatetime" class="property">
   <span class="name"><a href="../easypost/Options/pickupMaxDatetime.html">pickupMaxDatetime</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="pickupMinDatetime" class="property">
   <span class="name"><a href="../easypost/Options/pickupMinDatetime.html">pickupMinDatetime</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="poSort" class="property">
   <span class="name"><a href="../easypost/Options/poSort.html">poSort</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="postageLabelInline" class="property">
   <span class="name"><a href="../easypost/Options/postageLabelInline.html">postageLabelInline</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="prefix" class="property inherited">
-  <span class="name"><a href="../easypost/Options/prefix.html">prefix</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
-
-</dt>
-<dd class="inherited">
-  
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="printCustom" class="property">
   <span class="name"><a href="../easypost/Options/printCustom.html">printCustom</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>&gt;</span></span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>&gt;</span>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="printCustom1" class="property">
-  <span class="name"><a href="../easypost/Options/printCustom1.html">printCustom1</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+        <dt id="printCustomCode1" class="property">
+  <span class="name"><a href="../easypost/Options/printCustomCode1.html">printCustomCode1</a></span>
+  <span class="signature">&#8596; <a href="../easypost/PrintCustomCode-class.html">PrintCustomCode</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="printCustom1Code" class="property">
-  <span class="name"><a href="../easypost/Options/printCustom1Code.html">printCustom1Code</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+        <dt id="printCustomCode2" class="property">
+  <span class="name"><a href="../easypost/Options/printCustomCode2.html">printCustomCode2</a></span>
+  <span class="signature">&#8596; <a href="../easypost/PrintCustomCode-class.html">PrintCustomCode</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="printCustom2" class="property">
-  <span class="name"><a href="../easypost/Options/printCustom2.html">printCustom2</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+        <dt id="printCustomCode3" class="property">
+  <span class="name"><a href="../easypost/Options/printCustomCode3.html">printCustomCode3</a></span>
+  <span class="signature">&#8596; <a href="../easypost/PrintCustomCode-class.html">PrintCustomCode</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="printCustom2Code" class="property">
-  <span class="name"><a href="../easypost/Options/printCustom2Code.html">printCustom2Code</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+        <dt id="printCustomMessage1" class="property">
+  <span class="name"><a href="../easypost/Options/printCustomMessage1.html">printCustomMessage1</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="printCustom3" class="property">
-  <span class="name"><a href="../easypost/Options/printCustom3.html">printCustom3</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+        <dt id="printCustomMessage2" class="property">
+  <span class="name"><a href="../easypost/Options/printCustomMessage2.html">printCustomMessage2</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="printCustom3Code" class="property">
-  <span class="name"><a href="../easypost/Options/printCustom3Code.html">printCustom3Code</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+        <dt id="printCustomMessage3" class="property">
+  <span class="name"><a href="../easypost/Options/printCustomMessage3.html">printCustomMessage3</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="receiverLiquorLicense" class="property">
   <span class="name"><a href="../easypost/Options/receiverLiquorLicense.html">receiverLiquorLicense</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="registeredMailAmount" class="property">
   <span class="name"><a href="../easypost/Options/registeredMailAmount.html">registeredMailAmount</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/double-class.html">double</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/double-class.html">double</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="returnService" class="property">
   <span class="name"><a href="../easypost/Options/returnService.html">returnService</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="runtimeType" class="property inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/runtimeType.html">runtimeType</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/Type-class.html">Type</a></span> 
+  <span class="name"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.3.0/dart-core/Type-class.html">Type</a></span> 
 
 </dt>
 <dd class="inherited">
   A representation of the runtime type of the object.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="settlementMethod" class="property">
   <span class="name"><a href="../easypost/Options/settlementMethod.html">settlementMethod</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="smartpostHub" class="property">
   <span class="name"><a href="../easypost/Options/smartpostHub.html">smartpostHub</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="smartpostManifest" class="property">
   <span class="name"><a href="../easypost/Options/smartpostManifest.html">smartpostManifest</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="specialRatesEligibility" class="property">
   <span class="name"><a href="../easypost/Options/specialRatesEligibility.html">specialRatesEligibility</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="suppressEtd" class="property">
   <span class="name"><a href="../easypost/Options/suppressEtd.html">suppressEtd</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
-        <dt id="updatedAt" class="property inherited">
-  <span class="name"><a href="../easypost/Options/updatedAt.html">updatedAt</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/DateTime-class.html">DateTime</a>?</span> 
+        <dt id="taxIdExpirationDate" class="property">
+  <span class="name"><a href="../easypost/Options/taxIdExpirationDate.html">taxIdExpirationDate</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/DateTime-class.html">DateTime</a>?</span> 
 
 </dt>
-<dd class="inherited">
+<dd>
   
-  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="useCertifiedMail" class="property">
   <span class="name"><a href="../easypost/Options/useCertifiedMail.html">useCertifiedMail</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
         <dt id="useRegisteredMail" class="property">
   <span class="name"><a href="../easypost/Options/useRegisteredMail.html">useRegisteredMail</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> 
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> 
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">final</span></div>
+  <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
 
@@ -1169,21 +1087,21 @@
     <h2>Methods</h2>
     <dl class="callables">
         <dt id="noSuchMethod" class="callable inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+  <span class="name"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
     <span class="returntype parameter">&#8594; dynamic</span>
   </span>
   
 
 </dt>
 <dd class="inherited">
-  Invoked when a non-existent method or property is accessed.
+  Invoked when a nonexistent method or property is accessed.
   <div class="features"><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="toJson" class="callable">
   <span class="name"><a href="../easypost/Options/toJson.html">toJson</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.3.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>
   </span>
   
 
@@ -1195,8 +1113,8 @@
 </dd>
 
         <dt id="toString" class="callable inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>
+  <span class="name"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a></span>
   </span>
   
 
@@ -1216,8 +1134,8 @@
     <h2>Operators</h2>
     <dl class="callables">
         <dt id="operator ==" class="callable inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a></span>
+  <span class="name"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a></span>
   </span>
   
 
@@ -1238,293 +1156,25 @@
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../index.html">easypost</a></li>
-  <li><a href="../easypost/easypost-library.html">easypost</a></li>
-  <li class="self-crumb">Options class</li>
+    <li><a href="../index.html">easypost</a></li>
+    <li><a href="../easypost/easypost-library.html">easypost</a></li>
+    <li class="self-crumb">Options class</li>
 </ol>
 
 
     <h5>easypost library</h5>
-    <ol>
-      <li class="section-title"><a href="../easypost/easypost-library.html#classes">Classes</a></li>
-        <li><a href="../easypost/Address-class.html">Address</a></li>
-        <li><a href="../easypost/AddressCollection-class.html">AddressCollection</a></li>
-        <li><a href="../easypost/AddressesAll-class.html">AddressesAll</a></li>
-        <li><a href="../easypost/AddressesCreate-class.html">AddressesCreate</a></li>
-        <li><a href="../easypost/AddressesUpdate-class.html">AddressesUpdate</a></li>
-        <li><a href="../easypost/ApiKey-class.html">ApiKey</a></li>
-        <li><a href="../easypost/ApiKeyCollection-class.html">ApiKeyCollection</a></li>
-        <li><a href="../easypost/Batch-class.html">Batch</a></li>
-        <li><a href="../easypost/BatchCollection-class.html">BatchCollection</a></li>
-        <li><a href="../easypost/BatchesAll-class.html">BatchesAll</a></li>
-        <li><a href="../easypost/BatchesCreate-class.html">BatchesCreate</a></li>
-        <li><a href="../easypost/BatchesCreateDocument-class.html">BatchesCreateDocument</a></li>
-        <li><a href="../easypost/BatchesUpdateShipments-class.html">BatchesUpdateShipments</a></li>
-        <li><a href="../easypost/BatchShipment-class.html">BatchShipment</a></li>
-        <li><a href="../easypost/BatchState-class.html">BatchState</a></li>
-        <li><a href="../easypost/BillingAddStripePaymentMethod-class.html">BillingAddStripePaymentMethod</a></li>
-        <li><a href="../easypost/BillingFund-class.html">BillingFund</a></li>
-        <li><a href="../easypost/BillingIssueRefund-class.html">BillingIssueRefund</a></li>
-        <li><a href="../easypost/Brand-class.html">Brand</a></li>
-        <li><a href="../easypost/CarbonOffset-class.html">CarbonOffset</a></li>
-        <li><a href="../easypost/CarrierAccount-class.html">CarrierAccount</a></li>
-        <li><a href="../easypost/CarrierAccountsAll-class.html">CarrierAccountsAll</a></li>
-        <li><a href="../easypost/CarrierAccountsCreate-class.html">CarrierAccountsCreate</a></li>
-        <li><a href="../easypost/CarrierAccountsCreateFedEx-class.html">CarrierAccountsCreateFedEx</a></li>
-        <li><a href="../easypost/CarrierAccountsCreateUps-class.html">CarrierAccountsCreateUps</a></li>
-        <li><a href="../easypost/CarrierAccountsUpdate-class.html">CarrierAccountsUpdate</a></li>
-        <li><a href="../easypost/CarrierDetail-class.html">CarrierDetail</a></li>
-        <li><a href="../easypost/CarrierType-class.html">CarrierType</a></li>
-        <li><a href="../easypost/Client-class.html">Client</a></li>
-        <li><a href="../easypost/ClientConfiguration-class.html">ClientConfiguration</a></li>
-        <li><a href="../easypost/CustomsFormType-class.html">CustomsFormType</a></li>
-        <li><a href="../easypost/CustomsInfo-class.html">CustomsInfo</a></li>
-        <li><a href="../easypost/CustomsInfoAll-class.html">CustomsInfoAll</a></li>
-        <li><a href="../easypost/CustomsInfoCreate-class.html">CustomsInfoCreate</a></li>
-        <li><a href="../easypost/CustomsItem-class.html">CustomsItem</a></li>
-        <li><a href="../easypost/CustomsItemsAll-class.html">CustomsItemsAll</a></li>
-        <li><a href="../easypost/CustomsItemsCreate-class.html">CustomsItemsCreate</a></li>
-        <li><a href="../easypost/CustomsRestrictionType-class.html">CustomsRestrictionType</a></li>
-        <li><a href="../easypost/EndShipper-class.html">EndShipper</a></li>
-        <li><a href="../easypost/EndShipperCollection-class.html">EndShipperCollection</a></li>
-        <li><a href="../easypost/EndShippersAll-class.html">EndShippersAll</a></li>
-        <li><a href="../easypost/EndShippersCreate-class.html">EndShippersCreate</a></li>
-        <li><a href="../easypost/EndShippersUpdate-class.html">EndShippersUpdate</a></li>
-        <li><a href="../easypost/Error-class.html">Error</a></li>
-        <li><a href="../easypost/Event-class.html">Event</a></li>
-        <li><a href="../easypost/EventCollection-class.html">EventCollection</a></li>
-        <li><a href="../easypost/EventsAll-class.html">EventsAll</a></li>
-        <li><a href="../easypost/Fee-class.html">Fee</a></li>
-        <li><a href="../easypost/FileFormat-class.html">FileFormat</a></li>
-        <li><a href="../easypost/Form-class.html">Form</a></li>
-        <li><a href="../easypost/FormType-class.html">FormType</a></li>
-        <li><a href="../easypost/Insurance-class.html">Insurance</a></li>
-        <li><a href="../easypost/InsuranceAll-class.html">InsuranceAll</a></li>
-        <li><a href="../easypost/InsuranceCollection-class.html">InsuranceCollection</a></li>
-        <li><a href="../easypost/InsuranceCreate-class.html">InsuranceCreate</a></li>
-        <li><a href="../easypost/Message-class.html">Message</a></li>
-        <li><a href="../easypost/NonDeliveryOption-class.html">NonDeliveryOption</a></li>
-        <li><a href="../easypost/Options-class.html">Options</a></li>
-        <li><a href="../easypost/Order-class.html">Order</a></li>
-        <li><a href="../easypost/OrdersBuy-class.html">OrdersBuy</a></li>
-        <li><a href="../easypost/OrdersCreate-class.html">OrdersCreate</a></li>
-        <li><a href="../easypost/OrdersOneCallBuy-class.html">OrdersOneCallBuy</a></li>
-        <li><a href="../easypost/Parcel-class.html">Parcel</a></li>
-        <li><a href="../easypost/ParcelsAll-class.html">ParcelsAll</a></li>
-        <li><a href="../easypost/ParcelsCreate-class.html">ParcelsCreate</a></li>
-        <li><a href="../easypost/Payload-class.html">Payload</a></li>
-        <li><a href="../easypost/PaymentMethod-class.html">PaymentMethod</a></li>
-        <li><a href="../easypost/PaymentMethodsSummary-class.html">PaymentMethodsSummary</a></li>
-        <li><a href="../easypost/PaymentRefund-class.html">PaymentRefund</a></li>
-        <li><a href="../easypost/Pickup-class.html">Pickup</a></li>
-        <li><a href="../easypost/PickupCollection-class.html">PickupCollection</a></li>
-        <li><a href="../easypost/PickupRate-class.html">PickupRate</a></li>
-        <li><a href="../easypost/PickupsAll-class.html">PickupsAll</a></li>
-        <li><a href="../easypost/PickupsBuy-class.html">PickupsBuy</a></li>
-        <li><a href="../easypost/PickupsCreate-class.html">PickupsCreate</a></li>
-        <li><a href="../easypost/PostageLabel-class.html">PostageLabel</a></li>
-        <li><a href="../easypost/Rate-class.html">Rate</a></li>
-        <li><a href="../easypost/ReferralCustomer-class.html">ReferralCustomer</a></li>
-        <li><a href="../easypost/ReferralCustomerCollection-class.html">ReferralCustomerCollection</a></li>
-        <li><a href="../easypost/ReferralCustomersAddCreditCard-class.html">ReferralCustomersAddCreditCard</a></li>
-        <li><a href="../easypost/ReferralCustomersAll-class.html">ReferralCustomersAll</a></li>
-        <li><a href="../easypost/ReferralCustomersCreate-class.html">ReferralCustomersCreate</a></li>
-        <li><a href="../easypost/ReferralCustomersUpdateEmail-class.html">ReferralCustomersUpdateEmail</a></li>
-        <li><a href="../easypost/Refund-class.html">Refund</a></li>
-        <li><a href="../easypost/RefundCollection-class.html">RefundCollection</a></li>
-        <li><a href="../easypost/RefundsAll-class.html">RefundsAll</a></li>
-        <li><a href="../easypost/RefundsCreate-class.html">RefundsCreate</a></li>
-        <li><a href="../easypost/Report-class.html">Report</a></li>
-        <li><a href="../easypost/ReportCollection-class.html">ReportCollection</a></li>
-        <li><a href="../easypost/ReportsAll-class.html">ReportsAll</a></li>
-        <li><a href="../easypost/ReportsCreate-class.html">ReportsCreate</a></li>
-        <li><a href="../easypost/ReportType-class.html">ReportType</a></li>
-        <li><a href="../easypost/ScanForm-class.html">ScanForm</a></li>
-        <li><a href="../easypost/ScanFormCollection-class.html">ScanFormCollection</a></li>
-        <li><a href="../easypost/ScanFormsAll-class.html">ScanFormsAll</a></li>
-        <li><a href="../easypost/ScanFormsCreate-class.html">ScanFormsCreate</a></li>
-        <li><a href="../easypost/Shipment-class.html">Shipment</a></li>
-        <li><a href="../easypost/ShipmentCollection-class.html">ShipmentCollection</a></li>
-        <li><a href="../easypost/ShipmentsAll-class.html">ShipmentsAll</a></li>
-        <li><a href="../easypost/ShipmentsBuy-class.html">ShipmentsBuy</a></li>
-        <li><a href="../easypost/ShipmentsCreate-class.html">ShipmentsCreate</a></li>
-        <li><a href="../easypost/ShipmentsCreateDocument-class.html">ShipmentsCreateDocument</a></li>
-        <li><a href="../easypost/ShipmentsGenerateRates-class.html">ShipmentsGenerateRates</a></li>
-        <li><a href="../easypost/ShipmentsInsure-class.html">ShipmentsInsure</a></li>
-        <li><a href="../easypost/ShipmentsOneCallBuy-class.html">ShipmentsOneCallBuy</a></li>
-        <li><a href="../easypost/SmartRate-class.html">SmartRate</a></li>
-        <li><a href="../easypost/TaxIdentifier-class.html">TaxIdentifier</a></li>
-        <li><a href="../easypost/TimeInTransit-class.html">TimeInTransit</a></li>
-        <li><a href="../easypost/Tracker-class.html">Tracker</a></li>
-        <li><a href="../easypost/TrackerCollection-class.html">TrackerCollection</a></li>
-        <li><a href="../easypost/TrackersAll-class.html">TrackersAll</a></li>
-        <li><a href="../easypost/TrackersCreate-class.html">TrackersCreate</a></li>
-        <li><a href="../easypost/TrackersCreateList-class.html">TrackersCreateList</a></li>
-        <li><a href="../easypost/TrackingDetail-class.html">TrackingDetail</a></li>
-        <li><a href="../easypost/TrackingLocation-class.html">TrackingLocation</a></li>
-        <li><a href="../easypost/User-class.html">User</a></li>
-        <li><a href="../easypost/UsersCreate-class.html">UsersCreate</a></li>
-        <li><a href="../easypost/UsersUpdate-class.html">UsersUpdate</a></li>
-        <li><a href="../easypost/UsersUpdateBrand-class.html">UsersUpdateBrand</a></li>
-        <li><a href="../easypost/Verification-class.html">Verification</a></li>
-        <li><a href="../easypost/VerificationDetails-class.html">VerificationDetails</a></li>
-        <li><a href="../easypost/Verifications-class.html">Verifications</a></li>
-        <li><a href="../easypost/Webhook-class.html">Webhook</a></li>
-        <li><a href="../easypost/WebhooksAll-class.html">WebhooksAll</a></li>
-        <li><a href="../easypost/WebhooksCreate-class.html">WebhooksCreate</a></li>
-        <li><a href="../easypost/WebhooksUpdate-class.html">WebhooksUpdate</a></li>
-
-      <li class="section-title"><a href="../easypost/easypost-library.html#extensions">Extensions</a></li>
-        <li><a href="../easypost/ApiVersionExtension.html">ApiVersionExtension</a></li>
-        <li><a href="../easypost/PaymentMethodTypeExtension.html">PaymentMethodTypeExtension</a></li>
-        <li><a href="../easypost/SmartRateAccuracyExtension.html">SmartRateAccuracyExtension</a></li>
-
-
-
-
-      <li class="section-title"><a href="../easypost/easypost-library.html#functions">Functions</a></li>
-        <li><a href="../easypost/getLowestRate.html">getLowestRate</a></li>
-        <li><a href="../easypost/getLowestSmartRate.html">getLowestSmartRate</a></li>
-
-      <li class="section-title"><a href="../easypost/easypost-library.html#enums">Enums</a></li>
-        <li><a href="../easypost/ApiVersion.html">ApiVersion</a></li>
-        <li><a href="../easypost/PaymentMethodPriority.html">PaymentMethodPriority</a></li>
-        <li><a href="../easypost/PaymentMethodType.html">PaymentMethodType</a></li>
-        <li><a href="../easypost/SmartRateAccuracy.html">SmartRateAccuracy</a></li>
-
-
-</ol>
-
+    <div id="dartdoc-sidebar-left-content"></div>
   </div>
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
-    <ol>
-
-        <li class="section-title"><a href="../easypost/Options-class.html#constructors">Constructors</a></li>
-          <li><a href="../easypost/Options/Options.html">Options</a></li>
-          <li><a href="../easypost/Options/Options.fromJson.html">fromJson</a></li>
-
-
-        <li class="section-title">
-          <a href="../easypost/Options-class.html#instance-properties">Properties</a>
-        </li>
-          <li><a href="../easypost/Options/additionalHandling.html">additionalHandling</a></li>
-          <li><a href="../easypost/Options/addressValidationLevel.html">addressValidationLevel</a></li>
-          <li><a href="../easypost/Options/billingRef.html">billingRef</a></li>
-          <li><a href="../easypost/Options/billReceiverAmount.html">billReceiverAmount</a></li>
-          <li><a href="../easypost/Options/billReceiverPostalCode.html">billReceiverPostalCode</a></li>
-          <li><a href="../easypost/Options/billThirdPartyAccount.html">billThirdPartyAccount</a></li>
-          <li><a href="../easypost/Options/billThirdPartyCountry.html">billThirdPartyCountry</a></li>
-          <li><a href="../easypost/Options/billThirdPartyPostalCode.html">billThirdPartyPostalCode</a></li>
-          <li><a href="../easypost/Options/carrierInsuranceAmount.html">carrierInsuranceAmount</a></li>
-          <li><a href="../easypost/Options/carrierNotificationEmail.html">carrierNotificationEmail</a></li>
-          <li><a href="../easypost/Options/carrierNotificationSms.html">carrierNotificationSms</a></li>
-          <li><a href="../easypost/Options/codAddressId.html">codAddressId</a></li>
-          <li><a href="../easypost/Options/codAmount.html">codAmount</a></li>
-          <li><a href="../easypost/Options/codMethod.html">codMethod</a></li>
-          <li><a href="../easypost/Options/commercialInvoiceFormat.html">commercialInvoiceFormat</a></li>
-          <li><a href="../easypost/Options/commercialInvoiceLetterhead.html">commercialInvoiceLetterhead</a></li>
-          <li><a href="../easypost/Options/commercialInvoiceSignature.html">commercialInvoiceSignature</a></li>
-          <li><a href="../easypost/Options/commercialInvoiceSize.html">commercialInvoiceSize</a></li>
-          <li><a href="../easypost/Options/costCenter.html">costCenter</a></li>
-          <li class="inherited"><a href="../easypost/Options/createdAt.html">createdAt</a></li>
-          <li><a href="../easypost/Options/currency.html">currency</a></li>
-          <li><a href="../easypost/Options/customsBrokerAddressId.html">customsBrokerAddressId</a></li>
-          <li><a href="../easypost/Options/customsIncludeShipping.html">customsIncludeShipping</a></li>
-          <li><a href="../easypost/Options/declaredValue.html">declaredValue</a></li>
-          <li><a href="../easypost/Options/deliverByDrone.html">deliverByDrone</a></li>
-          <li><a href="../easypost/Options/deliveredDutyPaid.html">deliveredDutyPaid</a></li>
-          <li><a href="../easypost/Options/deliveryConfirmation.html">deliveryConfirmation</a></li>
-          <li><a href="../easypost/Options/deliveryTimePreference.html">deliveryTimePreference</a></li>
-          <li><a href="../easypost/Options/dropoffMaxDatetime.html">dropoffMaxDatetime</a></li>
-          <li><a href="../easypost/Options/dropoffType.html">dropoffType</a></li>
-          <li><a href="../easypost/Options/dryIceWeight.html">dryIceWeight</a></li>
-          <li><a href="../easypost/Options/dutyPayment.html">dutyPayment</a></li>
-          <li><a href="../easypost/Options/dutyPaymentAccount.html">dutyPaymentAccount</a></li>
-          <li><a href="../easypost/Options/enableCarbonNeutral.html">enableCarbonNeutral</a></li>
-          <li><a href="../easypost/Options/enableNeutralDelivery.html">enableNeutralDelivery</a></li>
-          <li><a href="../easypost/Options/enableNonContact.html">enableNonContact</a></li>
-          <li><a href="../easypost/Options/enablePeelAndReturn.html">enablePeelAndReturn</a></li>
-          <li><a href="../easypost/Options/enableSaturdayDelivery.html">enableSaturdayDelivery</a></li>
-          <li><a href="../easypost/Options/endorsement.html">endorsement</a></li>
-          <li><a href="../easypost/Options/endShipperId.html">endShipperId</a></li>
-          <li><a href="../easypost/Options/freightCharge.html">freightCharge</a></li>
-          <li><a href="../easypost/Options/group.html">group</a></li>
-          <li><a href="../easypost/Options/handlingInstructions.html">handlingInstructions</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li><a href="../easypost/Options/hazmat.html">hazmat</a></li>
-          <li><a href="../easypost/Options/holdForPickup.html">holdForPickup</a></li>
-          <li class="inherited"><a href="../easypost/Options/id.html">id</a></li>
-          <li><a href="../easypost/Options/imageFormat.html">imageFormat</a></li>
-          <li><a href="../easypost/Options/importerAddressId.html">importerAddressId</a></li>
-          <li><a href="../easypost/Options/importFederalTaxId.html">importFederalTaxId</a></li>
-          <li><a href="../easypost/Options/importStateTaxId.html">importStateTaxId</a></li>
-          <li><a href="../easypost/Options/includePrintCustom1Barcode.html">includePrintCustom1Barcode</a></li>
-          <li><a href="../easypost/Options/includePrintCustom2Barcode.html">includePrintCustom2Barcode</a></li>
-          <li><a href="../easypost/Options/includePrintCustom3Barcode.html">includePrintCustom3Barcode</a></li>
-          <li><a href="../easypost/Options/includePrintRate.html">includePrintRate</a></li>
-          <li><a href="../easypost/Options/includeReturnReceipt.html">includeReturnReceipt</a></li>
-          <li><a href="../easypost/Options/incoterm.html">incoterm</a></li>
-          <li><a href="../easypost/Options/invoiceNumber.html">invoiceNumber</a></li>
-          <li><a href="../easypost/Options/isAlcohol.html">isAlcohol</a></li>
-          <li><a href="../easypost/Options/isDryIce.html">isDryIce</a></li>
-          <li><a href="../easypost/Options/isDryIceMedical.html">isDryIceMedical</a></li>
-          <li><a href="../easypost/Options/labelDate.html">labelDate</a></li>
-          <li><a href="../easypost/Options/labelFormat.html">labelFormat</a></li>
-          <li><a href="../easypost/Options/labelSize.html">labelSize</a></li>
-          <li><a href="../easypost/Options/licenseNumber.html">licenseNumber</a></li>
-          <li><a href="../easypost/Options/machinable.html">machinable</a></li>
-          <li class="inherited"><a href="../easypost/Options/mode.html">mode</a></li>
-          <li class="inherited"><a href="../easypost/Options/objectType.html">objectType</a></li>
-          <li><a href="../easypost/Options/overlabelConstructCode.html">overlabelConstructCode</a></li>
-          <li><a href="../easypost/Options/overlabelConstructTrackingNumber.html">overlabelConstructTrackingNumber</a></li>
-          <li><a href="../easypost/Options/partiesToTransactionAreRelated.html">partiesToTransactionAreRelated</a></li>
-          <li><a href="../easypost/Options/payment.html">payment</a></li>
-          <li><a href="../easypost/Options/pickupMaxDatetime.html">pickupMaxDatetime</a></li>
-          <li><a href="../easypost/Options/pickupMinDatetime.html">pickupMinDatetime</a></li>
-          <li><a href="../easypost/Options/poSort.html">poSort</a></li>
-          <li><a href="../easypost/Options/postageLabelInline.html">postageLabelInline</a></li>
-          <li class="inherited"><a href="../easypost/Options/prefix.html">prefix</a></li>
-          <li><a href="../easypost/Options/printCustom.html">printCustom</a></li>
-          <li><a href="../easypost/Options/printCustom1.html">printCustom1</a></li>
-          <li><a href="../easypost/Options/printCustom1Code.html">printCustom1Code</a></li>
-          <li><a href="../easypost/Options/printCustom2.html">printCustom2</a></li>
-          <li><a href="../easypost/Options/printCustom2Code.html">printCustom2Code</a></li>
-          <li><a href="../easypost/Options/printCustom3.html">printCustom3</a></li>
-          <li><a href="../easypost/Options/printCustom3Code.html">printCustom3Code</a></li>
-          <li><a href="../easypost/Options/receiverLiquorLicense.html">receiverLiquorLicense</a></li>
-          <li><a href="../easypost/Options/registeredMailAmount.html">registeredMailAmount</a></li>
-          <li><a href="../easypost/Options/returnService.html">returnService</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li><a href="../easypost/Options/settlementMethod.html">settlementMethod</a></li>
-          <li><a href="../easypost/Options/smartpostHub.html">smartpostHub</a></li>
-          <li><a href="../easypost/Options/smartpostManifest.html">smartpostManifest</a></li>
-          <li><a href="../easypost/Options/specialRatesEligibility.html">specialRatesEligibility</a></li>
-          <li><a href="../easypost/Options/suppressEtd.html">suppressEtd</a></li>
-          <li class="inherited"><a href="../easypost/Options/updatedAt.html">updatedAt</a></li>
-          <li><a href="../easypost/Options/useCertifiedMail.html">useCertifiedMail</a></li>
-          <li><a href="../easypost/Options/useRegisteredMail.html">useRegisteredMail</a></li>
-
-        <li class="section-title"><a href="../easypost/Options-class.html#instance-methods">Methods</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../easypost/Options/toJson.html">toJson</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/toString.html">toString</a></li>
-
-        <li class="section-title inherited"><a href="../easypost/Options-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
   </div><!--/.sidebar-offcanvas-->
 
 </main>
@@ -1532,7 +1182,7 @@
 <footer>
   <span class="no-break">
     easypost
-      0.1.1
+      1.0.0
   </span>
 
   

@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">easypost</a></li>
-    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost.dart</a></li>
     <li><a href="../../easypost/PaymentRefund-class.html">PaymentRefund</a></li>
     <li class="self-crumb">PaymentRefund constructor</li>
   </ol>
@@ -40,32 +40,35 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="easypost&#47;PaymentRefund-class-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-constructor">PaymentRefund</span> constructor 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
-      <span class="name ">PaymentRefund</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-id"><span class="type-annotation">dynamic</span> <span class="parameter-name">id</span>, </span></li>
-<li><span class="parameter" id="-param-createdAt"><span class="type-annotation">dynamic</span> <span class="parameter-name">createdAt</span>, </span></li>
-<li><span class="parameter" id="-param-updatedAt"><span class="type-annotation">dynamic</span> <span class="parameter-name">updatedAt</span>, </span></li>
-<li><span class="parameter" id="-param-objectType"><span class="type-annotation">dynamic</span> <span class="parameter-name">objectType</span>, </span></li>
+      <span class="name ">PaymentRefund</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-objectType"><span class="type-annotation">dynamic</span> <span class="parameter-name">objectType</span>, </span></li>
 <li><span class="parameter" id="-param-mode"><span class="type-annotation">dynamic</span> <span class="parameter-name">mode</span>, </span></li>
-<li><span class="parameter" id="-param-refundedAmount"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">refundedAmount</span>, </span></li>
-<li><span class="parameter" id="-param-refundCurrency"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">refundCurrency</span>, </span></li>
-<li><span class="parameter" id="-param-refundedPaymentLogsIds"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">refundedPaymentLogsIds</span>, </span></li>
-<li><span class="parameter" id="-param-paymentLogId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">paymentLogId</span>, </span></li>
-<li><span class="parameter" id="-param-errors"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/Error-class.html">Error</a></span>&gt;</span>?</span> <span class="parameter-name">errors</span></span></li>
+<li><span class="parameter" id="-param-refundedAmount"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">refundedAmount</span>, </span></li>
+<li><span class="parameter" id="-param-refundCurrency"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">refundCurrency</span>, </span></li>
+<li><span class="parameter" id="-param-refundedPaymentLogsIds"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">refundedPaymentLogsIds</span>, </span></li>
+<li><span class="parameter" id="-param-paymentLogId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">paymentLogId</span>, </span></li>
+<li><span class="parameter" id="-param-errors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/Error-class.html">Error</a></span>&gt;</span>?</span> <span class="parameter-name">errors</span></span></li>
 </ol>)
     </section>
 
@@ -76,9 +79,6 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">PaymentRefund(
-  id,
-  createdAt,
-  updatedAt,
   objectType,
   mode,
   this.refundedAmount,
@@ -86,65 +86,30 @@
   this.refundedPaymentLogsIds,
   this.paymentLogId,
   this.errors,
-) : super(id, createdAt, updatedAt, objectType, mode);</code></pre>
+) : super(objectType, mode);</code></pre>
 </section>
 
 
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../../index.html">easypost</a></li>
-  <li><a href="../../easypost/easypost-library.html">easypost</a></li>
-  <li><a href="../../easypost/PaymentRefund-class.html">PaymentRefund</a></li>
-  <li class="self-crumb">PaymentRefund constructor</li>
+    <li><a href="../../index.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/PaymentRefund-class.html">PaymentRefund</a></li>
+    <li class="self-crumb">PaymentRefund constructor</li>
 </ol>
 
 
     <h5>PaymentRefund class</h5>
-    <ol>
-
-        <li class="section-title"><a href="../../easypost/PaymentRefund-class.html#constructors">Constructors</a></li>
-          <li><a href="../../easypost/PaymentRefund/PaymentRefund.html">PaymentRefund</a></li>
-          <li><a href="../../easypost/PaymentRefund/PaymentRefund.fromJson.html">fromJson</a></li>
-
-
-        <li class="section-title">
-          <a href="../../easypost/PaymentRefund-class.html#instance-properties">Properties</a>
-        </li>
-          <li class="inherited"><a href="../../easypost/PaymentRefund/createdAt.html">createdAt</a></li>
-          <li><a href="../../easypost/PaymentRefund/errors.html">errors</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li class="inherited"><a href="../../easypost/PaymentRefund/id.html">id</a></li>
-          <li class="inherited"><a href="../../easypost/PaymentRefund/mode.html">mode</a></li>
-          <li class="inherited"><a href="../../easypost/PaymentRefund/objectType.html">objectType</a></li>
-          <li><a href="../../easypost/PaymentRefund/paymentLogId.html">paymentLogId</a></li>
-          <li class="inherited"><a href="../../easypost/PaymentRefund/prefix.html">prefix</a></li>
-          <li><a href="../../easypost/PaymentRefund/refundCurrency.html">refundCurrency</a></li>
-          <li><a href="../../easypost/PaymentRefund/refundedAmount.html">refundedAmount</a></li>
-          <li><a href="../../easypost/PaymentRefund/refundedPaymentLogsIds.html">refundedPaymentLogsIds</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../../easypost/PaymentRefund/updatedAt.html">updatedAt</a></li>
-
-        <li class="section-title"><a href="../../easypost/PaymentRefund-class.html#instance-methods">Methods</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../../easypost/PaymentRefund/toJson.html">toJson</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/toString.html">toString</a></li>
-
-        <li class="section-title inherited"><a href="../../easypost/PaymentRefund-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -155,7 +120,7 @@
 <footer>
   <span class="no-break">
     easypost
-      0.1.1
+      1.0.0
   </span>
 
   

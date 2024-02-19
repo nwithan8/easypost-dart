@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">easypost</a></li>
-    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost.dart</a></li>
     <li><a href="../../easypost/Order-class.html">Order</a></li>
     <li class="self-crumb">Order constructor</li>
   </ol>
@@ -40,18 +40,24 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="easypost&#47;Order-class-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-constructor">Order</span> constructor 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
@@ -62,16 +68,16 @@
 <li><span class="parameter" id="-param-objectType"><span class="type-annotation">dynamic</span> <span class="parameter-name">objectType</span>, </span></li>
 <li><span class="parameter" id="-param-mode"><span class="type-annotation">dynamic</span> <span class="parameter-name">mode</span>, </span></li>
 <li><span class="parameter" id="-param-buyerAddress"><span class="type-annotation"><a href="../../easypost/Address-class.html">Address</a>?</span> <span class="parameter-name">buyerAddress</span>, </span></li>
-<li><span class="parameter" id="-param-carrierAccounts"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/CarrierAccount-class.html">CarrierAccount</a></span>&gt;</span>?</span> <span class="parameter-name">carrierAccounts</span>, </span></li>
+<li><span class="parameter" id="-param-carrierAccounts"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/CarrierAccount-class.html">CarrierAccount</a></span>&gt;</span>?</span> <span class="parameter-name">carrierAccounts</span>, </span></li>
 <li><span class="parameter" id="-param-customsInfo"><span class="type-annotation"><a href="../../easypost/CustomsInfo-class.html">CustomsInfo</a>?</span> <span class="parameter-name">customsInfo</span>, </span></li>
 <li><span class="parameter" id="-param-fromAddress"><span class="type-annotation"><a href="../../easypost/Address-class.html">Address</a>?</span> <span class="parameter-name">fromAddress</span>, </span></li>
-<li><span class="parameter" id="-param-isReturn"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isReturn</span>, </span></li>
-<li><span class="parameter" id="-param-messages"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/Message-class.html">Message</a></span>&gt;</span>?</span> <span class="parameter-name">messages</span>, </span></li>
-<li><span class="parameter" id="-param-rates"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/Rate-class.html">Rate</a></span>&gt;</span>?</span> <span class="parameter-name">rates</span>, </span></li>
-<li><span class="parameter" id="-param-reference"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">reference</span>, </span></li>
+<li><span class="parameter" id="-param-isReturn"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isReturn</span>, </span></li>
+<li><span class="parameter" id="-param-messages"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/Message-class.html">Message</a></span>&gt;</span>?</span> <span class="parameter-name">messages</span>, </span></li>
+<li><span class="parameter" id="-param-rates"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/OrderRate-class.html">OrderRate</a></span>&gt;</span>?</span> <span class="parameter-name">rates</span>, </span></li>
+<li><span class="parameter" id="-param-reference"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">reference</span>, </span></li>
 <li><span class="parameter" id="-param-returnAddress"><span class="type-annotation"><a href="../../easypost/Address-class.html">Address</a>?</span> <span class="parameter-name">returnAddress</span>, </span></li>
-<li><span class="parameter" id="-param-service"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">service</span>, </span></li>
-<li><span class="parameter" id="-param-shipments"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/Shipment-class.html">Shipment</a></span>&gt;</span>?</span> <span class="parameter-name">shipments</span>, </span></li>
+<li><span class="parameter" id="-param-service"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">service</span>, </span></li>
+<li><span class="parameter" id="-param-shipments"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../easypost/Shipment-class.html">Shipment</a></span>&gt;</span>?</span> <span class="parameter-name">shipments</span>, </span></li>
 <li><span class="parameter" id="-param-toAddress"><span class="type-annotation"><a href="../../easypost/Address-class.html">Address</a>?</span> <span class="parameter-name">toAddress</span></span></li>
 </ol>)
     </section>
@@ -107,65 +113,23 @@
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../../index.html">easypost</a></li>
-  <li><a href="../../easypost/easypost-library.html">easypost</a></li>
-  <li><a href="../../easypost/Order-class.html">Order</a></li>
-  <li class="self-crumb">Order constructor</li>
+    <li><a href="../../index.html">easypost</a></li>
+    <li><a href="../../easypost/easypost-library.html">easypost</a></li>
+    <li><a href="../../easypost/Order-class.html">Order</a></li>
+    <li class="self-crumb">Order constructor</li>
 </ol>
 
 
     <h5>Order class</h5>
-    <ol>
-
-        <li class="section-title"><a href="../../easypost/Order-class.html#constructors">Constructors</a></li>
-          <li><a href="../../easypost/Order/Order.html">Order</a></li>
-          <li><a href="../../easypost/Order/Order.fromJson.html">fromJson</a></li>
-
-
-        <li class="section-title">
-          <a href="../../easypost/Order-class.html#instance-properties">Properties</a>
-        </li>
-          <li><a href="../../easypost/Order/buyerAddress.html">buyerAddress</a></li>
-          <li><a href="../../easypost/Order/carrierAccounts.html">carrierAccounts</a></li>
-          <li class="inherited"><a href="../../easypost/Order/createdAt.html">createdAt</a></li>
-          <li><a href="../../easypost/Order/customsInfo.html">customsInfo</a></li>
-          <li><a href="../../easypost/Order/fromAddress.html">fromAddress</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li class="inherited"><a href="../../easypost/Order/id.html">id</a></li>
-          <li><a href="../../easypost/Order/isReturn.html">isReturn</a></li>
-          <li><a href="../../easypost/Order/messages.html">messages</a></li>
-          <li class="inherited"><a href="../../easypost/Order/mode.html">mode</a></li>
-          <li class="inherited"><a href="../../easypost/Order/objectType.html">objectType</a></li>
-          <li class="inherited"><a href="../../easypost/Order/prefix.html">prefix</a></li>
-          <li><a href="../../easypost/Order/rates.html">rates</a></li>
-          <li><a href="../../easypost/Order/reference.html">reference</a></li>
-          <li><a href="../../easypost/Order/returnAddress.html">returnAddress</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li><a href="../../easypost/Order/service.html">service</a></li>
-          <li><a href="../../easypost/Order/shipments.html">shipments</a></li>
-          <li><a href="../../easypost/Order/toAddress.html">toAddress</a></li>
-          <li class="inherited"><a href="../../easypost/Order/updatedAt.html">updatedAt</a></li>
-
-        <li class="section-title"><a href="../../easypost/Order-class.html#instance-methods">Methods</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../../easypost/Order/toJson.html">toJson</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/toString.html">toString</a></li>
-
-        <li class="section-title inherited"><a href="../../easypost/Order-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.2/dart-core/Object/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -176,7 +140,7 @@
 <footer>
   <span class="no-break">
     easypost
-      0.1.1
+      1.0.0
   </span>
 
   
