@@ -73,8 +73,8 @@ void main() {
       expect(refundCollection.refunds![0].id, startsWith(ModelPrefixes.refund));
     });
 
-    test('getNextPage', () async {
-      Client client = TestUtils.setUpVCRClient("refunds", 'list');
+    test('get next page', () async {
+      Client client = TestUtils.setUpVCRClient("refunds", 'get_next_page');
       client.enableTestMode();
 
       final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
