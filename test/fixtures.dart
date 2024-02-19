@@ -236,6 +236,14 @@ class Fixtures {
     return fixtureStructures.webhookUrl;
   }
 
+  static CreateUser get createChildUser {
+    CreateUser parameters = CreateUser();
+
+    parameters.name = "Child User";
+
+    return parameters;
+  }
+
   static CreateReferralCustomer get createReferralCustomer {
     Map<String, dynamic> data = referralUser;
 

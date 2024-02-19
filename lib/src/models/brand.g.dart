@@ -7,9 +7,6 @@ part of 'brand.dart';
 // **************************************************************************
 
 Brand _$BrandFromJson(Map<String, dynamic> json) => Brand(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['ad'] as String?,
@@ -26,13 +23,10 @@ Brand _$BrandFromJson(Map<String, dynamic> json) => Brand(
 Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
       'object': instance.objectType,
       'mode': instance.mode,
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'ad': instance.ad,
       'ad_href': instance.adHref,
-      'background_color': instance.backgroundColor,
-      'color': instance.color,
+      'background_color': instance.backgroundColorHexCode,
+      'color': instance.colorHexCode,
       'logo': instance.logo,
       'logo_href': instance.logoHref,
       'name': instance.name,

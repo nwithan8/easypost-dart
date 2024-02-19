@@ -121,7 +121,7 @@ class UserService extends Service {
   }
 
   /// Update the [Brand] of a [User].
-  Future<User> updateBrand(String userId, UpdateBrand parameters) async {
+  Future<Brand> updateBrand(String userId, UpdateBrand parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -130,6 +130,6 @@ class UserService extends Service {
       ApiVersion.v2,
       parameters: parameterMap,
     );
-    return User.fromJson(json);
+    return Brand.fromJson(json);
   }
 }
