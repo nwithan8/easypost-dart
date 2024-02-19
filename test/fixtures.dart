@@ -65,6 +65,15 @@ class Fixtures {
     return params;
   }
 
+  static CreateTracker get basicTracker {
+    CreateTracker parameters = CreateTracker();
+
+    parameters.trackingCode = "EZ1000000001";
+    parameters.carrier = Fixtures.usps;
+
+    return parameters;
+  }
+
   static CreateCustomsInfo get basicCustomsInfo {
     Map<String, dynamic> data = fixtureStructures.customsInfos.basic;
     return CreateCustomsInfo();

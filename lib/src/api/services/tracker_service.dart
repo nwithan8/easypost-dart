@@ -60,14 +60,4 @@ class TrackerService extends Service {
         retrieveNextPageFunction, collection.trackers, pageSize: pageSize)
     as Future<TrackerCollection>;
   }
-
-  /// Refreshes a [Tracker].
-  Future<Tracker> refresh(String trackerId) async {
-    final json =  await client.requestJson(
-      HttpMethod.get,
-      'trackers/$trackerId/refresh',
-      ApiVersion.v2,
-    );
-    return Tracker.fromJson(json);
-  }
 }
