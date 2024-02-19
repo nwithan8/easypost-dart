@@ -5,7 +5,7 @@ import 'package:easypost/src/api/parameters/v2/reports/list_reports.dart';
 import 'package:easypost/src/api/parameters/v2/reports/list_shipment_invoice_reports.dart';
 import 'package:easypost/src/api/parameters/v2/reports/list_shipment_reports.dart';
 import 'package:easypost/src/api/parameters/v2/reports/list_tracker_reports.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/enums/report_type.dart';
 import 'package:easypost/src/internal/conversions.dart';
@@ -14,7 +14,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'report.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Report extends ModelWithId {
+class Report extends ReadOnlyModelWithId {
   @JsonKey(name: 'end_date')
   final DateTime? endDate;
 

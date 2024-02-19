@@ -1,6 +1,6 @@
 import 'package:easypost/src/api/parameters/iparameters.dart';
 import 'package:easypost/src/api/parameters/v2/shipments/list_shipments.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/internal/conversions.dart';
@@ -23,7 +23,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'shipment.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Shipment extends ModelWithId implements IShipmentParameter {
+class Shipment extends ReadOnlyModelWithId implements IShipmentParameter {
   @JsonKey(name: 'batch_id')
   final String? batchId;
 
@@ -51,8 +51,8 @@ class Shipment extends ModelWithId implements IShipmentParameter {
   @JsonKey(name: 'from_address')
   final Address? fromAddress;
 
-  @JsonKey(name: 'insurance')
-  final String? insurance;
+  @JsonKey(name: 'insurance', fromJson: stringToMoney, toJson: moneyToString)
+  final double? insurance;
 
   @JsonKey(name: 'is_return')
   final bool? isReturn;

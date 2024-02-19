@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:easypost/src/models/carrier_info_predefined_package.dart';
@@ -9,7 +9,7 @@ import 'package:easypost/src/models/carrier_info_supported_feature.dart';
 part 'carrier_info_carrier.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CarrierInfoCarrier extends Model {
+class CarrierInfoCarrier extends ReadOnlyModel {
   @JsonKey(name: 'name')
   final String? name;
 

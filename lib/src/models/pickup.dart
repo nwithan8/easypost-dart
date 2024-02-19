@@ -1,5 +1,5 @@
 import 'package:easypost/src/api/parameters/v2/pickups/list_pickups.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/internal/conversions.dart';
@@ -13,7 +13,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'pickup.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Pickup extends ModelWithId {
+class Pickup extends ReadOnlyModelWithId {
   @JsonKey(name: 'address')
   final Address? address;
 

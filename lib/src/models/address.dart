@@ -1,6 +1,6 @@
 import 'package:easypost/src/api/parameters/iparameters.dart';
 import 'package:easypost/src/api/parameters/v2/addresses/list_addresses.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/verifications.dart';
@@ -9,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'address.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Address extends ModelWithId implements IAddressParameter {
+class Address extends ReadOnlyModelWithId implements IAddressParameter {
   @JsonKey(name: 'carrier_facility')
   final String? carrierFacility;
   @JsonKey(name: 'city')

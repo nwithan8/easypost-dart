@@ -1,5 +1,5 @@
 import 'package:easypost/src/api/parameters/v2/billing/list_payment_logs.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/enums/payment_log_charge_type.dart';
 import 'package:easypost/src/enums/payment_log_source_type.dart';
@@ -11,7 +11,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'payment_log.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaymentLog extends ModelWithId {
+class PaymentLog extends ReadOnlyModelWithId {
   @JsonKey(name: 'amount', fromJson: stringToMoney, toJson: moneyToString)
   final double? amount;
 

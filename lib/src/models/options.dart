@@ -48,7 +48,11 @@ class Options extends Model {
   @JsonKey(name: 'cod_amount')
   late String? codAmount;
 
-  @JsonKey(name: 'cod_method', toJson: codMethodToJson, fromJson: codMethodFromJson, includeIfNull: false)
+  @JsonKey(
+      name: 'cod_method',
+      toJson: codMethodToJson,
+      fromJson: codMethodFromJson,
+      includeIfNull: false)
   late CodMethod? codMethod;
 
   @JsonKey(name: 'commercial_invoice_format')
@@ -84,22 +88,38 @@ class Options extends Model {
   @JsonKey(name: 'delivered_duty_paid')
   late bool? deliveredDutyPaid;
 
-  @JsonKey(name: 'delivery_confirmation', toJson: deliveryConfirmationToJson, fromJson: deliveryConfirmationFromJson, includeIfNull: false)
+  @JsonKey(
+      name: 'delivery_confirmation',
+      toJson: deliveryConfirmationToJson,
+      fromJson: deliveryConfirmationFromJson,
+      includeIfNull: false)
   late DeliveryConfirmation? deliveryConfirmation;
 
   @JsonKey(name: 'delivery_time_preference')
   late String? deliveryTimePreference;
 
-  @JsonKey(name: 'delivery_min_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
+  @JsonKey(
+      name: 'delivery_min_datetime',
+      toJson: dateTimeToString,
+      fromJson: stringToDateTime)
   late DateTime? deliveryMinDatetime;
 
-  @JsonKey(name: 'delivery_max_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
+  @JsonKey(
+      name: 'delivery_max_datetime',
+      toJson: dateTimeToString,
+      fromJson: stringToDateTime)
   late DateTime? deliveryMaxDatetime;
 
-  @JsonKey(name: 'dropoff_max_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
+  @JsonKey(
+      name: 'dropoff_max_datetime',
+      toJson: dateTimeToString,
+      fromJson: stringToDateTime)
   late DateTime? dropoffMaxDatetime;
 
-  @JsonKey(name: 'dropoff_type', toJson: dropOffTypeToJson, fromJson: dropOffTypeFromJson)
+  @JsonKey(
+      name: 'dropoff_type',
+      toJson: dropOffTypeToJson,
+      fromJson: dropOffTypeFromJson)
   late DropOffType? dropoffType;
 
   @JsonKey(name: 'dry_ice')
@@ -117,7 +137,11 @@ class Options extends Model {
   @JsonKey(name: 'duty_payment_account')
   late String? dutyPaymentAccount;
 
-  @JsonKey(name: 'endorsement', toJson: endorsementToJson, fromJson: endorsementFromJson, includeIfNull: false)
+  @JsonKey(
+      name: 'endorsement',
+      toJson: endorsementToJson,
+      fromJson: endorsementFromJson,
+      includeIfNull: false)
   late Endorsement? endorsement;
 
   @JsonKey(name: 'end_shipper_id')
@@ -132,7 +156,11 @@ class Options extends Model {
   @JsonKey(name: 'handling_instructions')
   late String? handlingInstructions;
 
-  @JsonKey(name: 'hazmat', toJson: hazmatTypeToJson, fromJson: hazmatTypeFromJson, includeIfNull: false)
+  @JsonKey(
+      name: 'hazmat',
+      toJson: hazmatTypeToJson,
+      fromJson: hazmatTypeFromJson,
+      includeIfNull: false)
   late HazmatType? hazmat;
 
   @JsonKey(name: 'hold_for_pickup')
@@ -150,16 +178,24 @@ class Options extends Model {
   @JsonKey(name: 'import_state_tax_id')
   late String? importStateTaxId;
 
-  @JsonKey(name: 'incoterm', toJson: incotermTypeToJson, fromJson: incotermTypeFromJson)
+  @JsonKey(
+      name: 'incoterm',
+      toJson: incotermTypeToJson,
+      fromJson: incotermTypeFromJson)
   late IncotermType? incoterm;
 
   @JsonKey(name: 'invoice_number')
   late String? invoiceNumber;
 
-  @JsonKey(name: 'label_date', toJson: dateTimeToString, fromJson: stringToDateTime)
+  @JsonKey(
+      name: 'label_date', toJson: dateTimeToString, fromJson: stringToDateTime)
   late DateTime? labelDate;
 
-  @JsonKey(name: 'label_format', toJson: labelFormatToJson, fromJson: labelFormatFromJson, includeIfNull: false)
+  @JsonKey(
+      name: 'label_format',
+      toJson: labelFormatToJson,
+      fromJson: labelFormatFromJson,
+      includeIfNull: false)
   late LabelFormat? labelFormat;
 
   @JsonKey(name: 'label_size')
@@ -192,10 +228,16 @@ class Options extends Model {
   @JsonKey(name: 'peel_and_return')
   late bool? enablePeelAndReturn;
 
-  @JsonKey(name: 'pickup_max_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
+  @JsonKey(
+      name: 'pickup_max_datetime',
+      toJson: dateTimeToString,
+      fromJson: stringToDateTime)
   late DateTime? pickupMaxDatetime;
 
-  @JsonKey(name: 'pickup_min_datetime', toJson: dateTimeToString, fromJson: stringToDateTime)
+  @JsonKey(
+      name: 'pickup_min_datetime',
+      toJson: dateTimeToString,
+      fromJson: stringToDateTime)
   late DateTime? pickupMinDatetime;
 
   @JsonKey(name: 'po_sort')
@@ -213,7 +255,11 @@ class Options extends Model {
   @JsonKey(name: 'print_custom_1_barcode')
   late bool? includePrintCustomBarcode1;
 
-  @JsonKey(name: 'print_custom_1_code', toJson: printCustomCodeToJson, fromJson: printCustomCodeFromJson, includeIfNull: false)
+  @JsonKey(
+      name: 'print_custom_1_code',
+      toJson: printCustomCodeToJson,
+      fromJson: printCustomCodeFromJson,
+      includeIfNull: false)
   late PrintCustomCode? printCustomCode1;
 
   @JsonKey(name: 'print_custom_2')
@@ -222,7 +268,11 @@ class Options extends Model {
   @JsonKey(name: 'print_custom_2_barcode')
   late bool? includePrintCustomBarcode2;
 
-  @JsonKey(name: 'print_custom_2_code', toJson: printCustomCodeToJson, fromJson: printCustomCodeFromJson, includeIfNull: false)
+  @JsonKey(
+      name: 'print_custom_2_code',
+      toJson: printCustomCodeToJson,
+      fromJson: printCustomCodeFromJson,
+      includeIfNull: false)
   late PrintCustomCode? printCustomCode2;
 
   @JsonKey(name: 'print_custom_3')
@@ -231,7 +281,11 @@ class Options extends Model {
   @JsonKey(name: 'print_custom_3_barcode')
   late bool? includePrintCustomBarcode3;
 
-  @JsonKey(name: 'print_custom_3_code', toJson: printCustomCodeToJson, fromJson: printCustomCodeFromJson, includeIfNull: false)
+  @JsonKey(
+      name: 'print_custom_3_code',
+      toJson: printCustomCodeToJson,
+      fromJson: printCustomCodeFromJson,
+      includeIfNull: false)
   late PrintCustomCode? printCustomCode3;
 
   @JsonKey(name: 'print_rate')
@@ -270,12 +324,13 @@ class Options extends Model {
   @JsonKey(name: 'suppress_etd')
   late bool? suppressEtd;
 
-  @JsonKey(name: 'tax_id_expiration_date', toJson: dateTimeToStringDDMMYYYY, fromJson: stringToDateTime)
+  @JsonKey(
+      name: 'tax_id_expiration_date',
+      toJson: dateTimeToStringDDMMYYYY,
+      fromJson: stringToDateTime)
   late DateTime? taxIdExpirationDate;
 
-  Options([
-    objectType,
-    mode,
+  Options({
     this.additionalHandling,
     this.addressValidationLevel,
     this.isAlcohol,
@@ -359,7 +414,7 @@ class Options extends Model {
     this.specialRatesEligibility,
     this.suppressEtd,
     this.taxIdExpirationDate,
-  ]) : super(objectType, mode);
+  }) : super();
 
   factory Options.fromJson(Map<String, dynamic> input) =>
       _$OptionsFromJson(input);

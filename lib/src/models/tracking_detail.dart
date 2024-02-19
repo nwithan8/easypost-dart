@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/tracking_location.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'tracking_detail.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class TrackingDetail extends Model {
+class TrackingDetail extends ReadOnlyModel {
   @JsonKey(name: 'datetime')
   final DateTime? datetime;
 

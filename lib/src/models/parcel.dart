@@ -1,11 +1,12 @@
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/api/parameters/iparameters.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'parcel.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Parcel extends ModelWithId {
+class Parcel extends ReadOnlyModelWithId implements IParcelParameter{
   @JsonKey(name: 'height')
   final double? height;
 

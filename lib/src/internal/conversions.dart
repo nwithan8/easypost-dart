@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/crypto.dart';
 import 'package:intl/intl.dart';
 
@@ -14,6 +14,9 @@ String? dateTimeToString(DateTime? time) => time == null
 
 String? dateTimeToStringDDMMYYYY(DateTime? time) =>
     time == null ? null : DateFormat("dd/MM/yyyy").format(time);
+
+String? dateTimeToStringYYYYMMDD(DateTime? time) =>
+    time == null ? null : DateFormat("yyyy-MM-dd").format(time);
 
 /// Converts a string (20.00) to an int of cents (2000)
 int? stringToCents(String? money) =>
@@ -36,6 +39,21 @@ String? moneyToString(double? money) => money?.toString();
 double stringToMoney(String? money) =>
     money == null ? 0.0 : double.parse(money);
 
+/// Converts a dynamic to a double
+double? anyToMoney(dynamic money) {
+  if (money == null) {
+    return null;
+  } else if (money is String) {
+    return stringToMoney(money);
+  } else if (money is int) {
+    return money.toDouble();
+  } else if (money is double) {
+    return money;
+  } else {
+    throw ArgumentError('Invalid money type');
+  }
+}
+
 /// Converts a double (20.00) to a string of cents (2000)
 String? moneyToStringCents(double? money) =>
     money == null ? null : moneyToCents(money).toString();
@@ -51,15 +69,15 @@ double stringToDouble(String? value) => value == null ? 0.0 : double.parse(value
 String? doubleToString(double? value) => value?.toString();
 
 // FIXME: If dependency circle issues arise, check this import
-String? modelToId(ModelWithId? model) => model?.id;
+String? modelToId(ReadOnlyModelWithId? model) => model?.id;
 
 /// Converts a list of models to a list of ids
-List<String?>? modelsToIds(List<ModelWithId>? models) {
+List<String?>? modelsToIds(List<ReadOnlyModelWithId>? models) {
   if (models == null) {
     return null;
   }
   List<String?> ids = [];
-  for (ModelWithId model in models) {
+  for (ReadOnlyModelWithId model in models) {
     ids.add(model.id);
   }
   return ids;

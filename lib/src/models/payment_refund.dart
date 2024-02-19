@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/error.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'payment_refund.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaymentRefund extends Model {
+class PaymentRefund extends ReadOnlyModel {
   @JsonKey(name: 'refunded_amount')
   final int? refundedAmount;
 

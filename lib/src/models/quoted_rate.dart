@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'quoted_rate.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class QuotedRate extends Model {
+class QuotedRate extends ReadOnlyModel {
   @JsonKey(name: 'billing_type')
   final String? billingType;
 
@@ -33,16 +33,16 @@ class QuotedRate extends Model {
   @JsonKey(name: 'list_currency')
   final String? listCurrency;
 
-  @JsonKey(name: 'list_rate', fromJson: stringToMoney, toJson: moneyToString)
+  @JsonKey(name: 'list_rate', fromJson: anyToMoney, toJson: moneyToString)
   final double? listRate;
 
-  @JsonKey(name: 'rate', fromJson: stringToMoney, toJson: moneyToString)
+  @JsonKey(name: 'rate', fromJson: anyToMoney, toJson: moneyToString)
   final double? price;
 
   @JsonKey(name: 'retail_currency')
   final String? retailCurrency;
 
-  @JsonKey(name: 'retail_rate', fromJson: stringToMoney, toJson: moneyToString)
+  @JsonKey(name: 'retail_rate', fromJson: anyToMoney, toJson: moneyToString)
   final double? retailRate;
 
   @JsonKey(name: 'service')

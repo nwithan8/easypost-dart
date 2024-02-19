@@ -1,12 +1,11 @@
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/model.dart';
 import 'package:easypost/src/enums/smart_rate_accuracy.dart';
-import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'time_in_transit.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class TimeInTransit extends ModelWithId {
+class TimeInTransit extends Model {
   @JsonKey(name: 'percentile_50')
   final int? percentile50;
 
@@ -29,11 +28,6 @@ class TimeInTransit extends ModelWithId {
   final int? percentile99;
 
   TimeInTransit(
-    id,
-    createdAt,
-    updatedAt,
-    objectType,
-    mode,
     this.percentile50,
     this.percentile75,
     this.percentile85,
@@ -41,7 +35,7 @@ class TimeInTransit extends ModelWithId {
     this.percentile95,
     this.percentile97,
     this.percentile99,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super();
 
   factory TimeInTransit.fromJson(Map<String, dynamic> input) =>
       _$TimeInTransitFromJson(input);

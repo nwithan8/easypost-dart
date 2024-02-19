@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/verification.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'verifications.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Verifications extends Model {
+class Verifications extends ReadOnlyModel {
   @JsonKey(name: 'delivery')
   final Verification? delivery;
 

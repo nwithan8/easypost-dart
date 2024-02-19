@@ -1,5 +1,5 @@
 import 'package:easypost/src/api/parameters/v2/batches/list_batches.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/enums/batch_state.dart';
 import 'package:easypost/src/internal/conversions.dart';
@@ -10,7 +10,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'batch.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Batch extends ModelWithId {
+class Batch extends ReadOnlyModelWithId {
   @JsonKey(name: 'error')
   final String? error;
 

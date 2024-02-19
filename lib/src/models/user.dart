@@ -1,5 +1,5 @@
 import 'package:easypost/src/api/parameters/v2/users/list_child_users.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/api_key.dart';
@@ -8,7 +8,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class User extends ModelWithId {
+class User extends ReadOnlyModelWithId {
   @JsonKey(name: 'api_keys')
   final List<ApiKey>? apiKeys;
 

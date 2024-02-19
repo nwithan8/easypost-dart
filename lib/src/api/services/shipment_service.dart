@@ -1,20 +1,7 @@
-import 'package:easypost/src/api/client.dart';
-import 'package:easypost/src/api/http/api_version.dart';
+import 'package:easypost/easypost.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/shipments/list_shipments.dart';
-import 'package:easypost/src/api/parameters/v2/shipments/buy_shipment.dart';
-import 'package:easypost/src/api/parameters/v2/shipments/create_shipment.dart';
-import 'package:easypost/src/api/parameters/v2/shipments/create_shipment_document.dart';
-import 'package:easypost/src/api/parameters/v2/shipments/insure_shipment.dart';
 import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/exceptions/missing_property_exception.dart';
-import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
-import 'package:easypost/src/models/quoted_rate.dart';
-import 'package:easypost/src/models/shipment.dart';
-import 'package:easypost/src/models/shipment_rate.dart';
-import 'package:easypost/src/models/smart_rate.dart';
-import 'package:easypost/src/enums/smart_rate_accuracy.dart';
-import 'package:easypost/src/tools/rates.dart';
+import 'package:easypost/src/internal/conversions.dart';
 
 /// The [ShipmentService] handles shipments with the EasyPost API.
 class ShipmentService extends Service {
@@ -61,8 +48,8 @@ class ShipmentService extends Service {
     int? pageSize = collection.filters?.pageSize;
 
     return collection.getNextPage(
-        retrieveNextPageFunction, collection.shipments, pageSize: pageSize)
-    as Future<ShipmentCollection>;
+            retrieveNextPageFunction, collection.shipments, pageSize: pageSize)
+        as Future<ShipmentCollection>;
   }
 
   /// Retrieves all [SmartRate]s for a [Shipment].
@@ -86,11 +73,22 @@ class ShipmentService extends Service {
 
   /// Generates a [Shipment] label.
   Future<Shipment> generateLabel(
-      String shipmentId, CreateShipmentDocument parameters) async {
+      String shipmentId, CreateShipmentLabel parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/$shipmentId/label', ApiVersion.v2,
+        parameters: parameterMap);
+    return Shipment.fromJson(json);
+  }
+
+  /// Generates a [Shipment] form.
+  Future<Shipment> generateForm(
+      String shipmentId, CreateShipmentForm parameters) async {
+    Map<String, dynamic> parameterMap =
+        parameters.constructJson(client: client);
+    final json = await client.requestJson(
+        HttpMethod.post, 'shipments/$shipmentId/forms', ApiVersion.v2,
         parameters: parameterMap);
     return Shipment.fromJson(json);
   }
@@ -113,10 +111,27 @@ class ShipmentService extends Service {
   }
 
   /// Refreshes the [Rate]s for a [Shipment].
-  Future<Shipment> refreshRates(String shipmentId) async {
+  Future<List<ShipmentRate>> refreshRates(String shipmentId) async {
     final json = await client.requestJson(
         HttpMethod.get, 'shipments/$shipmentId/rates', ApiVersion.v2);
-    return Shipment.fromJson(json);
+    List<dynamic> rateData = json['rates'];
+    return rateData.map((e) => ShipmentRate.fromJson(e)).toList();
+  }
+
+  /// Retrieve the estimated delivery dates for a [Shipment].
+  Future<List<RateWithEstimatedDeliveryDate>> getEstimatedDeliveryDates(
+      String shipmentId, DateTime plannedShipDate) async {
+    Map<String, dynamic> parameterMap = {
+      'planned_ship_date': dateTimeToStringYYYYMMDD(plannedShipDate),
+    };
+    final json = await client.requestJson(HttpMethod.get,
+        'shipments/$shipmentId/smartrate/delivery_date', ApiVersion.v2,
+        parameters: parameterMap);
+    List<dynamic> rateData = json['rates'];
+    return rateData
+        .map<RateWithEstimatedDeliveryDate>(
+            (e) => RateWithEstimatedDeliveryDate.fromJson(e))
+        .toList();
   }
 
   /// Calculates the lowest [Rate] for a [Shipment].

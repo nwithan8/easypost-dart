@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/enums/payment_option_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_options.g.dart';
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class PaymentOptions extends Model {
+class PaymentOptions extends ReadOnlyModel {
   @JsonKey(name: 'type', toJson: paymentOptionTypeToJson, fromJson: paymentOptionTypeFromJson, disallowNullValue: true)
   late PaymentOptionType? type;
 

@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:easypost/src/api/parameters/iparameters.dart';
@@ -6,7 +6,7 @@ import 'package:easypost/src/api/parameters/iparameters.dart';
 part 'carrier_account.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CarrierAccount extends ModelWithId implements ICarrierAccountParameter {
+class CarrierAccount extends ReadOnlyModelWithId implements ICarrierAccountParameter {
   @JsonKey(name: 'billable_type')
   final String? billableType;
 

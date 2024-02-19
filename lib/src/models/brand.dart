@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'brand.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Brand extends Model {
+class Brand extends ReadOnlyModel {
   @JsonKey(name: 'ad')
   final String? ad;
 

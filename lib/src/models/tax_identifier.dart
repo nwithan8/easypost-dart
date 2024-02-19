@@ -1,11 +1,10 @@
-import 'package:easypost/src/base/model_with_id.dart';
-import 'package:easypost/src/internal/conversions.dart';
+import 'package:easypost/src/base/model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'tax_identifier.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class TaxIdentifier extends ModelWithId {
+class TaxIdentifier extends Model {
   @JsonKey(name: 'entity')
   final String? entity;
 
@@ -18,17 +17,12 @@ class TaxIdentifier extends ModelWithId {
   @JsonKey(name: 'tax_id_type')
   final String? taxIdType;
 
-  TaxIdentifier(
-    id,
-    createdAt,
-    updatedAt,
-    objectType,
-    mode,
+  TaxIdentifier({
     this.entity,
     this.issuingCountry,
     this.taxId,
     this.taxIdType,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  }) : super();
 
   factory TaxIdentifier.fromJson(Map<String, dynamic> input) =>
       _$TaxIdentifierFromJson(input);

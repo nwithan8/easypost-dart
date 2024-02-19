@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:easypost/src/base/model.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/constants.dart';
 import 'package:easypost/src/exceptions/pagination_exception.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -13,7 +13,7 @@ part 'paginated_collection.g.dart';
 
 /// Superclass for all paginated collections.
 @JsonSerializable(explicitToJson: true)
-class PaginatedCollection<ListObjectType extends ModelWithId, ListParametersType extends Parameters> extends Model {
+class PaginatedCollection<ListObjectType extends ReadOnlyModelWithId, ListParametersType extends Parameters> extends ReadOnlyModel {
   @JsonKey(name: 'has_more')
   final bool? hasMore;
 

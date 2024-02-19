@@ -1,5 +1,5 @@
 import 'package:easypost/src/api/parameters/v2/trackers/list_trackers.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/carrier_detail.dart';
@@ -9,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'tracker.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Tracker extends ModelWithId {
+class Tracker extends ReadOnlyModelWithId {
   @JsonKey(name: 'carrier')
   final String? carrier;
 

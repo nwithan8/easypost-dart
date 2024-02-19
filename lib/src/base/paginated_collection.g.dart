@@ -7,7 +7,7 @@ part of 'paginated_collection.dart';
 // **************************************************************************
 
 PaginatedCollection<ListObjectType, ListParametersType>
-    _$PaginatedCollectionFromJson<ListObjectType extends ModelWithId,
+    _$PaginatedCollectionFromJson<ListObjectType extends ReadOnlyModelWithId,
             ListParametersType extends Parameters>(Map<String, dynamic> json) =>
         PaginatedCollection<ListObjectType, ListParametersType>(
           json['object'],
@@ -16,7 +16,7 @@ PaginatedCollection<ListObjectType, ListParametersType>
         );
 
 Map<String, dynamic> _$PaginatedCollectionToJson<
-            ListObjectType extends ModelWithId,
+            ListObjectType extends ReadOnlyModelWithId,
             ListParametersType extends Parameters>(
         PaginatedCollection<ListObjectType, ListParametersType> instance) =>
     <String, dynamic>{

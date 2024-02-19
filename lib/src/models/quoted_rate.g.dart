@@ -20,10 +20,10 @@ QuotedRate _$QuotedRateFromJson(Map<String, dynamic> json) => QuotedRate(
       json['delivery_days'] as int?,
       json['est_delivery_days'] as int?,
       json['list_currency'] as String?,
-      stringToMoney(json['list_rate'] as String?),
-      stringToMoney(json['rate'] as String?),
+      anyToMoney(json['list_rate']),
+      anyToMoney(json['rate']),
       json['retail_currency'] as String?,
-      stringToMoney(json['retail_rate'] as String?),
+      anyToMoney(json['retail_rate']),
       json['service'] as String?,
     );
 

@@ -33,7 +33,7 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) => Shipment(
       json['from_address'] == null
           ? null
           : Address.fromJson(json['from_address'] as Map<String, dynamic>),
-      json['insurance'] as String?,
+      stringToMoney(json['insurance'] as String?),
       json['is_return'] as bool?,
       (json['messages'] as List<dynamic>?)
           ?.map((e) => Message.fromJson(e as Map<String, dynamic>))
@@ -95,7 +95,7 @@ Map<String, dynamic> _$ShipmentToJson(Shipment instance) => <String, dynamic>{
       'fees': instance.fees?.map((e) => e.toJson()).toList(),
       'forms': instance.forms?.map((e) => e.toJson()).toList(),
       'from_address': instance.fromAddress?.toJson(),
-      'insurance': instance.insurance,
+      'insurance': moneyToString(instance.insurance),
       'is_return': instance.isReturn,
       'messages': instance.messages?.map((e) => e.toJson()).toList(),
       'options': instance.options?.toJson(),

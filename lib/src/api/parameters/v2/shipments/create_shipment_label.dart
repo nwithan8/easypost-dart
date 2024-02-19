@@ -4,9 +4,9 @@ import 'package:easypost/src/enums/file_format.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class CreateShipmentDocument extends Parameters {
+class CreateShipmentLabel extends Parameters {
   @JsonParameter(Necessity.required, ['file_format'])
   FileFormat? fileFormat;
 
-  CreateShipmentDocument() : super();
+  CreateShipmentLabel() : super();
 }

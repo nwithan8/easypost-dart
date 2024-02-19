@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/exceptions/missing_property_exception.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
@@ -13,7 +13,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'order.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Order extends ModelWithId {
+class Order extends ReadOnlyModelWithId {
   @JsonKey(name: 'buyer_address')
   final Address? buyerAddress;
 

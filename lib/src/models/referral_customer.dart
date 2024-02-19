@@ -1,5 +1,5 @@
 import 'package:easypost/src/api/parameters/v2/referral_customers/list_referral_customers.dart';
-import 'package:easypost/src/base/model_with_id.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/api_key.dart';
@@ -9,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'referral_customer.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class ReferralCustomer extends ModelWithId {
+class ReferralCustomer extends ReadOnlyModelWithId {
   @JsonKey(name: 'api_keys')
   final List<ApiKey>? apiKeys;
 

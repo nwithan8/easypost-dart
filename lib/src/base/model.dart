@@ -1,4 +1,3 @@
-import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'model.g.dart';
@@ -6,13 +5,7 @@ part 'model.g.dart';
 /// Superclass for all models.
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Model {
-  @JsonKey(name: 'object')
-  final String? objectType;
-
-  @JsonKey(name: 'mode')
-  final String? mode;
-
-  const Model(this.objectType, this.mode);
+  const Model();
 
   Map<String, dynamic> toJson() => _$ModelToJson(this);
 }

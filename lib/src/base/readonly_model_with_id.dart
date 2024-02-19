@@ -1,12 +1,12 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'model_with_id.g.dart';
+part 'readonly_model_with_id.g.dart';
 
 /// Superclass for all models with an ID.
 @JsonSerializable(explicitToJson: true)
-class ModelWithId extends Model {
+class ReadOnlyModelWithId extends ReadOnlyModel {
   @JsonKey(name: 'id')
   final String id;
 
@@ -22,9 +22,9 @@ class ModelWithId extends Model {
     return id.split('_').first;
   }
 
-  ModelWithId(this.id, this.createdAt, this.updatedAt, objectType, mode)
+  ReadOnlyModelWithId(this.id, this.createdAt, this.updatedAt, objectType, mode)
       : super(objectType, mode);
 
   @override
-  Map<String, dynamic> toJson() => _$ModelWithIdToJson(this);
+  Map<String, dynamic> toJson() => _$ReadOnlyModelWithIdToJson(this);
 }

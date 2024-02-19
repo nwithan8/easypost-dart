@@ -109,6 +109,10 @@ class Fixtures {
     return createCreatePickupParameters(data: data);
   }
 
+  static DateTime get plannedShipDate {
+    return DateTime.parse('2024-02-21');
+  }
+
   static CreateShipment get basicShipment {
     Map<String, dynamic> data = fixtureStructures.shipments.basicDomestic;
     return createCreateShipmentParameters(data: data);
@@ -173,8 +177,10 @@ class Fixtures {
     AddCreditCard parameters = AddCreditCard();
 
     parameters.creditCardNumber = getOrDefaultInt(data, "number");
-    parameters.creditCardExpirationMonth = getOrDefaultInt(data, "expiration_month");
-    parameters.creditCardExpirationYear = getOrDefaultInt(data, "expiration_year");
+    parameters.creditCardExpirationMonth =
+        getOrDefaultInt(data, "expiration_month");
+    parameters.creditCardExpirationYear =
+        getOrDefaultInt(data, "expiration_year");
     parameters.creditCardCvv = getOrDefaultInt(data, "cvc");
 
     return parameters;
@@ -182,7 +188,7 @@ class Fixtures {
 
   static CreateShipment get fullShipment {
     Map<String, dynamic> data = fixtureStructures.shipments.full;
-    return CreateShipment();
+    return createCreateShipmentParameters(data: data);
   }
 
   static CreateAddress get incorrectAddress {
@@ -214,8 +220,15 @@ class Fixtures {
     return fixtureStructures.formOptions.rma;
   }
 
-  static Map<String, dynamic> get taxIdentifier {
-    return fixtureStructures.taxIdentifiers.basic;
+  static TaxIdentifier get taxIdentifier {
+    Map<String, dynamic> data = fixtureStructures.taxIdentifiers.basic;
+
+    return TaxIdentifier(
+      entity: getOrDefaultString(data, "entity"),
+      issuingCountry: getOrDefaultString(data, "issuing_country"),
+      taxId: getOrDefaultString(data, "tax_id"),
+      taxIdType: getOrDefaultString(data, "tax_id_type"),
+    );
   }
 
   static String get usps {

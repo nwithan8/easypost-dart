@@ -1,12 +1,12 @@
-import 'package:easypost/src/base/model_with_id.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'api_key.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class ApiKey extends ModelWithId {
+class ApiKey extends ReadOnlyModelWithId {
   @JsonKey(name: 'key')
   final String? key;
 
@@ -21,7 +21,7 @@ class ApiKey extends ModelWithId {
 }
 
 @JsonSerializable(explicitToJson: true)
-class ApiKeyCollection extends ModelWithId {
+class ApiKeyCollection extends ReadOnlyModelWithId {
   @JsonKey(name: 'children')
   final List<ApiKeyCollection>? children;
 
