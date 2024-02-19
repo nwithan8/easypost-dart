@@ -1,10 +1,10 @@
+import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/enums/report_type.dart';
 import 'package:easypost/src/internal/parameter_annotation.dart';
-import 'package:easypost/src/api/parameters/_base.dart';
 import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
-class ListReports extends Parameters {
+abstract class ListReports extends Parameters {
   @JsonParameter(Necessity.optional, ['after_id'])
   String? afterId;
 
@@ -20,8 +20,8 @@ class ListReports extends Parameters {
   @JsonParameter(Necessity.optional, ['page_size'])
   int? pageSize;
 
-  // Not serialized, stored for later
-  ReportType? reportType;
+  // Not included in the JSON
+  final ReportType reportType; // Cannot be overridden by end user
 
-  ListReports() : super();
+  ListReports(this.reportType) : super();
 }

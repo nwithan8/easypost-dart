@@ -1,10 +1,10 @@
-import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/api/parameters/_base.dart';
+import 'package:easypost/src/enums/report_type.dart';
+import 'package:easypost/src/internal/parameter_annotation.dart';
 import 'package:easypost/src/internal/reflection.dart';
-import 'package:easypost/src/api/parameters/iparameters.dart';
 
 @reflector
-class CreateReport extends Parameters {
+abstract class CreateReport extends Parameters {
   @JsonParameter(Necessity.optional, ['report', 'additional_columns'])
   List<String>? additionalColumns;
 
@@ -23,5 +23,8 @@ class CreateReport extends Parameters {
   @JsonParameter(Necessity.optional, ['report', 'include_children'])
   bool? includeChildren;
 
-  CreateReport() : super();
+  // Not included in the JSON
+  final ReportType reportType; // Cannot be overridden by end user
+
+  CreateReport(this.reportType) : super();
 }

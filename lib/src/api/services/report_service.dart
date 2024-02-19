@@ -4,7 +4,6 @@ import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/parameters/v2/reports/create_report.dart';
 import 'package:easypost/src/api/parameters/v2/reports/list_reports.dart';
 import 'package:easypost/src/base/service.dart';
-import 'package:easypost/src/enums/report_type.dart';
 import 'package:easypost/src/models/report.dart';
 
 /// The [ReportService] handles reports with the EasyPost API.
@@ -12,12 +11,12 @@ class ReportService extends Service {
   ReportService(Client client) : super(client);
 
   /// Creates a [Report].
-  Future<Report> create(ReportType type, CreateReport parameters) async {
+  Future<Report> create(CreateReport parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
       HttpMethod.post,
-      'reports/${type.toString()}',
+      'reports/${parameters.reportType.toString()}',
       ApiVersion.v2,
       parameters: parameterMap,
     );
@@ -35,10 +34,7 @@ class ReportService extends Service {
   }
 
   /// Lists all [Report]s.
-  Future<ReportCollection> list({required ListReports parameters}) async {
-    if (parameters.reportType == null) {
-      throw ArgumentError('ReportType is required to list reports.');
-    }
+  Future<ReportCollection> list(ListReports parameters) async {
     Map<String, dynamic>? parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(HttpMethod.get,
@@ -61,7 +57,7 @@ class ReportService extends Service {
         throw ArgumentError(
             'Parameters are required to retrieve the next page.');
       }
-      return list(parameters: parameters);
+      return list(parameters);
     }
 
     // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).

@@ -11,7 +11,7 @@ class RefundService extends Service {
   RefundService(Client client) : super(client);
 
   /// Creates a [Refund].
-  Future<Refund> create(CreateRefund parameters) async {
+  Future<List<Refund>> create(CreateRefund parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json =  await client.requestJson(
@@ -20,7 +20,7 @@ class RefundService extends Service {
       ApiVersion.v2,
       parameters: parameterMap,
     );
-    return Refund.fromJson(json);
+    return List<Refund>.from(json.map((i) => Refund.fromJson(i)));
   }
 
   /// Retrieves a [Refund].
