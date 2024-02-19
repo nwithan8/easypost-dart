@@ -124,8 +124,7 @@ class PickupCollection extends PaginatedCollection<Pickup, ListPickups> {
   @JsonKey(name: 'pickups')
   final List<Pickup>? pickups;
 
-  PickupCollection(
-      objectType, mode, hasMore, this.pickups)
+  PickupCollection(objectType, mode, hasMore, this.pickups)
       : super(objectType, mode, hasMore);
 
   factory PickupCollection.fromJson(Map<String, dynamic> input) =>

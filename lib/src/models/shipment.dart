@@ -154,7 +154,8 @@ class Shipment extends ReadOnlyModelWithId implements IShipmentParameter {
   @override
   Map<String, dynamic> toJson() => _$ShipmentToJson(this);
 
-  ShipmentRate? associatedShipmentRate(QuotedRate rate, {bool lockPrice = false}) {
+  ShipmentRate? associatedShipmentRate(QuotedRate rate,
+      {bool lockPrice = false}) {
     if (rates == null) {
       throw MissingPropertyException.generate(toString(), 'rates');
     }
@@ -212,7 +213,8 @@ class ShipmentCollection extends PaginatedCollection<Shipment, ListShipments> {
   Map<String, dynamic> toJson() => _$ShipmentCollectionToJson(this);
 
   @override
-  ListShipments buildGetNextPageParameters(List<Shipment>? currentPageItems, {int? pageSize}) {
+  ListShipments buildGetNextPageParameters(List<Shipment>? currentPageItems,
+      {int? pageSize}) {
     ListShipments parameters = filters ?? ListShipments();
 
     parameters.beforeId = currentPageItems?.last.id;

@@ -14,7 +14,7 @@ class TrackerService extends Service {
   Future<Tracker> create(CreateTracker parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'trackers',
       ApiVersion.v2,
@@ -25,7 +25,7 @@ class TrackerService extends Service {
 
   /// Retrieves a [Tracker].
   Future<Tracker> retrieve(String trackerId) async {
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.get,
       'trackers/$trackerId',
       ApiVersion.v2,
@@ -56,8 +56,7 @@ class TrackerService extends Service {
     // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
     int? pageSize = collection.filters?.pageSize;
 
-    return collection.getNextPage(
-        retrieveNextPageFunction, collection.trackers, pageSize: pageSize)
-    as Future<TrackerCollection>;
+    return collection.getNextPage(retrieveNextPageFunction, collection.trackers,
+        pageSize: pageSize) as Future<TrackerCollection>;
   }
 }

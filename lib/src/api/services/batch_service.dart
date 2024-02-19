@@ -25,8 +25,8 @@ class BatchService extends Service {
 
   /// Retrieves a [Batch].
   Future<Batch> retrieve(String batchId) async {
-    final json =
-        await client.requestJson(HttpMethod.get, 'batches/$batchId', ApiVersion.v2);
+    final json = await client.requestJson(
+        HttpMethod.get, 'batches/$batchId', ApiVersion.v2);
     return Batch.fromJson(json);
   }
 
@@ -53,9 +53,8 @@ class BatchService extends Service {
     // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
     int? pageSize = collection.filters?.pageSize;
 
-    return collection.getNextPage(
-        retrieveNextPageFunction, collection.batches, pageSize: pageSize)
-    as Future<BatchCollection>;
+    return collection.getNextPage(retrieveNextPageFunction, collection.batches,
+        pageSize: pageSize) as Future<BatchCollection>;
   }
 
   /// Adds [Shipment]s to a [Batch].

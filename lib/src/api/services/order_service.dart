@@ -26,8 +26,8 @@ class OrderService extends Service {
 
   /// Retrieves an [Order].
   Future<Order> retrieve(String orderId) async {
-    final json =
-        await client.requestJson(HttpMethod.get, 'orders/$orderId', ApiVersion.v2);
+    final json = await client.requestJson(
+        HttpMethod.get, 'orders/$orderId', ApiVersion.v2);
     return Order.fromJson(json);
   }
 

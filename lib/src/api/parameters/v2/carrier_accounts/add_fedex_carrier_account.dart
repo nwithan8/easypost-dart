@@ -73,5 +73,6 @@ class AddFedExCarrierAccount extends AddCarrierAccount {
       ['carrier_account', "registration_data", "shipping_streets"])
   String? shippingAddressStreet;
 
-  AddFedExCarrierAccount() : super(CarrierAccountType.fedEx, registerCarrierAccountEndpoint);
+  AddFedExCarrierAccount()
+      : super(CarrierAccountType.fedEx, registerCarrierAccountEndpoint);
 }

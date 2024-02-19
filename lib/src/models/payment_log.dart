@@ -110,8 +110,7 @@ class PaymentLogCollection
   @JsonKey(name: 'payment_logs')
   final List<PaymentLog>? paymentLogs;
 
-  PaymentLogCollection(
-      objectType, mode, hasMore, this.paymentLogs)
+  PaymentLogCollection(objectType, mode, hasMore, this.paymentLogs)
       : super(objectType, mode, hasMore);
 
   factory PaymentLogCollection.fromJson(Map<String, dynamic> input) =>
@@ -121,7 +120,8 @@ class PaymentLogCollection
   Map<String, dynamic> toJson() => _$PaymentLogCollectionToJson(this);
 
   @override
-  ListPaymentLogs buildGetNextPageParameters(List<PaymentLog>? currentPageItems, {int? pageSize}) {
+  ListPaymentLogs buildGetNextPageParameters(List<PaymentLog>? currentPageItems,
+      {int? pageSize}) {
     ListPaymentLogs parameters = filters ?? ListPaymentLogs();
 
     parameters.beforeId = currentPageItems?.last.id;

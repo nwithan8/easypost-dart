@@ -13,7 +13,7 @@ class AccountService extends Service {
   /// Change account password for the current authenticated user.
   Future<bool> changePassword(ChangePassword parameters) async {
     Map<String, dynamic> parameterMap =
-    parameters.constructJson(client: client);
+        parameters.constructJson(client: client);
     return await client.request(
       HttpMethod.patch,
       'users',

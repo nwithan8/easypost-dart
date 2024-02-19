@@ -67,7 +67,8 @@ class QuotedRate extends ReadOnlyModel {
     this.service,
   ) : super(objectType, mode);
 
-  factory QuotedRate.fromJson(Map<String, dynamic> input) => _$QuotedRateFromJson(input);
+  factory QuotedRate.fromJson(Map<String, dynamic> input) =>
+      _$QuotedRateFromJson(input);
 
   @override
   Map<String, dynamic> toJson() => _$QuotedRateToJson(this);

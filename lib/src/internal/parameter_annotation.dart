@@ -25,7 +25,8 @@ class JsonParameter extends Parameter {
   /// returns a JSON-compatible value.
   final Function? toJson;
 
-  const JsonParameter(Necessity necessity, this.jsonPath, {this.toJson}) : super(necessity);
+  const JsonParameter(Necessity necessity, this.jsonPath, {this.toJson})
+      : super(necessity);
 
   static JsonParameter? getJsonParameter(DeclarationMirror mirror) {
     return CustomAnnotation.getAnnotationOfType<JsonParameter>(
@@ -36,15 +37,20 @@ class JsonParameter extends Parameter {
 class SubJsonParameter extends JsonParameter {
   final Type parentType;
 
-  const SubJsonParameter(this.parentType, Necessity necessity, List<String> jsonPath, {Function? toJson}) : super(necessity, jsonPath, toJson: toJson);
+  const SubJsonParameter(
+      this.parentType, Necessity necessity, List<String> jsonPath,
+      {Function? toJson})
+      : super(necessity, jsonPath, toJson: toJson);
 
-  static SubJsonParameter? getSubJsonParameter(Type? parentType, DeclarationMirror mirror) {
+  static SubJsonParameter? getSubJsonParameter(
+      Type? parentType, DeclarationMirror mirror) {
     if (parentType == null) {
       return null;
     }
 
-    List<SubJsonParameter>? subJsonParameters = CustomAnnotation.getAnnotationsOfType<SubJsonParameter>(
-        SubJsonParameter, mirror);
+    List<SubJsonParameter>? subJsonParameters =
+        CustomAnnotation.getAnnotationsOfType<SubJsonParameter>(
+            SubJsonParameter, mirror);
     if (subJsonParameters == null) {
       return null;
     }

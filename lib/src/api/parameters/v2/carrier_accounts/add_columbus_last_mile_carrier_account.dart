@@ -5,8 +5,8 @@ import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
 class AddColumbusLastMileCarrierAccount extends AddCarrierAccount {
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "tracking_code_prefix"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "tracking_code_prefix"])
   String? trackingCodePrefix;
 
   @JsonParameter(
@@ -30,5 +30,6 @@ class AddColumbusLastMileCarrierAccount extends AddCarrierAccount {
   String? testUsername;
 
   AddColumbusLastMileCarrierAccount()
-      : super(CarrierAccountType.columbusLastMile, defaultCarrierAccountCreationEndpoint);
+      : super(CarrierAccountType.columbusLastMile,
+            defaultCarrierAccountCreationEndpoint);
 }

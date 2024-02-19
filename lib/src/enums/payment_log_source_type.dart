@@ -9,31 +9,39 @@ class PaymentLogSourceType extends SerializableEnum {
   static PaymentLogSourceType user = PaymentLogSourceType(2, 'user');
 
   /// Payment log source type for manual debit.
-  static PaymentLogSourceType manualDebit = PaymentLogSourceType(3, 'manual_debit');
+  static PaymentLogSourceType manualDebit =
+      PaymentLogSourceType(3, 'manual_debit');
 
   /// Payment log source type for bank account.
-  static PaymentLogSourceType bankAccount = PaymentLogSourceType(4, 'bank_account');
+  static PaymentLogSourceType bankAccount =
+      PaymentLogSourceType(4, 'bank_account');
 
   /// Payment log source type for ACH credit source.
-  static PaymentLogSourceType achCreditSource = PaymentLogSourceType(5, 'ach_credit_source');
+  static PaymentLogSourceType achCreditSource =
+      PaymentLogSourceType(5, 'ach_credit_source');
 
   /// Payment log source type for credit card.
-  static PaymentLogSourceType creditCard = PaymentLogSourceType(6, 'credit_card');
+  static PaymentLogSourceType creditCard =
+      PaymentLogSourceType(6, 'credit_card');
 
   /// Payment log source type for insurance.
   static PaymentLogSourceType insurance = PaymentLogSourceType(7, 'insurance');
 
   /// Payment log source type for subscription.
-  static PaymentLogSourceType subscription = PaymentLogSourceType(8, 'subscription');
+  static PaymentLogSourceType subscription =
+      PaymentLogSourceType(8, 'subscription');
 
   /// Payment log source type for fulfillment order.
-  static PaymentLogSourceType fulfillmentOrder = PaymentLogSourceType(9, 'fulfillment_order');
+  static PaymentLogSourceType fulfillmentOrder =
+      PaymentLogSourceType(9, 'fulfillment_order');
 
   /// Payment log source type for payment refund.
-  static PaymentLogSourceType paymentRefund = PaymentLogSourceType(10, 'payment_refund');
+  static PaymentLogSourceType paymentRefund =
+      PaymentLogSourceType(10, 'payment_refund');
 
   /// Payment log source type for post-pay shipment.
-  static PaymentLogSourceType postPayShipment = PaymentLogSourceType(11, 'post_pay_shipment');
+  static PaymentLogSourceType postPayShipment =
+      PaymentLogSourceType(11, 'post_pay_shipment');
 
   PaymentLogSourceType(super.id, super.jsonValue);
 
@@ -68,5 +76,6 @@ class PaymentLogSourceType extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [PaymentLogSourceType].
-  static String? asString(PaymentLogSourceType? paymentLogSourceType) => paymentLogSourceType?.toString();
+  static String? asString(PaymentLogSourceType? paymentLogSourceType) =>
+      paymentLogSourceType?.toString();
 }

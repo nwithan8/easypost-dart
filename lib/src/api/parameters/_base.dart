@@ -99,9 +99,8 @@ class Parameters {
 
     // Iterate over all properties
     for (var property in properties) {
-      var parameterAttribute =
-          SubJsonParameter.getSubJsonParameter(
-              parentParameterObjectType, property);
+      var parameterAttribute = SubJsonParameter.getSubJsonParameter(
+          parentParameterObjectType, property);
       if (parameterAttribute == null) {
         // Ignore any properties that are not annotated with a JsonParameter attribute
         continue;

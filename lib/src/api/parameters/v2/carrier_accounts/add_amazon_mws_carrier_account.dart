@@ -17,5 +17,7 @@ class AddAmazonMwsCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "secret_key"])
   String? secretKey;
 
-  AddAmazonMwsCarrierAccount() : super(CarrierAccountType.amazonMws, defaultCarrierAccountCreationEndpoint);
+  AddAmazonMwsCarrierAccount()
+      : super(CarrierAccountType.amazonMws,
+            defaultCarrierAccountCreationEndpoint);
 }

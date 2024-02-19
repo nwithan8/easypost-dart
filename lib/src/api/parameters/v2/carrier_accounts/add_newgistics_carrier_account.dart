@@ -5,8 +5,8 @@ import 'package:easypost/src/internal/reflection.dart';
 
 @reflector
 class AddNewgisticsCarrierAccount extends AddCarrierAccount {
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "client_facility_id"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "client_facility_id"])
   String? clientFacilityId;
 
   @JsonParameter(
@@ -17,40 +17,40 @@ class AddNewgisticsCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "client_secret"])
   String? clientSecret;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "fulfiller_facility_id"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "fulfiller_facility_id"])
   String? fulfillerFacilityId;
 
   @JsonParameter(
       Necessity.required, ['carrier_account', "credentials", "merchant_id"])
   String? merchantId;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "tracking_api_key"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "tracking_api_key"])
   String? trackingApiKey;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "client_facility_id"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "client_facility_id"])
   String? testClientFacilityId;
 
   @JsonParameter(
       Necessity.required, ['carrier_account', "test_credentials", "client_id"])
   String? testClientId;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "client_secret"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "client_secret"])
   String? testClientSecret;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "fulfiller_facility_id"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "fulfiller_facility_id"])
   String? testFulfillerFacilityId;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "merchant_id"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "merchant_id"])
   String? testMerchantId;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "tracking_api_key"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "tracking_api_key"])
   String? testTrackingApiKey;
 
   AddNewgisticsCarrierAccount()

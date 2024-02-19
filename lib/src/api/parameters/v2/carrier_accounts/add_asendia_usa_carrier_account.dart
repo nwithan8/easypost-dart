@@ -13,8 +13,8 @@ class AddAsendiaUsaCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "api_key"])
   String? apiKey;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "carrier_facility"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "carrier_facility"])
   String? carrierFacility;
 
   @JsonParameter(
@@ -25,20 +25,20 @@ class AddAsendiaUsaCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "username"])
   String? username;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "sub_account_number"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "sub_account_number"])
   String? subAccountNumber;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "account_number"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "account_number"])
   String? testAccountNumber;
 
   @JsonParameter(
       Necessity.required, ['carrier_account', "test_credentials", "api_key"])
   String? testApiKey;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "carrier_facility"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "carrier_facility"])
   String? testCarrierFacility;
 
   @JsonParameter(
@@ -49,9 +49,11 @@ class AddAsendiaUsaCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "test_credentials", "username"])
   String? testUsername;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "sub_account_number"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "sub_account_number"])
   String? testSubAccountNumber;
 
-  AddAsendiaUsaCarrierAccount() : super(CarrierAccountType.asendiaUsa, defaultCarrierAccountCreationEndpoint);
+  AddAsendiaUsaCarrierAccount()
+      : super(CarrierAccountType.asendiaUsa,
+            defaultCarrierAccountCreationEndpoint);
 }

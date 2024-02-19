@@ -26,7 +26,6 @@ Digest hmacSha256HashFromString(String data, String secret) {
   return hmacSha256HashFromBytes(dataBytes, secret);
 }
 
-
 /// Compare two byte arrays. This is safe against timing attacks.
 bool byteArraysMatch(List<int>? bytes1, List<int>? bytes2) {
   // short-circuit if either byte array is null

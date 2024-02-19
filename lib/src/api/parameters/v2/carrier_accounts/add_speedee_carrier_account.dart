@@ -18,6 +18,6 @@ class AddSpeedeeCarrierAccount extends AddCarrierAccount {
   String? ftpUsername;
 
   AddSpeedeeCarrierAccount()
-      : super(CarrierAccountType.speedee,
-            defaultCarrierAccountCreationEndpoint);
+      : super(
+            CarrierAccountType.speedee, defaultCarrierAccountCreationEndpoint);
 }

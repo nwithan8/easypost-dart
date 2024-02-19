@@ -15,7 +15,8 @@ void main() {
     });
 
     test('add existing Stripe payment method', () async {
-      Client client = TestUtils.setUpVCRClient("referral_customers", 'add_existing_stripe_payment_method');
+      Client client = TestUtils.setUpVCRClient(
+          "referral_customers", 'add_existing_stripe_payment_method');
       client.enableProductionMode();
 
       final params = AddExistingStripePaymentMethod();
@@ -23,7 +24,8 @@ void main() {
       params.stripePaymentMethodId = 'not-a-real-stripe-payment-method-id';
 
       try {
-        final paymentMethod = await client.referrals.addExistingStripePaymentMethod(params);
+        final paymentMethod =
+            await client.referrals.addExistingStripePaymentMethod(params);
         fail('Exception not thrown');
       } on ApiInvalidRequestException catch (e) {
         // Data being sent is not valid, so we expect an error
@@ -32,7 +34,8 @@ void main() {
     });
 
     test('issue refund by amount', () async {
-      Client client = TestUtils.setUpVCRClient("referral_customers", 'issue_refund_by_amount');
+      Client client = TestUtils.setUpVCRClient(
+          "referral_customers", 'issue_refund_by_amount');
       client.enableProductionMode();
 
       final params = IssueRefund();
@@ -48,7 +51,8 @@ void main() {
     });
 
     test('issue refund by payment log id', () async {
-      Client client = TestUtils.setUpVCRClient("referral_customers", 'issue_refund_by_payment_log_id');
+      Client client = TestUtils.setUpVCRClient(
+          "referral_customers", 'issue_refund_by_payment_log_id');
       client.enableProductionMode();
 
       final params = IssueRefund();

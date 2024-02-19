@@ -9,8 +9,8 @@ class AddOsmWorldwideCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "account_number"])
   String? accountNumber;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "aws_sftp_username"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "aws_sftp_username"])
   String? awsSftpUsername;
 
   @JsonParameter(

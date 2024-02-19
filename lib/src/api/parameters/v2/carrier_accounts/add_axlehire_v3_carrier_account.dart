@@ -13,5 +13,7 @@ class AddAxlehireV3CarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "test_credentials", "api_key"])
   String? testApiKey;
 
-  AddAxlehireV3CarrierAccount() : super(CarrierAccountType.axlehireV3, defaultCarrierAccountCreationEndpoint);
+  AddAxlehireV3CarrierAccount()
+      : super(CarrierAccountType.axlehireV3,
+            defaultCarrierAccountCreationEndpoint);
 }

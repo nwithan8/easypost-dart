@@ -53,8 +53,8 @@ class AddFedExSmartPostCarrierAccount extends AddCarrierAccount {
       ['carrier_account', "registration_data", "corporate_phone_number"])
   String? corporatePhoneNumber;
 
-  @JsonParameter(Necessity.required,
-      ['carrier_account', "registration_data", "hub_id"])
+  @JsonParameter(
+      Necessity.required, ['carrier_account', "registration_data", "hub_id"])
   String? hubId;
 
   @JsonParameter(Necessity.required,
@@ -77,5 +77,7 @@ class AddFedExSmartPostCarrierAccount extends AddCarrierAccount {
       ['carrier_account', "registration_data", "shipping_streets"])
   String? shippingAddressStreet;
 
-  AddFedExSmartPostCarrierAccount() : super(CarrierAccountType.fedExSmartPost, registerCarrierAccountEndpoint);
+  AddFedExSmartPostCarrierAccount()
+      : super(
+            CarrierAccountType.fedExSmartPost, registerCarrierAccountEndpoint);
 }

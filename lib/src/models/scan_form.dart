@@ -57,8 +57,7 @@ class ScanFormCollection extends PaginatedCollection<ScanForm, ListScanForms> {
   @JsonKey(name: 'scan_forms')
   final List<ScanForm>? scanForms;
 
-  ScanFormCollection(
-      objectType, mode, hasMore, this.scanForms)
+  ScanFormCollection(objectType, mode, hasMore, this.scanForms)
       : super(objectType, mode, hasMore);
 
   factory ScanFormCollection.fromJson(Map<String, dynamic> input) =>
@@ -68,7 +67,8 @@ class ScanFormCollection extends PaginatedCollection<ScanForm, ListScanForms> {
   Map<String, dynamic> toJson() => _$ScanFormCollectionToJson(this);
 
   @override
-  ListScanForms buildGetNextPageParameters(List<ScanForm>? currentPageItems, {int? pageSize}) {
+  ListScanForms buildGetNextPageParameters(List<ScanForm>? currentPageItems,
+      {int? pageSize}) {
     ListScanForms parameters = filters ?? ListScanForms();
 
     parameters.beforeId = currentPageItems?.last.id;

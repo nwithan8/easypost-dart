@@ -17,8 +17,7 @@ class AddPassportGlobalCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "email"])
   String? email;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "name"])
+  @JsonParameter(Necessity.required, ['carrier_account', "credentials", "name"])
   String? name;
 
   @JsonParameter(
@@ -29,8 +28,8 @@ class AddPassportGlobalCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "test_credentials", "api_key"])
   String? testApiKey;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "company_name"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "company_name"])
   String? testCompanyName;
 
   @JsonParameter(

@@ -48,8 +48,7 @@ class RefundCollection extends PaginatedCollection<Refund, ListRefunds> {
   @JsonKey(name: 'refunds')
   final List<Refund>? refunds;
 
-  RefundCollection(
-      objectType, mode, hasMore, this.refunds)
+  RefundCollection(objectType, mode, hasMore, this.refunds)
       : super(objectType, mode, hasMore);
 
   factory RefundCollection.fromJson(Map<String, dynamic> input) =>
@@ -59,7 +58,8 @@ class RefundCollection extends PaginatedCollection<Refund, ListRefunds> {
   Map<String, dynamic> toJson() => _$RefundCollectionToJson(this);
 
   @override
-  ListRefunds buildGetNextPageParameters(List<Refund>? currentPageItems, {int? pageSize}) {
+  ListRefunds buildGetNextPageParameters(List<Refund>? currentPageItems,
+      {int? pageSize}) {
     ListRefunds parameters = filters ?? ListRefunds();
 
     parameters.beforeId = currentPageItems?.last.id;

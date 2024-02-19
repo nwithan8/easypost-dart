@@ -10,10 +10,16 @@ class TimeInTransitDetails extends Model {
   @JsonKey(name: 'days_in_transit')
   final TimeInTransit? daysInTransit;
 
-  @JsonKey(name: 'easypost_estimated_delivery_date', fromJson: stringToDateTime, toJson: dateTimeToStringYYYYMMDD)
+  @JsonKey(
+      name: 'easypost_estimated_delivery_date',
+      fromJson: stringToDateTime,
+      toJson: dateTimeToStringYYYYMMDD)
   final DateTime? estimatedDeliveryDate;
 
-  @JsonKey(name: 'planned_ship_date', fromJson: stringToDateTime, toJson: dateTimeToStringYYYYMMDD)
+  @JsonKey(
+      name: 'planned_ship_date',
+      fromJson: stringToDateTime,
+      toJson: dateTimeToStringYYYYMMDD)
   final DateTime? plannedShipDate;
 
   TimeInTransitDetails(

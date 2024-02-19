@@ -44,7 +44,8 @@ void main() {
     });
 
     test('buy with carrier and service', () async {
-      Client client = TestUtils.setUpVCRClient("orders", 'buy_with_carrier_and_service');
+      Client client =
+          TestUtils.setUpVCRClient("orders", 'buy_with_carrier_and_service');
       client.enableTestMode();
 
       final params = Fixtures.basicOrder;

@@ -8,7 +8,6 @@ import 'package:easypost/src/api/parameters/v2/orders/create_order.dart';
 import 'package:easypost/src/api/parameters/v2/pickups/create_pickup.dart';
 import 'package:easypost/src/api/parameters/v2/rates/retrieve_quoted_rates.dart';
 
-
 @reflector
 class CreateAddress extends Parameters implements IAddressParameter {
   @SubJsonParameter(CreateShipment, Necessity.optional, ['id'])
@@ -17,13 +16,14 @@ class CreateAddress extends Parameters implements IAddressParameter {
   @SubJsonParameter(CreatePickup, Necessity.optional, ['id'])
   @SubJsonParameter(RetrieveQuotedRates, Necessity.optional, ['id'])
   String? id;
-  
+
   @JsonParameter(Necessity.optional, ['address', 'carrier_facility'])
   @SubJsonParameter(CreateShipment, Necessity.optional, ['carrier_facility'])
   @SubJsonParameter(CreateInsurance, Necessity.optional, ['carrier_facility'])
   @SubJsonParameter(CreateOrder, Necessity.optional, ['carrier_facility'])
   @SubJsonParameter(CreatePickup, Necessity.optional, ['carrier_facility'])
-  @SubJsonParameter(RetrieveQuotedRates, Necessity.optional, ['carrier_facility'])
+  @SubJsonParameter(
+      RetrieveQuotedRates, Necessity.optional, ['carrier_facility'])
   String? carrierFacility;
 
   @JsonParameter(Necessity.optional, ['address', "city"])

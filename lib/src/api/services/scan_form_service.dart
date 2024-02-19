@@ -14,7 +14,7 @@ class ScanFormService extends Service {
   Future<ScanForm> create(CreateScanForm parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'scan_forms',
       ApiVersion.v2,
@@ -25,7 +25,7 @@ class ScanFormService extends Service {
 
   /// Retrieves a [ScanForm].
   Future<ScanForm> retrieve(String scanFormId) async {
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.get,
       'scan_forms/$scanFormId',
       ApiVersion.v2,
@@ -57,7 +57,7 @@ class ScanFormService extends Service {
     int? pageSize = collection.filters?.pageSize;
 
     return collection.getNextPage(
-        retrieveNextPageFunction, collection.scanForms, pageSize: pageSize)
-    as Future<ScanFormCollection>;
+            retrieveNextPageFunction, collection.scanForms, pageSize: pageSize)
+        as Future<ScanFormCollection>;
   }
 }

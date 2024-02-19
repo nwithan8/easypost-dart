@@ -23,7 +23,8 @@ class UpdateUser extends Parameters {
   @JsonParameter(Necessity.optional, ['user', 'secondary_recharge_amount'])
   String? secondaryRechargeAmount;
 
-  @JsonParameter(Necessity.optional, ['user', 'default_insurance_amount'], toJson: moneyToStringCents)
+  @JsonParameter(Necessity.optional, ['user', 'default_insurance_amount'],
+      toJson: moneyToStringCents)
   double? defaultInsuranceAmount;
 
   UpdateUser() : super();

@@ -17,7 +17,7 @@ class ReferralCustomerService extends Service {
       AddExistingStripePaymentMethod parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'referral_customers/payment_method',
       ApiVersion.beta,

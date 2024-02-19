@@ -6,7 +6,8 @@ import 'package:easypost/src/internal/reflection.dart';
 @reflector
 class UpdateBatchShipments extends Parameters {
   @JsonParameter(Necessity.required, ['shipments'])
-  List<Shipment>? shipments;  // Shipments have to exist before they can be added to a batch
+  List<Shipment>?
+      shipments; // Shipments have to exist before they can be added to a batch
 
   UpdateBatchShipments() : super();
 }

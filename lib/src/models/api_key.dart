@@ -28,8 +28,8 @@ class ApiKeyCollection extends ReadOnlyModelWithId {
   @JsonKey(name: 'keys')
   final List<ApiKey>? keys;
 
-  ApiKeyCollection(id, createdAt, updatedAt, objectType, mode,
-      this.children, this.keys)
+  ApiKeyCollection(
+      id, createdAt, updatedAt, objectType, mode, this.children, this.keys)
       : super(id, createdAt, updatedAt, objectType, mode);
 
   factory ApiKeyCollection.fromJson(Map<String, dynamic> input) =>

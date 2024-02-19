@@ -29,7 +29,8 @@ void main() {
     });
 
     test('create with existing shipments', () async {
-      Client client = TestUtils.setUpVCRClient("batches", 'create_with_existing_shipments');
+      Client client =
+          TestUtils.setUpVCRClient("batches", 'create_with_existing_shipments');
       client.enableTestMode();
 
       final shipment = await client.shipments.create(Fixtures.basicShipment);
@@ -44,7 +45,6 @@ void main() {
       expect(batch.id, startsWith(ModelPrefixes.batch));
       expect(batch.shipments, isNotNull);
     });
-
 
     test('list', () async {
       Client client = TestUtils.setUpVCRClient("batches", 'list');
@@ -86,13 +86,14 @@ void main() {
       final batchCreateParams = CreateBatch();
       final batch = await client.batches.create(batchCreateParams);
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final batchUpdateShipmentsParams = UpdateBatchShipments();
       batchUpdateShipmentsParams.shipments = [shipment];
 
-      final updatedBatch =
-          await client.batches.addShipments(batch.id, batchUpdateShipmentsParams);
+      final updatedBatch = await client.batches
+          .addShipments(batch.id, batchUpdateShipmentsParams);
 
       expect(updatedBatch, isNotNull);
       expect(updatedBatch, isA<Batch>());
@@ -107,13 +108,14 @@ void main() {
       final batchCreateParams = CreateBatch();
       final batch = await client.batches.create(batchCreateParams);
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final batchUpdateShipmentsParams = UpdateBatchShipments();
       batchUpdateShipmentsParams.shipments = [shipment];
 
-      final updatedBatch =
-          await client.batches.addShipments(batch.id, batchUpdateShipmentsParams);
+      final updatedBatch = await client.batches
+          .addShipments(batch.id, batchUpdateShipmentsParams);
 
       expect(updatedBatch, isNotNull);
       expect(updatedBatch, isA<Batch>());
@@ -123,8 +125,8 @@ void main() {
       final batchRemoveShipmentsParams = UpdateBatchShipments();
       batchRemoveShipmentsParams.shipments = [shipment];
 
-      final removedBatch =
-          await client.batches.removeShipments(updatedBatch.id, batchRemoveShipmentsParams);
+      final removedBatch = await client.batches
+          .removeShipments(updatedBatch.id, batchRemoveShipmentsParams);
 
       expect(removedBatch, isNotNull);
       expect(removedBatch, isA<Batch>());
@@ -183,8 +185,8 @@ void main() {
       final scanFormParams = CreateBatchDocument();
       scanFormParams.fileFormat = FileFormat.zpl;
 
-      final scannedBatch =
-          await client.batches.generateScanForm(purchasedBatch.id, scanFormParams);
+      final scannedBatch = await client.batches
+          .generateScanForm(purchasedBatch.id, scanFormParams);
 
       expect(scannedBatch, isNotNull);
       expect(scannedBatch.scanForm, isNotNull);

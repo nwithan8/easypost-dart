@@ -129,8 +129,7 @@ class ExtrasService extends Service {
     return parameterMap;
   }
 
-  Client createClientWithReferralCustomerApiKey(
-      String referralCustomerApiKey) {
+  Client createClientWithReferralCustomerApiKey(String referralCustomerApiKey) {
     return Client(ClientConfiguration("none", referralCustomerApiKey,
         apiVersion: client.config.apiVersion, baseUrl: client.config.baseUrl));
   }

@@ -31,5 +31,6 @@ class SortDirection extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [SortDirection].
-  static String? asString(SortDirection? sortDirection) => sortDirection?.toString();
+  static String? asString(SortDirection? sortDirection) =>
+      sortDirection?.toString();
 }

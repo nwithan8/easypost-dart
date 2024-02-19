@@ -78,7 +78,8 @@ class EndShipperCollection
   Map<String, dynamic> toJson() => _$EndShipperCollectionToJson(this);
 
   @override
-  ListEndShippers buildGetNextPageParameters(List<EndShipper>? currentPageItems, {int? pageSize}) {
+  ListEndShippers buildGetNextPageParameters(List<EndShipper>? currentPageItems,
+      {int? pageSize}) {
     ListEndShippers parameters = filters ?? ListEndShippers();
 
     // EndShippers go oldest to newest, so only can use afterId

@@ -30,5 +30,6 @@ class AddDeliverItCarrierAccount extends AddCarrierAccount {
   String? testUsername;
 
   AddDeliverItCarrierAccount()
-      : super(CarrierAccountType.deliverIt, defaultCarrierAccountCreationEndpoint);
+      : super(CarrierAccountType.deliverIt,
+            defaultCarrierAccountCreationEndpoint);
 }

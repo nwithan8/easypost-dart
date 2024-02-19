@@ -117,20 +117,24 @@ void main() {
       expect(lowestRate5.price == price2, isTrue);
 
       // expect exception
-      expect(() => client.rates.getLowestRate(rates!,
-          includeCarriers: [carrier1], excludeServices: [service1]),
+      expect(
+          () => client.rates.getLowestRate(rates!,
+              includeCarriers: [carrier1], excludeServices: [service1]),
           throwsA(isA<FilteringException>()));
 
-      expect(() => client.rates.getLowestRate(rates!,
-          includeCarriers: [carrier1], includeServices: [service2]),
+      expect(
+          () => client.rates.getLowestRate(rates!,
+              includeCarriers: [carrier1], includeServices: [service2]),
           throwsA(isA<FilteringException>()));
 
-      expect(() => client.rates.getLowestRate(rates!,
-          excludeCarriers: [carrier1], excludeServices: [service2]),
+      expect(
+          () => client.rates.getLowestRate(rates!,
+              excludeCarriers: [carrier1], excludeServices: [service2]),
           throwsA(isA<FilteringException>()));
 
-      expect(() => client.rates.getLowestRate(rates!,
-          excludeCarriers: [carrier1], includeServices: [service1]),
+      expect(
+          () => client.rates.getLowestRate(rates!,
+              excludeCarriers: [carrier1], includeServices: [service1]),
           throwsA(isA<FilteringException>()));
     });
 

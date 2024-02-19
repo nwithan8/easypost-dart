@@ -29,21 +29,23 @@ class AddCanadaPostCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "test_credentials", "api_key"])
   String? testApiKey;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "contract_id"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "contract_id"])
   String? testContractId;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "customer_number"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "customer_number"])
   String? testCustomerNumber;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "has_credit_card"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "has_credit_card"])
   String? testHasCreditCard;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "not_platform"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "not_platform"])
   String? testNotPlatform;
 
-  AddCanadaPostCarrierAccount() : super(CarrierAccountType.canadaPost, defaultCarrierAccountCreationEndpoint);
+  AddCanadaPostCarrierAccount()
+      : super(CarrierAccountType.canadaPost,
+            defaultCarrierAccountCreationEndpoint);
 }

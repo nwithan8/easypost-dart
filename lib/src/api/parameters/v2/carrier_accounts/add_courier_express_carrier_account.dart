@@ -21,5 +21,7 @@ class AddCourierExpressCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "test_credentials", "shipper_id"])
   String? testShipperId;
 
-  AddCourierExpressCarrierAccount() : super(CarrierAccountType.courierExpress, defaultCarrierAccountCreationEndpoint);
+  AddCourierExpressCarrierAccount()
+      : super(CarrierAccountType.courierExpress,
+            defaultCarrierAccountCreationEndpoint);
 }

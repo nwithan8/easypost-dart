@@ -39,4 +39,5 @@ class LabelFormat extends SerializableEnum {
 String? labelFormatToJson(LabelFormat? labelFormat) =>
     LabelFormat.asString(labelFormat);
 
-LabelFormat? labelFormatFromJson(String? value) => LabelFormat.fromString(value);
+LabelFormat? labelFormatFromJson(String? value) =>
+    LabelFormat.fromString(value);

@@ -6,7 +6,8 @@ class PaymentMethodPriority extends SerializableEnum {
   static PaymentMethodPriority primary = PaymentMethodPriority(1, 'primary');
 
   /// The secondary payment method.
-  static PaymentMethodPriority secondary = PaymentMethodPriority(2, 'secondary');
+  static PaymentMethodPriority secondary =
+      PaymentMethodPriority(2, 'secondary');
 
   PaymentMethodPriority(super.id, super.jsonValue);
 
@@ -23,5 +24,6 @@ class PaymentMethodPriority extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [PaymentMethodPriority].
-  static String? asString(PaymentMethodPriority? paymentMethodPriority) => paymentMethodPriority?.toString();
+  static String? asString(PaymentMethodPriority? paymentMethodPriority) =>
+      paymentMethodPriority?.toString();
 }

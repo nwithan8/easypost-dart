@@ -9,19 +9,24 @@ class PaymentLogTargetType extends SerializableEnum {
   static PaymentLogTargetType user = PaymentLogTargetType(2, 'user');
 
   /// Payment log target type for carrier account.
-  static PaymentLogTargetType carrierAccount = PaymentLogTargetType(3, 'carrier_account');
+  static PaymentLogTargetType carrierAccount =
+      PaymentLogTargetType(3, 'carrier_account');
 
   /// Payment log target type for manual credit.
-  static PaymentLogTargetType manualCredit = PaymentLogTargetType(4, 'manual_credit');
+  static PaymentLogTargetType manualCredit =
+      PaymentLogTargetType(4, 'manual_credit');
 
   /// Payment log target type for bank account.
-  static PaymentLogTargetType bankAccount = PaymentLogTargetType(5, 'bank_account');
+  static PaymentLogTargetType bankAccount =
+      PaymentLogTargetType(5, 'bank_account');
 
   /// Payment log target type for ACH credit source.
-  static PaymentLogTargetType achCreditSource = PaymentLogTargetType(6, 'ach_credit_source');
+  static PaymentLogTargetType achCreditSource =
+      PaymentLogTargetType(6, 'ach_credit_source');
 
   /// Payment log target type for credit card.
-  static PaymentLogTargetType creditCard = PaymentLogTargetType(7, 'credit_card');
+  static PaymentLogTargetType creditCard =
+      PaymentLogTargetType(7, 'credit_card');
 
   PaymentLogTargetType(super.id, super.jsonValue);
 
@@ -48,5 +53,6 @@ class PaymentLogTargetType extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [PaymentLogTargetType].
-  static String? asString(PaymentLogTargetType? paymentLogTargetType) => paymentLogTargetType?.toString();
+  static String? asString(PaymentLogTargetType? paymentLogTargetType) =>
+      paymentLogTargetType?.toString();
 }

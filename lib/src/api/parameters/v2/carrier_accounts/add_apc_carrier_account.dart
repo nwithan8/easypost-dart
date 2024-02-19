@@ -17,5 +17,6 @@ class AddApcCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "shipper_id"])
   String? shipperId;
 
-  AddApcCarrierAccount() : super(CarrierAccountType.apc, defaultCarrierAccountCreationEndpoint);
+  AddApcCarrierAccount()
+      : super(CarrierAccountType.apc, defaultCarrierAccountCreationEndpoint);
 }

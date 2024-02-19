@@ -8,8 +8,7 @@ class AddPlaidBankAccount extends Parameters {
   @JsonParameter(Necessity.required, ['bank_account', 'account_id'])
   String? accountId;
 
-  @JsonParameter(
-      Necessity.required, ['payment_method', 'public_token'])
+  @JsonParameter(Necessity.required, ['payment_method', 'public_token'])
   String? publicToken;
 
   @JsonParameter(Necessity.required, ['payment_method', 'priority'])

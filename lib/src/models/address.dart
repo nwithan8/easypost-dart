@@ -92,7 +92,8 @@ class AddressCollection extends PaginatedCollection<Address, ListAddresses> {
   Map<String, dynamic> toJson() => _$AddressCollectionToJson(this);
 
   @override
-  ListAddresses buildGetNextPageParameters(List<Address>? currentPageItems, {int? pageSize}) {
+  ListAddresses buildGetNextPageParameters(List<Address>? currentPageItems,
+      {int? pageSize}) {
     ListAddresses parameters = filters ?? ListAddresses();
 
     parameters.beforeId = currentPageItems?.last.id;

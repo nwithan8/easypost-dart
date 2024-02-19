@@ -79,8 +79,7 @@ class InsuranceCollection
   @JsonKey(name: 'insurances')
   final List<Insurance>? insurances;
 
-  InsuranceCollection(
-      objectType, mode, hasMore, this.insurances)
+  InsuranceCollection(objectType, mode, hasMore, this.insurances)
       : super(objectType, mode, hasMore);
 
   factory InsuranceCollection.fromJson(Map<String, dynamic> input) =>

@@ -63,7 +63,8 @@ double stringCentsToMoney(String? money) =>
     money == null ? 0.0 : int.parse(money) / 100;
 
 /// Converts a string to a double
-double stringToDouble(String? value) => value == null ? 0.0 : double.parse(value);
+double stringToDouble(String? value) =>
+    value == null ? 0.0 : double.parse(value);
 
 /// Converts a double to a string
 String? doubleToString(double? value) => value?.toString();

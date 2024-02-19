@@ -48,4 +48,5 @@ class Endorsement extends SerializableEnum {
 String? endorsementToJson(Endorsement? endorsement) =>
     Endorsement.asString(endorsement);
 
-Endorsement? endorsementFromJson(String? value) => Endorsement.fromString(value);
+Endorsement? endorsementFromJson(String? value) =>
+    Endorsement.fromString(value);

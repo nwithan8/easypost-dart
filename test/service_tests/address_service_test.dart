@@ -97,7 +97,8 @@ void main() {
 
       expect(addressCollection, isNotNull);
 
-      final nextPage = await client.addresses.getNextPage(addressCollection, pageSize: 1);
+      final nextPage =
+          await client.addresses.getNextPage(addressCollection, pageSize: 1);
 
       expect(nextPage, isNotNull);
     });

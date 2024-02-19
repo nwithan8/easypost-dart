@@ -25,7 +25,7 @@ String getApiKey(ApiKeyEnum keyType) {
       break;
     case ApiKeyEnum.mock:
       keyName =
-      "EASYPOST_MOCK_API_KEY"; // does not exist, will trigger to use ApiKeyFailedToPull
+          "EASYPOST_MOCK_API_KEY"; // does not exist, will trigger to use ApiKeyFailedToPull
       break;
   }
   return Platform.environment[keyName] ??
@@ -90,9 +90,7 @@ class TestUtils {
 
   static String readFirstLineOfFile(String filePath) {
     File file = File(filePath);
-    return file
-        .readAsLinesSync()
-        .first;
+    return file.readAsLinesSync().first;
   }
 
   static Client setUpVCRClient(String groupName, String cassetteName,
@@ -109,7 +107,7 @@ class TestUtils {
     String productionApiKey =
         overrideProductionApiKey ?? getApiKey(ApiKeyEnum.production);
     ClientConfiguration config =
-    ClientConfiguration(testApiKey, productionApiKey);
+        ClientConfiguration(testApiKey, productionApiKey);
     return Client(config);
   }
 }
@@ -145,11 +143,10 @@ class TestVCR {
     _productionApiKey = getApiKey(ApiKeyEnum.production);
 
     _testCassettesFolder =
-    "${TestUtils
-        .getSourceFileDirectory()}/$_cassettesFolder"; // create "cassettes" folder in same directory as test files
+        "${TestUtils.getSourceFileDirectory()}/$_cassettesFolder"; // create "cassettes" folder in same directory as test files
     if (testCassettesFolder != null) {
       _testCassettesFolder =
-      "$_testCassettesFolder/$testCassettesFolder"; // create subfolder for each test group
+          "$_testCassettesFolder/$testCassettesFolder"; // create subfolder for each test group
     }
     TestUtils.createFolderIfNeeded(_testCassettesFolder);
   }
@@ -227,8 +224,7 @@ class MockClient extends Client {
   MockRequest? findMatchingMockRequest(HttpMethod method, String resource) {
     for (MockRequest mockRequest in _mockRequests) {
       if (methodMatches(method, mockRequest.matchRules.method) &&
-          endpointMatches(
-              resource, mockRequest.matchRules.resourceRegex)) {
+          endpointMatches(resource, mockRequest.matchRules.resourceRegex)) {
         return mockRequest;
       }
     }
@@ -244,8 +240,7 @@ class MockClient extends Client {
   }
 
   @override
-  Future<bool> request(HttpMethod method, String url,
-      ApiVersion apiVersion,
+  Future<bool> request(HttpMethod method, String url, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters, String? rootElement}) async {
     MockRequest? mockRequest = findMatchingMockRequest(method, url);
     if (mockRequest == null) {
@@ -256,8 +251,8 @@ class MockClient extends Client {
   }
 
   @override
-  Future<dynamic> requestJson(HttpMethod method, String url,
-      ApiVersion apiVersion,
+  Future<dynamic> requestJson(
+      HttpMethod method, String url, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters, String? rootElement}) async {
     MockRequest? mockRequest = findMatchingMockRequest(method, url);
     if (mockRequest == null) {

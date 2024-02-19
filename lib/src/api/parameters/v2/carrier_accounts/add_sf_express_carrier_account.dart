@@ -21,12 +21,12 @@ class AddSFExpressCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "test_credentials", "checkword"])
   String? testCheckword;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "customer_code"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "customer_code"])
   String? testCustomerCode;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "customer_id"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "customer_id"])
   String? testCustomerId;
 
   AddSFExpressCarrierAccount()

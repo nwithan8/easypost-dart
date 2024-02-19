@@ -6,7 +6,8 @@ import 'package:easypost/src/api/parameters/iparameters.dart';
 part 'carrier_account.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CarrierAccount extends ReadOnlyModelWithId implements ICarrierAccountParameter {
+class CarrierAccount extends ReadOnlyModelWithId
+    implements ICarrierAccountParameter {
   @JsonKey(name: 'billable_type')
   final String? billableType;
 

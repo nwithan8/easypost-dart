@@ -33,5 +33,6 @@ class PaymentLogStatus extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [PaymentLogStatus].
-  static String? asString(PaymentLogStatus? paymentLogStatus) => paymentLogStatus?.toString();
+  static String? asString(PaymentLogStatus? paymentLogStatus) =>
+      paymentLogStatus?.toString();
 }

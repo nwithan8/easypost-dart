@@ -43,5 +43,6 @@ class PaymentMethodType extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [PaymentMethodType].
-  static String? asString(PaymentMethodType? paymentMethodType) => paymentMethodType?.toString();
+  static String? asString(PaymentMethodType? paymentMethodType) =>
+      paymentMethodType?.toString();
 }

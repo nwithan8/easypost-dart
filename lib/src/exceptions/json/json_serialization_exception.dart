@@ -5,8 +5,7 @@ import 'package:easypost/src/exceptions/json/json_exception.dart';
 class JsonSerializationException extends JsonException {
   const JsonSerializationException(super.message);
 
-  static JsonSerializationException generate(String? message,
-      [Type? toType]) {
+  static JsonSerializationException generate(String? message, [Type? toType]) {
     return JsonSerializationException(message ??
         ErrorMessages.format(
             ErrorMessages.jsonSerializationError, [toType.toString()]));

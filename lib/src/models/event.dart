@@ -55,8 +55,7 @@ class EventCollection extends PaginatedCollection<Event, ListEvents> {
   @JsonKey(name: 'events')
   final List<Event>? events;
 
-  EventCollection(
-      objectType, mode, hasMore, this.events)
+  EventCollection(objectType, mode, hasMore, this.events)
       : super(objectType, mode, hasMore);
 
   factory EventCollection.fromJson(Map<String, dynamic> input) =>
@@ -66,7 +65,8 @@ class EventCollection extends PaginatedCollection<Event, ListEvents> {
   Map<String, dynamic> toJson() => _$EventCollectionToJson(this);
 
   @override
-  ListEvents buildGetNextPageParameters(List<Event>? currentPageItems, {int? pageSize}) {
+  ListEvents buildGetNextPageParameters(List<Event>? currentPageItems,
+      {int? pageSize}) {
     ListEvents parameters = filters ?? ListEvents();
 
     parameters.beforeId = currentPageItems?.last.id;

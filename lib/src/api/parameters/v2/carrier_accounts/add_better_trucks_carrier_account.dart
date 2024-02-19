@@ -12,6 +12,8 @@ class AddBetterTrucksCarrierAccount extends AddCarrierAccount {
   @JsonParameter(
       Necessity.required, ['carrier_account', "test_credentials", "api_key"])
   String? testApiKey;
-  
-  AddBetterTrucksCarrierAccount() : super(CarrierAccountType.betterTrucks, defaultCarrierAccountCreationEndpoint);
+
+  AddBetterTrucksCarrierAccount()
+      : super(CarrierAccountType.betterTrucks,
+            defaultCarrierAccountCreationEndpoint);
 }

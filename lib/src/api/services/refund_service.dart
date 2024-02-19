@@ -14,7 +14,7 @@ class RefundService extends Service {
   Future<List<Refund>> create(CreateRefund parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.post,
       'refunds',
       ApiVersion.v2,
@@ -25,7 +25,7 @@ class RefundService extends Service {
 
   /// Retrieves a [Refund].
   Future<Refund> retrieve(String refundId) async {
-    final json =  await client.requestJson(
+    final json = await client.requestJson(
       HttpMethod.get,
       'refunds/$refundId',
       ApiVersion.v2,
@@ -56,8 +56,7 @@ class RefundService extends Service {
     // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
     int? pageSize = collection.filters?.pageSize;
 
-    return collection.getNextPage(
-        retrieveNextPageFunction, collection.refunds, pageSize: pageSize)
-    as Future<RefundCollection>;
+    return collection.getNextPage(retrieveNextPageFunction, collection.refunds,
+        pageSize: pageSize) as Future<RefundCollection>;
   }
 }

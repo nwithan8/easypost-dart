@@ -17,8 +17,8 @@ class AddParcllCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "user_id"])
   String? userId;
 
-  @JsonParameter(Necessity.required,
-      ['carrier_account', "test_credentials", "api_key"])
+  @JsonParameter(
+      Necessity.required, ['carrier_account', "test_credentials", "api_key"])
   String? testApiKey;
 
   @JsonParameter(
@@ -30,6 +30,5 @@ class AddParcllCarrierAccount extends AddCarrierAccount {
   String? testUserId;
 
   AddParcllCarrierAccount()
-      : super(CarrierAccountType.parcll,
-            defaultCarrierAccountCreationEndpoint);
+      : super(CarrierAccountType.parcll, defaultCarrierAccountCreationEndpoint);
 }

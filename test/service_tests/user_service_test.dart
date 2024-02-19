@@ -66,7 +66,8 @@ void main() {
 
       final listChildUsersParams = ListChildUsers();
 
-      final childUserCollection = await client.users.listChildUsers(parameters: listChildUsersParams);
+      final childUserCollection =
+          await client.users.listChildUsers(parameters: listChildUsersParams);
 
       expect(childUserCollection, isNotNull);
       expect(childUserCollection, isA<ChildUserCollection>());
@@ -75,7 +76,8 @@ void main() {
     });
 
     test('get next page of child users', () async {
-      Client client = TestUtils.setUpVCRClient("users", "get_next_page_of_child_users");
+      Client client =
+          TestUtils.setUpVCRClient("users", "get_next_page_of_child_users");
       client.enableProductionMode();
 
       final createUserParams = Fixtures.createChildUser;
@@ -84,11 +86,13 @@ void main() {
 
       final listChildUsersParams = ListChildUsers();
 
-      final childUserCollection = await client.users.listChildUsers(parameters: listChildUsersParams);
+      final childUserCollection =
+          await client.users.listChildUsers(parameters: listChildUsersParams);
 
       try {
         // Test the next page if it exists
-        final nextPage = await client.users.getNextPageOfChildUsers(childUserCollection);
+        final nextPage =
+            await client.users.getNextPageOfChildUsers(childUserCollection);
         expect(nextPage, isNotNull);
         expect(nextPage, isA<ChildUserCollection>());
         expect(nextPage.children!.length > 0, true);
@@ -126,7 +130,8 @@ void main() {
       final updateUserParams = UpdateUser();
       updateUserParams.name = "Updated Name";
 
-      final updatedUser = await client.users.updateUser(user.id, updateUserParams);
+      final updatedUser =
+          await client.users.updateUser(user.id, updateUserParams);
 
       expect(updatedUser, isNotNull);
       expect(updatedUser, isA<User>());
@@ -178,7 +183,8 @@ void main() {
       final updateBrandParams = UpdateBrand();
       updateBrandParams.colorHexCode = "#000000";
 
-      final updatedBrand = await client.users.updateBrand(user.id, updateBrandParams);
+      final updatedBrand =
+          await client.users.updateBrand(user.id, updateBrandParams);
 
       expect(updatedBrand, isNotNull);
       expect(updatedBrand, isA<Brand>());

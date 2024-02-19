@@ -30,7 +30,8 @@ void main() {
     });
 
     test('create with columns', () async {
-      Client client = TestUtils.setUpVCRClient("reports", 'create_with_columns');
+      Client client =
+          TestUtils.setUpVCRClient("reports", 'create_with_columns');
       client.enableTestMode();
 
       final reportParams = CreateShipmentReport();
@@ -52,7 +53,8 @@ void main() {
     });
 
     test('create with additional columns', () async {
-      Client client = TestUtils.setUpVCRClient("reports", 'create_with_additional_columns');
+      Client client =
+          TestUtils.setUpVCRClient("reports", 'create_with_additional_columns');
       client.enableTestMode();
 
       final reportParams = CreateShipmentReport();
@@ -106,7 +108,8 @@ void main() {
       expect(reportCollection, isNotNull);
       expect(reportCollection, isA<ReportCollection>());
       expect(reportCollection.reports!.length > 0, true);
-      expect(reportCollection.reports![0].id, startsWith(ModelPrefixes.shipmentReport));
+      expect(reportCollection.reports![0].id,
+          startsWith(ModelPrefixes.shipmentReport));
     });
 
     test('get next page', () async {
@@ -129,7 +132,8 @@ void main() {
         expect(nextPage, isNotNull);
         expect(nextPage, isA<ReportCollection>());
         expect(nextPage.reports!.length > 0, true);
-        expect(nextPage.reports![0].id, startsWith(ModelPrefixes.shipmentReport));
+        expect(
+            nextPage.reports![0].id, startsWith(ModelPrefixes.shipmentReport));
       } on PaginationException catch (e) {
         // If there is no next page, the exception will be caught here
         expect(e, isA<PaginationException>());

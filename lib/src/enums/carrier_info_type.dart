@@ -10,7 +10,8 @@ class CarrierInfoType extends SerializableEnum {
       CarrierInfoType(2, 'predefined_packages');
 
   /// Get information about the carrier's shipment options.
-  static CarrierInfoType shipmentOptions = CarrierInfoType(3, 'shipment_options');
+  static CarrierInfoType shipmentOptions =
+      CarrierInfoType(3, 'shipment_options');
 
   /// Get information about the carrier's supported features.
   static CarrierInfoType supportedFeatures =

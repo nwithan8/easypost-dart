@@ -17,8 +17,8 @@ class AddOptimaCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "username"])
   String? username;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "account_number"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "account_number"])
   String? testAccountNumber;
 
   @JsonParameter(
@@ -30,6 +30,5 @@ class AddOptimaCarrierAccount extends AddCarrierAccount {
   String? testUsername;
 
   AddOptimaCarrierAccount()
-      : super(CarrierAccountType.optima,
-            defaultCarrierAccountCreationEndpoint);
+      : super(CarrierAccountType.optima, defaultCarrierAccountCreationEndpoint);
 }

@@ -40,7 +40,8 @@ void main() {
 
       expect(eventCollection, isNotNull);
 
-      final nextPage = await client.events.getNextPage(eventCollection, pageSize: 1);
+      final nextPage =
+          await client.events.getNextPage(eventCollection, pageSize: 1);
 
       expect(nextPage, isNotNull);
     });

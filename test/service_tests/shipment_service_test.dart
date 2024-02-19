@@ -315,8 +315,7 @@ void main() {
 
       final shipment = await client.shipments.create(Fixtures.fullShipment);
 
-      final rates =
-          await client.shipments.refreshRates(shipment.id);
+      final rates = await client.shipments.refreshRates(shipment.id);
 
       expect(rates, isNotNull);
       expect(rates, isA<List<ShipmentRate>>());

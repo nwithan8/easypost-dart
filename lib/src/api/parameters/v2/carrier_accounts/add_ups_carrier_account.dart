@@ -77,5 +77,6 @@ class AddUpsCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "registration_data", "website"])
   String? website;
 
-  AddUpsCarrierAccount() : super(CarrierAccountType.ups, registerCarrierAccountEndpoint);
+  AddUpsCarrierAccount()
+      : super(CarrierAccountType.ups, registerCarrierAccountEndpoint);
 }

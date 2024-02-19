@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'parcel.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Parcel extends ReadOnlyModelWithId implements IParcelParameter{
+class Parcel extends ReadOnlyModelWithId implements IParcelParameter {
   @JsonKey(name: 'height')
   final double? height;
 

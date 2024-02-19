@@ -58,10 +58,10 @@ class HazmatType extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [HazmatType].
-  static String? asString(HazmatType? hazmatType) =>
-      hazmatType?.toString();
+  static String? asString(HazmatType? hazmatType) => hazmatType?.toString();
 }
 
-String? hazmatTypeToJson(HazmatType? hazmatType) => HazmatType.asString(hazmatType);
+String? hazmatTypeToJson(HazmatType? hazmatType) =>
+    HazmatType.asString(hazmatType);
 
 HazmatType? hazmatTypeFromJson(String? value) => HazmatType.fromString(value);

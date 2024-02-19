@@ -74,8 +74,7 @@ class TrackerCollection extends PaginatedCollection<Tracker, ListTrackers> {
   @JsonKey(name: 'trackers')
   final List<Tracker>? trackers;
 
-  TrackerCollection(
-      objectType, mode, hasMore, this.trackers)
+  TrackerCollection(objectType, mode, hasMore, this.trackers)
       : super(objectType, mode, hasMore);
 
   factory TrackerCollection.fromJson(Map<String, dynamic> input) =>

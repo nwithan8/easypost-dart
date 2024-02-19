@@ -25,10 +25,12 @@ class CreatePickup extends Parameters implements IPickupParameter {
   @JsonParameter(Necessity.optional, ['pickup', 'is_account_address'])
   bool? isAccountAddress;
 
-  @JsonParameter(Necessity.optional, ['pickup', 'max_datetime'], toJson: dateTimeToString)
+  @JsonParameter(Necessity.optional, ['pickup', 'max_datetime'],
+      toJson: dateTimeToString)
   DateTime? maxDatetime;
 
-  @JsonParameter(Necessity.optional, ['pickup', 'min_datetime'], toJson: dateTimeToString)
+  @JsonParameter(Necessity.optional, ['pickup', 'min_datetime'],
+      toJson: dateTimeToString)
   DateTime? minDatetime;
 
   @JsonParameter(Necessity.optional, ['pickup', 'reference'])

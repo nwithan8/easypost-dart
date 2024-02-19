@@ -25,33 +25,31 @@ class AddAsendiaCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "ftp_username"])
   String? ftpUsername;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "internationalexpress"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "internationalexpress"])
   String? internationalExpress;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "ipa"])
+  @JsonParameter(Necessity.required, ['carrier_account', "credentials", "ipa"])
   String? ipa;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "isal"])
+  @JsonParameter(Necessity.required, ['carrier_account', "credentials", "isal"])
   String? isal;
 
   @JsonParameter(
       Necessity.required, ['carrier_account', "credentials", "other"])
   String? other;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "pmei"])
+  @JsonParameter(Necessity.required, ['carrier_account', "credentials", "pmei"])
   String? pmei;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "pmi"])
+  @JsonParameter(Necessity.required, ['carrier_account', "credentials", "pmi"])
   String? pmi;
 
   @JsonParameter(
       Necessity.required, ['carrier_account', "credentials", "prioritytracked"])
   String? priorityTracked;
 
-  AddAsendiaCarrierAccount() : super(CarrierAccountType.asendia, defaultCarrierAccountCreationEndpoint);
+  AddAsendiaCarrierAccount()
+      : super(
+            CarrierAccountType.asendia, defaultCarrierAccountCreationEndpoint);
 }

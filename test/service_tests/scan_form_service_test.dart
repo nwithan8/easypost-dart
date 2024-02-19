@@ -18,7 +18,8 @@ void main() {
       Client client = TestUtils.setUpVCRClient("scan_forms", 'create');
       client.enableTestMode();
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final params = CreateScanForm();
       params.shipments = [shipment];
@@ -34,7 +35,8 @@ void main() {
       Client client = TestUtils.setUpVCRClient("scan_forms", 'retrieve');
       client.enableTestMode();
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final params = CreateScanForm();
       params.shipments = [shipment];
@@ -52,7 +54,8 @@ void main() {
       Client client = TestUtils.setUpVCRClient("scan_forms", 'list');
       client.enableTestMode();
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final params = CreateScanForm();
       params.shipments = [shipment];
@@ -64,14 +67,16 @@ void main() {
       expect(scanFormCollection, isNotNull);
       expect(scanFormCollection, isA<ScanFormCollection>());
       expect(scanFormCollection.scanForms!.length > 0, true);
-      expect(scanFormCollection.scanForms![0].id, startsWith(ModelPrefixes.scanForm));
+      expect(scanFormCollection.scanForms![0].id,
+          startsWith(ModelPrefixes.scanForm));
     });
 
     test('get next page', () async {
       Client client = TestUtils.setUpVCRClient("scan_forms", 'get_next_page');
       client.enableTestMode();
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final params = CreateScanForm();
       params.shipments = [shipment];

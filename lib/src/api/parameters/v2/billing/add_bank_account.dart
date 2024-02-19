@@ -8,8 +8,7 @@ class AddBankAccount extends Parameters {
   @JsonParameter(Necessity.required, ['bank_account', 'account_holder_name'])
   String? accountHolderName;
 
-  @JsonParameter(
-      Necessity.required, ['payment_method', 'account_holder_type'])
+  @JsonParameter(Necessity.required, ['payment_method', 'account_holder_type'])
   String? accountHolderType;
 
   @JsonParameter(Necessity.required, ['bank_account', 'account_number'])

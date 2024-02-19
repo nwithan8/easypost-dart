@@ -27,7 +27,7 @@ class BillingService extends Service {
     final Map<String, dynamic> data = json as Map<String, dynamic>;
     if (data['id'] == null) {
       throw PaymentMethodsNotInitializedException(
-         ErrorMessages.noPaymentMethodsSetUp);
+          ErrorMessages.noPaymentMethodsSetUp);
     }
     return PaymentMethodsSummary.fromJson(json);
   }

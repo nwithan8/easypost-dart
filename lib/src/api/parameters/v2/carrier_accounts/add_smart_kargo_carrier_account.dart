@@ -9,8 +9,8 @@ class AddSmartKargoCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "account_number"])
   String? accountNumber;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "account_number"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "account_number"])
   String? testAccountNumber;
 
   AddSmartKargoCarrierAccount()

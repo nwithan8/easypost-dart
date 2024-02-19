@@ -9,16 +9,16 @@ class AddOmniParcelCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "api_access_key"])
   String? apiAccessKey;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "return_api_access_key"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "return_api_access_key"])
   String? returnApiAccessKey;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "api_access_key"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "api_access_key"])
   String? testApiAccessKey;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "return_api_access_key"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "return_api_access_key"])
   String? testReturnApiAccessKey;
 
   AddOmniParcelCarrierAccount()

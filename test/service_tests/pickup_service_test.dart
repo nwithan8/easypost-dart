@@ -39,8 +39,7 @@ void main() {
       final params = ListPickups();
       params.pageSize = Fixtures.pageSize;
 
-      final pickupCollection =
-          await client.pickups.list(parameters: params);
+      final pickupCollection = await client.pickups.list(parameters: params);
 
       expect(pickupCollection, isNotNull);
       expect(pickupCollection.pickups, isNotNull);
@@ -57,8 +56,7 @@ void main() {
       final params = ListPickups();
       params.pageSize = 1;
 
-      final pickupCollection =
-          await client.pickups.list(parameters: params);
+      final pickupCollection = await client.pickups.list(parameters: params);
 
       expect(pickupCollection, isNotNull);
 
@@ -73,7 +71,7 @@ void main() {
       client.enableTestMode();
 
       final shipment =
-      await client.shipments.create(Fixtures.oneCallBuyShipment);
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final params = Fixtures.basicPickup;
       params.shipment = shipment;
@@ -88,11 +86,12 @@ void main() {
     });
 
     test('buy with carrier and service', () async {
-      Client client = TestUtils.setUpVCRClient("pickups", 'buy_with_carrier_and_service');
+      Client client =
+          TestUtils.setUpVCRClient("pickups", 'buy_with_carrier_and_service');
       client.enableTestMode();
 
       final shipment =
-      await client.shipments.create(Fixtures.oneCallBuyShipment);
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final params = Fixtures.basicPickup;
       params.shipment = shipment;
@@ -117,7 +116,7 @@ void main() {
       client.enableTestMode();
 
       final shipment =
-      await client.shipments.create(Fixtures.oneCallBuyShipment);
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
 
       final params = Fixtures.basicPickup;
       params.shipment = shipment;

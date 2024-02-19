@@ -14,8 +14,8 @@ class EventService extends Service {
 
   /// Retrieve an [Event].
   Future<Event> retrieve(String eventId) async {
-    final json =
-        await client.requestJson(HttpMethod.get, 'events/$eventId', ApiVersion.v2);
+    final json = await client.requestJson(
+        HttpMethod.get, 'events/$eventId', ApiVersion.v2);
     return Event.fromJson(json);
   }
 
@@ -42,16 +42,15 @@ class EventService extends Service {
     // Use user-provided pageSize if available, otherwise use the pageSize from the collection's filters, or default to null (server default).
     int? pageSize = collection.filters?.pageSize;
 
-    return collection.getNextPage(
-        retrieveNextPageFunction, collection.events, pageSize: pageSize)
-    as Future<EventCollection>;
+    return collection.getNextPage(retrieveNextPageFunction, collection.events,
+        pageSize: pageSize) as Future<EventCollection>;
   }
 
   /// Retrieve a [Payload] for an [Event].
   Future<Payload> retrievePayload(String eventId, String payloadId) async {
     try {
-      final json = await client.requestJson(HttpMethod.get,
-          'events/$eventId/payloads/$payloadId', ApiVersion.v2);
+      final json = await client.requestJson(
+          HttpMethod.get, 'events/$eventId/payloads/$payloadId', ApiVersion.v2);
       return Payload.fromJson(json);
     } on ApiException catch (e) {
       // Server will throw a 500 if the ID is malformed. Remap to a better error.

@@ -21,5 +21,7 @@ class AddAustraliaPostCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "print_as_you_go"])
   String? printAsYouGo;
 
-  AddAustraliaPostCarrierAccount() : super(CarrierAccountType.australiaPost, defaultCarrierAccountCreationEndpoint);
+  AddAustraliaPostCarrierAccount()
+      : super(CarrierAccountType.australiaPost,
+            defaultCarrierAccountCreationEndpoint);
 }

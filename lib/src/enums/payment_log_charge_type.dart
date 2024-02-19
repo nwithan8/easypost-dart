@@ -9,35 +9,43 @@ class PaymentLogChargeType extends SerializableEnum {
   static PaymentLogChargeType insurance = PaymentLogChargeType(2, 'insurance');
 
   /// Payment log charge type for manual debit.
-  static PaymentLogChargeType manualDebit = PaymentLogChargeType(3, 'manual_debit');
+  static PaymentLogChargeType manualDebit =
+      PaymentLogChargeType(3, 'manual_debit');
 
   /// Payment log charge type for subscription.
-  static PaymentLogChargeType subscription = PaymentLogChargeType(4, 'subscription');
+  static PaymentLogChargeType subscription =
+      PaymentLogChargeType(4, 'subscription');
 
   /// Payment log charge type for service fee.
-  static PaymentLogChargeType serviceFee = PaymentLogChargeType(5, 'service_fee');
+  static PaymentLogChargeType serviceFee =
+      PaymentLogChargeType(5, 'service_fee');
 
   /// Payment log charge type for recharge.
   static PaymentLogChargeType recharge = PaymentLogChargeType(6, 'recharge');
 
   /// Payment log charge type for fulfillment debit.
-  static PaymentLogChargeType fulfillmentDebit = PaymentLogChargeType(7, 'fulfillment_debit');
+  static PaymentLogChargeType fulfillmentDebit =
+      PaymentLogChargeType(7, 'fulfillment_debit');
 
   /// Payment log charge type for manual credit.
-  static PaymentLogChargeType manualCredit = PaymentLogChargeType(8, 'manual_credit');
+  static PaymentLogChargeType manualCredit =
+      PaymentLogChargeType(8, 'manual_credit');
 
   /// Payment log charge type for payment failure deduction.
-  static PaymentLogChargeType paymentFailureDeduction = PaymentLogChargeType(9, 'payment_failure_deduction');
+  static PaymentLogChargeType paymentFailureDeduction =
+      PaymentLogChargeType(9, 'payment_failure_deduction');
 
   /// Payment log charge type for credit card fee.
-  static PaymentLogChargeType creditCardFee = PaymentLogChargeType(10, 'credit_card_fee');
+  static PaymentLogChargeType creditCardFee =
+      PaymentLogChargeType(10, 'credit_card_fee');
 
   /// Payment log charge type for payment refund.
-  static PaymentLogChargeType paymentRefund = PaymentLogChargeType(11, 'payment_refund');
+  static PaymentLogChargeType paymentRefund =
+      PaymentLogChargeType(11, 'payment_refund');
 
   /// Payment log charge type for partial refund.
-  static PaymentLogChargeType partialRefund = PaymentLogChargeType(12, 'partial_refund');
-
+  static PaymentLogChargeType partialRefund =
+      PaymentLogChargeType(12, 'partial_refund');
 
   PaymentLogChargeType(super.id, super.jsonValue);
 
@@ -74,5 +82,6 @@ class PaymentLogChargeType extends SerializableEnum {
   }
 
   /// Get the [String] representation of a [PaymentLogChargeType].
-  static String? asString(PaymentLogChargeType? paymentLogChargeType) => paymentLogChargeType?.toString();
+  static String? asString(PaymentLogChargeType? paymentLogChargeType) =>
+      paymentLogChargeType?.toString();
 }

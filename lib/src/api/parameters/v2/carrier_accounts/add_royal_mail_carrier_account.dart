@@ -9,8 +9,8 @@ class AddRoyalMailCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "account_number"])
   String? accountNumber;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "credentials", "posting_location_number"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "credentials", "posting_location_number"])
   String? postingLocationNumber;
 
   @JsonParameter(

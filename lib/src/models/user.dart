@@ -106,8 +106,7 @@ class ChildUserCollection extends PaginatedCollection<User, ListChildUsers> {
   @JsonKey(name: 'children')
   final List<User>? children;
 
-  ChildUserCollection(
-      objectType, mode, hasMore, this.children)
+  ChildUserCollection(objectType, mode, hasMore, this.children)
       : super(objectType, mode, hasMore);
 
   factory ChildUserCollection.fromJson(Map<String, dynamic> input) =>
@@ -117,7 +116,8 @@ class ChildUserCollection extends PaginatedCollection<User, ListChildUsers> {
   Map<String, dynamic> toJson() => _$ChildUserCollectionToJson(this);
 
   @override
-  ListChildUsers buildGetNextPageParameters(List<User>? currentPageItems, {int? pageSize}) {
+  ListChildUsers buildGetNextPageParameters(List<User>? currentPageItems,
+      {int? pageSize}) {
     ListChildUsers parameters = filters ?? ListChildUsers();
 
     // Child users go oldest to newest, so only can use afterId

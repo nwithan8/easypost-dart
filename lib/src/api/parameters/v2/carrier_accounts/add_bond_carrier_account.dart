@@ -13,5 +13,6 @@ class AddBondCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "test_credentials", "api_key"])
   String? testApiKey;
 
-  AddBondCarrierAccount() : super(CarrierAccountType.bond, defaultCarrierAccountCreationEndpoint);
+  AddBondCarrierAccount()
+      : super(CarrierAccountType.bond, defaultCarrierAccountCreationEndpoint);
 }

@@ -6,7 +6,11 @@ part 'payment_options.g.dart';
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PaymentOptions extends ReadOnlyModel {
-  @JsonKey(name: 'type', toJson: paymentOptionTypeToJson, fromJson: paymentOptionTypeFromJson, disallowNullValue: true)
+  @JsonKey(
+      name: 'type',
+      toJson: paymentOptionTypeToJson,
+      fromJson: paymentOptionTypeFromJson,
+      disallowNullValue: true)
   late PaymentOptionType? type;
 
   @JsonKey(name: 'account')

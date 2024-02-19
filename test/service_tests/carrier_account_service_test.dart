@@ -14,8 +14,7 @@ void main() {
     });
 
     test('register (create) new carrier account', () async {
-      Client client = TestUtils.setUpVCRClient(
-          "carrier_accounts", 'register');
+      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'register');
       client.enableProductionMode();
 
       final params = Fixtures.basicCarrierAccount;
@@ -34,8 +33,7 @@ void main() {
     });
 
     test('add existing carrier account', () async {
-      Client client = TestUtils.setUpVCRClient(
-          "carrier_accounts", 'add');
+      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'add');
       client.enableProductionMode();
 
       final params = Fixtures.basicFedExCarrierAccount;
@@ -95,14 +93,16 @@ void main() {
 
     final carrierAccount = await client.carrierAccounts.add(params);
 
-    final retrievedCarrierAccount = await client.carrierAccounts.retrieve(carrierAccount.id);
+    final retrievedCarrierAccount =
+        await client.carrierAccounts.retrieve(carrierAccount.id);
 
     final newReference = "new reference";
 
     UpdateCarrierAccount updateParams = UpdateCarrierAccount();
     updateParams.reference = newReference;
 
-    final updatedCarrierAccount = await client.carrierAccounts.update(retrievedCarrierAccount.id, updateParams);
+    final updatedCarrierAccount = await client.carrierAccounts
+        .update(retrievedCarrierAccount.id, updateParams);
 
     expect(updatedCarrierAccount, isNotNull);
     expect(updatedCarrierAccount, isA<CarrierAccount>());
@@ -119,9 +119,11 @@ void main() {
 
     final carrierAccount = await client.carrierAccounts.add(params);
 
-    final retrievedCarrierAccount = await client.carrierAccounts.retrieve(carrierAccount.id);
+    final retrievedCarrierAccount =
+        await client.carrierAccounts.retrieve(carrierAccount.id);
 
-    final success = await client.carrierAccounts.delete(retrievedCarrierAccount.id);
+    final success =
+        await client.carrierAccounts.delete(retrievedCarrierAccount.id);
 
     expect(success, true);
   });

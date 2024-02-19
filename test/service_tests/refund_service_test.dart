@@ -18,7 +18,8 @@ void main() {
       Client client = TestUtils.setUpVCRClient("refunds", 'create');
       client.enableTestMode();
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
       final updatedShipment = await client.shipments.retrieve(shipment.id);
 
       final refundParams = CreateRefund();
@@ -38,7 +39,8 @@ void main() {
       Client client = TestUtils.setUpVCRClient("refunds", 'retrieve');
       client.enableTestMode();
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
       final updatedShipment = await client.shipments.retrieve(shipment.id);
 
       final refundParams = CreateRefund();
@@ -57,7 +59,8 @@ void main() {
       Client client = TestUtils.setUpVCRClient("refunds", 'list');
       client.enableTestMode();
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
       final updatedShipment = await client.shipments.retrieve(shipment.id);
 
       final refundParams = CreateRefund();
@@ -77,7 +80,8 @@ void main() {
       Client client = TestUtils.setUpVCRClient("refunds", 'get_next_page');
       client.enableTestMode();
 
-      final shipment = await client.shipments.create(Fixtures.oneCallBuyShipment);
+      final shipment =
+          await client.shipments.create(Fixtures.oneCallBuyShipment);
       final updatedShipment = await client.shipments.retrieve(shipment.id);
 
       final refundParams = CreateRefund();

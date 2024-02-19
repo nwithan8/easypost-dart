@@ -13,8 +13,8 @@ class AddOntracCarrierAccount extends AddCarrierAccount {
       Necessity.required, ['carrier_account', "credentials", "password"])
   String? password;
 
-  @JsonParameter(
-      Necessity.required, ['carrier_account', "test_credentials", "account_number"])
+  @JsonParameter(Necessity.required,
+      ['carrier_account', "test_credentials", "account_number"])
   String? testAccountNumber;
 
   @JsonParameter(

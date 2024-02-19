@@ -78,8 +78,7 @@ class WebhookService extends Service {
       List<int> body, Map<String, dynamic> headers, String secret) async {
     // check for signature header
     if (!headers.containsKey(webhookSignatureHeader)) {
-      throw SignatureValidationException(
-          ErrorMessages.missingWebhookSignature);
+      throw SignatureValidationException(ErrorMessages.missingWebhookSignature);
     }
 
     final providedSignature = headers[webhookSignatureHeader];

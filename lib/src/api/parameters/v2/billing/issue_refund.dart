@@ -5,7 +5,8 @@ import 'package:easypost/src/internal/conversions.dart';
 
 @reflector
 class IssueRefund extends Parameters {
-  @JsonParameter(Necessity.optional, ['refund_amount'], toJson: moneyToStringCents)
+  @JsonParameter(Necessity.optional, ['refund_amount'],
+      toJson: moneyToStringCents)
   double? amount;
 
   @JsonParameter(Necessity.optional, ['payment_log_id'])

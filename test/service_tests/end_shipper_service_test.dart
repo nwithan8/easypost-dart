@@ -36,7 +36,8 @@ void main() {
 
       final endShipper = await client.endShippers.create(params);
 
-      final retrievedEndShipper = await client.endShippers.retrieve(endShipper.id);
+      final retrievedEndShipper =
+          await client.endShippers.retrieve(endShipper.id);
 
       expect(retrievedEndShipper, isNotNull);
       expect(retrievedEndShipper, isA<EndShipper>());
@@ -51,11 +52,13 @@ void main() {
       final params = ListEndShippers();
       params.pageSize = Fixtures.pageSize;
 
-      final endShipperCollection = await client.endShippers.list(parameters: params);
+      final endShipperCollection =
+          await client.endShippers.list(parameters: params);
 
       expect(endShipperCollection, isNotNull);
       expect(endShipperCollection.endShippers, isNotNull);
-      expect(endShipperCollection.endShippers!.length <= Fixtures.pageSize, true);
+      expect(
+          endShipperCollection.endShippers!.length <= Fixtures.pageSize, true);
       for (EndShipper endShipper in endShipperCollection.endShippers!) {
         expect(endShipper, isA<EndShipper>());
       }
@@ -68,15 +71,17 @@ void main() {
       final params = ListEndShippers();
       params.pageSize = 1;
 
-      final endShipperCollection = await client.endShippers.list(parameters: params);
+      final endShipperCollection =
+          await client.endShippers.list(parameters: params);
 
       expect(endShipperCollection, isNotNull);
 
-      final nextPage = await client.endShippers.getNextPage(endShipperCollection, pageSize: 1);
+      final nextPage = await client.endShippers
+          .getNextPage(endShipperCollection, pageSize: 1);
 
       expect(nextPage, isNotNull);
     });
-    
+
     test('update', () async {
       Client client = TestUtils.setUpVCRClient("end_shippers", 'update');
       client.enableTestMode();
@@ -91,7 +96,8 @@ void main() {
       final updatedParams = UpdateEndShipper(endShipper);
       updatedParams.name = newName;
 
-      final updatedEndShipper = await client.endShippers.update(endShipper.id, updatedParams);
+      final updatedEndShipper =
+          await client.endShippers.update(endShipper.id, updatedParams);
 
       expect(updatedEndShipper, isNotNull);
       expect(updatedEndShipper, isA<EndShipper>());

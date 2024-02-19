@@ -69,8 +69,7 @@ class BatchCollection extends PaginatedCollection<Batch, ListBatches> {
   @JsonKey(name: 'batches')
   final List<Batch>? batches;
 
-  BatchCollection(
-      objectType, mode, hasMore, this.batches)
+  BatchCollection(objectType, mode, hasMore, this.batches)
       : super(objectType, mode, hasMore);
 
   factory BatchCollection.fromJson(Map<String, dynamic> input) =>
@@ -80,7 +79,8 @@ class BatchCollection extends PaginatedCollection<Batch, ListBatches> {
   Map<String, dynamic> toJson() => _$BatchCollectionToJson(this);
 
   @override
-  ListBatches buildGetNextPageParameters(List<Batch>? currentPageItems, {int? pageSize}) {
+  ListBatches buildGetNextPageParameters(List<Batch>? currentPageItems,
+      {int? pageSize}) {
     ListBatches parameters = filters ?? ListBatches();
 
     // Batches get returned in reverse order from everything else (oldest first instead of newest first), so this needs to be "after_id" instead of "before_id"
