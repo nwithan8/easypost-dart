@@ -247,6 +247,14 @@ class Fixtures {
     return parameters;
   }
 
+  static CreateWebhook createWebhook(String suffix) {
+    CreateWebhook parameters = CreateWebhook();
+    parameters.url = "https://example.com/webhook/dart/$suffix";
+    parameters.secret = webhookSecret;
+
+    return parameters;
+  }
+
   static CreateAddress createCreateAddressParameters(
       {Map<String, dynamic>? data}) {
     if (data == null) {

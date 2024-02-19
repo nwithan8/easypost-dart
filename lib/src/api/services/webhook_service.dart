@@ -49,6 +49,7 @@ class WebhookService extends Service {
   }
 
   /// Updates a [Webhook].
+  /// Will enable the [Webhook] if it is disabled.
   Future<Webhook> update(String webhookId, UpdateWebhook parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
@@ -58,8 +59,8 @@ class WebhookService extends Service {
     return Webhook.fromJson(json);
   }
 
-  /// Toggle a [Webhook].
-  Future<bool> toggle(String webhookId) async {
+  /// Enable a disabled [Webhook].
+  Future<bool> enable(String webhookId) async {
     return await client.request(
         HttpMethod.patch, 'webhooks/$webhookId', ApiVersion.v2);
   }

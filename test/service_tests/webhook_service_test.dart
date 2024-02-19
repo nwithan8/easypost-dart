@@ -1,5 +1,5 @@
 import 'package:easypost/easypost.dart';
-import 'package:easypost/src/internal/crypto.dart';
+import 'package:easypost/src/constants.dart';
 import 'package:test/test.dart';
 
 import '../fixtures.dart';
@@ -13,8 +13,90 @@ void main() {
       initializeReflectable();
     });
 
+    test('create', () async {
+      Client client = TestUtils.setUpVCRClient("webhooks", "create");
+      client.enableTestMode();
+
+      final createWebhookParams = Fixtures.createWebhook("create");
+
+      final webhook = await client.webhooks.create(createWebhookParams);
+
+      expect(webhook, isNotNull);
+      expect(webhook, isA<Webhook>());
+      expect(webhook.id, startsWith(ModelPrefixes.webhook));
+      expect(webhook.url, createWebhookParams.url);
+
+      await client.webhooks.delete(webhook.id);
+    });
+
+    test('retrieve', () async {
+      Client client = TestUtils.setUpVCRClient("webhooks", "retrieve");
+      client.enableTestMode();
+
+      final createWebhookParams = Fixtures.createWebhook("retrieve");
+
+      final webhook = await client.webhooks.create(createWebhookParams);
+
+      final retrievedWebhook = await client.webhooks.retrieve(webhook.id);
+
+      expect(retrievedWebhook, isNotNull);
+      expect(retrievedWebhook, isA<Webhook>());
+      expect(retrievedWebhook.id, webhook.id);
+
+      await client.webhooks.delete(webhook.id);
+    });
+
+    test('list', () async {
+      Client client = TestUtils.setUpVCRClient("webhooks", "list");
+      client.enableTestMode();
+
+      final createWebhookParams = Fixtures.createWebhook("list");
+
+      final webhook = await client.webhooks.create(createWebhookParams);
+
+      final webhooksList = await client.webhooks.list();
+
+      expect(webhooksList, isNotNull);
+      expect(webhooksList, isA<List<Webhook>>());
+      expect(webhooksList.length, greaterThan(0));
+      expect(webhooksList.any((element) => element.id == webhook.id), true);
+
+      await client.webhooks.delete(webhook.id);
+    });
+
+    test('enable', () async {
+      Client client = TestUtils.setUpVCRClient("webhooks", "enable");
+      client.enableTestMode();
+
+      final createWebhookParams = Fixtures.createWebhook("enable");
+
+      final webhook = await client.webhooks.create(createWebhookParams);
+
+      expect(webhook.disabledAt, isNull);
+
+      final success = await client.webhooks.enable(webhook.id);
+
+      expect(success, true);
+
+      await client.webhooks.delete(webhook.id);
+    });
+
+    test('delete', () async {
+      Client client = TestUtils.setUpVCRClient("webhooks", "delete");
+      client.enableTestMode();
+
+      final createWebhookParams = Fixtures.createWebhook("delete");
+
+      final webhook = await client.webhooks.create(createWebhookParams);
+
+      final success = await client.webhooks.delete(webhook.id);
+
+      expect(success, true);
+    });
+
     test('validate webhook success', () async {
-      Client client = TestUtils.setUpVCRClient("webhooks", "validate_webhook_success");
+      Client client =
+          TestUtils.setUpVCRClient("webhooks", "validate_webhook_success");
       client.enableTestMode();
 
       final webhookData = Fixtures.webhookEventBody;
@@ -31,7 +113,8 @@ void main() {
     });
 
     test('validate webhook fails with invalid signature', () async {
-      Client client = TestUtils.setUpVCRClient("webhooks", "validate_webhook_fails_with_invalid_signature");
+      Client client = TestUtils.setUpVCRClient(
+          "webhooks", "validate_webhook_fails_with_invalid_signature");
       client.enableTestMode();
 
       final webhookData = Fixtures.webhookEventBody;
@@ -48,7 +131,8 @@ void main() {
     });
 
     test('validate webhook fails with missing signature', () async {
-      Client client = TestUtils.setUpVCRClient("webhooks", "validate_webhook_fails_with_missing_signature");
+      Client client = TestUtils.setUpVCRClient(
+          "webhooks", "validate_webhook_fails_with_missing_signature");
       client.enableTestMode();
 
       final webhookData = Fixtures.webhookEventBody;
