@@ -1,23 +1,19 @@
-import 'package:easypost/src/internal/conversions.dart';
-import 'package:easypost/src/models/rate.dart';
+import 'package:easypost/src/models/shipment_rate.dart';
 import 'package:easypost/src/models/time_in_transit.dart';
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'smart_rate.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class SmartRate extends Rate {
+class SmartRate extends ShipmentRate {
   @JsonKey(name: 'time_in_transit')
   final TimeInTransit? timeInTransit;
 
   SmartRate(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     billingType,
-    carbonOffset,
     carrier,
     carrierAccountId,
     currency,
@@ -27,20 +23,17 @@ class SmartRate extends Rate {
     estDeliveryDays,
     listCurrency,
     listRate,
-    rate,
+    price,
     retailCurrency,
     retailRate,
     service,
+    id,
     shipmentId,
     this.timeInTransit,
   ) : super(
-          id,
-          createdAt,
-          updatedAt,
           objectType,
           mode,
           billingType,
-          carbonOffset,
           carrier,
           carrierAccountId,
           currency,
@@ -50,10 +43,11 @@ class SmartRate extends Rate {
           estDeliveryDays,
           listCurrency,
           listRate,
-          rate,
+          price,
           retailCurrency,
           retailRate,
           service,
+          id,
           shipmentId,
         );
 

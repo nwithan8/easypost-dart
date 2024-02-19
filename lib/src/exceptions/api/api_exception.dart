@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:easypost/src/api/http/streamed_response.dart';
 import 'package:easypost/src/constants.dart';
+import 'package:easypost/src/exceptions/api/bad_request_exception.dart';
 import 'package:easypost/src/exceptions/api/gateway_timeout_exception.dart';
 import 'package:easypost/src/exceptions/api/internal_server_exception.dart';
 import 'package:easypost/src/exceptions/api/invalid_request_exception.dart';
@@ -43,13 +44,14 @@ abstract class ApiException extends HttpException {
       final body = await response.stream.bytesToString();
       final json = jsonDecode(body);
 
-      dynamic errorMessage = json['error']['message'];
-      if (errorMessage is List) {
+      dynamic msg = json['error']['message'];
+      if (msg is List) {
         // Errors may be an array improperly assigned to the `message` field instead of the `errors` field, concatenate those here
-        errorMessage = errorMessage.join(', ');
+        msg = msg.join(', ');
       }
+      errorMessage = msg;
 
-      errorType = json['error']['type'];
+      errorType = json['error']['code'];
       errors = (json['error']['errors'] as List)
           .map((e) => Error.fromJson(e))
           .toList();
@@ -66,6 +68,9 @@ abstract class ApiException extends HttpException {
 
     // Return the appropriate exception based on the HTTP status code
     switch (statusCode) {
+      case 400:
+        return BadRequestException(errorMessage, statusCode, errorType,
+            errors: errors);
       case 401:
         return ApiUnauthorizedException(errorMessage, statusCode, errorType,
             errors: errors);
@@ -103,6 +108,8 @@ abstract class ApiException extends HttpException {
     }
 
     // A unaccounted-for status code was in the response.
-    throw HttpException(ErrorMessages.unexpectedHttpStatusCode, statusCode);
+    String message = ErrorMessages.format(
+        ErrorMessages.unexpectedHttpStatusCode, [statusCode.toString()]);
+    throw HttpException(message, statusCode);
   }
 }

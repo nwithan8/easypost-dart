@@ -13,7 +13,7 @@ Future<void> example() async {
   client.enableTestMode();
 
   // Create a to address
-  AddressesCreate addressCreateParams = AddressesCreate();
+  CreateAddress addressCreateParams = CreateAddress();
   addressCreateParams.street1 = "388 Townsend St";
   addressCreateParams.city = "San Francisco";
   addressCreateParams.state = "CA";
@@ -23,7 +23,7 @@ Future<void> example() async {
   Address toAddress = await client.addresses.create(addressCreateParams);
 
   // Create a from address
-  addressCreateParams = AddressesCreate();
+  addressCreateParams = CreateAddress();
   addressCreateParams.street1 = "388 Townsend St";
   addressCreateParams.city = "San Francisco";
   addressCreateParams.state = "CA";
@@ -33,7 +33,7 @@ Future<void> example() async {
   Address fromAddress = await client.addresses.create(addressCreateParams);
 
   // Create a parcel
-  ParcelsCreate parcelsCreateParams = ParcelsCreate();
+  CreateParcel parcelsCreateParams = CreateParcel();
   parcelsCreateParams.length = 10.2;
   parcelsCreateParams.width = 7.8;
   parcelsCreateParams.height = 4.3;
@@ -42,7 +42,7 @@ Future<void> example() async {
   Parcel parcel = await client.parcels.create(parcelsCreateParams);
 
   // Create a shipment
-  ShipmentsCreate shipmentsCreateParams = ShipmentsCreate();
+  CreateShipment shipmentsCreateParams = CreateShipment();
   shipmentsCreateParams.toAddress = toAddress;
   shipmentsCreateParams.fromAddress = fromAddress;
   shipmentsCreateParams.parcel = parcel;
@@ -50,11 +50,11 @@ Future<void> example() async {
   Shipment shipment = await client.shipments.create(shipmentsCreateParams);
 
   // Get the lowest rate for the shipment
-  Rate rate = client.shipments.getLowestRateFor(shipment);
+  ShipmentRate rate = client.shipments.getLowestRateFor(shipment);
 
   // Buy the shipment with the lowest rate
-  ShipmentsBuy shipmentBuyParams = ShipmentsBuy();
+  BuyShipment shipmentBuyParams = BuyShipment();
   shipmentBuyParams.rate = rate;
 
-  await client.shipments.buy(shipment, shipmentBuyParams);
+  await client.shipments.buy(shipment.id, shipmentBuyParams);
 }

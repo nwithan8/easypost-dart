@@ -3,15 +3,17 @@ import 'package:test/test.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'carrier_type_service_test.reflectable.dart';
 
 void main() {
   group('Carrier Types', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
-    test('all', () async {
-      Client client = TestUtils.setUpVCRClient("carrier_types", 'all');
+    test('list', () async {
+      Client client = TestUtils.setUpVCRClient("carrier_types", 'list');
       client.enableProductionMode();
 
       final List<CarrierType> carrierTypesList =

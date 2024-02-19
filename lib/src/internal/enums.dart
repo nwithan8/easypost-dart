@@ -24,6 +24,8 @@ class ValueEnum extends Enum {
 
   @override
   String toString() => value.toString();
+
+  bool matches(ValueEnum other) => value == other.value;
 }
 
 /// A Java-like enum implementation for Dart.
@@ -39,11 +41,6 @@ class MultiValueEnum extends Enum {
 
 /// A Java-like enum implementation for Dart.
 /// An enum that has a corresponding JSON value for de/serialization.
-class SerializableEnum {
-  final String _jsonValue;
-
-  const SerializableEnum(this._jsonValue);
-
-  @override
-  String toString() => _jsonValue;
+class SerializableEnum extends ValueEnum {
+  const SerializableEnum(id, jsonValue) : super(id, jsonValue);
 }

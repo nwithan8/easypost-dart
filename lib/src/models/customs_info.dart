@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/enums/customs_form_type.dart';
 import 'package:easypost/src/enums/customs_restriction_type.dart';
 import 'package:easypost/src/enums/non_delivery_option.dart';
@@ -9,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'customs_info.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CustomsInfo extends Model {
+class CustomsInfo extends ReadOnlyModelWithId {
   @JsonKey(name: 'contents_explanation')
   final String? contentsExplanation;
 
@@ -70,5 +70,6 @@ class CustomsInfo extends Model {
   factory CustomsInfo.fromJson(Map<String, dynamic> input) =>
       _$CustomsInfoFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CustomsInfoToJson(this);
 }

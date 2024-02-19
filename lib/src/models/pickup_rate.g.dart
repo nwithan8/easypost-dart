@@ -7,13 +7,9 @@ part of 'pickup_rate.dart';
 // **************************************************************************
 
 PickupRate _$PickupRateFromJson(Map<String, dynamic> json) => PickupRate(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['billing_type'],
-      json['carbon_offset'],
       json['carrier'],
       json['carrier_account_id'],
       json['currency'],
@@ -22,24 +18,20 @@ PickupRate _$PickupRateFromJson(Map<String, dynamic> json) => PickupRate(
       json['delivery_days'],
       json['est_delivery_days'],
       json['list_currency'],
-      stringToMoney(json['list_rate'] as String?),
-      stringToMoney(json['rate'] as String?),
+      anyToMoney(json['list_rate']),
+      anyToMoney(json['rate']),
       json['retail_currency'],
-      stringToMoney(json['retail_rate'] as String?),
+      anyToMoney(json['retail_rate']),
       json['service'],
-      json['shipment_id'],
+      json['id'] as String?,
       json['pickup_id'] as String?,
     );
 
 Map<String, dynamic> _$PickupRateToJson(PickupRate instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'object': instance.objectType,
       'mode': instance.mode,
       'billing_type': instance.billingType,
-      'carbon_offset': instance.carbonOffset?.toJson(),
       'carrier': instance.carrier,
       'carrier_account_id': instance.carrierAccountId,
       'currency': instance.currency,
@@ -49,10 +41,10 @@ Map<String, dynamic> _$PickupRateToJson(PickupRate instance) =>
       'est_delivery_days': instance.estDeliveryDays,
       'list_currency': instance.listCurrency,
       'list_rate': moneyToString(instance.listRate),
-      'rate': moneyToString(instance.rate),
+      'rate': moneyToString(instance.price),
       'retail_currency': instance.retailCurrency,
       'retail_rate': moneyToString(instance.retailRate),
       'service': instance.service,
-      'shipment_id': instance.shipmentId,
+      'id': instance.id,
       'pickup_id': instance.pickupId,
     };

@@ -31,7 +31,7 @@ class EasyPostRequest {
       HttpMethod method, String endpoint, ApiVersion apiVersion,
       {Map<String, dynamic>? parameters}) {
     // Prepare the URL
-    Uri uri = Uri.parse('${config.fullBaseUrl}/$endpoint');
+    Uri uri = Uri.parse('${config.fullBaseUrl(apiVersion)}/$endpoint');
 
     if (parameters != null &&
         (method == HttpMethod.get || method == HttpMethod.delete)) {
@@ -49,6 +49,7 @@ class EasyPostRequest {
     request.headers['Accept'] = 'application/json';
     request.headers['Content-Type'] = 'application/json';
     request.headers['Authorization'] = 'Bearer ${config.apiKey}';
+    // request.headers['User-Agent'] = config.userAgent;
 
     // Add body to a POST/PUT/PATCH request
     if (parameters != null &&

@@ -1,5 +1,8 @@
 import 'dart:io';
+import 'dart:async';
+import 'dart:convert';
 
+import 'package:easypost/src/api/http/http_method.dart';
 import 'package:dartvcr/dartvcr.dart';
 import 'package:easypost/easypost.dart';
 
@@ -18,7 +21,7 @@ String getApiKey(ApiKeyEnum keyType) {
       keyName = "PARTNER_USER_PROD_API_KEY";
       break;
     case ApiKeyEnum.referral:
-      keyName = "REFERRAL_USER_PROD_API_KEY";
+      keyName = "REFERRAL_CUSTOMER_PROD_API_KEY";
       break;
     case ApiKeyEnum.mock:
       keyName =
@@ -83,6 +86,11 @@ class TestUtils {
   static String readFile(String filePath) {
     File file = File(filePath);
     return file.readAsStringSync();
+  }
+
+  static String readFirstLineOfFile(String filePath) {
+    File file = File(filePath);
+    return file.readAsLinesSync().first;
   }
 
   static Client setUpVCRClient(String groupName, String cassetteName,
@@ -169,7 +177,102 @@ class TestVCR {
     // get EasyPost client
     ClientConfiguration config = ClientConfiguration(
         testApiKey, productionApiKey,
-        httpClient: _vcr.client);
+        httpClient: _vcr.client, boolFunction: () => _vcr.mode == Mode.record);
     return Client(config);
+  }
+}
+
+class MockRequestMatchRules {
+  final HttpMethod method;
+
+  final String resourceRegex;
+
+  MockRequestMatchRules({required this.method, required this.resourceRegex});
+}
+
+class MockRequestResponseInfo {
+  final int statusCode;
+
+  final String? content;
+
+  final dynamic? data;
+
+  MockRequestResponseInfo({required this.statusCode, this.content, this.data});
+}
+
+class MockRequest {
+  final MockRequestMatchRules matchRules;
+
+  final MockRequestResponseInfo responseInfo;
+
+  MockRequest({required this.matchRules, required this.responseInfo});
+}
+
+class MockClient extends Client {
+  late List<MockRequest> _mockRequests = [];
+
+  MockClient(Client client) : super(client.config);
+
+  void addMockRequest(MockRequest mockRequest) {
+    _mockRequests.add(mockRequest);
+  }
+
+  void addMockRequests(List<MockRequest> mockRequests) {
+    _mockRequests.addAll(mockRequests);
+  }
+
+  MockRequest? findMatchingMockRequest(HttpMethod method, String resource) {
+    for (MockRequest mockRequest in _mockRequests) {
+      if (methodMatches(method, mockRequest.matchRules.method) &&
+          endpointMatches(resource, mockRequest.matchRules.resourceRegex)) {
+        return mockRequest;
+      }
+    }
+    return null;
+  }
+
+  bool methodMatches(HttpMethod method, HttpMethod toMatch) {
+    return method == toMatch;
+  }
+
+  bool endpointMatches(String resource, String resourceRegex) {
+    return RegExp(resourceRegex).hasMatch(resource);
+  }
+
+  @override
+  Future<bool> request(HttpMethod method, String url, ApiVersion apiVersion,
+      {Map<String, dynamic>? parameters, String? rootElement}) async {
+    MockRequest? mockRequest = findMatchingMockRequest(method, url);
+    if (mockRequest == null) {
+      throw Exception("No matching mock request found");
+    }
+
+    return true;
+  }
+
+  @override
+  Future<dynamic> requestJson(
+      HttpMethod method, String url, ApiVersion apiVersion,
+      {Map<String, dynamic>? parameters, String? rootElement}) async {
+    MockRequest? mockRequest = findMatchingMockRequest(method, url);
+    if (mockRequest == null) {
+      throw Exception("No matching mock request found");
+    }
+
+    String content = "{}";
+
+    if (mockRequest.responseInfo.content != null) {
+      content = mockRequest.responseInfo.content!;
+    } else if (mockRequest.responseInfo.data != null) {
+      content = jsonEncode(mockRequest.responseInfo.data);
+    }
+
+    dynamic json = jsonDecode(content);
+
+    if (rootElement != null) {
+      json = json[rootElement];
+    }
+
+    return json;
   }
 }

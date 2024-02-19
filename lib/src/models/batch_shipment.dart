@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'batch_shipment.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class BatchShipment extends Model {
+class BatchShipment extends ReadOnlyModelWithId {
   @JsonKey(name: 'batch_message')
   final String? batchMessage;
 
@@ -22,5 +22,6 @@ class BatchShipment extends Model {
   factory BatchShipment.fromJson(Map<String, dynamic> input) =>
       _$BatchShipmentFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$BatchShipmentToJson(this);
 }

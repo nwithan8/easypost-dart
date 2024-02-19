@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/api/parameters/v2/trackers/list_trackers.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/carrier_detail.dart';
 import 'package:easypost/src/models/tracking_detail.dart';
@@ -8,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'tracker.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Tracker extends Model {
+class Tracker extends ReadOnlyModelWithId {
   @JsonKey(name: 'carrier')
   final String? carrier;
 
@@ -64,20 +65,35 @@ class Tracker extends Model {
   factory Tracker.fromJson(Map<String, dynamic> input) =>
       _$TrackerFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TrackerToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class TrackerCollection extends Collection {
+class TrackerCollection extends PaginatedCollection<Tracker, ListTrackers> {
   @JsonKey(name: 'trackers')
   final List<Tracker>? trackers;
 
-  TrackerCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.trackers)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  TrackerCollection(objectType, mode, hasMore, this.trackers)
+      : super(objectType, mode, hasMore);
 
   factory TrackerCollection.fromJson(Map<String, dynamic> input) =>
       _$TrackerCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TrackerCollectionToJson(this);
+
+  @override
+  ListTrackers buildGetNextPageParameters(List<Tracker>? currentPageItems,
+      {int? pageSize}) {
+    ListTrackers parameters = filters ?? ListTrackers();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

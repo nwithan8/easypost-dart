@@ -23,18 +23,18 @@ Batch _$BatchFromJson(Map<String, dynamic> json) => Batch(
       (json['shipments'] as List<dynamic>?)
           ?.map((e) => BatchShipment.fromJson(e as Map<String, dynamic>))
           .toList(),
-      BatchState.fromString(json['state'] as String),
+      BatchState.fromString(json['state'] as String?),
       (json['status'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as int),
       ),
     );
 
 Map<String, dynamic> _$BatchToJson(Batch instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'error': instance.error,
       'label_url': instance.labelUrl,
       'message': instance.message,
@@ -48,9 +48,6 @@ Map<String, dynamic> _$BatchToJson(Batch instance) => <String, dynamic>{
 
 BatchCollection _$BatchCollectionFromJson(Map<String, dynamic> json) =>
     BatchCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -61,9 +58,6 @@ BatchCollection _$BatchCollectionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$BatchCollectionToJson(BatchCollection instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'object': instance.objectType,
       'mode': instance.mode,
       'has_more': instance.hasMore,

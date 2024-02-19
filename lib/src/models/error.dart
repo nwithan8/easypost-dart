@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'error.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Error extends Model {
+class Error extends ReadOnlyModel {
   @JsonKey(name: 'code')
   final String? code;
 
@@ -22,9 +22,6 @@ class Error extends Model {
   final String? suggestion;
 
   Error(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.code,
@@ -32,9 +29,10 @@ class Error extends Model {
     this.field,
     this.message,
     this.suggestion,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory Error.fromJson(Map<String, dynamic> input) => _$ErrorFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ErrorToJson(this);
 }

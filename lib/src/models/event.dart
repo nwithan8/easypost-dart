@@ -1,12 +1,13 @@
-import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/api/parameters/v2/events/list_events.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'event.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Event extends Model {
+class Event extends ReadOnlyModelWithId {
   @JsonKey(name: 'completed_urls')
   final List<String>? completedUrls;
 
@@ -45,20 +46,35 @@ class Event extends Model {
 
   factory Event.fromJson(Map<String, dynamic> input) => _$EventFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$EventToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class EventCollection extends Collection {
+class EventCollection extends PaginatedCollection<Event, ListEvents> {
   @JsonKey(name: 'events')
   final List<Event>? events;
 
-  EventCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.events)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  EventCollection(objectType, mode, hasMore, this.events)
+      : super(objectType, mode, hasMore);
 
   factory EventCollection.fromJson(Map<String, dynamic> input) =>
       _$EventCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$EventCollectionToJson(this);
+
+  @override
+  ListEvents buildGetNextPageParameters(List<Event>? currentPageItems,
+      {int? pageSize}) {
+    ListEvents parameters = filters ?? ListEvents();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

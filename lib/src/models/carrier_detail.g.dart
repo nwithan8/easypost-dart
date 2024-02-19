@@ -8,9 +8,6 @@ part of 'carrier_detail.dart';
 
 CarrierDetail _$CarrierDetailFromJson(Map<String, dynamic> json) =>
     CarrierDetail(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['alternate_identifier'] as String?,
@@ -25,9 +22,6 @@ CarrierDetail _$CarrierDetailFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CarrierDetailToJson(CarrierDetail instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'object': instance.objectType,
       'mode': instance.mode,
       'alternate_identifier': instance.alternateIdentifier,

@@ -30,11 +30,11 @@ PostageLabel _$PostageLabelFromJson(Map<String, dynamic> json) => PostageLabel(
 
 Map<String, dynamic> _$PostageLabelToJson(PostageLabel instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'date_advance': instance.dateAdvance,
       'integrated_form': instance.integratedForm,
       'label_date': instance.labelDate?.toIso8601String(),

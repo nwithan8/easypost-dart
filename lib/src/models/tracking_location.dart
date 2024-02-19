@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'tracking_location.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class TrackingLocation extends Model {
+class TrackingLocation extends ReadOnlyModel {
   @JsonKey(name: 'city')
   final String? city;
 
@@ -19,19 +19,17 @@ class TrackingLocation extends Model {
   final String? zip;
 
   TrackingLocation(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.city,
     this.country,
     this.state,
     this.zip,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory TrackingLocation.fromJson(Map<String, dynamic> input) =>
       _$TrackingLocationFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TrackingLocationToJson(this);
 }

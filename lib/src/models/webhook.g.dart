@@ -19,11 +19,11 @@ Webhook _$WebhookFromJson(Map<String, dynamic> json) => Webhook(
     );
 
 Map<String, dynamic> _$WebhookToJson(Webhook instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'disabled_at': instance.disabledAt?.toIso8601String(),
       'url': instance.url,
     };

@@ -18,7 +18,7 @@ Insurance _$InsuranceFromJson(Map<String, dynamic> json) => Insurance(
           ? null
           : Address.fromJson(json['from_address'] as Map<String, dynamic>),
       (json['messages'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      json['provider'] as String?,
+      InsuranceProvider.fromString(json['provider'] as String?),
       json['provider_id'] as String?,
       json['reference'] as String?,
       json['shipment_id'] as String?,
@@ -32,15 +32,15 @@ Insurance _$InsuranceFromJson(Map<String, dynamic> json) => Insurance(
     );
 
 Map<String, dynamic> _$InsuranceToJson(Insurance instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'amount': moneyToString(instance.amount),
       'from_address': instance.fromAddress?.toJson(),
       'messages': instance.messages,
-      'provider': instance.provider,
+      'provider': InsuranceProvider.asString(instance.provider),
       'provider_id': instance.providerId,
       'reference': instance.reference,
       'shipment_id': instance.shipmentId,
@@ -52,9 +52,6 @@ Map<String, dynamic> _$InsuranceToJson(Insurance instance) => <String, dynamic>{
 
 InsuranceCollection _$InsuranceCollectionFromJson(Map<String, dynamic> json) =>
     InsuranceCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -66,9 +63,6 @@ InsuranceCollection _$InsuranceCollectionFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$InsuranceCollectionToJson(
         InsuranceCollection instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'object': instance.objectType,
       'mode': instance.mode,
       'has_more': instance.hasMore,

@@ -8,11 +8,6 @@ part of 'time_in_transit.dart';
 
 TimeInTransit _$TimeInTransitFromJson(Map<String, dynamic> json) =>
     TimeInTransit(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
-      json['object'],
-      json['mode'],
       json['percentile_50'] as int?,
       json['percentile_75'] as int?,
       json['percentile_85'] as int?,
@@ -24,11 +19,6 @@ TimeInTransit _$TimeInTransitFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$TimeInTransitToJson(TimeInTransit instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'percentile_50': instance.percentile50,
       'percentile_75': instance.percentile75,
       'percentile_85': instance.percentile85,

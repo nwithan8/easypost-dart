@@ -1,6 +1,5 @@
 import 'package:easypost/src/base/model.dart';
-import 'package:easypost/src/internal/conversions.dart';
-import 'package:easypost/src/models/smart_rate_accuracy.dart';
+import 'package:easypost/src/enums/smart_rate_accuracy.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'time_in_transit.g.dart';
@@ -29,11 +28,6 @@ class TimeInTransit extends Model {
   final int? percentile99;
 
   TimeInTransit(
-    id,
-    createdAt,
-    updatedAt,
-    objectType,
-    mode,
     this.percentile50,
     this.percentile75,
     this.percentile85,
@@ -41,29 +35,30 @@ class TimeInTransit extends Model {
     this.percentile95,
     this.percentile97,
     this.percentile99,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super();
 
   factory TimeInTransit.fromJson(Map<String, dynamic> input) =>
       _$TimeInTransitFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$TimeInTransitToJson(this);
 
   int? bySmartRateAccuracy(SmartRateAccuracy accuracy) {
-    switch (accuracy) {
-      case SmartRateAccuracy.percentile50:
-        return percentile50;
-      case SmartRateAccuracy.percentile75:
-        return percentile75;
-      case SmartRateAccuracy.percentile85:
-        return percentile85;
-      case SmartRateAccuracy.percentile90:
-        return percentile90;
-      case SmartRateAccuracy.percentile95:
-        return percentile95;
-      case SmartRateAccuracy.percentile97:
-        return percentile97;
-      case SmartRateAccuracy.percentile99:
-        return percentile99;
+    if (accuracy.matches(SmartRateAccuracy.percentile50)) {
+      return percentile50;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile75)) {
+      return percentile75;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile85)) {
+      return percentile85;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile90)) {
+      return percentile90;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile95)) {
+      return percentile95;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile97)) {
+      return percentile97;
+    } else if (accuracy.matches(SmartRateAccuracy.percentile99)) {
+      return percentile99;
     }
+    return null;
   }
 }

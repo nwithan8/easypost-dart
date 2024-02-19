@@ -4,11 +4,12 @@ import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/client_configuration.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/extras.dart';
+import 'package:easypost/src/api/parameters/v2/billing/add_credit_card.dart';
 import 'package:easypost/src/base/service.dart';
+import 'package:easypost/src/constants.dart';
+import 'package:easypost/src/enums/payment_method_priority.dart';
 import 'package:easypost/src/exceptions/json/json_deserialization_exception.dart';
-import 'package:easypost/src/models/payment_method.dart';
-import 'package:easypost/src/models/payment_method_priority.dart';
+import 'package:easypost/src/exceptions/resource_not_found_exception.dart';
 import 'package:http/http.dart' as http;
 
 /// The [ExtrasService] handles extraneous EasyPost API functionality.
@@ -16,8 +17,28 @@ import 'package:http/http.dart' as http;
 class ExtrasService extends Service {
   ExtrasService(Client client) : super(client);
 
+  Future<int?> lookupUspsZone(int fromZip, int toZip) async {
+    final Map<String, dynamic> parameters = {
+      'from': fromZip,
+      'to': toZip,
+    };
+
+    final Map<String, dynamic> json = await client.requestJson(
+        HttpMethod.get, 'usps_zones', ApiVersion.v2,
+        parameters: parameters);
+
+    String jsonKey = "usps_zone";
+
+    if (json.containsKey(jsonKey)) {
+      return json[jsonKey];
+    } else {
+      return null;
+    }
+  }
+
   /// Retrieve EasyPost's public Stripe API key.
   Future<String> retrieveStripeApiKey() async {
+    // FIXME: Is this endpoint accessible via referral user production API key, or only by parent user?
     final Map<String, dynamic> json = await client.requestJson(
         HttpMethod.get, 'partners/stripe_public_key', ApiVersion.v2);
 
@@ -26,7 +47,7 @@ class ExtrasService extends Service {
     if (json.containsKey(jsonKey)) {
       return json[jsonKey];
     } else {
-      throw JsonDeserializationException("$jsonKey not found in JSON response");
+      throw JsonDeserializationException.generate("Stripe API key unavailable");
     }
   }
 
@@ -61,35 +82,55 @@ class ExtrasService extends Service {
     if (json.containsKey(jsonKey)) {
       return json[jsonKey];
     } else {
-      throw Exception("$jsonKey not found in JSON response");
+      throw JsonDeserializationException("$jsonKey not found in JSON response");
     }
   }
 
-  /// Store a Stripe token for a credit card on a [ReferralCustomer]'s account.
-  Future<PaymentMethod> createEasyPostCreditCardUsingStripeToken(
-      String referralCustomerApiKey, String stripeToken,
-      {PaymentMethodPriority? priority = PaymentMethodPriority.primary}) async {
-    // Create a one-off Client clone configured with the referral customer's production API key
-    Client referralClient = Client(ClientConfiguration(
-        "none", referralCustomerApiKey,
+  Future<Map<String, dynamic>>
+      createParametersToAddCreditCardToEasyPostViaStripe(
+          AddCreditCard parameters,
+          {PaymentMethodPriority? priority}) async {
+    priority ??= PaymentMethodPriority.primary;
+    // Validate the parameters before we begin
+    // Will raise an exception if any required parameters are missing
+    parameters.validate();
+
+    // Retrieve the Stripe public key
+    String stripePublicKey;
+    try {
+      stripePublicKey = await retrieveStripeApiKey();
+    } catch (e) {
+      throw ResourceNotFoundException(
+          "Unable to retrieve EasyPost's Stripe API key.");
+    }
+
+    // Create a Stripe token for the credit card
+    String stripeToken;
+    try {
+      stripeToken = await createStripeToken(
+        stripePublicKey,
+        parameters.creditCardNumber!,
+        parameters.creditCardExpirationMonth!,
+        parameters.creditCardExpirationYear!,
+        parameters.creditCardCvv!,
+      );
+    } catch (e) {
+      throw Exception(
+          "Could not send card details to Stripe, please try again later.");
+    }
+
+    Map<String, dynamic> parameterMap = {
+      'credit_card': {
+        'stripe_object_id': stripeToken,
+        'priority': priority.toString()
+      }
+    };
+
+    return parameterMap;
+  }
+
+  Client createClientWithReferralCustomerApiKey(String referralCustomerApiKey) {
+    return Client(ClientConfiguration("none", referralCustomerApiKey,
         apiVersion: client.config.apiVersion, baseUrl: client.config.baseUrl));
-    referralClient.enableProductionMode();
-
-    // Create the request parameters
-    CreateCreditCard parameters = CreateCreditCard();
-    parameters.stripeToken = stripeToken;
-    parameters.priority = priority;
-
-    // Convert parameters to JSON
-    Map<String, dynamic> parametersMap =
-        parameters.constructJson(client: referralClient);
-
-    // Send the request
-    final json = await referralClient.requestJson(
-        HttpMethod.post, 'credit_cards', ApiVersion.v2,
-        parameters: parametersMap);
-
-    // Deserialize the response JSON
-    return PaymentMethod.fromJson(json);
   }
 }

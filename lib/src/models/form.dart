@@ -1,12 +1,12 @@
 import 'package:easypost/src/enums/form_type.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'form.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Form extends Model {
+class Form extends ReadOnlyModelWithId {
   @JsonKey(
       name: 'form_type',
       fromJson: FormType.fromString,
@@ -32,5 +32,6 @@ class Form extends Model {
 
   factory Form.fromJson(Map<String, dynamic> input) => _$FormFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$FormToJson(this);
 }

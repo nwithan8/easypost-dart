@@ -33,7 +33,7 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) => Shipment(
       json['from_address'] == null
           ? null
           : Address.fromJson(json['from_address'] as Map<String, dynamic>),
-      json['insurance'] as String?,
+      stringToMoney(json['insurance'] as String?),
       json['is_return'] as bool?,
       (json['messages'] as List<dynamic>?)
           ?.map((e) => Message.fromJson(e as Map<String, dynamic>))
@@ -50,7 +50,7 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) => Shipment(
           : PostageLabel.fromJson(
               json['postage_label'] as Map<String, dynamic>),
       (json['rates'] as List<dynamic>?)
-          ?.map((e) => Rate.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ShipmentRate.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['reference'] as String?,
       json['refund_status'] as String?,
@@ -62,10 +62,11 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) => Shipment(
           : ScanForm.fromJson(json['scan_form'] as Map<String, dynamic>),
       json['selected_rate'] == null
           ? null
-          : Rate.fromJson(json['selected_rate'] as Map<String, dynamic>),
+          : ShipmentRate.fromJson(
+              json['selected_rate'] as Map<String, dynamic>),
       json['service'] as String?,
       json['status'] as String?,
-      (json['tax_idenfifiers'] as List<dynamic>?)
+      (json['tax_identifiers'] as List<dynamic>?)
           ?.map((e) => TaxIdentifier.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['to_address'] == null
@@ -75,15 +76,15 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) => Shipment(
           ? null
           : Tracker.fromJson(json['tracker'] as Map<String, dynamic>),
       json['tracking_code'] as String?,
-      json['usps_zone'] as String?,
+      json['usps_zone'] as int?,
     );
 
 Map<String, dynamic> _$ShipmentToJson(Shipment instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'batch_id': instance.batchId,
       'batch_message': instance.batchMessage,
       'batch_status': instance.batchStatus,
@@ -94,7 +95,7 @@ Map<String, dynamic> _$ShipmentToJson(Shipment instance) => <String, dynamic>{
       'fees': instance.fees?.map((e) => e.toJson()).toList(),
       'forms': instance.forms?.map((e) => e.toJson()).toList(),
       'from_address': instance.fromAddress?.toJson(),
-      'insurance': instance.insurance,
+      'insurance': moneyToString(instance.insurance),
       'is_return': instance.isReturn,
       'messages': instance.messages?.map((e) => e.toJson()).toList(),
       'options': instance.options?.toJson(),
@@ -109,8 +110,8 @@ Map<String, dynamic> _$ShipmentToJson(Shipment instance) => <String, dynamic>{
       'selected_rate': instance.selectedRate?.toJson(),
       'service': instance.service,
       'status': instance.status,
-      'tax_idenfifiers':
-          instance.taxIdenfifiers?.map((e) => e.toJson()).toList(),
+      'tax_identifiers':
+          instance.taxIdentifiers?.map((e) => e.toJson()).toList(),
       'to_address': instance.toAddress?.toJson(),
       'tracker': instance.tracker?.toJson(),
       'tracking_code': instance.trackingCode,
@@ -119,9 +120,6 @@ Map<String, dynamic> _$ShipmentToJson(Shipment instance) => <String, dynamic>{
 
 ShipmentCollection _$ShipmentCollectionFromJson(Map<String, dynamic> json) =>
     ShipmentCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -132,9 +130,6 @@ ShipmentCollection _$ShipmentCollectionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ShipmentCollectionToJson(ShipmentCollection instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'object': instance.objectType,
       'mode': instance.mode,
       'has_more': instance.hasMore,

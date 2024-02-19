@@ -1,5 +1,6 @@
-import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/api/parameters/v2/scan_forms/list_scan_forms.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -7,7 +8,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'scan_form.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class ScanForm extends Model {
+class ScanForm extends ReadOnlyModelWithId {
   @JsonKey(name: 'address')
   final Address? address;
 
@@ -47,20 +48,35 @@ class ScanForm extends Model {
   factory ScanForm.fromJson(Map<String, dynamic> input) =>
       _$ScanFormFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ScanFormToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class ScanFormCollection extends Collection {
+class ScanFormCollection extends PaginatedCollection<ScanForm, ListScanForms> {
   @JsonKey(name: 'scan_forms')
   final List<ScanForm>? scanForms;
 
-  ScanFormCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.scanForms)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  ScanFormCollection(objectType, mode, hasMore, this.scanForms)
+      : super(objectType, mode, hasMore);
 
   factory ScanFormCollection.fromJson(Map<String, dynamic> input) =>
       _$ScanFormCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ScanFormCollectionToJson(this);
+
+  @override
+  ListScanForms buildGetNextPageParameters(List<ScanForm>? currentPageItems,
+      {int? pageSize}) {
+    ListScanForms parameters = filters ?? ListScanForms();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

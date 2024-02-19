@@ -7,6 +7,9 @@ class ClientConfiguration {
   /// Set to `true` by default.
   bool _inTestMode = true;
 
+  /// Customizable function that returns a boolean value.
+  Function? _boolFunction;
+
   /// Switches the client to production mode.
   void enableProductionMode() {
     _inTestMode = false;
@@ -16,6 +19,9 @@ class ClientConfiguration {
   void enableTestMode() {
     _inTestMode = true;
   }
+
+  /// Executes the [_boolFunction] and returns the result. Returns `false` if the function is `null`.
+  bool get boolFunctionResult => _boolFunction?.call() ?? false;
 
   /// Get the current API key depending on the mode.
   String get apiKey => _inTestMode ? _testApiKey : _productionApiKey;
@@ -51,7 +57,12 @@ class ClientConfiguration {
     this.apiVersion = ApiVersion.v2,
     this.baseUrl = 'https://api.easypost.com',
     http.Client? httpClient,
-  }) : client = httpClient ?? http.Client();
+    Function? boolFunction,
+  }) : client = httpClient ?? http.Client() {
+    _boolFunction = boolFunction;
+  }
 
-  String get fullBaseUrl => '$baseUrl/${apiVersion.value}';
+  String fullBaseUrl([ApiVersion? apiVersion]) {
+    return '$baseUrl/${apiVersion?.value ?? this.apiVersion.value}';
+  }
 }

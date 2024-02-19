@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'customs_item.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CustomsItem extends Model {
+class CustomsItem extends ReadOnlyModelWithId {
   @JsonKey(name: 'code')
   final String? code;
 
@@ -49,5 +49,6 @@ class CustomsItem extends Model {
   factory CustomsItem.fromJson(Map<String, dynamic> input) =>
       _$CustomsItemFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CustomsItemToJson(this);
 }

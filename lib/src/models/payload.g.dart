@@ -26,11 +26,11 @@ Payload _$PayloadFromJson(Map<String, dynamic> json) => Payload(
     );
 
 Map<String, dynamic> _$PayloadToJson(Payload instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'request_url': instance.requestUrl,
       'request_headers': instance.requestHeaders,
       'request_body': instance.requestBody,

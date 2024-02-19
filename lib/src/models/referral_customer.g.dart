@@ -13,32 +13,42 @@ ReferralCustomer _$ReferralCustomerFromJson(Map<String, dynamic> json) =>
       stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
-      json['api_keys'],
+      (json['api_keys'] as List<dynamic>?)
+          ?.map((e) => ApiKey.fromJson(e as Map<String, dynamic>))
+          .toList(),
       stringToMoney(json['balance'] as String?),
-      json['children'],
-      json['email'],
-      json['name'],
-      json['parent_id'],
-      json['password'],
-      json['password_confirmation'],
-      json['phone_number'],
+      (json['children'] as List<dynamic>?)
+          ?.map((e) => User.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      stringToDouble(json['cc_fee_rate'] as String?),
+      json['email'] as String?,
+      stringToDouble(json['insurance_fee_rate'] as String?),
+      stringToMoney(json['insurance_fee_minimum'] as String?),
+      json['name'] as String?,
+      json['parent_id'] as String?,
+      json['password'] as String?,
+      json['password_confirmation'] as String?,
+      json['phone_number'] as String?,
       stringToMoney(json['price_per_shipment'] as String?),
       stringToMoney(json['recharge_amount'] as String?),
-      json['recharge_threshold'],
+      json['recharge_threshold'] as String?,
       stringToMoney(json['secondary_recharge_amount'] as String?),
     );
 
 Map<String, dynamic> _$ReferralCustomerToJson(ReferralCustomer instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'api_keys': instance.apiKeys?.map((e) => e.toJson()).toList(),
       'balance': moneyToString(instance.balance),
       'children': instance.children?.map((e) => e.toJson()).toList(),
+      'cc_fee_rate': doubleToString(instance.convenienceFeeRate),
       'email': instance.email,
+      'insurance_fee_rate': doubleToString(instance.insuranceFeeRate),
+      'insurance_fee_minimum': moneyToString(instance.insuranceFeeMinimum),
       'name': instance.name,
       'parent_id': instance.parentId,
       'password': instance.password,
@@ -54,9 +64,6 @@ Map<String, dynamic> _$ReferralCustomerToJson(ReferralCustomer instance) =>
 ReferralCustomerCollection _$ReferralCustomerCollectionFromJson(
         Map<String, dynamic> json) =>
     ReferralCustomerCollection(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['has_more'],
@@ -68,9 +75,6 @@ ReferralCustomerCollection _$ReferralCustomerCollectionFromJson(
 Map<String, dynamic> _$ReferralCustomerCollectionToJson(
         ReferralCustomerCollection instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'object': instance.objectType,
       'mode': instance.mode,
       'has_more': instance.hasMore,

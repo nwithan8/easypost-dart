@@ -8,9 +8,6 @@ part of 'tracking_detail.dart';
 
 TrackingDetail _$TrackingDetailFromJson(Map<String, dynamic> json) =>
     TrackingDetail(
-      json['id'],
-      stringToDateTime(json['created_at'] as String?),
-      stringToDateTime(json['updated_at'] as String?),
       json['object'],
       json['mode'],
       json['datetime'] == null
@@ -26,9 +23,6 @@ TrackingDetail _$TrackingDetailFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$TrackingDetailToJson(TrackingDetail instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created_at': dateTimeToString(instance.createdAt),
-      'updated_at': dateTimeToString(instance.updatedAt),
       'object': instance.objectType,
       'mode': instance.mode,
       'datetime': instance.datetime?.toIso8601String(),

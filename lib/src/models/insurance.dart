@@ -1,5 +1,7 @@
-import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/api/parameters/v2/insurance/list_insurance.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
+import 'package:easypost/src/enums/insurance_provider.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:easypost/src/models/tracker.dart';
@@ -8,7 +10,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'insurance.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Insurance extends Model {
+class Insurance extends ReadOnlyModelWithId {
   @JsonKey(name: 'amount', fromJson: stringToMoney, toJson: moneyToString)
   final double? amount;
 
@@ -18,8 +20,11 @@ class Insurance extends Model {
   @JsonKey(name: 'messages')
   final List<String>? messages;
 
-  @JsonKey(name: 'provider')
-  final String? provider;
+  @JsonKey(
+      name: 'provider',
+      fromJson: InsuranceProvider.fromString,
+      toJson: InsuranceProvider.asString)
+  final InsuranceProvider? provider;
 
   @JsonKey(name: 'provider_id')
   final String? providerId;
@@ -64,20 +69,36 @@ class Insurance extends Model {
   factory Insurance.fromJson(Map<String, dynamic> input) =>
       _$InsuranceFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$InsuranceToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class InsuranceCollection extends Collection {
+class InsuranceCollection
+    extends PaginatedCollection<Insurance, ListInsurance> {
   @JsonKey(name: 'insurances')
   final List<Insurance>? insurances;
 
-  InsuranceCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.insurances)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  InsuranceCollection(objectType, mode, hasMore, this.insurances)
+      : super(objectType, mode, hasMore);
 
   factory InsuranceCollection.fromJson(Map<String, dynamic> input) =>
       _$InsuranceCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$InsuranceCollectionToJson(this);
+
+  @override
+  ListInsurance buildGetNextPageParameters(List<Insurance>? currentPageItems,
+      {int? pageSize}) {
+    ListInsurance parameters = filters ?? ListInsurance();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

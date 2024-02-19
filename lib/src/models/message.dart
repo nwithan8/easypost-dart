@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'message.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Message extends Model {
+class Message extends ReadOnlyModel {
   @JsonKey(name: 'carrier')
   final String? carrier;
 
@@ -19,19 +19,17 @@ class Message extends Model {
   final String? type;
 
   Message(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.carrier,
     this.carrierAccountId,
     this.message,
     this.type,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory Message.fromJson(Map<String, dynamic> input) =>
       _$MessageFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$MessageToJson(this);
 }

@@ -20,11 +20,11 @@ BatchShipment _$BatchShipmentFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$BatchShipmentToJson(BatchShipment instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'batch_message': instance.batchMessage,
       'batch_status': instance.batchStatus,
       'tracking_code': instance.trackingCode,

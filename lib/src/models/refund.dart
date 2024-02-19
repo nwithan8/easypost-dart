@@ -1,12 +1,13 @@
-import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/api/parameters/v2/refunds/list_refunds.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'refund.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Refund extends Model {
+class Refund extends ReadOnlyModelWithId {
   @JsonKey(name: 'carrier')
   final String? carrier;
 
@@ -38,20 +39,35 @@ class Refund extends Model {
   factory Refund.fromJson(Map<String, dynamic> input) =>
       _$RefundFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$RefundToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class RefundCollection extends Collection {
+class RefundCollection extends PaginatedCollection<Refund, ListRefunds> {
   @JsonKey(name: 'refunds')
   final List<Refund>? refunds;
 
-  RefundCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.refunds)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  RefundCollection(objectType, mode, hasMore, this.refunds)
+      : super(objectType, mode, hasMore);
 
   factory RefundCollection.fromJson(Map<String, dynamic> input) =>
       _$RefundCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$RefundCollectionToJson(this);
+
+  @override
+  ListRefunds buildGetNextPageParameters(List<Refund>? currentPageItems,
+      {int? pageSize}) {
+    ListRefunds parameters = filters ?? ListRefunds();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

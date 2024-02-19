@@ -5,11 +5,13 @@ import 'package:easypost/src/api/client_configuration.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/easypost_request.dart';
 import 'package:easypost/src/api/http/http_method.dart';
+import 'package:easypost/src/api/services/account_service.dart';
 import 'package:easypost/src/api/services/address_service.dart';
 import 'package:easypost/src/api/services/api_key_service.dart';
 import 'package:easypost/src/api/services/batch_service.dart';
 import 'package:easypost/src/api/services/billing_service.dart';
 import 'package:easypost/src/api/services/carrier_account_service.dart';
+import 'package:easypost/src/api/services/carrier_info_service.dart';
 import 'package:easypost/src/api/services/carrier_type_service.dart';
 import 'package:easypost/src/api/services/customs_info_service.dart';
 import 'package:easypost/src/api/services/customs_item_service.dart';
@@ -53,6 +55,9 @@ class Client {
     config.enableTestMode();
   }
 
+  /// Services for account-related methods of the EasyPost API.
+  AccountService get accounts => AccountService(this);
+
   /// Service for address-related methods of the EasyPost API.
   AddressService get addresses => AddressService(this);
 
@@ -67,6 +72,9 @@ class Client {
 
   /// Service for carrier account-related methods of the EasyPost API.
   CarrierAccountService get carrierAccounts => CarrierAccountService(this);
+
+  /// Service for carrier info-related methods of the EasyPost API.
+  CarrierInfoService get carrierMetadata => CarrierInfoService(this);
 
   /// Service for carrier type-related methods of the EasyPost API.
   CarrierTypeService get carrierTypes => CarrierTypeService(this);
@@ -84,7 +92,7 @@ class Client {
   EventService get events => EventService(this);
 
   /// Service for insurance-related methods of the EasyPost API.
-  InsuranceService get insurances => InsuranceService(this);
+  InsuranceService get insurance => InsuranceService(this);
 
   /// Service for order-related methods of the EasyPost API.
   OrderService get orders => OrderService(this);

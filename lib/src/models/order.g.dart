@@ -29,7 +29,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
           ?.map((e) => Message.fromJson(e as Map<String, dynamic>))
           .toList(),
       (json['rates'] as List<dynamic>?)
-          ?.map((e) => Rate.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => OrderRate.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['reference'] as String?,
       json['return_address'] == null
@@ -45,11 +45,11 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
     );
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'buyer_address': instance.buyerAddress?.toJson(),
       'carrier_accounts':
           instance.carrierAccounts?.map((e) => e.toJson()).toList(),

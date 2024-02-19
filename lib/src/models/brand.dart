@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'brand.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Brand extends Model {
+class Brand extends ReadOnlyModel {
   @JsonKey(name: 'ad')
   final String? ad;
 
@@ -13,10 +13,10 @@ class Brand extends Model {
   final String? adHref;
 
   @JsonKey(name: 'background_color')
-  final String? backgroundColor;
+  final String? backgroundColorHexCode;
 
   @JsonKey(name: 'color')
-  final String? color;
+  final String? colorHexCode;
 
   @JsonKey(name: 'logo')
   final String? logo;
@@ -34,23 +34,21 @@ class Brand extends Model {
   final String? userId;
 
   Brand(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.ad,
     this.adHref,
-    this.backgroundColor,
-    this.color,
+    this.backgroundColorHexCode,
+    this.colorHexCode,
     this.logo,
     this.logoHref,
     this.name,
     this.theme,
     this.userId,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory Brand.fromJson(Map<String, dynamic> input) => _$BrandFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$BrandToJson(this);
 }

@@ -24,11 +24,11 @@ CustomsItem _$CustomsItemFromJson(Map<String, dynamic> json) => CustomsItem(
 
 Map<String, dynamic> _$CustomsItemToJson(CustomsItem instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'code': instance.code,
       'currency': instance.currency,
       'description': instance.description,

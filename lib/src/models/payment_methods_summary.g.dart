@@ -27,11 +27,11 @@ PaymentMethodsSummary _$PaymentMethodsSummaryFromJson(
 Map<String, dynamic> _$PaymentMethodsSummaryToJson(
         PaymentMethodsSummary instance) =>
     <String, dynamic>{
+      'object': instance.objectType,
+      'mode': instance.mode,
       'id': instance.id,
       'created_at': dateTimeToString(instance.createdAt),
       'updated_at': dateTimeToString(instance.updatedAt),
-      'object': instance.objectType,
-      'mode': instance.mode,
       'primary_payment_method': instance.primaryPaymentMethod?.toJson(),
       'secondary_payment_method': instance.secondaryPaymentMethod?.toJson(),
     };

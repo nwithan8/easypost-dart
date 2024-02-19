@@ -1,77 +1,62 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'carrier_account_service_test.reflectable.dart';
 
 void main() {
   group('Carrier Accounts', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
-    test('create', () async {
-      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'create');
+    test('register (create) new carrier account', () async {
+      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'register');
       client.enableProductionMode();
 
       final params = Fixtures.basicCarrierAccount;
 
-      final carrierAccount = await client.carrierAccounts.create(params);
-
-      expect(carrierAccount, isNotNull);
-      expect(carrierAccount, isA<CarrierAccount>());
-      expect(carrierAccount.id, startsWith("ca_"));
-
-      await client.carrierAccounts.delete(carrierAccount);
-    });
-
-    test('create with custom workflow', () async {
-      Client client = TestUtils.setUpVCRClient(
-          "carrier_accounts", 'create_with_custom_workflow');
-      client.enableProductionMode();
-
-      // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
-      final params = CarrierAccountsCreateFedEx();
-      params.accountNumber = "RANDOM";
-      params.corporateAddressCity = "RANDOM";
-      params.corporateAddressCountryCode = "RANDOM";
-      params.corporateAddressPostalCode = "RANDOM";
-      params.corporateAddressState = "RANDOM";
-      params.corporateAddressStreet = "RANDOM";
-      params.corporateCompanyName = "RANDOM";
-      params.corporateEmailAddress = "RANDOM";
-      params.corporateFirstName = "RANDOM";
-      params.corporateJobTitle = "RANDOM";
-      params.corporateLastName = "RANDOM";
-      params.corporatePhoneNumber = "RANDOM";
-      params.shippingAddressCity = "RANDOM";
-      params.shippingAddressCountryCode = "RANDOM";
-      params.shippingAddressPostalCode = "RANDOM";
-      params.shippingAddressState = "RANDOM";
-      params.shippingAddressStreet = "RANDOM";
-
       try {
-        final carrierAccount = await client.carrierAccounts.create(params);
+        final carrierAccount = await client.carrierAccounts.register(params);
 
         expect(carrierAccount, isNotNull);
         expect(carrierAccount, isA<CarrierAccount>());
-        expect(carrierAccount.id, startsWith("ca_"));
+        expect(carrierAccount.id, startsWith(ModelPrefixes.carrierAccount));
 
-        await client.carrierAccounts.delete(carrierAccount);
+        await client.carrierAccounts.delete(carrierAccount.id);
       } catch (e) {
         print(e);
       }
     });
 
-    test('all', () async {
-      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'all');
+    test('add existing carrier account', () async {
+      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'add');
       client.enableProductionMode();
 
-      final params = CarrierAccountsAll();
-      params.pageSize = Fixtures.pageSize;
+      final params = Fixtures.basicFedExCarrierAccount;
+
+      try {
+        final carrierAccount = await client.carrierAccounts.add(params);
+
+        expect(carrierAccount, isNotNull);
+        expect(carrierAccount, isA<CarrierAccount>());
+        expect(carrierAccount.id, startsWith(ModelPrefixes.carrierAccount));
+
+        await client.carrierAccounts.delete(carrierAccount.id);
+      } catch (e) {
+        print(e);
+      }
+    });
+
+    test('list', () async {
+      Client client = TestUtils.setUpVCRClient("carrier_accounts", 'list');
+      client.enableProductionMode();
 
       final List<CarrierAccount> carrierAccountsList =
-          await client.carrierAccounts.list(parameters: params);
+          await client.carrierAccounts.list();
 
       expect(carrierAccountsList, isNotNull);
       // page size is not a thing for carrier account list (list, not a collection)
@@ -85,18 +70,61 @@ void main() {
       Client client = TestUtils.setUpVCRClient("carrier_accounts", 'retrieve');
       client.enableProductionMode();
 
-      final params = Fixtures.basicCarrierAccount;
+      final params = Fixtures.basicFedExCarrierAccount;
 
-      final carrierAccount = await client.carrierAccounts.create(params);
+      final carrierAccount = await client.carrierAccounts.add(params);
 
       final retrievedCarrierAccount =
-          await client.carrierAccounts.retrieve(carrierAccount.id!);
+          await client.carrierAccounts.retrieve(carrierAccount.id);
 
       expect(retrievedCarrierAccount, isNotNull);
       expect(retrievedCarrierAccount, isA<CarrierAccount>());
       expect(retrievedCarrierAccount.id == carrierAccount.id, true);
 
-      await client.carrierAccounts.delete(carrierAccount);
+      await client.carrierAccounts.delete(carrierAccount.id);
     });
+  });
+
+  test('update', () async {
+    Client client = TestUtils.setUpVCRClient("carrier_accounts", 'update');
+    client.enableProductionMode();
+
+    final params = Fixtures.basicFedExCarrierAccount;
+
+    final carrierAccount = await client.carrierAccounts.add(params);
+
+    final retrievedCarrierAccount =
+        await client.carrierAccounts.retrieve(carrierAccount.id);
+
+    final newReference = "new reference";
+
+    UpdateCarrierAccount updateParams = UpdateCarrierAccount();
+    updateParams.reference = newReference;
+
+    final updatedCarrierAccount = await client.carrierAccounts
+        .update(retrievedCarrierAccount.id, updateParams);
+
+    expect(updatedCarrierAccount, isNotNull);
+    expect(updatedCarrierAccount, isA<CarrierAccount>());
+    expect(updatedCarrierAccount.reference, newReference);
+
+    await client.carrierAccounts.delete(carrierAccount.id);
+  });
+
+  test('delete', () async {
+    Client client = TestUtils.setUpVCRClient("carrier_accounts", 'delete');
+    client.enableProductionMode();
+
+    final params = Fixtures.basicFedExCarrierAccount;
+
+    final carrierAccount = await client.carrierAccounts.add(params);
+
+    final retrievedCarrierAccount =
+        await client.carrierAccounts.retrieve(carrierAccount.id);
+
+    final success =
+        await client.carrierAccounts.delete(retrievedCarrierAccount.id);
+
+    expect(success, true);
   });
 }

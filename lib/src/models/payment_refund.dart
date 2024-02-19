@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/error.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'payment_refund.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaymentRefund extends Model {
+class PaymentRefund extends ReadOnlyModel {
   @JsonKey(name: 'refunded_amount')
   final int? refundedAmount;
 
@@ -22,9 +22,6 @@ class PaymentRefund extends Model {
   final List<Error>? errors;
 
   PaymentRefund(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.refundedAmount,
@@ -32,10 +29,11 @@ class PaymentRefund extends Model {
     this.refundedPaymentLogsIds,
     this.paymentLogId,
     this.errors,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory PaymentRefund.fromJson(Map<String, dynamic> input) =>
       _$PaymentRefundFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PaymentRefundToJson(this);
 }

@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'carrier_type.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CarrierType extends Model {
+class CarrierType extends ReadOnlyModel {
   @JsonKey(name: 'fields')
   final Map<String, dynamic>? fields;
 
@@ -19,19 +19,17 @@ class CarrierType extends Model {
   final String? type;
 
   CarrierType(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.fields,
     this.logo,
     this.readable,
     this.type,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory CarrierType.fromJson(Map<String, dynamic> input) =>
       _$CarrierTypeFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$CarrierTypeToJson(this);
 }

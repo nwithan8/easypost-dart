@@ -1,4 +1,5 @@
-import 'package:easypost/src/base/collection.dart';
+import 'package:easypost/src/api/parameters/v2/end_shippers/list_end_shippers.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/address.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -62,16 +63,32 @@ class EndShipper extends Address {
 }
 
 @JsonSerializable(explicitToJson: true)
-class EndShipperCollection extends Collection {
+class EndShipperCollection
+    extends PaginatedCollection<EndShipper, ListEndShippers> {
   @JsonKey(name: 'end_shippers')
   final List<EndShipper>? endShippers;
 
-  EndShipperCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.endShippers)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  EndShipperCollection(objectType, mode, hasMore, this.endShippers)
+      : super(objectType, mode, hasMore);
 
   factory EndShipperCollection.fromJson(Map<String, dynamic> input) =>
       _$EndShipperCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$EndShipperCollectionToJson(this);
+
+  @override
+  ListEndShippers buildGetNextPageParameters(List<EndShipper>? currentPageItems,
+      {int? pageSize}) {
+    ListEndShippers parameters = filters ?? ListEndShippers();
+
+    // EndShippers go oldest to newest, so only can use afterId
+    parameters.afterId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

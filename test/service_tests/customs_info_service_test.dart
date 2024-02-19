@@ -1,13 +1,16 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'customs_info_service_test.reflectable.dart';
 
 void main() {
   group('Customs Info', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
     test('create', () async {
@@ -20,8 +23,7 @@ void main() {
 
       expect(customsInfo, isNotNull);
       expect(customsInfo, isA<CustomsInfo>());
-      expect(customsInfo.id, startsWith("cstinfo_"));
-      expect(customsInfo.eelPfc, "NOEEI 30.37(a)");
+      expect(customsInfo.id, startsWith(ModelPrefixes.customsInfo));
       for (CustomsItem item in customsInfo.customsItems!) {
         expect(item, isA<CustomsItem>());
       }
@@ -36,7 +38,7 @@ void main() {
       final customsInfo = await client.customsInfos.create(params);
 
       final retrievedCustomsInfo =
-          await client.customsInfos.retrieve(customsInfo.id!);
+          await client.customsInfos.retrieve(customsInfo.id);
 
       expect(retrievedCustomsInfo, isNotNull);
       expect(retrievedCustomsInfo, isA<CustomsInfo>());

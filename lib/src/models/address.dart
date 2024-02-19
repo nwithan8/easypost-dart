@@ -1,5 +1,7 @@
-import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/api/parameters/iparameters.dart';
+import 'package:easypost/src/api/parameters/v2/addresses/list_addresses.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
+import 'package:easypost/src/base/paginated_collection.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/verifications.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -7,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'address.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Address extends Model {
+class Address extends ReadOnlyModelWithId implements IAddressParameter {
   @JsonKey(name: 'carrier_facility')
   final String? carrierFacility;
   @JsonKey(name: 'city')
@@ -71,20 +73,35 @@ class Address extends Model {
   factory Address.fromJson(Map<String, dynamic> input) =>
       _$AddressFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class AddressCollection extends Collection {
+class AddressCollection extends PaginatedCollection<Address, ListAddresses> {
   @JsonKey(name: 'addresses')
-  final List<Address> addresses;
+  final List<Address>? addresses;
 
-  AddressCollection(
-      id, createdAt, updatedAt, objectType, mode, hasMore, this.addresses)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  AddressCollection(objectType, mode, hasMore, this.addresses)
+      : super(objectType, mode, hasMore);
 
   factory AddressCollection.fromJson(Map<String, dynamic> input) =>
       _$AddressCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$AddressCollectionToJson(this);
+
+  @override
+  ListAddresses buildGetNextPageParameters(List<Address>? currentPageItems,
+      {int? pageSize}) {
+    ListAddresses parameters = filters ?? ListAddresses();
+
+    parameters.beforeId = currentPageItems?.last.id;
+
+    if (pageSize != null) {
+      parameters.pageSize = pageSize;
+    }
+
+    return parameters;
+  }
 }

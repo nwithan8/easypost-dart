@@ -1,12 +1,12 @@
-import 'package:easypost/src/base/collection.dart';
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'api_key.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class ApiKey extends Model {
+class ApiKey extends ReadOnlyModelWithId {
   @JsonKey(name: 'key')
   final String? key;
 
@@ -16,23 +16,25 @@ class ApiKey extends Model {
   factory ApiKey.fromJson(Map<String, dynamic> input) =>
       _$ApiKeyFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ApiKeyToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class ApiKeyCollection extends Collection {
+class ApiKeyCollection extends ReadOnlyModelWithId {
   @JsonKey(name: 'children')
   final List<ApiKeyCollection>? children;
 
   @JsonKey(name: 'keys')
   final List<ApiKey>? keys;
 
-  ApiKeyCollection(id, createdAt, updatedAt, objectType, mode, hasMore,
-      this.children, this.keys)
-      : super(id, createdAt, updatedAt, objectType, mode, hasMore);
+  ApiKeyCollection(
+      id, createdAt, updatedAt, objectType, mode, this.children, this.keys)
+      : super(id, createdAt, updatedAt, objectType, mode);
 
   factory ApiKeyCollection.fromJson(Map<String, dynamic> input) =>
       _$ApiKeyCollectionFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$ApiKeyCollectionToJson(this);
 }

@@ -1,13 +1,17 @@
 import 'package:easypost/easypost.dart';
 import 'package:test/test.dart';
+import 'package:reflectable/reflectable.dart';
+import 'package:easypost/src/constants.dart';
 
 import '../fixtures.dart';
 import '../test_utils.dart';
+import 'address_service_test.reflectable.dart';
 
 void main() {
   group('Addresses', () {
     setUp(() {
       // Additional setup goes here.
+      initializeReflectable();
     });
 
     test('create', () async {
@@ -20,7 +24,7 @@ void main() {
 
       expect(address, isNotNull);
       expect(address, isA<Address>());
-      expect(address.id, startsWith("adr_"));
+      expect(address.id, startsWith(ModelPrefixes.address));
       expect(address.street1, "388 Townsend St");
     });
 
@@ -30,30 +34,24 @@ void main() {
       client.enableTestMode();
 
       final params = Fixtures.incorrectAddress;
+
+      // Creating normally (without specifying "verify") will make the address, perform no verifications
+      final address = await client.addresses.create(params);
+
+      expect(address, isNotNull);
+      expect(address, isA<Address>());
+      expect(address.id, startsWith(ModelPrefixes.address));
+      expect(address.verifications?.delivery, isNull);
+
+      // Creating with verify would make the address and perform verifications
       params.verify = true;
 
-      final address = await client.addresses.create(params);
+      final verifiedAddress = await client.addresses.create(params);
 
-      expect(address, isNotNull);
-      expect(address, isA<Address>());
-      expect(address.id, startsWith("adr_"));
-      expect(address.street1, "417 MONTGOMERY ST FL 5");
-    });
-
-    test('create with strict verification', () async {
-      Client client = TestUtils.setUpVCRClient(
-          "addresses", 'create_with_strict_verification');
-      client.enableTestMode();
-
-      final params = Fixtures.caAddress1;
-      params.strictlyVerify = true;
-
-      final address = await client.addresses.create(params);
-
-      expect(address, isNotNull);
-      expect(address, isA<Address>());
-      expect(address.id, startsWith("adr_"));
-      expect(address.street1, "388 TOWNSEND ST APT 20");
+      expect(verifiedAddress, isNotNull);
+      expect(verifiedAddress, isA<Address>());
+      expect(verifiedAddress.id, startsWith(ModelPrefixes.address));
+      expect(verifiedAddress.verifications?.delivery, isNotNull);
     });
 
     test('retrieve', () async {
@@ -64,28 +62,45 @@ void main() {
 
       final address = await client.addresses.create(params);
 
-      final retrievedAddress = await client.addresses.retrieve(address.id!);
+      final retrievedAddress = await client.addresses.retrieve(address.id);
 
       expect(retrievedAddress, isNotNull);
       expect(retrievedAddress, isA<Address>());
       expect(retrievedAddress.id == address.id, true);
     });
 
-    test('all', () async {
-      Client client = TestUtils.setUpVCRClient("addresses", 'all');
+    test('list', () async {
+      Client client = TestUtils.setUpVCRClient("addresses", 'list');
       client.enableTestMode();
 
-      final params = AddressesAll();
+      final params = ListAddresses();
       params.pageSize = Fixtures.pageSize;
 
       final addressCollection = await client.addresses.list(parameters: params);
 
       expect(addressCollection, isNotNull);
       expect(addressCollection.addresses, isNotNull);
-      expect(addressCollection.addresses.length <= Fixtures.pageSize, true);
-      for (Address address in addressCollection.addresses) {
+      expect(addressCollection.addresses!.length <= Fixtures.pageSize, true);
+      for (Address address in addressCollection.addresses!) {
         expect(address, isA<Address>());
       }
+    });
+
+    test('next page', () async {
+      Client client = TestUtils.setUpVCRClient("addresses", 'next_page');
+      client.enableTestMode();
+
+      final params = ListAddresses();
+      params.pageSize = 1;
+
+      final addressCollection = await client.addresses.list(parameters: params);
+
+      expect(addressCollection, isNotNull);
+
+      final nextPage =
+          await client.addresses.getNextPage(addressCollection, pageSize: 1);
+
+      expect(nextPage, isNotNull);
     });
 
     test('verify', () async {
@@ -96,11 +111,11 @@ void main() {
 
       final address = await client.addresses.create(params);
 
-      final verifiedAddress = await client.addresses.verify(address);
+      final verifiedAddress = await client.addresses.verify(address.id);
 
       expect(verifiedAddress, isNotNull);
       expect(verifiedAddress, isA<Address>());
-      expect(verifiedAddress.id, startsWith("adr_"));
+      expect(verifiedAddress.id, startsWith(ModelPrefixes.address));
       expect(verifiedAddress.street1, "388 TOWNSEND ST APT 20");
     });
   });

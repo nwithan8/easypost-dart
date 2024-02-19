@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'postage_label.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PostageLabel extends Model {
+class PostageLabel extends ReadOnlyModelWithId {
   @JsonKey(name: 'date_advance')
   final int? dateAdvance;
 
@@ -65,5 +65,6 @@ class PostageLabel extends Model {
   factory PostageLabel.fromJson(Map<String, dynamic> input) =>
       _$PostageLabelFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PostageLabelToJson(this);
 }

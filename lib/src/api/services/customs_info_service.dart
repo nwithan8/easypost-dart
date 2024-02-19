@@ -1,7 +1,7 @@
 import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
-import 'package:easypost/src/api/parameters/v2/customs_info.dart';
+import 'package:easypost/src/api/parameters/v2/customs_info/create_customs_info.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/models/customs_info.dart';
 
@@ -10,7 +10,7 @@ class CustomsInfoService extends Service {
   CustomsInfoService(Client client) : super(client);
 
   /// Creates a [CustomsInfo].
-  Future<CustomsInfo> create(CustomsInfoCreate parameters) async {
+  Future<CustomsInfo> create(CreateCustomsInfo parameters) async {
     Map<String, dynamic> parameterMap =
         parameters.constructJson(client: client);
     final json = await client.requestJson(
@@ -20,9 +20,9 @@ class CustomsInfoService extends Service {
   }
 
   /// Retrieves a [CustomsInfo].
-  Future<CustomsInfo> retrieve(String id) async {
+  Future<CustomsInfo> retrieve(String customsInfoId) async {
     final json = await client.requestJson(
-        HttpMethod.get, 'customs_infos/$id', ApiVersion.v2);
+        HttpMethod.get, 'customs_infos/$customsInfoId', ApiVersion.v2);
     return CustomsInfo.fromJson(json);
   }
 }

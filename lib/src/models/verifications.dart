@@ -1,4 +1,4 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/verification.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'verifications.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Verifications extends Model {
+class Verifications extends ReadOnlyModel {
   @JsonKey(name: 'delivery')
   final Verification? delivery;
 
@@ -14,17 +14,15 @@ class Verifications extends Model {
   final Verification? zip4;
 
   Verifications(
-    id,
-    createdAt,
-    updatedAt,
     objectType,
     mode,
     this.delivery,
     this.zip4,
-  ) : super(id, createdAt, updatedAt, objectType, mode);
+  ) : super(objectType, mode);
 
   factory Verifications.fromJson(Map<String, dynamic> input) =>
       _$VerificationsFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$VerificationsToJson(this);
 }

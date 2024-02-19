@@ -1,11 +1,11 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'payload.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Payload extends Model {
+class Payload extends ReadOnlyModelWithId {
   @JsonKey(name: 'request_url')
   final String? requestUrl;
 
@@ -45,5 +45,6 @@ class Payload extends Model {
   factory Payload.fromJson(Map<String, dynamic> input) =>
       _$PayloadFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PayloadToJson(this);
 }

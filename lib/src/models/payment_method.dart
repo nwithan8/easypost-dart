@@ -1,12 +1,12 @@
-import 'package:easypost/src/base/model.dart';
+import 'package:easypost/src/base/readonly_model_with_id.dart';
 import 'package:easypost/src/internal/conversions.dart';
-import 'package:easypost/src/models/payment_method_type.dart';
+import 'package:easypost/src/enums/payment_method_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_method.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaymentMethod extends Model {
+class PaymentMethod extends ReadOnlyModelWithId {
   @JsonKey(name: 'bank_name')
   final String? bankName;
 
@@ -36,17 +36,12 @@ class PaymentMethod extends Model {
   final bool? isVerified;
 
   PaymentMethodType? get type {
+    // ignore: unnecessary_null_comparison
     if (id == null) {
       return null;
     }
 
-    if (id!.startsWith('card_')) {
-      return PaymentMethodType.card;
-    } else if (id!.startsWith('bank_')) {
-      return PaymentMethodType.bank;
-    } else {
-      return null;
-    }
+    return PaymentMethodType.fromPrefix(id);
   }
 
   PaymentMethod(
@@ -69,5 +64,6 @@ class PaymentMethod extends Model {
   factory PaymentMethod.fromJson(Map<String, dynamic> input) =>
       _$PaymentMethodFromJson(input);
 
+  @override
   Map<String, dynamic> toJson() => _$PaymentMethodToJson(this);
 }
