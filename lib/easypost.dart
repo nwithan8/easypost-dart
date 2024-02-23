@@ -151,6 +151,7 @@ export 'package:easypost/src/enums/endorsement.dart';
 export 'package:easypost/src/enums/file_format.dart';
 export 'package:easypost/src/enums/form_type.dart';
 export 'package:easypost/src/enums/hazmat_type.dart';
+export 'package:easypost/src/enums/hazmat_label_type.dart';
 export 'package:easypost/src/enums/incoterm_type.dart';
 export 'package:easypost/src/enums/insurance_provider.dart';
 export 'package:easypost/src/enums/label_format.dart';

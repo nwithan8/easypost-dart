@@ -67,6 +67,12 @@ double stringToDouble(String? value) =>
 /// Converts a double to a string
 String? doubleToString(double? value) => value?.toString();
 
+/// Converts a string to an int
+int? stringToInt(String? value) => value == null ? 0 : int.parse(value);
+
+/// Converts an int to a string
+String? intToString(int? value) => value?.toString();
+
 // FIXME: If dependency circle issues arise, check this import
 String? modelToId(ReadOnlyModelWithId? model) => model?.id;
 

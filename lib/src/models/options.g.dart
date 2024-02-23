@@ -6,6 +6,115 @@ part of 'options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+DangerousGood _$DangerousGoodFromJson(Map<String, dynamic> json) =>
+    DangerousGood(
+      allInOne: json['all_in_one'] as bool?,
+      containerType: json['container_type'] as String?,
+      exceedsReportableQuantity: json['exceeds_reportable_quantity'] as bool?,
+      hazardClass: json['hazard_class'] as String?,
+      hazardId: json['hazard_id'] as String?,
+      hazardType: json['hazard_type'] as String?,
+      itemQuantity: stringToInt(json['item_quantity'] as String?),
+      itemUnit: json['item_unit'] as String?,
+      labelType: hazmatLabelTypeFromJson(json['label_type'] as String?),
+      numberOfContainers: stringToInt(json['number_of_containers'] as String?),
+      overpackPackaging: json['overpack_packaging'] as String?,
+      overpack: json['overpack'] as bool?,
+      packingGroup: json['packing_group'] as String?,
+      packingInstructionsCode: json['packing_instructions_code'] as String?,
+      percentage: (json['percentage'] as num?)?.toDouble(),
+      points: json['points'] as int?,
+      properName: json['proper_name'] as String?,
+      qValue: (json['q_value'] as num?)?.toDouble(),
+      sequenceNumber: json['sequence_number'] as String?,
+      subsidiaryRiskClass: json['subsidiary_risk_class'] as String?,
+      technicalName: json['technical_name'] as String?,
+      transportationCategory: json['transportation_category'] as int?,
+      tunnelCode: json['tunnel_code'] as String?,
+    );
+
+Map<String, dynamic> _$DangerousGoodToJson(DangerousGood instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('all_in_one', instance.allInOne);
+  writeNotNull('container_type', instance.containerType);
+  writeNotNull(
+      'exceeds_reportable_quantity', instance.exceedsReportableQuantity);
+  writeNotNull('hazard_class', instance.hazardClass);
+  writeNotNull('hazard_id', instance.hazardId);
+  writeNotNull('hazard_type', instance.hazardType);
+  writeNotNull('item_quantity', intToString(instance.itemQuantity));
+  writeNotNull('item_unit', instance.itemUnit);
+  writeNotNull('label_type', hazmatLabelTypeToJson(instance.labelType));
+  writeNotNull(
+      'number_of_containers', intToString(instance.numberOfContainers));
+  writeNotNull('overpack_packaging', instance.overpackPackaging);
+  writeNotNull('overpack', instance.overpack);
+  writeNotNull('packing_group', instance.packingGroup);
+  writeNotNull('packing_instructions_code', instance.packingInstructionsCode);
+  writeNotNull('percentage', instance.percentage);
+  writeNotNull('points', instance.points);
+  writeNotNull('proper_name', instance.properName);
+  writeNotNull('q_value', instance.qValue);
+  writeNotNull('sequence_number', instance.sequenceNumber);
+  writeNotNull('subsidiary_risk_class', instance.subsidiaryRiskClass);
+  writeNotNull('technical_name', instance.technicalName);
+  writeNotNull('transportation_category', instance.transportationCategory);
+  writeNotNull('tunnel_code', instance.tunnelCode);
+  return val;
+}
+
+DangerousGoodsDetails _$DangerousGoodsDetailsFromJson(
+        Map<String, dynamic> json) =>
+    DangerousGoodsDetails(
+      accessibility: json['accessibility'] as String?,
+      authorizationCode: json['authorization_code'] as String?,
+      cargoAircraftOnly: json['cargo_aircraft_only'] as bool?,
+      consigneeIdentifier: json['consignee_identifier'] as String?,
+      dangerousGoodsItems: (json['dangerous_goods_items'] as List<dynamic>?)
+          ?.map((e) => DangerousGood.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      emergencyContact: json['emergency_contact'] as String?,
+      excepted: json['excepted'] as bool?,
+      regulationSet: json['regulation_set'] as String?,
+      signatoryLocation: json['signatory_location'] as String?,
+      signatoryTitle: json['signatory_title'] as String?,
+      signatory: json['signatory'] as String?,
+      transportationMode: json['transportation_mode'] as String?,
+    );
+
+Map<String, dynamic> _$DangerousGoodsDetailsToJson(
+    DangerousGoodsDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('accessibility', instance.accessibility);
+  writeNotNull('authorization_code', instance.authorizationCode);
+  writeNotNull('cargo_aircraft_only', instance.cargoAircraftOnly);
+  writeNotNull('consignee_identifier', instance.consigneeIdentifier);
+  writeNotNull('dangerous_goods_items',
+      instance.dangerousGoodsItems?.map((e) => e.toJson()).toList());
+  writeNotNull('emergency_contact', instance.emergencyContact);
+  writeNotNull('excepted', instance.excepted);
+  writeNotNull('regulation_set', instance.regulationSet);
+  writeNotNull('signatory_location', instance.signatoryLocation);
+  writeNotNull('signatory_title', instance.signatoryTitle);
+  writeNotNull('signatory', instance.signatory);
+  writeNotNull('transportation_mode', instance.transportationMode);
+  return val;
+}
+
 Options _$OptionsFromJson(Map<String, dynamic> json) => Options(
       additionalHandling: json['additional_handling'] as bool?,
       addressValidationLevel: json['address_validation_level'] as String?,
@@ -112,6 +221,10 @@ Options _$OptionsFromJson(Map<String, dynamic> json) => Options(
           stringToDateTime(json['tax_id_expiration_date'] as String?),
     )
       ..contentDescription = json['content_description'] as String?
+      ..dangerousGoods = json['dangerous_goods'] == null
+          ? null
+          : DangerousGoodsDetails.fromJson(
+              json['dangerous_goods'] as Map<String, dynamic>)
       ..deliveryMinDatetime =
           stringToDateTime(json['delivery_min_datetime'] as String?)
       ..deliveryMaxDatetime =
@@ -149,6 +262,7 @@ Map<String, dynamic> _$OptionsToJson(Options instance) {
   writeNotNull('currency', instance.currency);
   writeNotNull('customs_broker_address_id', instance.customsBrokerAddressId);
   writeNotNull('customs_include_shipping', instance.customsIncludeShipping);
+  writeNotNull('dangerous_goods', instance.dangerousGoods?.toJson());
   writeNotNull('declared_value', instance.declaredValue);
   writeNotNull('delivered_duty_paid', instance.deliveredDutyPaid);
   writeNotNull('delivery_confirmation',
