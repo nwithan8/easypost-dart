@@ -1,4 +1,5 @@
 import 'package:easypost/src/api/http/api_version.dart';
+import 'package:easypost/src/api/services/extras_service.dart';
 import 'package:http/http.dart' as http;
 
 class ClientConfiguration {
@@ -42,7 +43,11 @@ class ClientConfiguration {
   http.Client client;
 
   /// The User-Agent header to use for all requests.
-  String get userAgent => 'EasyPost/$apiVersion DartClient';
+  String get userAgent => getUserAgent(apiVersion);
+
+  static String getUserAgent(ApiVersion apiVersion) {
+    return 'EasyPost/$apiVersion DartClient';
+  }
 
   /// Creates a new [ClientConfiguration] instance.
   ///
@@ -60,6 +65,27 @@ class ClientConfiguration {
     Function? boolFunction,
   }) : client = httpClient ?? http.Client() {
     _boolFunction = boolFunction;
+  }
+
+  static Future<ClientConfiguration> fromEmailAndPassword(
+    String email,
+    String password, {
+    ApiVersion apiVersion = ApiVersion.v2,
+    String baseUrl = 'https://api.easypost.com',
+    http.Client? httpClient,
+    Function? boolFunction,
+  }) async {
+    String authCookie = await ExtrasService.logInWithEmailAndPasswordReturnAuthCookie(email, password);
+    ApiKeyPair apiKeys = await ExtrasService.getApiKeysUsingCookie(authCookie);
+
+    return ClientConfiguration(
+      apiKeys.testKey!,
+      apiKeys.productionKey!,
+      apiVersion: apiVersion,
+      baseUrl: baseUrl,
+      httpClient: httpClient,
+      boolFunction: boolFunction,
+    );
   }
 
   String fullBaseUrl([ApiVersion? apiVersion]) {

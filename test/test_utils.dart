@@ -33,6 +33,10 @@ String getApiKey(ApiKeyEnum keyType) {
           ._apiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
 }
 
+String get loginEmail => Platform.environment["EASYPOST_LOGIN_EMAIL"] ?? "";
+
+String get loginPassword => Platform.environment["EASYPOST_LOGIN_PASSWORD"] ?? "";
+
 class TestUtils {
   static final String _apiKeyFailedToPull = "couldnotpullapikey";
 
