@@ -3,15 +3,185 @@ import 'package:easypost/src/enums/cod_method.dart';
 import 'package:easypost/src/enums/delivery_confirmation.dart';
 import 'package:easypost/src/enums/dropoff_type.dart';
 import 'package:easypost/src/enums/endorsement.dart';
+import 'package:easypost/src/enums/hazmat_label_type.dart';
 import 'package:easypost/src/enums/hazmat_type.dart';
 import 'package:easypost/src/enums/incoterm_type.dart';
 import 'package:easypost/src/enums/label_format.dart';
 import 'package:easypost/src/enums/print_custom_code.dart';
 import 'package:easypost/src/internal/conversions.dart';
 import 'package:easypost/src/models/payment_options.dart';
+import 'package:easypost/src/internal/conversions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'options.g.dart';
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class DangerousGood extends Model {
+  @JsonKey(name: 'all_in_one')
+  late bool? allInOne;
+
+  @JsonKey(name: 'container_type')
+  late String? containerType;
+
+  @JsonKey(name: 'exceeds_reportable_quantity')
+  late bool? exceedsReportableQuantity;
+
+  @JsonKey(name: 'hazard_class')
+  late String? hazardClass;
+
+  @JsonKey(name: 'hazard_id')
+  late String? hazardId;
+
+  @JsonKey(name: 'hazard_type')
+  late String? hazardType;
+
+  @JsonKey(name: 'item_quantity', toJson: intToString, fromJson: stringToInt)
+  late int? itemQuantity;
+
+  @JsonKey(name: 'item_unit')
+  late String? itemUnit;
+
+  @JsonKey(
+      name: 'label_type',
+      toJson: hazmatLabelTypeToJson,
+      fromJson: hazmatLabelTypeFromJson)
+  late HazmatLabelType? labelType;
+
+  @JsonKey(
+      name: 'number_of_containers', toJson: intToString, fromJson: stringToInt)
+  late int? numberOfContainers;
+
+  @JsonKey(name: 'overpack_packaging')
+  late String? overpackPackaging;
+
+  @JsonKey(name: 'overpack')
+  late bool? overpack;
+
+  @JsonKey(name: 'packing_group')
+  late String? packingGroup;
+
+  @JsonKey(name: 'packing_instructions_code')
+  late String? packingInstructionsCode;
+
+  @JsonKey(name: 'percentage')
+  late double? percentage;
+
+  @JsonKey(name: 'points')
+  late int? points;
+
+  @JsonKey(name: 'proper_name')
+  late String? properName;
+
+  @JsonKey(name: 'q_value')
+  late double? qValue;
+
+  @JsonKey(name: 'sequence_number')
+  late String? sequenceNumber;
+
+  @JsonKey(name: 'subsidiary_risk_class')
+  late String? subsidiaryRiskClass;
+
+  @JsonKey(name: 'technical_name')
+  late String? technicalName;
+
+  @JsonKey(name: 'transportation_category')
+  late int? transportationCategory;
+
+  @JsonKey(name: 'tunnel_code')
+  late String? tunnelCode;
+
+  DangerousGood({
+    this.allInOne,
+    this.containerType,
+    this.exceedsReportableQuantity,
+    this.hazardClass,
+    this.hazardId,
+    this.hazardType,
+    this.itemQuantity,
+    this.itemUnit,
+    this.labelType,
+    this.numberOfContainers,
+    this.overpackPackaging,
+    this.overpack,
+    this.packingGroup,
+    this.packingInstructionsCode,
+    this.percentage,
+    this.points,
+    this.properName,
+    this.qValue,
+    this.sequenceNumber,
+    this.subsidiaryRiskClass,
+    this.technicalName,
+    this.transportationCategory,
+    this.tunnelCode,
+  }) : super();
+
+  factory DangerousGood.fromJson(Map<String, dynamic> input) =>
+      _$DangerousGoodFromJson(input);
+
+  @override
+  Map<String, dynamic> toJson() => _$DangerousGoodToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class DangerousGoodsDetails extends Model {
+  @JsonKey(name: 'accessibility')
+  late String? accessibility;
+
+  @JsonKey(name: 'authorization_code')
+  late String? authorizationCode;
+
+  @JsonKey(name: 'cargo_aircraft_only')
+  late bool? cargoAircraftOnly;
+
+  @JsonKey(name: 'consignee_identifier')
+  late String? consigneeIdentifier;
+
+  @JsonKey(name: 'dangerous_goods_items')
+  late List<DangerousGood>? dangerousGoodsItems;
+
+  @JsonKey(name: 'emergency_contact')
+  late String? emergencyContact;
+
+  @JsonKey(name: 'excepted')
+  late bool? excepted;
+
+  @JsonKey(name: 'regulation_set')
+  late String? regulationSet;
+
+  @JsonKey(name: 'signatory_location')
+  late String? signatoryLocation;
+
+  @JsonKey(name: 'signatory_title')
+  late String? signatoryTitle;
+
+  @JsonKey(name: 'signatory')
+  late String? signatory;
+
+  @JsonKey(name: 'transportation_mode')
+  late String? transportationMode;
+
+  DangerousGoodsDetails({
+    this.accessibility,
+    this.authorizationCode,
+    this.cargoAircraftOnly,
+    this.consigneeIdentifier,
+    this.dangerousGoodsItems,
+    this.emergencyContact,
+    this.excepted,
+    this.regulationSet,
+    this.signatoryLocation,
+    this.signatoryTitle,
+    this.signatory,
+    this.transportationMode,
+  }) : super();
+
+  factory DangerousGoodsDetails.fromJson(Map<String, dynamic> input) =>
+      _$DangerousGoodsDetailsFromJson(input);
+
+  @override
+  Map<String, dynamic> toJson() => _$DangerousGoodsDetailsToJson(this);
+}
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Options extends Model {
@@ -81,6 +251,9 @@ class Options extends Model {
 
   @JsonKey(name: 'customs_include_shipping')
   late bool? customsIncludeShipping;
+
+  @JsonKey(name: 'dangerous_goods')
+  late DangerousGoodsDetails? dangerousGoods;
 
   @JsonKey(name: 'declared_value')
   late String? declaredValue;
