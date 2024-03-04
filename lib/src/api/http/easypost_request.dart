@@ -49,7 +49,7 @@ class EasyPostRequest {
     request.headers['Accept'] = 'application/json';
     request.headers['Content-Type'] = 'application/json';
     request.headers['Authorization'] = 'Bearer ${config.apiKey}';
-    // request.headers['User-Agent'] = config.userAgent;
+    request.headers['User-Agent'] = config.userAgent;
 
     // Add body to a POST/PUT/PATCH request
     if (parameters != null &&
