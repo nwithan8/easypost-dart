@@ -4,6 +4,7 @@
 export 'package:easypost/src/api/client.dart';
 export 'package:easypost/src/api/client_configuration.dart';
 export 'package:easypost/src/api/http/api_version.dart';
+export 'package:easypost/src/api/http/hooks.dart';
 
 // API parameters
 export 'package:easypost/src/api/parameters/v2/accounts/change_password.dart';

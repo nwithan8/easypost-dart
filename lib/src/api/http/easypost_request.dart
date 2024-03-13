@@ -5,6 +5,7 @@ import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/http/streamed_response.dart';
 import 'package:easypost/src/exceptions/api/api_exception.dart';
+import 'package:uuid/uuid.dart';
 import 'package:http/http.dart' as http;
 
 /// A class that represents an HTTP request to the EasyPost API.
@@ -16,7 +17,23 @@ class EasyPostRequest {
     final request = _prepareRequest(config, method, url, apiVersion,
         parameters: parameters);
 
+    int requestTimestamp = DateTime.now().millisecondsSinceEpoch;
+    String requestResponsePairId = Uuid().v1();
+
+    // Call pre-flight hooks
+    if (config.hooks != null) {
+      await config.hooks!.callPreFlightCallbacks(
+          request, requestTimestamp, requestResponsePairId);
+    }
+
     final streamedResponse = await config.client.send(request);
+
+    // Call post-flight hooks
+    if (config.hooks != null) {
+      // Response timestamp calculated inside the function
+      await config.hooks!.callPostFlightCallbacks(
+          streamedResponse, requestTimestamp, requestResponsePairId);
+    }
 
     if (streamedResponse.isError) {
       // request returned an error, throw the appropriate exception

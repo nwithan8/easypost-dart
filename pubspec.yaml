@@ -1,6 +1,6 @@
 name: easypost
 description: A Dart SDK for EasyPost to interact with the API, plus helper methods.
-version: VERSIONADDEDBYGITHUB
+version: 1.0.0
 repository: https://github.com/nwithan8/easypost-dart
 
 environment:
@@ -15,6 +15,7 @@ dependencies:
   tuple: ^2.0.1
   intl: ^0.19.0
   crypto: ^3.0.3
+  uuid: ^4.3.3
 
 dev_dependencies:
   build_runner: any

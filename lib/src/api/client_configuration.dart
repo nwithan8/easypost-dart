@@ -1,4 +1,5 @@
 import 'package:easypost/src/api/http/api_version.dart';
+import 'package:easypost/src/api/http/hooks.dart';
 import 'package:easypost/src/api/services/extras_service.dart';
 import 'package:http/http.dart' as http;
 
@@ -39,6 +40,9 @@ class ClientConfiguration {
   /// API version
   final ApiVersion apiVersion;
 
+  /// Pre-flight and post-flight hooks
+  final Hooks? hooks;
+
   /// HTTP Client
   http.Client client;
 
@@ -61,6 +65,7 @@ class ClientConfiguration {
     this._productionApiKey, {
     this.apiVersion = ApiVersion.v2,
     this.baseUrl = 'https://api.easypost.com',
+    this.hooks,
     http.Client? httpClient,
     Function? boolFunction,
   }) : client = httpClient ?? http.Client() {
@@ -72,10 +77,13 @@ class ClientConfiguration {
     String password, {
     ApiVersion apiVersion = ApiVersion.v2,
     String baseUrl = 'https://api.easypost.com',
+    Hooks? hooks,
     http.Client? httpClient,
     Function? boolFunction,
   }) async {
-    String authCookie = await ExtrasService.logInWithEmailAndPasswordReturnAuthCookie(email, password);
+    String authCookie =
+        await ExtrasService.logInWithEmailAndPasswordReturnAuthCookie(
+            email, password);
     ApiKeyPair apiKeys = await ExtrasService.getApiKeysUsingCookie(authCookie);
 
     return ClientConfiguration(
@@ -83,6 +91,7 @@ class ClientConfiguration {
       apiKeys.productionKey!,
       apiVersion: apiVersion,
       baseUrl: baseUrl,
+      hooks: hooks,
       httpClient: httpClient,
       boolFunction: boolFunction,
     );
