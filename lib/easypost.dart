@@ -135,7 +135,6 @@ export 'package:easypost/src/api/parameters/v2/users/create_user.dart';
 export 'package:easypost/src/api/parameters/v2/users/list_child_users.dart';
 export 'package:easypost/src/api/parameters/v2/users/update_brand.dart';
 export 'package:easypost/src/api/parameters/v2/users/update_user.dart';
-export 'package:easypost/src/api/parameters/v2/webhooks/list_webhooks.dart';
 export 'package:easypost/src/api/parameters/v2/webhooks/create_webhook.dart';
 export 'package:easypost/src/api/parameters/v2/webhooks/update_webhook.dart';
 

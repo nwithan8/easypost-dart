@@ -2,7 +2,6 @@ import 'package:easypost/src/api/client.dart';
 import 'package:easypost/src/api/http/api_version.dart';
 import 'package:easypost/src/api/http/http_method.dart';
 import 'package:easypost/src/api/parameters/v2/webhooks/create_webhook.dart';
-import 'package:easypost/src/api/parameters/v2/webhooks/list_webhooks.dart';
 import 'package:easypost/src/api/parameters/v2/webhooks/update_webhook.dart';
 import 'package:easypost/src/base/service.dart';
 import 'package:easypost/src/constants.dart';
@@ -38,13 +37,11 @@ class WebhookService extends Service {
     return Webhook.fromJson(json);
   }
 
-  /// Lists all [Webhook]s.
-  Future<List<Webhook>> list({ListWebhooks? parameters}) async {
-    Map<String, dynamic>? parameterMap =
-        parameters?.constructJson(client: client);
+  /// Lists all [Webhook]s. This will return all webhooks for the account (no pagination).
+  Future<List<Webhook>> list() async {
     final json = await client.requestJson(
         HttpMethod.get, 'webhooks', ApiVersion.v2,
-        parameters: parameterMap, rootElement: 'webhooks');
+        rootElement: 'webhooks');
     return json.map<Webhook>((json) => Webhook.fromJson(json)).toList();
   }
 
